@@ -195,6 +195,7 @@ let RAG_URL = 'http://localhost:8001';
   } catch (e) { /* use default */ }
 })();
 let streaming = false;
+let firstQuery = true;   // track whether this is the first query (Modal cold-start)
 
 // ── Status check ──────────────────────────────────────────────────────────────
 async function checkStatus() {
@@ -328,9 +329,13 @@ async function sendQuery() {
   // User bubble
   appendMsg('user', `<p>${esc(query)}</p>`);
 
-  // Bot bubble with thinking indicator
-  const botBody = appendMsg('bot', '<div class="thinking"><span></span><span></span><span></span></div>');
+  // Bot bubble — on first query, hint about Modal cold-start
+  const warmupNote = firstQuery
+    ? '<p style="color:#666;font-size:11px;margin-bottom:6px">⏳ First query may take 10–15 s to warm up…</p>'
+    : '';
+  const botBody = appendMsg('bot', warmupNote + '<div class="thinking"><span></span><span></span><span></span></div>');
   streaming = true;
+  firstQuery = false;
 
   let fullText   = '';
   let sources    = [];
