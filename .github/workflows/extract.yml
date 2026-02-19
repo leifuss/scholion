@@ -1,0 +1,179 @@
+name: Extract PDF batch
+
+# ── Triggers ──────────────────────────────────────────────────────────────────
+# Manual trigger only — prevents accidental or recursive runs.
+# Run via: gh workflow run extract.yml -f keys="KEY1 KEY2 KEY3"
+# Or via GitHub UI: Actions → Extract PDF batch → Run workflow
+on:
+  workflow_dispatch:
+    inputs:
+      keys:
+        description: "Space-separated doc keys to process (leave blank for all unextracted)"
+        required: false
+        default: ""
+      use_vision:
+        description: "Enable Google Vision OCR fallback (costs ~$1.50/1000 pages)"
+        type: boolean
+        required: false
+        default: false
+      workers:
+        description: "Parallel worker threads"
+        required: false
+        default: "3"
+      run_layout:
+        description: "Also run Heron layout enrichment (05c) after extraction"
+        type: boolean
+        required: false
+        default: true
+
+# ── Permissions ───────────────────────────────────────────────────────────────
+permissions:
+  contents: write    # needed to commit extracted results back
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360   # 6 hours — generous for large batches
+
+    steps:
+      # ── Checkout (with LFS to pull PDFs) ────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull LFS objects (PDFs)
+        run: |
+          git lfs pull --include="data/pdfs/**"
+          echo "PDFs available:"
+          ls data/pdfs/*.pdf 2>/dev/null | wc -l || echo "0 PDFs found"
+
+      # ── Python setup ─────────────────────────────────────────────────────────
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          # Install PyTorch CPU-only first (much smaller than full GPU build)
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          # Then install everything else
+          pip install -r requirements.txt
+
+      # ── Tesseract ─────────────────────────────────────────────────────────────
+      - name: Install Tesseract OCR
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq \
+            tesseract-ocr \
+            tesseract-ocr-eng \
+            tesseract-ocr-ara \
+            tesseract-ocr-fas \
+            tesseract-ocr-tur \
+            tesseract-ocr-deu \
+            tesseract-ocr-fra
+          tesseract --version
+
+      # ── Google Vision credentials (optional) ─────────────────────────────────
+      - name: Write Vision credentials
+        if: ${{ inputs.use_vision }}
+        run: |
+          echo '${{ secrets.GOOGLE_CREDENTIALS_JSON }}' > /tmp/google-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=/tmp/google-credentials.json" >> $GITHUB_ENV
+        # Requires a repo secret: GOOGLE_CREDENTIALS_JSON
+        # containing the service account JSON as a single-line string
+
+      # ── Set up .env for the pipeline ─────────────────────────────────────────
+      - name: Create .env
+        run: |
+          cat > .env << EOF
+          ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}
+          COLLECTION_NAME=Islamic Cartography
+          EOF
+
+      # ── Run extraction (05b) ─────────────────────────────────────────────────
+      - name: Run extraction
+        run: |
+          KEY_ARGS=""
+          if [ -n "${{ inputs.keys }}" ]; then
+            KEY_ARGS="--keys ${{ inputs.keys }}"
+          fi
+
+          VISION_FLAG=""
+          if [ "${{ inputs.use_vision }}" = "true" ]; then
+            VISION_FLAG="--vision"
+          fi
+
+          python scripts/05b_extract_robust.py \
+            --workers ${{ inputs.workers }} \
+            $KEY_ARGS \
+            $VISION_FLAG
+
+      # ── Run layout enrichment (05c, optional) ────────────────────────────────
+      - name: Run Heron layout enrichment
+        if: ${{ inputs.run_layout }}
+        run: |
+          KEY_ARGS=""
+          if [ -n "${{ inputs.keys }}" ]; then
+            KEY_ARGS="--keys ${{ inputs.keys }}"
+          fi
+
+          python scripts/05c_layout_heron.py \
+            --batch 4 \
+            $KEY_ARGS
+
+      # ── Update inventory flags ────────────────────────────────────────────────
+      - name: Update inventory flags
+        run: python scripts/00_update_inventory_flags.py
+
+      # ── Commit results back to repo ──────────────────────────────────────────
+      - name: Commit extracted results
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/texts/ data/inventory.json
+
+          if git diff --staged --quiet; then
+            echo "Nothing new to commit."
+          else
+            # Count processed docs
+            CHANGED=$(git diff --staged --name-only | grep page_texts.json | wc -l)
+            git commit -m "extract: process ${CHANGED} doc(s) [skip ci]
+
+          Keys: ${{ inputs.keys || 'all-unextracted' }}
+          Workers: ${{ inputs.workers }}
+          Vision: ${{ inputs.use_vision }}
+          Layout: ${{ inputs.run_layout }}
+
+          Run: ${{ github.run_id }}"
+
+            git push
+            echo "Committed and pushed results for ${CHANGED} doc(s)."
+          fi
+
+      # ── Summary ───────────────────────────────────────────────────────────────
+      - name: Pipeline summary
+        if: always()
+        run: |
+          echo "=== Extraction complete ==="
+          python -c "
+          import json, os
+          p = 'data/pipeline_status.json'
+          if os.path.exists(p):
+              s = json.load(open(p))
+              docs = s.get('docs', {})
+              ok  = sum(1 for d in docs.values() if d.get('state') == 'ok')
+              err = sum(1 for d in docs.values() if d.get('state') == 'error')
+              print(f'  OK: {ok}   Errors: {err}')
+              for k, v in docs.items():
+                  if v.get('state') == 'error':
+                      print(f'  ERROR {k}: {v.get(\"error\",\"?\")[:80]}')
+          else:
+              print('  No status file found.')
+          " 2>/dev/null || true
