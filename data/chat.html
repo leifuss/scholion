@@ -193,6 +193,7 @@ let RAG_URL = 'http://localhost:8001';
       if (sub) sub.textContent = `Ask questions about ${name} — answers grounded in the processed corpus`;
     }
   } catch (e) { /* use default */ }
+  checkStatus();  // call after RAG_URL is resolved from corpus_config.json
 })();
 let streaming = false;
 let firstQuery = true;   // track whether this is the first query (Modal cold-start)
@@ -200,7 +201,7 @@ let firstQuery = true;   // track whether this is the first query (Modal cold-st
 // ── Status check ──────────────────────────────────────────────────────────────
 async function checkStatus() {
   try {
-    const r = await fetch(`${RAG_URL}/api/status`, { signal: AbortSignal.timeout(3000) });
+    const r = await fetch(`${RAG_URL}/api/status`, { signal: AbortSignal.timeout(5000) });
     if (!r.ok) throw new Error();
     const d = await r.json();
     document.getElementById('statusDot').classList.remove('offline');
@@ -215,7 +216,6 @@ async function checkStatus() {
       'RAG server offline — start with: python scripts/rag_server.py';
   }
 }
-checkStatus();
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function autoResize(el) {
