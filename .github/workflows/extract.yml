@@ -211,6 +211,7 @@ jobs:
           Keys: ${{ inputs.keys || 'all-unextracted' }}
           Vision: ${{ inputs.use_vision }}
           Run: ${{ github.run_id }}"
+            git pull --rebase origin main   # avoid reject if commits landed during extraction
             git push
             echo "✓ Extraction results committed for ${CHANGED} doc(s)."
           fi
