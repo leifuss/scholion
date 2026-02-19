@@ -8358,7 +8358,8 @@
     "language": null,
     "extracted": false,
     "quality_score": null,
-    "recommendation": ""
+    "recommendation": "",
+    "has_reader": false
   },
   {
     "key": "MLK5YS97",
@@ -8385,6 +8386,7 @@
     "language": null,
     "extracted": false,
     "quality_score": null,
-    "recommendation": ""
+    "recommendation": "",
+    "has_reader": false
   }
 ]
