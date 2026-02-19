@@ -1,5 +1,5 @@
-# Generated data — regenerable, not tracked
-data/pdfs/
+# PDFs tracked via Git LFS (see .gitattributes)
+# data/pdfs/ — intentionally NOT ignored; LFS handles storage
 
 # Exclude bulky/redundant files inside texts/ but keep the rest
 data/texts/*/docling.md
