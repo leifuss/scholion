@@ -141,6 +141,8 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
   font-size: 12px;
 }
 .filters label { font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; }
+.filter-reader { color: #5fba7d; }
+.filter-reader select { border-color: #2a5a2a; background: #0d1f0d; color: #5fba7d; }
 .filter-count { font-size: 11px; color: var(--muted); margin-left: auto; }
 
 /* ── Panels ── */
@@ -477,10 +479,10 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
       <option value="modern">21st Century (2000–)</option>
     </select>
   </label>
-  <label>Reader:
-    <select id="fReader" onchange="applyFilters()">
-      <option value="">All</option>
-      <option value="yes" selected>Has reader</option>
+  <label id="readerLabel" class="filter-reader">📖 Viewable:
+    <select id="fReader" onchange="applyFilters(); updateReaderLabel()">
+      <option value="">All docs</option>
+      <option value="yes" selected>Reader only</option>
       <option value="no">No reader</option>
     </select>
   </label>
@@ -543,6 +545,12 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
 </div>
 
 <script>
+// ─── Reader filter label ─────────────────────────────────────────────────────
+function updateReaderLabel() {
+  const val = document.getElementById('fReader').value;
+  document.getElementById('readerLabel').classList.toggle('filter-reader', val === 'yes');
+}
+
 // ─── Data ────────────────────────────────────────────────────────────────────
 let DATA      = [];   // populated by init()
 let DECADES   = [];   // computed from DATA
