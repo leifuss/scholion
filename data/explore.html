@@ -59,36 +59,6 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
 .site-nav a:hover { color: #fff; border-color: #555; }
 .site-nav a.active { color: #fff; border-color: var(--accent); }
 
-/* ── Corpus stats strip ── */
-.corpus-stats {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  background: #0d0d0d;
-  border-bottom: 1px solid var(--border);
-  padding: 0 24px;
-  flex-shrink: 0;
-  overflow-x: auto;
-}
-.cs-stage {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px 8px 0;
-  margin-right: 20px;
-  border-right: 1px solid #222;
-  white-space: nowrap;
-}
-.cs-stage:last-child { border-right: none; margin-right: 0; }
-.cs-label { font-size: 11px; color: var(--muted); }
-.cs-count { font-size: 13px; font-weight: 600; color: #ddd; }
-.cs-pct   { font-size: 10px; color: #666; }
-.cs-bar   { width: 60px; height: 4px; background: #222; border-radius: 2px; overflow: hidden; }
-.cs-bar-fill { height: 100%; border-radius: 2px; }
-.cs-bar-fill.c-pdf   { background: #4a90e2; }
-.cs-bar-fill.c-read  { background: #5fba7d; }
-.cs-bar-fill.c-trans { background: #e2a94a; }
-
 /* ── Tabs ── */
 .tabs {
   display: flex;
@@ -141,8 +111,6 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
   font-size: 12px;
 }
 .filters label { font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; }
-.filter-reader { color: #5fba7d; }
-.filter-reader select { border-color: #2a5a2a; background: #0d1f0d; color: #5fba7d; }
 .filter-count { font-size: 11px; color: var(--muted); margin-left: auto; }
 
 /* ── Panels ── */
@@ -410,29 +378,26 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+.loading-msg { text-align: center; padding: 60px 24px; color: var(--muted); font-size: 14px; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1 id="corpus-title">Corpus Explorer</h1>
-  <span class="sub">Generated 2026-02-18 17:39 · 313 items · 274 with date · 112 with place</span>
+  <h1>Corpus Explorer</h1>
+  <span class="sub" id="subtitle">Loading inventory&hellip;</span>
   <nav class="site-nav">
-    <a href="dashboard.html">📋 Dashboard</a>
-    <a href="explore.html" class="active">🔭 Explorer</a>
-    <a href="chat.html">💬 Chat</a>
-    <a href="status.html">⚙️ Status</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="explore.html" class="active">Explorer</a>
   </nav>
 </header>
 
-<!-- ── Corpus stats strip ── -->
-<div class="corpus-stats" id="corpusStats"></div>
-
 <!-- ── Tabs ── -->
 <div class="tabs">
-  <div class="tab"        onclick="switchTab('timeline')">📅 Timeline</div>
-  <div class="tab"        onclick="switchTab('map')">🗺 Map</div>
-  <div class="tab active" onclick="switchTab('list')">📚 List</div>
+  <div class="tab"        onclick="switchTab('timeline')">Timeline</div>
+  <div class="tab"        onclick="switchTab('map')">Map</div>
+  <div class="tab active" onclick="switchTab('list')">List</div>
 </div>
 
 <!-- ── Filters ── -->
@@ -467,23 +432,20 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
   <label>Lang:
     <select id="fLang" onchange="applyFilters()">
       <option value="">All languages</option>
+      <option value="en">English</option>
+      <option value="ar">Arabic</option>
+      <option value="de">German</option>
+      <option value="fr">French</option>
     </select>
   </label>
   <label>Period:
     <select id="fPeriod" onchange="applyFilters()">
       <option value="">All periods</option>
-      <option value="ancient">Ancient / Medieval (–1500)</option>
-      <option value="early_modern">Early Modern (1500–1800)</option>
-      <option value="19c">19th Century (1800–1900)</option>
-      <option value="20c">20th Century (1900–2000)</option>
-      <option value="modern">21st Century (2000–)</option>
-    </select>
-  </label>
-  <label id="readerLabel" class="filter-reader">📖 Viewable:
-    <select id="fReader" onchange="applyFilters(); updateReaderLabel()">
-      <option value="">All docs</option>
-      <option value="yes" selected>Reader only</option>
-      <option value="no">No reader</option>
+      <option value="ancient">Ancient / Medieval (&ndash;1500)</option>
+      <option value="early_modern">Early Modern (1500&ndash;1800)</option>
+      <option value="19c">19th Century (1800&ndash;1900)</option>
+      <option value="20c">20th Century (1900&ndash;2000)</option>
+      <option value="modern">21st Century (2000&ndash;)</option>
     </select>
   </label>
   <span class="filter-count" id="filterCount"></span>
@@ -531,41 +493,175 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
       <button class="sort-btn"        data-sort="year"     onclick="setListSort('year')">Year</button>
       <button class="sort-btn"        data-sort="pub_title" onclick="setListSort('pub_title')">Publication</button>
       <button class="sort-btn"        data-sort="place"    onclick="setListSort('place')">Place</button>
-      <button id="sortDirBtn" onclick="toggleListSortDir()" title="Reverse sort">↑</button>
+      <button id="sortDirBtn" onclick="toggleListSortDir()" title="Reverse sort">&uarr;</button>
     </div>
     <div class="view-toggle">
-      <button id="viewCardBtn" class="view-btn active" onclick="setListView('cards')" title="Card view">⊞</button>
-      <button id="viewRowBtn"  class="view-btn"        onclick="setListView('rows')"  title="Row view">☰</button>
+      <button id="viewCardBtn" class="view-btn active" onclick="setListView('cards')" title="Card view">&#8862;</button>
+      <button id="viewRowBtn"  class="view-btn"        onclick="setListView('rows')"  title="Row view">&#9776;</button>
     </div>
     <span class="list-count" id="listCount"></span>
   </div>
   <div class="list-wrap">
-    <div class="card-grid" id="card-grid"></div>
+    <div class="card-grid" id="card-grid">
+      <p class="loading-msg">Loading inventory&hellip;</p>
+    </div>
   </div>
 </div>
 
 <script>
-// ─── Reader filter label ─────────────────────────────────────────────────────
-function updateReaderLabel() {
-  const val = document.getElementById('fReader').value;
-  document.getElementById('readerLabel').classList.toggle('filter-reader', val === 'yes');
+// ─── City → [lat, lng] lookup for map dots ──────────────────────────────────
+// Covers the main academic publication centres for Islamic studies / history of
+// science.  Keys are normalised lower-case with common variants.
+const CITY_COORDS = {
+  // Middle East
+  'cairo': [30.06, 31.25], 'al-qahira': [30.06, 31.25], 'egypt': [26.8, 30.8],
+  'beirut': [33.89, 35.50], 'damascus': [33.51, 36.29], 'baghdad': [33.34, 44.40],
+  'istanbul': [41.01, 28.98], 'ankara': [39.93, 32.86],
+  'tehran': [35.69, 51.39], 't\u00e9h\u00e9ran': [35.69, 51.39],
+  'riyadh': [24.69, 46.72],
+  'jerusalem': [31.78, 35.22], 'amman': [31.96, 35.95],
+  'tunis': [36.82, 10.17], 't\u016bnis': [36.82, 10.17],
+  'kirman': [30.28, 57.08], 'kerman': [30.28, 57.08],
+  // Central / South Asia
+  'tashkent': [41.30, 69.24],
+  'calcutta': [22.57, 88.36], 'kolkata': [22.57, 88.36],
+  'delhi': [28.63, 77.22], 'new delhi': [28.63, 77.22],
+  'bombay': [19.08, 72.88], 'mumbai': [19.08, 72.88],
+  'hyderabad': [17.38, 78.49], 'lahore': [31.56, 74.34],
+  'aligarh': [27.88, 78.08],
+  // Europe
+  'london': [51.51, -0.13], 'oxford': [51.75, -1.26], 'cambridge': [52.20, 0.12],
+  'edinburgh': [55.95, -3.19],
+  'paris': [48.86, 2.35], 'strasbourg': [48.57, 7.75], 'nanterre': [48.90, 2.21],
+  'leiden': [52.16, 4.49], 'amsterdam': [52.37, 4.90],
+  'berlin': [52.52, 13.40], 'frankfurt': [50.11, 8.68],
+  'munich': [48.14, 11.58], 'heidelberg': [49.40, 8.69],
+  'hamburg': [53.55, 9.99], 'g\u00f6ttingen': [51.53, 9.93], 'gottingen': [51.53, 9.93],
+  'leipzig': [51.34, 12.38], 'bonn': [50.73, 7.10],
+  'stuttgart': [48.78, 9.18],
+  't\u00fcbingen': [48.52, 9.06], 'tubingen': [48.52, 9.06],
+  'vienna': [48.21, 16.37], 'graz': [47.07, 15.44],
+  'rome': [41.90, 12.50], 'naples': [40.85, 14.27], 'napoli': [40.85, 14.27],
+  'florence': [43.77, 11.26],
+  'madrid': [40.42, -3.70], 'barcelona': [41.39, 2.15],
+  'st. petersburg': [59.94, 30.32], 'moscow': [55.76, 37.62],
+  'budapest': [47.50, 19.04], 'warsaw': [52.23, 21.01],
+  'copenhagen': [55.68, 12.57], 'k\u00f8benhavn': [55.68, 12.57], 'kobenhavn': [55.68, 12.57],
+  'vienne': [45.52, 4.87],
+  'turnhout': [51.32, 4.94],
+  // North America
+  'new york': [40.71, -74.01], 'new york city': [40.71, -74.01],
+  'chicago': [41.88, -87.63], 'boston': [42.36, -71.06],
+  'princeton': [40.36, -74.66], 'washington': [38.91, -77.04],
+  'los angeles': [34.05, -118.24], 'berkeley': [37.87, -122.27],
+  'ann arbor': [42.28, -83.74], 'philadelphia': [39.95, -75.17],
+  'austin': [30.27, -97.74], 'durham': [35.99, -78.90],
+  // Other
+  'toronto': [43.65, -79.38], 'montreal': [45.51, -73.55],
+};
+
+function geocode(place) {
+  if (!place) return null;
+  const raw = place.split(';')[0].trim();
+  const k = raw.toLowerCase();
+  if (CITY_COORDS[k]) return CITY_COORDS[k];
+  const kClean = k.replace(/[,\[\]\(\)]/g, ' ');
+  const parts = kClean.split(/\s+/).filter(Boolean);
+  if (!parts.length) return null;
+  const candidates = [
+    parts[0],
+    parts[parts.length - 1],
+    parts.length >= 2 ? parts.slice(0, 2).join(' ') : '',
+  ];
+  for (const p of candidates) {
+    if (p && CITY_COORDS[p]) return CITY_COORDS[p];
+  }
+  return null;
 }
 
-// ─── Data ────────────────────────────────────────────────────────────────────
-let DATA      = [];   // populated by init()
-let DECADES   = [];   // computed from DATA
-let MAP_ITEMS = [];   // computed from DATA + city_coords
+function buildDecadeData(inventory) {
+  const buckets = {};
+  for (const r of inventory) {
+    const y = r.year;
+    if (!y) continue;
+    const yr = parseInt(String(y).slice(0, 4));
+    if (isNaN(yr)) continue;
+    const dec = Math.floor(yr / 10) * 10;
+    if (!buckets[dec]) buckets[dec] = [];
+    buckets[dec].push(r);
+  }
+  const decs = Object.keys(buckets).map(Number);
+  if (!decs.length) return [];
+  const minDec = Math.min(...decs);
+  const maxDec = Math.max(...decs);
+  const result = [];
+  for (let dec = minDec; dec <= maxDec; dec += 10) {
+    const items = buckets[dec] || [];
+    result.push({ decade: dec, count: items.length, keys: items.map(i => i.key) });
+  }
+  return result;
+}
+
+function buildMapItems(inventory) {
+  const items = [];
+  for (const r of inventory) {
+    const coords = geocode(r.place || '');
+    if (coords) {
+      items.push({
+        key:   r.key,
+        title: r.title,
+        year:  r.year || '',
+        place: r.place || '',
+        lat:   coords[0],
+        lng:   coords[1],
+        pdf:   r.pdf_status || '',
+        type:  r.doc_type || '',
+        lang:  r.language || 'unknown',
+      });
+    }
+  }
+  return items;
+}
+
+// ─── Data (loaded at runtime) ────────────────────────────────────────────────
+let DATA       = [];
+let DECADES    = [];
+let MAP_ITEMS  = [];
 
 // ─── State ───────────────────────────────────────────────────────────────────
-let filtered  = DATA.slice();   // currently filtered items
-let activeTab = 'list';         // default to list view
+let filtered  = [];
+let activeTab = 'list';
 let selectedDecade = null;
 let leafletMap = null;
-let tlSort = 'year';            // sort field for decade item list: 'year'|'title'|'authors'
-let tlSortAsc = true;          // sort direction; false = descending
-let listSort    = 'title';      // list-panel sort field
-let listSortAsc = true;         // list-panel sort direction
-let listView    = 'cards';      // 'cards' | 'rows'
+let tlSort = 'year';
+let tlSortAsc = true;
+let listSort    = 'title';
+let listSortAsc = true;
+let listView    = 'cards';
+
+// ─── Load inventory ──────────────────────────────────────────────────────────
+fetch('inventory.json')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(init)
+  .catch(err => {
+    document.getElementById('card-grid').innerHTML =
+      `<p class="loading-msg">Failed to load inventory.json: ${err.message}</p>`;
+  });
+
+function init(inventory) {
+  DATA      = inventory;
+  DECADES   = buildDecadeData(inventory);
+  MAP_ITEMS = buildMapItems(inventory);
+
+  // Header stats
+  const withPlace = DATA.filter(r => r.place).length;
+  const withYear  = DATA.filter(r => r.year).length;
+  document.getElementById('subtitle').textContent =
+    `${DATA.length} items \u00b7 ${withYear} with date \u00b7 ${withPlace} with place`;
+
+  filtered = DATA.slice();
+  applyFilters();
+}
 
 // ─── Utilities ───────────────────────────────────────────────────────────────
 function esc(s) {
@@ -574,7 +670,7 @@ function esc(s) {
 
 /** Return the best link for an item: reader > URL > null */
 function itemHref(r) {
-  if (r.has_reader || r.extracted) return `reader.html?key=${r.key}`;
+  if (r.has_reader) return `reader.html?key=${r.key}`;
   if (r.url)        return r.url;
   return null;
 }
@@ -603,8 +699,8 @@ function badge(cls, text) {
 
 function pdfBadge(s) {
   if (!s) return '';
-  if (s === 'stored')       return badge('b-stored', '✓ Stored');
-  if (s === 'downloaded')   return badge('b-stored', '⬇ Downloaded');
+  if (s === 'stored')       return badge('b-stored', '\u2713 Stored');
+  if (s === 'downloaded')   return badge('b-stored', '\u2b07 Downloaded');
   if (s === 'url_only')     return badge('b-url',    'URL only');
   return badge('b-missing', s);
 }
@@ -616,9 +712,9 @@ function typeBadge(s) {
 }
 
 function qualityBadge(s) {
-  if (s === 'good')    return badge('b-good',    '✓ good');
-  if (s === 'suspect') return badge('b-suspect', '⚠ suspect');
-  if (s === 'garbled') return badge('b-garbled', '✗ garbled');
+  if (s === 'good')    return badge('b-good',    '\u2713 good');
+  if (s === 'suspect') return badge('b-suspect', '\u26a0 suspect');
+  if (s === 'garbled') return badge('b-garbled', '\u2717 garbled');
   return '';
 }
 
@@ -630,7 +726,6 @@ function applyFilters() {
   const fDoc    = document.getElementById('fDoc').value;
   const fLang   = document.getElementById('fLang').value;
   const fPeriod = document.getElementById('fPeriod').value;
-  const fReader = document.getElementById('fReader').value;
 
   filtered = DATA.filter(r => {
     if (q && !JSON.stringify(r).toLowerCase().includes(q)) return false;
@@ -639,8 +734,6 @@ function applyFilters() {
     if (fDoc    && r.doc_type   !== fDoc)    return false;
     if (fLang   && r.language   !== fLang)   return false;
     if (fPeriod && periodOf(r.year) !== fPeriod) return false;
-    if (fReader === 'yes' && !r.has_reader) return false;
-    if (fReader === 'no'  &&  r.has_reader) return false;
     return true;
   });
 
@@ -665,7 +758,6 @@ function switchTab(name) {
   });
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.getElementById('panel-' + name).classList.add('active');
-  // Leaflet must be told to recalculate its size after the container becomes visible
   if (name === 'map' && leafletMap) {
     setTimeout(() => leafletMap.invalidateSize(), 50);
   }
@@ -683,13 +775,11 @@ function renderTimeline() {
     return;
   }
 
-  // All decades (full range incl. empty) with active-item counts for current filter
   const allDec = DECADES.map(d => ({
     ...d,
     active: d.keys.filter(k => filteredKeys.has(k)),
   }));
 
-  // Scale bars against the tallest active bar (min 1 avoids divide-by-zero)
   const maxCount = Math.max(1, ...allDec.map(d => d.active.length));
   const hist = document.getElementById('histogram');
   const HEIGHT = 152;
@@ -698,15 +788,13 @@ function renderTimeline() {
     const n    = d.active.length;
     const h    = n > 0 ? Math.max(4, Math.round(n / maxCount * HEIGHT)) : 1;
     const sel  = selectedDecade === d.decade ? ' selected' : '';
-    // Only label century marks — every 10 decades is too cramped
     const showLbl = d.decade % 100 === 0;
-    const lbl     = showLbl ? String(d.decade) : ' ';
-    // Empty bars are rendered dimly so the gaps in the distribution are visible
+    const lbl     = showLbl ? String(d.decade) : '\xa0';
     const style = n === 0
       ? `height:1px;background:#2a2a2a;`
       : `height:${h}px;`;
     return `<div class="bar-wrap${sel}" onclick="selectDecade(${d.decade})"
-              title="${n} item${n !== 1 ? 's' : ''} · ${d.decade}s">
+              title="${n} item${n !== 1 ? 's' : ''} \u00b7 ${d.decade}s">
       <div class="bar" style="${style}"></div>
       <div class="bar-label" style="${showLbl ? '' : 'opacity:0'}">${lbl}</div>
     </div>`;
@@ -715,9 +803,8 @@ function renderTimeline() {
   const total    = allDec.reduce((s, d) => s + d.active.length, 0);
   const nonEmpty = allDec.filter(d => d.active.length > 0).length;
   document.getElementById('tlTotal').textContent =
-    `${total} items · ${nonEmpty} of ${allDec.length} decades`;
+    `${total} items \u00b7 ${nonEmpty} of ${allDec.length} decades`;
 
-  // Show/hide decade-item list depending on selection state
   if (selectedDecade !== null) {
     showDecadeItems(selectedDecade, filteredKeys);
   } else {
@@ -743,10 +830,10 @@ function sortItems(items) {
 
 function setTlSort(s) {
   if (tlSort === s) {
-    tlSortAsc = !tlSortAsc;  // same field → reverse direction
+    tlSortAsc = !tlSortAsc;
   } else {
     tlSort = s;
-    tlSortAsc = true;          // new field → reset to ascending
+    tlSortAsc = true;
   }
   renderTimeline();
 }
@@ -754,7 +841,6 @@ function setTlSort(s) {
 function showDecadeItems(dec, filteredKeys) {
   const decData = DECADES.find(d => d.decade === dec);
 
-  // Gather items from this decade that pass the current filter
   const raw = decData
     ? decData.keys
         .filter(k => filteredKeys.has(k))
@@ -765,10 +851,9 @@ function showDecadeItems(dec, filteredKeys) {
 
   document.getElementById('tl-results').style.display = 'block';
 
-  // Header with sort buttons (active one shows direction arrow)
   const sortBtn = (key, label) => {
     const isActive = tlSort === key;
-    const arrow    = isActive ? (tlSortAsc ? ' ↑' : ' ↓') : '';
+    const arrow    = isActive ? (tlSortAsc ? ' \u2191' : ' \u2193') : '';
     const activeStyle = isActive
       ? 'background:#0071e3;border-color:#0071e3;color:#fff;'
       : '';
@@ -778,7 +863,7 @@ function showDecadeItems(dec, filteredKeys) {
              transition:all .15s;background:${isActive?'#0071e3':'#222'}">${label}${arrow}</button>`;
   };
   document.getElementById('tl-results-header').innerHTML =
-    `<span>${dec}s — ${itemsInDec.length} item${itemsInDec.length !== 1 ? 's' : ''}</span>
+    `<span>${dec}s \u2014 ${itemsInDec.length} item${itemsInDec.length !== 1 ? 's' : ''}</span>
      <span style="margin-left:auto;display:flex;gap:5px;align-items:center">
        <span style="font-size:10px;opacity:.5">Sort:</span>
        ${sortBtn('year','Year')} ${sortBtn('title','Title')} ${sortBtn('authors','Author')}
@@ -794,7 +879,7 @@ function showDecadeItems(dec, filteredKeys) {
   }
 
   document.getElementById('tl-results-body').innerHTML = itemsInDec.map(r => {
-    const readerIcon = r.has_reader ? ' 📖' : '';
+    const readerIcon = r.has_reader ? ' \ud83d\udcd6' : '';
     return `<div class="tl-item">
       <span class="tl-year">${esc(r.year || '?')}</span>
       <span class="tl-title">${itemLink(r, r.title + readerIcon)}</span>
@@ -819,7 +904,6 @@ function renderMap() {
         maxZoom: 19,
       }
     ).addTo(leafletMap);
-    // Force size recalc — the panel may have been invisible when the map was created
     setTimeout(() => leafletMap.invalidateSize(), 100);
   }
 
@@ -834,10 +918,10 @@ function renderMap() {
   const notice = document.getElementById('map-notice');
 
   if (MAP_ITEMS.length === 0) {
-    notice.textContent = 'Run scripts/03_inventory.py to populate place-of-publication data.';
+    notice.textContent = 'No geocoded place-of-publication data available.';
     notice.style.display = 'block';
   } else {
-    notice.textContent = `${visible.length} items with known place · ${MAP_ITEMS.length} total geocoded`;
+    notice.textContent = `${visible.length} items with known place \u00b7 ${MAP_ITEMS.length} total geocoded`;
     notice.style.display = 'block';
   }
 
@@ -864,7 +948,6 @@ function renderMap() {
 
 /** Show publications for a clicked map location in the side panel. */
 function showMapPlace(placeName, mapItems) {
-  // Resolve to full DATA records so we get has_reader, url, etc.
   const raw = mapItems
     .map(m => DATA.find(r => r.key === m.key))
     .filter(Boolean);
@@ -877,17 +960,17 @@ function showMapPlace(placeName, mapItems) {
   panel.style.display = 'flex';
 
   header.innerHTML =
-    `<b>${esc(placeName)}</b> — ${items.length} item${items.length !== 1 ? 's' : ''}
+    `<b>${esc(placeName)}</b> \u2014 ${items.length} item${items.length !== 1 ? 's' : ''}
      <button onclick="document.getElementById('map-results').style.display='none';
                       if(leafletMap) setTimeout(()=>leafletMap.invalidateSize(),50);"
        style="margin-left:auto;background:none;border:none;color:#666;cursor:pointer;
-              font-size:14px;line-height:1" title="Close">✕</button>`;
+              font-size:14px;line-height:1" title="Close">\u2715</button>`;
 
   if (!items.length) {
     body.innerHTML = '<div style="padding:16px;color:#555;font-size:13px">No items match current filters.</div>';
   } else {
     body.innerHTML = items.map(r => {
-      const readerIcon = r.has_reader ? ' 📖' : '';
+      const readerIcon = r.has_reader ? ' \ud83d\udcd6' : '';
       return `<div class="tl-item">
         <span class="tl-year">${esc(r.year || '?')}</span>
         <span class="tl-title">${itemLink(r, r.title + readerIcon)}</span>
@@ -896,7 +979,6 @@ function showMapPlace(placeName, mapItems) {
     }).join('');
   }
 
-  // The map panel shrank — tell Leaflet to recalculate
   if (leafletMap) setTimeout(() => leafletMap.invalidateSize(), 50);
 }
 
@@ -907,13 +989,13 @@ function setListSort(field) {
   document.querySelectorAll('.sort-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.sort === field);
   });
-  document.getElementById('sortDirBtn').textContent = listSortAsc ? '↑' : '↓';
+  document.getElementById('sortDirBtn').textContent = listSortAsc ? '\u2191' : '\u2193';
   renderList();
 }
 
 function toggleListSortDir() {
   listSortAsc = !listSortAsc;
-  document.getElementById('sortDirBtn').textContent = listSortAsc ? '↑' : '↓';
+  document.getElementById('sortDirBtn').textContent = listSortAsc ? '\u2191' : '\u2193';
   renderList();
 }
 
@@ -949,21 +1031,21 @@ function renderList() {
       const titleHtml = itemLink(r, r.title);
       const pubHtml   = r.pub_title ? `<div class="row-pub">${esc(r.pub_title)}</div>` : '';
       return `<div class="row-item">
-        <div><div class="row-title">${titleHtml}${r.has_reader ? ' 📖' : ''}</div>${pubHtml}</div>
+        <div><div class="row-title">${titleHtml}${r.has_reader ? ' \ud83d\udcd6' : ''}</div>${pubHtml}</div>
         <div class="row-author">${esc((r.authors||'').split(';')[0])}</div>
-        <div class="row-year">${esc(r.year||'—')}</div>
-        <div class="row-place">${esc(r.place||'—')}</div>
+        <div class="row-year">${esc(r.year||'\u2014')}</div>
+        <div class="row-place">${esc(r.place||'\u2014')}</div>
       </div>`;
     }).join('');
   } else {
     grid.className = 'card-grid';
     grid.innerHTML = sorted.map(r => {
       const readerBadge = r.has_reader
-        ? `<span class="badge b-stored" title="Reader available">📖 Reader</span>`
+        ? `<span class="badge b-stored" title="Reader available">\ud83d\udcd6 Reader</span>`
         : '';
       const titleHtml = itemLink(r, r.title);
       const pubHtml  = r.pub_title ? `<div class="card-pub">${esc(r.pub_title)}</div>` : '';
-      const meta = [(r.authors||'').split(';')[0], r.year, r.place].filter(Boolean).join(' · ');
+      const meta = [(r.authors||'').split(';')[0], r.year, r.place].filter(Boolean).join(' \u00b7 ');
       const tq   = r.text_quality;
       return `<div class="card">
         <div class="card-title">${titleHtml}</div>
@@ -981,116 +1063,6 @@ function renderList() {
     }).join('');
   }
 }
-
-// ─── Corpus stats strip ───────────────────────────────────────────────────────
-function renderCorpusStats() {
-  const total    = DATA.length;
-  const withPdf  = DATA.filter(r => r.pdf_status === 'stored' || r.pdf_status === 'downloaded').length;
-  const readable = DATA.filter(r => r.has_reader).length;
-  const transl   = DATA.filter(r => r.has_reader).length > 0 ? 1 : 0; // CR7CQJJ8 in progress
-
-  function stage(icon, label, n, tot, barCls, extra) {
-    const pct = Math.round(n / tot * 100);
-    const fillW = Math.max(1, pct);
-    return `<div class="cs-stage">
-      <span class="cs-label">${icon} ${label}</span>
-      <span class="cs-count">${n}<span class="cs-pct"> / ${tot}</span></span>
-      <div class="cs-bar"><div class="cs-bar-fill ${barCls}" style="width:${fillW}%"></div></div>
-      <span class="cs-pct">${pct}%</span>
-      ${extra ? `<span class="cs-pct" style="color:#555">${extra}</span>` : ''}
-    </div>`;
-  }
-
-  document.getElementById('corpusStats').innerHTML =
-    stage('📄', 'PDFs', withPdf, total, 'c-pdf') +
-    stage('📖', 'Readable', readable, total, 'c-read') +
-    stage('🌐', 'Translated', transl, readable, 'c-trans', `of ${readable} readable`);
-}
-
-// ─── Init ─────────────────────────────────────────────────────────────────────
-// ─── Corpus-agnostic init ────────────────────────────────────────────────────
-function computeDecades(data) {
-  const byDec = {};
-  data.forEach(item => {
-    const y = parseInt(item.year);
-    if (!isNaN(y)) {
-      const d = Math.floor(y / 10) * 10;
-      if (!byDec[d]) byDec[d] = [];
-      byDec[d].push(item.key);
-    }
-  });
-  if (!Object.keys(byDec).length) return [];
-  const keys = Object.keys(byDec).map(Number);
-  const dMin = Math.min(...keys), dMax = Math.max(...keys);
-  const result = [];
-  for (let d = dMin; d <= dMax; d += 10)
-    result.push({ decade: d, count: (byDec[d] || []).length, keys: byDec[d] || [] });
-  return result;
-}
-
-function computeMapItems(data, coords) {
-  return data.map(item => {
-    if (!item.place) return null;
-    const place = item.place.split(';')[0].trim().replace(/,.*$/, '').trim().toLowerCase();
-    const coord = coords[place];
-    if (!coord) return null;
-    return { ...item, lat: coord[0], lng: coord[1] };
-  }).filter(Boolean);
-}
-
-async function init() {
-  // Show loading indicator
-  document.getElementById('corpusStats').innerHTML =
-    '<span style="color:#8e8e93;font-size:12px">Loading corpus data…</span>';
-
-  try {
-    // Fetch config, inventory, and city coords in parallel
-    const [cfgResp, invResp, coordsResp] = await Promise.all([
-      fetch('corpus_config.json').catch(() => null),
-      fetch('inventory.json'),
-      fetch('city_coords.json').catch(() => null),
-    ]);
-
-    // Apply corpus config (title, nav, etc.)
-    if (cfgResp && cfgResp.ok) {
-      const cfg = await cfgResp.json();
-      const name = cfg.name || 'Corpus Explorer';
-      document.title = name + ' — Explorer';
-      const h1 = document.querySelector('h1');
-      if (h1) h1.textContent = name + ' — Corpus Explorer';
-    }
-
-    // Load inventory
-    if (!invResp.ok) throw new Error('Could not load inventory.json');
-    DATA = await invResp.json();
-
-    // Compute derived datasets
-    DECADES = computeDecades(DATA);
-    const coords = (coordsResp && coordsResp.ok) ? await coordsResp.json() : {};
-    MAP_ITEMS = computeMapItems(DATA, coords);
-
-    // Populate language filter from actual data
-    const langs = [...new Set(DATA.map(d => d.language).filter(Boolean))].sort();
-    const langSel = document.getElementById('fLang');
-    if (langSel) {
-      langs.forEach(l => {
-        const opt = document.createElement('option');
-        opt.value = l; opt.textContent = l.toUpperCase();
-        langSel.appendChild(opt);
-      });
-    }
-
-    renderCorpusStats();
-    applyFilters();
-
-  } catch (e) {
-    document.getElementById('corpusStats').innerHTML =
-      `<span style="color:#ff3b30;font-size:12px">Failed to load data: ${e.message}</span>`;
-    console.error('Corpus init error:', e);
-  }
-}
-
-init();
 </script>
 </body>
 </html>
