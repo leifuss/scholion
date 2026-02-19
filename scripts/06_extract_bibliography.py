@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Extract bibliographic metadata from each document using Claude Haiku.
+Extract bibliographic metadata from each document using Gemini (or Claude fallback).
 
 For every document in data/texts/{KEY}/ that has a docling.md and page_texts.json,
-this script runs three Haiku calls:
+this script runs three LLM calls:
 
   Pass 1 — REFERENCES:  Find the bibliography / references section at the end of the
             document and extract structured reference entries.
@@ -13,6 +13,9 @@ this script runs three Haiku calls:
 
   Pass 3 — SUMMARY:     Produce a concise academic abstract + a chapter-level
             table of contents for the document.
+
+Supports Gemini (default), OpenAI, or Anthropic — reads whichever key is
+set in .env (GEMINI_API_KEY → OPENAI_API_KEY → ANTHROPIC_API_KEY).
 
 Output per document:
   data/texts/{KEY}/bibliography.json
@@ -29,11 +32,11 @@ Output per document:
     }
 
 Usage:
-  # Set ANTHROPIC_API_KEY in environment or data/.env
+  # Set GEMINI_API_KEY (preferred) or ANTHROPIC_API_KEY in environment or .env
   python scripts/06_extract_bibliography.py
   python scripts/06_extract_bibliography.py --keys QIGTV3FC DUZKRZFQ
   python scripts/06_extract_bibliography.py --force          # overwrite existing
-  python scripts/06_extract_bibliography.py --model claude-haiku-4-5   # override model
+  python scripts/06_extract_bibliography.py --model gemini-2.0-flash   # override model
 """
 
 import sys
@@ -49,7 +52,7 @@ log = logging.getLogger(__name__)
 
 _ROOT = Path(__file__).parent.parent
 
-# ── Load .env so ANTHROPIC_API_KEY can live there ─────────────────────────────
+# ── Load .env so API keys can live there ──────────────────────────────────────
 try:
     from dotenv import load_dotenv
     load_dotenv(_ROOT / '.env', override=True)
@@ -58,21 +61,34 @@ except ImportError:
     pass
 
 
-# ── Anthropic client ──────────────────────────────────────────────────────────
-def _get_client():
-    try:
-        import anthropic
-    except ImportError:
-        sys.exit("anthropic not installed — run: pip install anthropic")
+# ── Multi-provider support (Gemini → OpenAI → Anthropic) ─────────────────────
 
-    api_key = os.environ.get('ANTHROPIC_API_KEY', '')
-    if not api_key:
-        sys.exit(
-            "ANTHROPIC_API_KEY not set.\n"
-            "Add it to your environment or to data/.env:\n"
-            "  ANTHROPIC_API_KEY=sk-ant-..."
-        )
-    return anthropic.Anthropic(api_key=api_key)
+def _load_env_key(var: str) -> str:
+    val = os.environ.get(var, "")
+    if val:
+        return val
+    for env_path in [_ROOT / '.env', _ROOT / 'data' / '.env']:
+        if env_path.exists():
+            for line in env_path.read_text().splitlines():
+                if line.startswith(f"{var}="):
+                    return line.split("=", 1)[1].strip().strip('"\'')
+    return ""
+
+
+def _pick_provider() -> tuple:
+    """Return (provider_name, api_key, default_model) for first available key."""
+    for provider, var, model in [
+        ("gemini",    "GEMINI_API_KEY",    "gemini-2.0-flash"),
+        ("openai",    "OPENAI_API_KEY",    "gpt-4o-mini"),
+        ("anthropic", "ANTHROPIC_API_KEY", "claude-haiku-4-5"),
+    ]:
+        key = _load_env_key(var)
+        if key:
+            return provider, key, model
+    sys.exit(
+        "No API key found.\n"
+        "Set GEMINI_API_KEY, OPENAI_API_KEY, or ANTHROPIC_API_KEY in .env"
+    )
 
 
 # ── Text helpers ───────────────────────────────────────────────────────────────
@@ -108,25 +124,54 @@ def _chunk_pages(page_texts: dict, max_chars_per_chunk: int = 12000) -> list:
     return chunks
 
 
-# ── Haiku call wrapper ─────────────────────────────────────────────────────────
+# ── LLM call wrapper (multi-provider) ─────────────────────────────────────────
 
-def _haiku(client, model: str, system: str, user: str, max_tokens: int = 2048) -> str:
-    """Single Haiku/Sonnet call; retries once on overload or rate-limit (429)."""
-    for attempt in range(2):
+def _call(provider: str, api_key: str, model: str,
+          system: str, user: str, max_tokens: int = 2048,
+          retries: int = 3) -> str:
+    """Single LLM call with retry on rate-limit.  Supports Gemini, OpenAI, Anthropic."""
+    for attempt in range(retries):
         try:
-            resp = client.messages.create(
-                model=model,
-                max_tokens=max_tokens,
-                system=system,
-                messages=[{"role": "user", "content": user}],
-            )
-            return resp.content[0].text
+            if provider == "gemini":
+                from google import genai
+                from google.genai import types
+                client = genai.Client(api_key=api_key)
+                resp = client.models.generate_content(
+                    model=model,
+                    contents=user,
+                    config=types.GenerateContentConfig(
+                        system_instruction=system,
+                        response_mime_type="application/json",
+                        max_output_tokens=max_tokens,
+                    ),
+                )
+                return resp.text
+
+            elif provider == "openai":
+                from openai import OpenAI
+                client = OpenAI(api_key=api_key)
+                resp = client.chat.completions.create(
+                    model=model, max_tokens=max_tokens,
+                    messages=[{"role": "system", "content": system},
+                              {"role": "user",   "content": user}],
+                )
+                return resp.choices[0].message.content
+
+            elif provider == "anthropic":
+                import anthropic
+                client = anthropic.Anthropic(api_key=api_key)
+                resp = client.messages.create(
+                    model=model, max_tokens=max_tokens, system=system,
+                    messages=[{"role": "user", "content": user}],
+                )
+                return resp.content[0].text
+
         except Exception as exc:
-            exc_str = str(exc).lower()
-            is_retriable = 'overload' in exc_str or '529' in exc_str or '429' in exc_str
-            if attempt == 0 and is_retriable:
-                log.warning(f"API rate-limited/overloaded — waiting 15 s … ({exc})")
-                time.sleep(15)
+            s = str(exc).lower()
+            if attempt < retries - 1 and any(x in s for x in ('429', '529', 'overload', 'rate')):
+                wait = 15 * (attempt + 1)
+                log.warning(f"  Throttled (attempt {attempt+1}) — waiting {wait}s… ({exc})")
+                time.sleep(wait)
             else:
                 raise
     return ''
@@ -170,11 +215,11 @@ def _salvage_json(raw: str) -> dict | None:
     return None
 
 
-def extract_refs(client, model: str, full_text: str) -> list:
+def extract_refs(provider: str, api_key: str, model: str, full_text: str) -> list:
     tail = _tail_text(full_text, max_chars=10000)
-    raw = _haiku(client, model, _REFS_SYSTEM,
-                 f"DOCUMENT (last section):\n\n{tail}",
-                 max_tokens=4096)
+    raw = _call(provider, api_key, model, _REFS_SYSTEM,
+                f"DOCUMENT (last section):\n\n{tail}",
+                max_tokens=4096)
     try:
         return json.loads(raw).get('refs', [])
     except Exception:
@@ -208,15 +253,15 @@ to other chapters, etc.).  If none found, return {"citations": []}.
 """.strip()
 
 
-def extract_citations(client, model: str, page_texts: dict) -> list:
+def extract_citations(provider: str, api_key: str, model: str, page_texts: dict) -> list:
     all_citations = []
     chunks = _chunk_pages(page_texts)
     for i, (page_range, chunk_text) in enumerate(chunks):
         if i > 0:
             time.sleep(1)   # brief pause between chunks to avoid rate-limit bursts
-        raw = _haiku(client, model, _CITE_SYSTEM,
-                     f"PAGES {page_range}:\n\n{chunk_text}",
-                     max_tokens=2048)
+        raw = _call(provider, api_key, model, _CITE_SYSTEM,
+                    f"PAGES {page_range}:\n\n{chunk_text}",
+                    max_tokens=2048)
         try:
             cites = json.loads(raw).get('citations', [])
             all_citations.extend(cites)
@@ -252,7 +297,7 @@ Return ONLY valid JSON — no prose, no markdown fences:
 """.strip()
 
 
-def extract_summary(client, model: str, full_text: str,
+def extract_summary(provider: str, api_key: str, model: str, full_text: str,
                     page_texts: dict, layout_elements: dict) -> dict:
     """
     Build the best possible input for the summary call:
@@ -293,7 +338,7 @@ def extract_summary(client, model: str, full_text: str,
 
     user_prompt = f"DOCUMENT OUTLINE:\n\n{condensed}"
 
-    raw = _haiku(client, model, _SUMMARY_SYSTEM, user_prompt, max_tokens=2048)
+    raw = _call(provider, api_key, model, _SUMMARY_SYSTEM, user_prompt, max_tokens=2048)
 
     try:
         result = json.loads(raw)
@@ -317,7 +362,8 @@ def extract_summary(client, model: str, full_text: str,
 
 # ── Per-document orchestrator ─────────────────────────────────────────────────
 
-def process_doc(key: str, texts_dir: Path, client, model: str, force: bool) -> bool:
+def process_doc(key: str, texts_dir: Path, provider: str, api_key: str,
+                model: str, force: bool) -> bool:
     doc_dir = texts_dir / key
     out_path = doc_dir / 'bibliography.json'
 
@@ -345,17 +391,17 @@ def process_doc(key: str, texts_dir: Path, client, model: str, force: bool) -> b
 
     # Pass 1 — references
     log.info("    → pass 1: references …")
-    refs = extract_refs(client, model, full_text)
+    refs = extract_refs(provider, api_key, model, full_text)
     log.info(f"       {len(refs)} refs found")
 
     # Pass 2 — in-text citations
     log.info("    → pass 2: citations …")
-    citations = extract_citations(client, model, page_texts)
+    citations = extract_citations(provider, api_key, model, page_texts)
     log.info(f"       {len(citations)} citation markers found")
 
     # Pass 3 — summary + contents
     log.info("    → pass 3: summary …")
-    summary = extract_summary(client, model, full_text, page_texts, layout_elements)
+    summary = extract_summary(provider, api_key, model, full_text, page_texts, layout_elements)
     log.info(f"       abstract: {len(summary.get('abstract',''))} chars  "
              f"| contents: {len(summary.get('contents',[]))} entries")
 
@@ -376,7 +422,7 @@ def process_doc(key: str, texts_dir: Path, client, model: str, force: bool) -> b
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Extract bibliography, citations, summary, and TOC using Haiku.'
+        description='Extract bibliography, citations, summary, and TOC (Gemini/OpenAI/Anthropic).'
     )
     parser.add_argument('--texts-dir', default='data/texts',
                         help='Directory containing per-document text folders')
@@ -384,15 +430,16 @@ def main():
                         help='Only process these document keys (space-separated)')
     parser.add_argument('--force', action='store_true',
                         help='Overwrite existing bibliography.json files')
-    parser.add_argument('--model', default='claude-haiku-4-5',
-                        help='Anthropic model to use (default: claude-haiku-4-5)')
+    parser.add_argument('--model', default=None,
+                        help='Override model name (default: provider default)')
     args = parser.parse_args()
 
     texts_dir = _ROOT / args.texts_dir
     if not texts_dir.exists():
         sys.exit(f"texts-dir not found: {texts_dir}")
 
-    client = _get_client()
+    provider, api_key, default_model = _pick_provider()
+    model = args.model or default_model
 
     # Discover docs
     all_keys = sorted(d.name for d in texts_dir.iterdir()
@@ -406,7 +453,7 @@ def main():
     else:
         keys = all_keys
 
-    log.info(f"Model: {args.model}")
+    log.info(f"Provider: {provider}  Model: {model}")
     log.info(f"Processing {len(keys)} document(s) …\n")
 
     ok = err = skipped = 0
@@ -417,7 +464,7 @@ def main():
             log.info(f"  {key}: already done (use --force to redo)")
             continue
         try:
-            success = process_doc(key, texts_dir, client, args.model, args.force)
+            success = process_doc(key, texts_dir, provider, api_key, model, args.force)
             if success:
                 ok += 1
             else:
