@@ -277,6 +277,13 @@ def process_doc(client, doc_dir: Path, page_nums: list[int] | None,
             })
         layout_elements[pstr] = vision_elements
 
+        # Write pixel page size so reader.html can normalise bbox overlays
+        if "_page_sizes" not in layout_elements:
+            layout_elements["_page_sizes"] = {}
+        layout_elements["_page_sizes"][pstr] = {
+            "w": result["src_w"], "h": result["src_h"]
+        }
+
         word_count = len(result["text"].split())
         print(f"  page {pnum:4d}: {word_count} words, {len(result['blocks'])} blocks")
         processed += 1

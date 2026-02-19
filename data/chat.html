@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corpus Chat</title>
+<style>
+:root {
+  --bg: #0f0f0f; --surface: #161616; --border: #2a2a2a;
+  --accent: #c07030; --muted: #7a6a5a; --text: #d4c8b8;
+  --user-bg: #1a2a1a; --bot-bg: #1a1a2a; --source-bg: #1a1510;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: system-ui, sans-serif;
+       display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+/* ── Header ── */
+header {
+  background: #0a0a0a; border-bottom: 1px solid var(--border);
+  padding: 14px 24px; display: flex; align-items: center; gap: 20px; flex-shrink: 0;
+}
+header h1 { font-size: 16px; font-weight: 600; color: #fff; }
+header .sub { font-size: 12px; color: var(--muted); flex: 1; }
+.site-nav { display: flex; gap: 12px; margin-left: auto; }
+.site-nav a {
+  font-size: 12px; color: var(--muted); text-decoration: none;
+  padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  transition: color .15s, border-color .15s;
+}
+.site-nav a:hover { color: #fff; border-color: #555; }
+.site-nav a.active { color: #fff; border-color: var(--accent); }
+
+/* ── Index status bar ── */
+#statusBar {
+  background: #0d0d0d; border-bottom: 1px solid var(--border);
+  padding: 6px 24px; font-size: 11px; color: var(--muted); flex-shrink: 0;
+  display: flex; align-items: center; gap: 12px;
+}
+#statusBar .dot { width: 6px; height: 6px; border-radius: 50%; background: #5fba7d; }
+#statusBar .dot.offline { background: #ba5f5f; }
+
+/* ── Messages ── */
+#messages {
+  flex: 1; overflow-y: auto; padding: 20px 0;
+  display: flex; flex-direction: column; gap: 0;
+}
+.msg {
+  display: flex; gap: 12px;
+  padding: 14px 24px;
+  border-bottom: 1px solid #111;
+}
+.msg.user   { background: var(--user-bg); }
+.msg.bot    { background: var(--bot-bg); }
+.msg.system { background: #111; }
+.msg-avatar {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+.msg.user   .msg-avatar { background: #2a4a2a; color: #8fca8f; }
+.msg.bot    .msg-avatar { background: #2a2a4a; color: #8f8fca; }
+.msg.system .msg-avatar { background: #2a2a2a; color: #888; }
+.msg-body { flex: 1; font-size: 14px; line-height: 1.7; min-width: 0; }
+.msg-body p { margin: 0 0 .6em; }
+.msg-body p:last-child { margin-bottom: 0; }
+.msg-body em   { font-style: italic; color: #c4b490; }
+.msg-body strong { font-weight: 600; color: #e8d8b0; }
+.msg-body code { font-family: monospace; background: #222; padding: 1px 4px;
+                 border-radius: 3px; font-size: 12px; }
+
+/* ── Sources panel ── */
+.sources {
+  margin-top: 10px; padding: 10px 12px;
+  background: var(--source-bg); border: 1px solid #2a2010;
+  border-radius: 6px; font-size: 11px; color: var(--muted);
+}
+.sources-title { font-weight: 600; color: #a08060; margin-bottom: 6px; }
+.source-item {
+  display: flex; gap: 8px; align-items: baseline;
+  padding: 2px 0; border-bottom: 1px solid #221a0a;
+}
+.source-item:last-child { border-bottom: none; }
+.source-key {
+  font-weight: 600; color: #c09050; font-family: monospace; font-size: 10px;
+  text-decoration: none; white-space: nowrap;
+}
+.source-key:hover { color: var(--accent); }
+.source-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.source-score { color: #444; font-size: 10px; white-space: nowrap; }
+
+/* ── Input area ── */
+#inputArea {
+  background: #111; border-top: 1px solid var(--border);
+  padding: 16px 24px; flex-shrink: 0;
+  display: flex; gap: 10px; align-items: flex-end;
+}
+#queryInput {
+  flex: 1; background: var(--surface); border: 1px solid var(--border);
+  color: var(--text); border-radius: 8px; padding: 10px 14px;
+  font-size: 14px; font-family: inherit; resize: none;
+  min-height: 44px; max-height: 160px; overflow-y: auto;
+  transition: border-color .15s;
+  line-height: 1.5;
+}
+#queryInput:focus { outline: none; border-color: var(--accent); }
+#queryInput::placeholder { color: #4a3a2a; }
+#sendBtn {
+  background: var(--accent); border: none; color: #fff;
+  border-radius: 8px; padding: 10px 18px; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: background .15s; flex-shrink: 0;
+}
+#sendBtn:hover { background: #d08040; }
+#sendBtn:disabled { background: #2a2a2a; color: #666; cursor: not-allowed; }
+
+/* ── Suggestions ── */
+.suggestions {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 0 24px 12px; flex-shrink: 0;
+}
+.sug-btn {
+  background: #1a1a1a; border: 1px solid #2a2a2a; color: #8a7a68;
+  border-radius: 16px; padding: 5px 12px; font-size: 12px; cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.sug-btn:hover { background: #222; border-color: var(--accent); color: #c4a070; }
+
+/* ── Thinking indicator ── */
+.thinking { display: flex; gap: 4px; padding: 4px 0; }
+.thinking span {
+  width: 6px; height: 6px; border-radius: 50%; background: #4a4a6a;
+  animation: blink 1.2s ease-in-out infinite;
+}
+.thinking span:nth-child(2) { animation-delay: .2s; }
+.thinking span:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>💬 Corpus Chat</h1>
+  <span class="sub" id="chat-sub">Ask questions about the corpus — answers grounded in the processed documents</span>
+  <nav class="site-nav">
+    <a href="dashboard.html">📋 Dashboard</a>
+    <a href="explore.html">🔭 Explorer</a>
+    <a href="chat.html" class="active">💬 Chat</a>
+    <a href="status.html">⚙️ Status</a>
+  </nav>
+</header>
+
+<div id="statusBar">
+  <div class="dot offline" id="statusDot"></div>
+  <span id="statusText">Connecting to RAG server…</span>
+</div>
+
+<div id="messages">
+  <div class="msg system">
+    <div class="msg-avatar">ℹ</div>
+    <div class="msg-body">
+      <p>Welcome! Ask anything about Islamic cartography, medieval Arabic geography, or the authors and texts in the corpus.
+      Answers are grounded in <span id="corpusSummary">the processed documents</span>.</p>
+      <p style="color:#666;font-size:12px">Start the RAG server first: <code>python scripts/rag_server.py</code></p>
+    </div>
+  </div>
+</div>
+
+<div class="suggestions" id="suggestions">
+  <button class="sug-btn" onclick="suggest(this)">Who was al-Idrisi?</button>
+  <button class="sug-btn" onclick="suggest(this)">What are the seven climatic zones?</button>
+  <button class="sug-btn" onclick="suggest(this)">Describe Ibn Hawqal's world map</button>
+  <button class="sug-btn" onclick="suggest(this)">What is the Haft Kishvar?</button>
+  <button class="sug-btn" onclick="suggest(this)">How did Arab geographers describe Byzantium?</button>
+</div>
+
+<div id="inputArea">
+  <textarea id="queryInput" placeholder="Ask about the corpus…" rows="1"
+            onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+  <button id="sendBtn" onclick="sendQuery()">Send</button>
+</div>
+
+<script>
+// RAG URL — loaded from corpus_config.json if available, else default
+let RAG_URL = 'http://localhost:8001';
+(async () => {
+  try {
+    const cfg = await fetch('corpus_config.json').then(r => r.ok ? r.json() : null).catch(() => null);
+    if (cfg) {
+      // Derive base URL from rag_api (strip /api suffix if present)
+      RAG_URL = (cfg.rag_api || RAG_URL).replace(/\/api$/, '');
+      const name = cfg.name || 'Corpus';
+      document.title = name + ' — Chat';
+      const sub = document.getElementById('chat-sub');
+      if (sub) sub.textContent = `Ask questions about ${name} — answers grounded in the processed corpus`;
+    }
+  } catch (e) { /* use default */ }
+})();
+let streaming = false;
+
+// ── Status check ──────────────────────────────────────────────────────────────
+async function checkStatus() {
+  try {
+    const r = await fetch(`${RAG_URL}/api/status`, { signal: AbortSignal.timeout(3000) });
+    if (!r.ok) throw new Error();
+    const d = await r.json();
+    document.getElementById('statusDot').classList.remove('offline');
+    const idx = d.index || {};
+    document.getElementById('statusText').textContent =
+      `RAG server online · ${idx.docs || 0} docs · ${idx.chunks || 0} chunks · ${(idx.words||0).toLocaleString()} words indexed`;
+    document.getElementById('corpusSummary').textContent =
+      `${idx.docs || 0} processed documents (${(idx.words||0).toLocaleString()} words)`;
+  } catch {
+    document.getElementById('statusDot').classList.add('offline');
+    document.getElementById('statusText').textContent =
+      'RAG server offline — start with: python scripts/rag_server.py';
+  }
+}
+checkStatus();
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 160) + 'px';
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendQuery(); }
+}
+
+function suggest(btn) {
+  document.getElementById('queryInput').value = btn.textContent;
+  sendQuery();
+}
+
+function scrollToBottom() {
+  const m = document.getElementById('messages');
+  m.scrollTop = m.scrollHeight;
+}
+
+function appendMsg(role, content) {
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  const avatarText = role === 'user' ? 'U' : role === 'bot' ? '✦' : 'ℹ';
+  div.innerHTML = `
+    <div class="msg-avatar">${avatarText}</div>
+    <div class="msg-body">${content}</div>`;
+  document.getElementById('messages').appendChild(div);
+  scrollToBottom();
+  return div.querySelector('.msg-body');
+}
+
+function renderMarkdown(text) {
+  // Minimal markdown: bold, italic, code, paragraphs
+  return text
+    .split('\n\n').map(para => {
+      if (!para.trim()) return '';
+      let p = para
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/`(.+?)`/g, '<code>$1</code>');
+      return `<p>${p}</p>`;
+    }).join('');
+}
+
+// Build Harvard short ref: "Author, Year, p.N"
+function harvardRef(s) {
+  const author = s.authors || s.key;
+  const year   = s.year   || 'n.d.';
+  return `${author}, ${year}, p.${s.page}`;
+}
+
+function renderSources(sources) {
+  if (!sources.length) return '';
+  const items = sources.map(s => {
+    const url = `reader.html?key=${s.key}&page=${s.page}`;
+    const ref  = harvardRef(s);
+    return `<div class="source-item">
+      <a class="source-key" href="${url}" target="_blank">${ref}</a>
+      <span class="source-title">${esc(s.title || s.key)}</span>
+      <span class="source-score">score: ${s.score}</span>
+    </div>`;
+  }).join('');
+  return `<div class="sources">
+    <div class="sources-title">📚 Sources retrieved</div>
+    ${items}
+  </div>`;
+}
+
+// Replace inline Harvard citations (Author, Year, p.N) with linked versions
+function linkifyCitations(html, sources) {
+  if (!sources.length) return html;
+  // Build lookup: "Author, Year, p.N" → reader URL  (case-insensitive author match)
+  const lookup = {};
+  for (const s of sources) {
+    const author = (s.authors || s.key).toLowerCase();
+    const year   = s.year || 'n.d.';
+    const url    = `reader.html?key=${s.key}&page=${s.page}`;
+    lookup[`${author},${year},${s.page}`] = url;
+  }
+  // Match (Author, Year, p.N) — allow spaces around commas
+  return html.replace(/\(([^)]+?,\s*\d{4},\s*p\.\s*\d+)\)/g, (match, inner) => {
+    // Normalise: extract parts
+    const m = inner.match(/^(.+?),\s*(\d{4}),\s*p\.\s*(\d+)$/);
+    if (!m) return match;
+    const [, rawAuthor, rawYear, rawPage] = m;
+    const lookupKey = `${rawAuthor.trim().toLowerCase()},${rawYear.trim()},${rawPage.trim()}`;
+    const url = lookup[lookupKey];
+    if (!url) return match;
+    return `(<a href="${url}" target="_blank" style="color:var(--accent);text-decoration:none">${inner.trim()}</a>)`;
+  });
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── Send query ────────────────────────────────────────────────────────────────
+async function sendQuery() {
+  if (streaming) return;
+  const input = document.getElementById('queryInput');
+  const query = input.value.trim();
+  if (!query) return;
+
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('sendBtn').disabled = true;
+  document.getElementById('suggestions').style.display = 'none';
+
+  // User bubble
+  appendMsg('user', `<p>${esc(query)}</p>`);
+
+  // Bot bubble with thinking indicator
+  const botBody = appendMsg('bot', '<div class="thinking"><span></span><span></span><span></span></div>');
+  streaming = true;
+
+  let fullText   = '';
+  let sources    = [];
+  let sourcesDiv = '';
+
+  try {
+    const resp = await fetch(`${RAG_URL}/api/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query }),
+    });
+
+    if (!resp.ok) throw new Error(`Server error ${resp.status}`);
+
+    const reader = resp.body.getReader();
+    const dec    = new TextDecoder();
+    let buf      = '';
+
+    botBody.innerHTML = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop();
+
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        try {
+          const msg = JSON.parse(line.slice(6));
+          if (msg.type === 'sources') {
+            sources    = msg.sources;
+            sourcesDiv = renderSources(sources);
+          } else if (msg.type === 'token') {
+            fullText += msg.text;
+            botBody.innerHTML = linkifyCitations(renderMarkdown(fullText), sources) + sourcesDiv;
+            scrollToBottom();
+          } else if (msg.type === 'done') {
+            botBody.innerHTML = linkifyCitations(renderMarkdown(fullText), sources) + sourcesDiv;
+            scrollToBottom();
+          }
+        } catch { /* malformed SSE line */ }
+      }
+    }
+  } catch (err) {
+    botBody.innerHTML = `<p style="color:#c05050">Error: ${esc(err.message)}</p>
+      <p style="color:#666;font-size:12px">Is the RAG server running? <code>python scripts/rag_server.py</code></p>`;
+  }
+
+  streaming = false;
+  document.getElementById('sendBtn').disabled = false;
+  document.getElementById('queryInput').focus();
+}
+</script>
+</body>
+</html>

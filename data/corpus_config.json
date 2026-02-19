@@ -1,0 +1,13 @@
+{
+  "name": "Islamic Cartography",
+  "description": "A research corpus of Islamic cartographic and geographical texts",
+  "rag_api": "http://localhost:8001/api",
+  "texts_dir": "texts/",
+  "nav": {
+    "dashboard": { "label": "📋 Dashboard", "href": "dashboard.html" },
+    "explorer":  { "label": "🔭 Explorer",  "href": "explore.html"  },
+    "reader":    { "label": "📖 Reader",     "href": "reader.html"   },
+    "chat":      { "label": "💬 Chat",       "href": "chat.html"     },
+    "status":    { "label": "⚙️ Status",     "href": "status.html"   }
+  }
+}

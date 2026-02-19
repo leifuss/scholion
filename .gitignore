@@ -4,13 +4,22 @@ data/pdfs/
 data/raw/
 data/extracted/
 data/test_samples/
-data/*.json
 data/*.log
+data/.extract.lock
 
-# But DO track the reader and documentation
+# Large/ephemeral JSON files — not tracked
+data/extract_results.json
+data/pipeline_status.json
+
+# Track the static web assets (HTML + key JSON)
 !data/reader.html
 !data/explore.html
 !data/dashboard.html
+!data/chat.html
+!data/status.html
+!data/corpus_config.json
+!data/city_coords.json
+!data/inventory.json
 
 *.db
 *.sqlite

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reader — Islamic Cartography</title>
+<title>Reader</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -198,13 +198,22 @@ header {
   font-family: system-ui, sans-serif;
 }
 
-/* RTL (Arabic) support */
+/* RTL (Arabic/Persian) support */
 .text-content.rtl {
   direction: rtl;
   font-family: 'Amiri', 'Scheherazade New', 'Traditional Arabic', serif;
   font-size: 17px;
   line-height: 2.3;
   color: #1a1510;
+}
+.text-content.rtl .le-text {
+  text-align: right;
+}
+.text-content.rtl .le-section_header,
+.text-content.rtl .le-title,
+.text-content.rtl .le-page_header,
+.text-content.rtl .le-caption {
+  text-align: center;
 }
 
 /* ── Footer / navigation ── */
@@ -639,6 +648,7 @@ footer {
     <span id="docTitle">…</span>
     <span id="docMeta"></span>
     <span id="translBadge" style="display:none;font-size:11px;background:#1a3a2a;color:#5fba7d;border:1px solid #2a5a2a;border-radius:4px;padding:2px 8px;flex-shrink:0">🌐 EN translation</span>
+    <a href="chat.html" style="margin-left:auto;font-size:12px;color:#7a6a5a;text-decoration:none;padding:4px 10px;border-radius:6px;border:1px solid #2a2a2a;flex-shrink:0" onmouseover="this.style.color='#fff';this.style.borderColor='#555'" onmouseout="this.style.color='#7a6a5a';this.style.borderColor='#2a2a2a'">💬 Chat</a>
   </header>
 
   <div class="reader">
@@ -944,7 +954,9 @@ async function loadDocument(key) {
     document.getElementById('btnFull').classList.toggle('active', mode === 'full');
     document.getElementById('btnElem').classList.toggle('active', mode === 'elements');
 
-    goTo(0);
+    // Jump to page from URL parameter (?page=N, 1-based), else start at page 1
+    const startPage = parseInt(params.get('page') || '1', 10);
+    goTo(Math.max(0, startPage - 1));
   } catch (err) {
     loadEl.textContent = 'Error loading document: ' + err.message;
   }
