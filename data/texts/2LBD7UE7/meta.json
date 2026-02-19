@@ -1,0 +1,16 @@
+{
+  "key": "2LBD7UE7",
+  "title": "Geographisches Wörterbuch",
+  "authors": "Yakut; Wüstenfeld",
+  "year": "1866",
+  "language": "de",
+  "doc_type": "embedded",
+  "page_count": 980,
+  "extracted_at": "2026-02-19T17:59:27",
+  "extraction_method": "05b_extract_robust",
+  "chars_per_page": 1338.1,
+  "pua_ratio": 0.0,
+  "replacement_ratio": 0.0,
+  "empty_pages": 14,
+  "text_quality": "good"
+}

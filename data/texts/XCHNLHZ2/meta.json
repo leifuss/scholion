@@ -1,0 +1,16 @@
+{
+  "key": "XCHNLHZ2",
+  "title": "222-al-qazwini.pdf",
+  "authors": "",
+  "year": "",
+  "language": "en",
+  "doc_type": "embedded",
+  "page_count": 42,
+  "extracted_at": "2026-02-19T17:43:56",
+  "extraction_method": "05b_extract_robust",
+  "chars_per_page": 814.6,
+  "pua_ratio": 0.0,
+  "replacement_ratio": 0.0,
+  "empty_pages": 15,
+  "text_quality": "good"
+}

@@ -2239,15 +2239,17 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/69F94UMD/510-the-enclosed-indian.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 72,
     "avg_chars_pg": null,
     "language": null,
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [],
     "notes": [],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 1850.7
   },
   {
     "key": "9GSLPKYY",
@@ -2311,15 +2313,17 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/Q5BUAH4F/map-orientation.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 31,
     "avg_chars_pg": null,
     "language": null,
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [],
     "notes": [],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 732.3
   },
   {
     "key": "CVLALTHB",
@@ -3002,15 +3006,17 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/XCHNLHZ2/222-al-qazwini.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 42,
     "avg_chars_pg": null,
     "language": null,
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [],
     "notes": [],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 814.6
   },
   {
     "key": "69HZ9LE2",
@@ -3098,15 +3104,17 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/NACZUY3F/2141al-wardi.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 43,
     "avg_chars_pg": null,
     "language": null,
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [],
     "notes": [],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 982.0
   },
   {
     "key": "C264JCF9",
@@ -3218,15 +3226,17 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/GHXWT45U/211-istakhri.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 35,
     "avg_chars_pg": null,
     "language": null,
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [],
     "notes": [],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 1364.0
   },
   {
     "key": "F7FI8ITI",
@@ -4363,10 +4373,10 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/YEDS3GQH/Nallino_Al-Battini_Opus_astronomicum_Pars1-3_1899.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 1162,
     "avg_chars_pg": null,
     "language": "la",
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [
@@ -4377,7 +4387,9 @@
     "notes": [
       "For Battani on Arin earth see Ch. 6. for al-Kharaki trans. see [ages 165-175]"
     ],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 2621.0
   },
   {
     "key": "FYFNABMF",
@@ -5770,10 +5782,10 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/7SRKVGG3/bibliothecageogr06goej.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 564,
     "avg_chars_pg": null,
     "language": null,
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [
@@ -5782,7 +5794,9 @@
       "State"
     ],
     "notes": [],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 1504.0
   },
   {
     "key": "87ZVM3H8",
@@ -5825,10 +5839,10 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/KDRPGWIW/journalasiatique566sociuoft.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 1164,
     "avg_chars_pg": null,
     "language": "fr",
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [
@@ -5836,7 +5850,9 @@
       "primary source"
     ],
     "notes": [],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 1365.2
   },
   {
     "key": "MLK5YS97",
@@ -5852,10 +5868,10 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/MLK5YS97/journalasiatique566sociuoft.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 1164,
     "avg_chars_pg": null,
     "language": "fr",
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [
@@ -5863,7 +5879,9 @@
       "primary source"
     ],
     "notes": [],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 1365.2
   },
   {
     "key": "WK3LMDIX",
@@ -6861,10 +6879,10 @@
     "pdf_status": "downloaded",
     "pdf_path": "data/pdfs/2LBD7UE7/geographischesw01ytib.pdf",
     "doc_type": "embedded",
-    "page_count": null,
+    "page_count": 980,
     "avg_chars_pg": null,
     "language": "de",
-    "extracted": false,
+    "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "tags": [
@@ -6872,7 +6890,9 @@
       "primary source"
     ],
     "notes": [],
-    "has_reader": false
+    "has_reader": true,
+    "text_quality": "good",
+    "chars_per_page": 1338.1
   },
   {
     "key": "S4RC5R7S",
