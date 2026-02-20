@@ -1,15 +1,13 @@
 # Product Strategy: A Personal Research Library Platform for Humanists
 
-> **Working title:** *Marginalia* — your research library, illuminated.
+> **Working title:** *Scholion* — your research library, illuminated.
 >
-> The name evokes the scholarly tradition of marginal annotation while
-> signalling that this tool adds layers of insight to the texts a
-> researcher already owns.  **Caveat:** There is an existing open-source
-> project called [Marginalia Search](https://search.marginalia.nu/) —
-> we may need to differentiate or rename.  Alternatives under
-> consideration: *Glossa* (marginal commentary), *Scholion* (Greek for
-> marginal note — no known conflicts), *Quire* (a gathering of
-> manuscript leaves), *Folio*, *Codex*.
+> From the Greek σχόλιον — the marginal commentaries that ancient and
+> medieval scholars wrote alongside the texts they studied.  The name
+> signals that this tool is built *by and for* researchers, and that its
+> purpose is to add layers of scholarly insight to the sources you
+> already own.  The word has no known naming conflicts in the software
+> space and a natural plural (*scholia*).
 
 ## 1. The Problem
 
@@ -33,7 +31,7 @@ material that is the bread and butter of many humanities projects.
 
 ## 2. The Vision
 
-**Marginalia** is a *personal research library platform* that a
+**Scholion** is a *personal research library platform* that a
 humanities scholar deploys in under 15 minutes, populates from their
 existing bibliography manager, and progressively enhances — from a
 simple interactive dashboard, through full-text search, to AI-powered
@@ -46,12 +44,43 @@ understand cloud infrastructure.
 |---|-----------|-------------|
 | 1 | **Zero local install** | Everything runs on GitHub (free tier) + free cloud services. The user never opens a terminal. |
 | 2 | **Progressive value** | Each stage delivers standalone utility. No stage is gated on a later one. |
-| 3 | **No payment for core features** | Stages 1–4 are free. LLM-powered features (bibliography extraction, translation, Stage 5-6) need the user's own API key or a modest subscription. |
+| 3 | **No payment for core features** | Stages 1–4 are free. LLM-powered features (translation, bibliography extraction, Stages 5–6) use the researcher's own API key — costs pass through directly, never through us. |
 | 4 | **Humanities-first UX** | Every interface uses language and metaphors familiar to researchers, not developers. No jargon. |
 | 5 | **Your data, your repo** | The researcher owns their repository. No vendor lock-in. Data is plain JSON + PDF + HTML. |
 | 6 | **Works with what you have** | Zotero, Mendeley, Endnote, or a plain BibTeX file. Scanned books or born-digital PDFs. Latin, Arabic, Persian, Ottoman Turkish, or any other language. |
 | 7 | **Respect copyright** | Full-text content and PDFs are access-controlled. Only the researcher (and people they grant access to) can see copyrighted material. |
 | 8 | **Accessible** | All interfaces target WCAG 2.1 AA compliance. Screen reader support for explorer and reader. Academic tools used by institutions must meet accessibility standards. |
+
+### The #1 risk: onboarding friction
+
+Everything else in this strategy is worthless if researchers can't get
+from zero to a working instance.  Both peer reviews flagged this as
+the critical adoption barrier: GitHub's UI is designed for developers,
+not scholars; API keys are an alien concept; and when something goes
+wrong (a failed workflow, a wrong library ID), the error messages come
+from GitHub Actions logs — an utterly hostile environment.
+
+**Non-negotiable targets for Stage 1:**
+
+1. **≤6 user-facing operations** from "I have a GitHub account" to
+   "I see my bibliography on a website."
+2. **Every error message must be human-readable.** No raw Actions logs.
+   The setup workflow must catch common failures (wrong library ID,
+   invalid API key, empty collection) and display a plain-English
+   diagnosis with a fix-it link.
+3. **A video walkthrough** (< 5 minutes) ships with the template.
+4. **Concierge onboarding** for the first 10 users — the developer
+   walks them through setup live and records every point of confusion.
+5. **Evaluate an OAuth onboarding app** (like Netlify/Vercel's deploy
+   flow) that hides GitHub entirely: the user clicks "Deploy", logs in
+   with GitHub, picks their Zotero library, and the app creates the
+   repo, sets secrets, and enables Pages automatically.  This adds a
+   small hosted component but may be the difference between 15% and
+   80% completion rates.
+
+If onboarding proves too painful even with these mitigations, the
+project should pivot to a desktop app (Electron/Tauri) before investing
+further in features.  A tool nobody can set up is a tool nobody uses.
 
 ## 3. User Journey (Six Stages + Cross-Cutting Features)
 
@@ -186,23 +215,34 @@ span 2–3 months on the free tier, or the user can process in batches.
 GitHub Actions remains free for public repos; monitor any pricing
 changes for private repos.
 
-## 5. Revenue Model (Sustainability, Not Profit)
+## 5. Cost Model (Nobody Pays for Anyone Else)
 
-The goal is to cover hosting costs and sustain development, not to
-build a business.  Monthly subscriptions do not work for individual
-academics (research budgets lack line items for small SaaS tools).
+The goal is simple: **the developer should never subsidise other
+people's API costs, and users should never pay for features they don't
+use.**  This is not a business — there is no revenue model.
 
-| Model | Price | What you get |
-|-------|-------|-------------|
-| **Free (core)** | $0 | Stages 1–4 (setup, explore, read, search). Full functionality for self-hosted users who provide their own API keys for LLM features. |
-| **Donation** | Pay what you want | GitHub Sponsors / Ko-fi / Buy Me a Coffee. Acknowledgement in footer. |
-| **Hosted RAG** | ~$0.01/query (pay-as-you-go) | Managed RAG endpoint — no self-hosting needed. More palatable for sporadic academic use than a monthly subscription. |
-| **Institutional** | Grant-funded or DH center partnership | Multi-user support, shared corpus, custom domain. Pursue via NEH Office of Digital Humanities, AHRC (UK), or university DH center budgets. |
+**Principle:** Every external API cost is paid directly by the user
+through their own API key.  Scholion itself has zero running costs
+(GitHub Pages hosting is free; GitHub Actions CI is free-tier).
 
-For sustainability beyond donations, the most realistic path is
-**grant funding** (NEH-ODH, AHRC, DFG) or **institutional DH center
-partnerships** — this is how most DH tools (FromThePage, Recogito)
-sustain themselves.
+| What costs money | Who pays | How much |
+|---|---|---|
+| Google Vision OCR (optional, for scanned non-Latin text) | User's own Google Cloud key | ~$0.0015/page |
+| LLM API (translation, bibliography extraction, Stage 5–6) | User's own Gemini/Anthropic/OpenAI key | ~$0.01–$1 per document depending on model |
+| GitHub Actions minutes beyond free tier (2,000 min/month) | User upgrades to GitHub Pro ($4/mo) or uses GitHub Education (free) | Usually $0 |
+| Nothing else | Nobody | $0 |
+
+**What this means in practice:**
+- Stages 1–4 (setup, explore, read, search) are **completely free**
+  with zero API keys needed (Tesseract OCR runs in Actions for free)
+- LLM-powered features (translation, bibliography extraction, citation
+  discovery, commentary) require the user's own API key — the cost
+  passes through directly to their provider, not to us
+- There is no "hosted" tier, no subscription, no managed endpoint
+- If someone wants to donate: GitHub Sponsors / Ko-fi, but this is
+  gratitude, not a business model
+- Grant funding (NEH-ODH, AHRC) may support development effort but
+  is not required for the tool to exist
 
 ## 6. Target Users
 
@@ -232,26 +272,70 @@ sustain themselves.
 | Semantic Scholar | yes | no (their corpus) | yes | no | yes | no | — | yes |
 | Elicit | yes | no (their corpus) | partial | no | yes | no | — | freemium |
 | Research Rabbit | no | no | yes | no | no | no | — | yes |
-| **Marginalia** | **yes** | **yes (cloud)** | **yes** | **yes (web + Zotero)** | **yes** | **yes** | **custom → W3C** | **yes** |
+| **Scholion** | **yes** | **yes (cloud)** | **yes** | **yes (web + Zotero)** | **yes** | **yes** | **custom → W3C** | **yes** |
 
-The unique position: Marginalia works with *your* documents — including
+The unique position: Scholion works with *your* documents — including
 scans, grey literature, and non-English texts that commercial platforms
 cannot index — and syncs your reading notes back to your bibliography
 manager.
 
 **Standards gap (to address):** The DH community values interoperability.
 Tropy, Recogito, and FromThePage use W3C Web Annotation, TEI, and IIIF.
-Marginalia currently uses a custom JSON format for annotations.  The
+Scholion currently uses a custom JSON format for annotations.  The
 roadmap should migrate to W3C Web Annotation format (v1.5) to enable
 interop with Hypothes.is and Recogito, and acknowledge TEI and IIIF as
 future integration points.
 
 **Positioning: "works with, not instead of."**  Researchers already have
-workflows involving some of these tools.  Marginalia should complement
-them: Transkribus can feed HTR output into Marginalia; Tropy-managed
+workflows involving some of these tools.  Scholion should complement
+them: Transkribus can feed HTR output into Scholion; Tropy-managed
 photos can be uploaded; Hypothesis annotations could be imported via
-W3C Web Annotation; Obsidian users can export Marginalia annotations
+W3C Web Annotation; Obsidian users can export Scholion annotations
 to markdown.  Zotero remains the metadata backbone.
+
+### Why not just use Obsidian?
+
+Obsidian + Zotero Integration is the most relevant comparison because
+it addresses the same "personal research infrastructure" need.  The
+honest answer is that Obsidian covers roughly **40–50%** of what Scholion
+proposes — but the overlap is in *note-taking and reading*, not in
+*corpus processing and publishing*.
+
+| Capability | Obsidian + plugins | Scholion | Gap |
+|---|---|---|---|
+| Note-taking / knowledge management | **Excellent** | Out of scope | Obsidian wins; don't compete |
+| Zotero import (metadata → notes) | Good (one-way) | Good (one-way) | Parity |
+| Annotation write-back to Zotero | No plugin does this | Yes (web API) | Scholion unique |
+| PDF reading (born-digital) | Good (PDF++ plugin) | Good | Parity |
+| Scanned document reader (page image + OCR text side by side) | No | Yes | Scholion unique |
+| Batch OCR with Arabic/Persian triage | No (single-file Tesseract only) | Yes (Tesseract → Vision → LLM routing) | **Large gap** |
+| Document-level translation | No (word/sentence only) | Yes (full-page, displayed alongside original) | Scholion unique |
+| Client-side full-text search across PDF corpus | Fragile (Omnisearch crashes on large vaults) | Built for this (MiniSearch, web-deployed) | Scholion stronger |
+| Citation discovery / gap analysis | Basic DOI lookup (Reference Map) | Corpus-wide citation graph + gap analysis | **Large gap** |
+| AI/RAG over your corpus | Copilot (PDF support paywalled) | Included (your own API key) | Scholion stronger for PDFs |
+| Geographic visualisation of sources | Manual (add lat/lng to each note) | Automatic (from bibliographic metadata) | Scholion unique |
+| Published research library (web) | Digital Garden (markdown wiki) | Purpose-built explorer, reader, search, chat | **Large gap** |
+| Zero install (browser only) | No (desktop app) | Yes (GitHub Pages) | Scholion unique |
+
+**Strategic conclusion:** Scholion is *not* a note-taking tool and should
+not try to become one.  Obsidian is where researchers *think and write*;
+Scholion is where they *process, explore, and discover across their
+sources*.  The two are complementary.  The integration story is:
+
+1. Scholion exports annotations in Obsidian-compatible markdown
+2. Researchers use Obsidian for synthesis, writing, and linking ideas
+3. Zotero is the shared metadata backbone for both tools
+
+This means Scholion should **not** invest in:
+- Rich text editing or note-taking beyond simple margin annotations
+- Graph views of ideas / Zettelkasten features
+- General-purpose knowledge management
+
+And should **double down** on:
+- The OCR + processing pipeline (Obsidian can't touch this)
+- The web-based research library (Obsidian can't publish this)
+- Citation discovery and gap analysis (Obsidian has nothing here)
+- First-class non-English / scanned document support
 
 ## 8. Technical Prerequisites
 
@@ -291,15 +375,15 @@ progressively and enhance every subsequent stage.
 **Zotero write-back:** Annotations sync to Zotero as child *notes*
 (not Zotero's native PDF annotations) on the parent item, using the
 Zotero web API's write endpoint.  This means notes created in
-Marginalia appear in the user's Zotero library.  Zotero notes already
-sync *into* Marginalia via the inventory sync.
+Scholion appear in the user's Zotero library.  Zotero notes already
+sync *into* Scholion via the inventory sync.
 
-**Sync model:** Marginalia is the source of truth for highlights, margin
+**Sync model:** Scholion is the source of truth for highlights, margin
 notes, and cross-references.  Zotero is the source of truth for
-bibliographic metadata.  Notes sync one-way from Marginalia → Zotero
+bibliographic metadata.  Notes sync one-way from Scholion → Zotero
 (append-only, via background GitHub Action — not in the browser, due to
 Zotero's 1 req/sec rate limit).  Zotero notes are imported into
-Marginalia on each sync cycle.  This avoids bidirectional sync
+Scholion on each sync cycle.  This avoids bidirectional sync
 conflicts.
 
 **Implementation:** See `docs/plan-cross-cutting-annotations.md`.
@@ -370,20 +454,19 @@ or use the Zotero cloud reader for the original PDFs.
 | **Alpha** | 1-2 + scope | Template repo, setup wizard, Zotero import, explorer, research scope | 2-3 weeks |
 | **Beta** | 3 + access control | PDF fetch + extraction, reader, annotations, copyright protection | 1-2 weeks (mostly done) |
 | **v1.0** | 4 | Client-side search, search UI | 1-2 weeks |
-| **v1.5** | 5 + hosted RAG | Citation discovery, OpenAlex lookup, gap analysis, optional hosted RAG | 2-3 weeks |
+| **v1.5** | 5 | Citation discovery, OpenAlex lookup, gap analysis | 2-3 weeks |
 | **v2.0** | 6 | AI commentary | 2-3 weeks |
 
 **Note:** Annotations are a cross-cutting feature built incrementally
 across Alpha (bookmarks, notes in explorer) and Beta (highlights,
-margin notes in reader).  The hosted RAG option (designed in Stage 4
-plan) ships in v1.5 alongside citation discovery.
+margin notes in reader).
 
 ## 11. Success Metrics
 
 - **Adoption:** 10 researchers deploy a personal instance within 3 months of launch
 - **Retention:** 5 of those researchers reach Stage 3 (PDF processing)
 - **Word of mouth:** At least 2 researchers who deployed it recommend it to a colleague
-- **Sustainability:** Donations or grant funding cover hosting costs within 6 months
+- **Cost isolation:** No user's API costs flow through the developer; all costs are direct-to-provider
 
 ## 12. Risks and Mitigations
 
@@ -396,7 +479,7 @@ plan) ships in v1.5 alongside citation discovery.
 | **Solo developer / bus factor** | Medium | Open-source from day one; comprehensive docs; modular architecture (each stage independent); community contributions welcome |
 | Non-English OCR quality | Medium | Already handle Arabic/Persian/Turkish; document limitations; Vision API as fallback |
 | GitHub dependency (pricing, TOS changes) | Low–Medium | Architecture is portable: static files + Actions could move to GitLab CI + Cloudflare Pages; document migration path |
-| **Zotero annotation sync conflicts** | Medium | Define clear ownership model: Marginalia is source of truth for highlights/notes; Zotero is source of truth for metadata; notes sync one-way from Marginalia → Zotero (append-only); Zotero notes import on sync |
+| **Zotero annotation sync conflicts** | Medium | Define clear ownership model: Scholion is source of truth for highlights/notes; Zotero is source of truth for metadata; notes sync one-way from Scholion → Zotero (append-only); Zotero notes import on sync |
 | Copyright infringement | Medium | Private repo as default; clear fair-use documentation; never serve raw PDFs publicly |
 | Annotation data loss | Low | Annotations stored in git (versioned); Zotero write-back provides secondary backup |
 | **No go-to-market plan** | High | See Section 14 below |
@@ -423,7 +506,7 @@ The DH community has well-established channels.  Launch strategy:
 | **Launch** | DH Slack/Discord, Mastodon (#digitalhumanities), Humanist listserv | Announcement post with demo video |
 | **Conference** | DH2026, ADHO, discipline-specific conferences | Lightning talk / poster; live demo |
 | **Sustained** | Blog post (Medium / DH blog), Zotero forums | Tutorial: "From Zotero to searchable corpus in 15 minutes" |
-| **Word of mouth** | GitHub README, explore.html footer | "Built with Marginalia" badge; one-click fork link |
+| **Word of mouth** | GitHub README, explore.html footer | "Built with Scholion" badge; one-click fork link |
 
 **Key metric:** 10 active instances within 3 months of launch (see
 Section 11).
@@ -431,54 +514,65 @@ Section 11).
 ## 14. Future Directions (Post-v2.0)
 
 Features identified by peer review as high-value but out of scope for
-the initial roadmap:
+the initial roadmap.  Ordered by strategic importance — items that
+reinforce Scholion's differentiators (corpus processing, web library,
+non-English support) come first; features where Obsidian is already
+strong are deprioritised.
+
+**Core differentiator extensions:**
 
 1. **Export / Publication support.** Export annotated bibliographies,
    formatted citation lists (Chicago/MLA/Turabian), and highlighted
    passage compilations.  High value for dissertation writers.
+   Obsidian can't do this from a web-published corpus.
 
-2. **Seminar / reading group mode.** Shared annotations and discussion
-   threads for 8–15 researchers reading the same texts.  See
-   FromThePage for prior art.
+2. **Image/figure extraction from PDFs.** Particularly important for
+   art history and cartography — extract, organise, and annotate
+   figures and maps from PDFs, not just text.  This extends the
+   processing pipeline (Scholion's core strength).
 
-3. **Image region annotation.** Art historians and material culture
-   scholars need to annotate image regions, not just text.  IIIF
-   integration would enable this.
-
-4. **TEI/XML interoperability.** Import/export in TEI format for
-   interop with the broader DH tool ecosystem.
-
-5. **Offline / PWA support.** Service worker caching for the explorer
-   and reader, enabling use in archives with poor connectivity or
-   during travel.  Feasible since all data is static JSON/HTML.
-
-6. **Non-English UI and documentation.** The target audience includes
-   scholars working in Arabic, Persian, and Turkish — the interface
-   should eventually support these languages.
-
-7. **Named entity recognition (NER).** Automatic extraction of people,
+3. **Named entity recognition (NER).** Automatic extraction of people,
    places, dates, and concepts from corpus text.  Feeds into geographic
    visualisation and improves citation discovery.  See Recogito for
    prior art.
 
-8. **Integration with note-taking tools.** Export annotations to
-   Obsidian, Notion, or Logseq markdown format.  Many researchers
-   maintain a personal knowledge base outside their bibliography
-   manager.  (Note: Obsidian + Zotero Integration is an increasingly
-   popular competitor for the "personal research infrastructure" need.)
+4. **Non-English UI and documentation.** The target audience includes
+   scholars working in Arabic, Persian, and Turkish — the interface
+   should eventually support these languages.
 
-9. **Image/figure extraction from PDFs.** Particularly important for
-   art history and cartography — extract, organise, and annotate
-   figures and maps from PDFs, not just text.
+**Collaboration and teaching:**
 
-10. **Reading lists / reading order.** Let the user create ordered
-    reading lists for teaching or onboarding new research group members.
+5. **Seminar / reading group mode.** Shared annotations and discussion
+   threads for 8–15 researchers reading the same texts.  See
+   FromThePage for prior art.
+
+6. **Reading lists / reading order.** Let the user create ordered
+   reading lists for teaching or onboarding new research group members.
+
+**Interoperability:**
+
+7. **Obsidian export.** Export annotations, extracted passages, and
+   citation notes as Obsidian-compatible markdown with YAML frontmatter
+   and wiki-links.  This is the primary "handoff" between Scholion
+   (process and explore) and Obsidian (think and write).  *Not* a
+   two-way sync — Scholion produces data that feeds into Obsidian.
+
+8. **Image region annotation.** Art historians and material culture
+   scholars need to annotate image regions, not just text.  IIIF
+   integration would enable this.
+
+9. **TEI/XML interoperability.** Import/export in TEI format for
+   interop with the broader DH tool ecosystem.
+
+**Quality of life:**
+
+10. **Offline / PWA support.** Service worker caching for the explorer
+    and reader, enabling use in archives with poor connectivity or
+    during travel.  Feasible since all data is static JSON/HTML.
 
 ## 15. Open Questions
 
-1. **Name:** "Marginalia" conflicts with Marginalia Search.  Top
-   alternatives: Glossa, Scholion, Quire.  Decision needed before
-   launch.
+1. ~~**Name:** Resolved — "Scholion" (no known software conflicts).~~
 
 2. **Mendeley/Endnote adapters:** Build native API adapters or require
    BibTeX export as a universal fallback?
@@ -513,41 +607,63 @@ features have their own plans in `docs/plan-cross-cutting-*.md`.*
 
 ---
 
-## Appendix: Peer Review Summary
+## Appendix: Revision History
 
-This strategy was reviewed by two independent AI peer reviewers
-(simulating perspectives from the DH tool and academic software
-communities).  Key feedback incorporated:
+### Round 1: AI Peer Review (two independent reviewers)
+
+Key feedback incorporated:
 
 **Structural changes:**
 - **Go-to-market plan** added (Section 13 — was entirely missing)
 - **Future directions** section added (Section 14 — export, seminar
   mode, image annotation, NER, TEI, offline/PWA, Obsidian integration)
 - **Accessibility** added as Design Principle #8 (WCAG 2.1 AA)
-- **Revenue model** revised: subscriptions replaced with donation/grant
-  model (more realistic for academic audience)
 
 **Risk mitigations:**
-- **Onboarding friction** is the critical risk — concrete step-count
-  targets (≤6 operations) and OAuth onboarding app option added
+- **Onboarding friction** identified as the critical risk — concrete
+  step-count targets (≤6 operations) and OAuth onboarding app option
 - **Private repo** elevated to default copyright strategy; client-side
   encryption downgraded to fallback with honest security assessment
 - **Bus factor / sustainability** added as explicit risk
-- **Zotero sync conflict model** defined (Marginalia = source of truth
+- **Zotero sync conflict model** defined (Scholion = source of truth
   for annotations; Zotero = source of truth for metadata; one-way sync)
 
 **Technical corrections:**
-- **Cost estimates** revised upward with realistic scenarios (Vision
-  OCR, LLM at scale, Git LFS storage)
-- **PDF storage** clarified: PDFs not stored in git; Zotero cloud is
-  source of truth
-- **Cloudflare Pages + Access** documented as GitHub Pages alternative
+- **Cost estimates** revised upward with realistic scenarios
+- **PDF storage** clarified: PDFs not stored in git
+- **Cloudflare Pages + Access** documented as alternative
 - **Competitive landscape** expanded: Tropy, Recogito, FromThePage,
   Transkribus, Mirador, Obsidian+Zotero
-- **Standards gap** (W3C Web Annotation, TEI, IIIF) acknowledged;
-  pragmatic adoption strategy: simple internal format, W3C export
-- **"Works with, not instead of"** positioning added for DH tool ecosystem
-- **Name alternatives** expanded: Scholion and Quire (no conflicts);
-  confirmed Marginalia conflicts with 4+ existing projects
-- **OpenAlex coverage** limitations noted for non-English/historical
-  sources (relevant to the Islamic cartography use case)
+- **Standards gap** (W3C Web Annotation, TEI, IIIF) acknowledged
+- **OpenAlex coverage** limitations noted for non-English sources
+
+### Round 2: Author review + Obsidian gap analysis
+
+Key changes based on author priorities and competitive analysis:
+
+**Strategic sharpening:**
+- **Renamed from "Marginalia" to "Scholion"** — no software naming
+  conflicts; academic specificity is a feature for this audience
+- **Obsidian positioning** added (Section 7.1) — detailed gap analysis
+  showing ~40–50% overlap but in different capabilities; Scholion is
+  complementary (process + explore + discover) not competing (think +
+  write + link)
+- **"Not a note-taking tool"** — explicit scope boundary; Scholion
+  should not invest in PKM features where Obsidian excels
+
+**Cost model:**
+- **Revenue model eliminated entirely** — replaced with cost-isolation
+  model (Section 5); the developer covers nothing; all API costs are
+  direct user-to-provider; no subscriptions, no hosted tier, no
+  managed endpoints
+- **Hosted RAG tier removed** — users bring their own API keys
+
+**Onboarding:**
+- **Elevated to top-level section** (Section 2.1) — not buried in
+  risks; non-negotiable targets defined; desktop-app pivot explicitly
+  noted as fallback if GitHub UX proves fatal
+
+**Future directions:**
+- Reordered by strategic priority — differentiator extensions first,
+  features where Obsidian is already strong deprioritised
+- **Obsidian export** reframed as one-way data handoff, not integration

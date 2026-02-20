@@ -166,7 +166,7 @@ Each item in the explorer should show:
 
 ### 3.3 Value Proposition vs. Native Tools
 
-| Feature | Zotero | Mendeley | Marginalia (Stage 2) |
+| Feature | Zotero | Mendeley | Scholion (Stage 2) |
 |---------|--------|----------|---------------------|
 | Search by title/author | yes | yes | yes |
 | Filter by tag | yes (clunky) | yes | yes (one-click) |

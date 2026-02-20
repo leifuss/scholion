@@ -1,7 +1,7 @@
 # Stage 5: Citation Discovery — "The tool tells me what I'm missing"
 
 > **Goal:** Using extracted bibliographies and the user's research
-> questions, Marginalia identifies cited works the researcher doesn't
+> questions, Scholion identifies cited works the researcher doesn't
 > yet have, ranks them by relevance, and offers to import them
 > automatically into Zotero.
 

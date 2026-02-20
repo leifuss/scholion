@@ -1,6 +1,6 @@
 # Stage 6: AI-Assisted Academic Commentary — "I get scholarly context for my key texts"
 
-> **Goal:** For the researcher's most important texts, Marginalia
+> **Goal:** For the researcher's most important texts, Scholion
 > generates structured academic commentary: reception history,
 > contested claims, superseded arguments, and connections to the
 > wider literature — all grounded in the researcher's own corpus.

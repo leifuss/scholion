@@ -13,10 +13,10 @@
   I plan to read next.*
 - *As a researcher, I want to create links between two documents that
   discuss the same topic ("see also").*
-- *As a researcher, I want my Marginalia notes to appear in my Zotero
+- *As a researcher, I want my Scholion notes to appear in my Zotero
   library so I don't lose them if I stop using the tool.*
 - *As a researcher, I want notes I write in Zotero to show up in
-  Marginalia automatically.*
+  Scholion automatically.*
 
 ## 2. Annotation Types
 
@@ -157,7 +157,7 @@ wizard can include a "Generate a GitHub token for annotations" step.
 
 ## 5. Zotero Write-Back
 
-### Marginalia → Zotero
+### Scholion → Zotero
 
 When the user creates a document note or highlight, optionally sync
 it to Zotero as a child note on the parent item.
@@ -166,7 +166,7 @@ it to Zotero as a child note on the parent item.
 # scripts/sync_annotations_to_zotero.py
 
 def sync_annotation_to_zotero(library, annotation):
-    """Create or update a Zotero note from a Marginalia annotation."""
+    """Create or update a Zotero note from a Scholion annotation."""
     note_html = _format_as_zotero_note(annotation)
 
     if annotation.get("zotero_note_key"):
@@ -180,31 +180,31 @@ def sync_annotation_to_zotero(library, annotation):
         template = library.client.item_template("note")
         template["parentItem"] = annotation["doc_key"]
         template["note"] = note_html
-        template["tags"] = [{"tag": "marginalia"}]
+        template["tags"] = [{"tag": "scholion"}]
         result = library.client.create_items([template])
         return result  # includes the new note's key
 ```
 
 **Format in Zotero:** Notes are HTML. We format them with a
-Marginalia header so they're identifiable:
+Scholion header so they're identifiable:
 
 ```html
-<p><strong>[Marginalia]</strong> Highlight on p.7:</p>
+<p><strong>[Scholion]</strong> Highlight on p.7:</p>
 <blockquote>"the Ottoman cartographic tradition drew heavily on..."</blockquote>
 <p>Key claim — compare with Emiralioğlu</p>
 <p><small>Created 2026-02-20 14:30</small></p>
 ```
 
-### Zotero → Marginalia
+### Zotero → Scholion
 
 Already implemented: `zotero_sync.py` fetches note children and stores
 them in `inventory.json` under the `notes` field.  These appear in the
 explorer and reader.
 
 **Conflict resolution:** If the same note is edited in both Zotero
-and Marginalia, the Zotero version wins (it is the "system of record"
-for existing Zotero notes).  Marginalia-originated notes (tagged
-`marginalia`) are updated from Marginalia and not overwritten by sync.
+and Scholion, the Zotero version wins (it is the "system of record"
+for existing Zotero notes).  Scholion-originated notes (tagged
+`scholion`) are updated from Scholion and not overwritten by sync.
 
 ## 6. UI Mockups
 
@@ -277,7 +277,7 @@ for existing Zotero notes).  Marginalia-originated notes (tagged
 | Cross-reference links to correct target | Click link, verify navigation |
 | GitHub API save works (create commit) | End-to-end with test repo |
 | Zotero write-back creates note | Check Zotero library after sync |
-| Zotero → Marginalia sync preserves existing notes | Run zotero_sync, verify no data loss |
+| Zotero → Scholion sync preserves existing notes | Run zotero_sync, verify no data loss |
 | Annotations survive git pull/merge | Two devices, verify merge |
 | localStorage fallback works offline | Disconnect network, create annotation |
 

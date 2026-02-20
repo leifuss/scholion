@@ -1,7 +1,7 @@
 # Stage 1: Onboarding — "I have a GitHub account and a bibliography"
 
 > **Goal:** A humanities researcher with no terminal experience deploys
-> their own Marginalia instance in under 15 minutes, using only a web
+> their own Scholion instance in under 15 minutes, using only a web
 > browser.
 
 ## 1. User Story
@@ -26,7 +26,7 @@ access is needed for annotation sync (cross-cutting) and citation import
 ## 3. The Onboarding Flow
 
 ```
-Step 1: Click "Use this template" on the Marginalia GitHub template
+Step 1: Click "Use this template" on the Scholion GitHub template
         ↓
 Step 2: Name your repo (e.g., "my-reading-library")
         ↓
@@ -65,7 +65,7 @@ Step 6: GitHub Pages deploys. The welcome issue updates with the
 **Task:** Convert the current `islamic-cartography-pipeline` repo into a
 GitHub template that others can fork.
 
-- [ ] Create a new clean repo `marginalia-template` (or similar)
+- [ ] Create a new clean repo `scholion-template` (or similar)
 - [ ] Strip all Islamic Cartography-specific data (inventory, texts, pdfs)
 - [ ] Keep all scripts, workflows, and HTML templates
 - [ ] **Parameterise hardcoded values** in workflows: `COLLECTION_NAME`
@@ -105,7 +105,7 @@ template's GitHub Pages) that:
 6. Shows a progress spinner and links to the deployed site
 
 **Tech:** Static HTML + vanilla JS. GitHub OAuth app for auth.
-The page itself could be hosted on the main Marginalia project site.
+The page itself could be hosted on the main Scholion project site.
 
 **Pros:** Smoothest UX. User never sees GitHub's settings UI.
 **Cons:** Requires a GitHub OAuth App registration. Needs a server
@@ -130,7 +130,7 @@ later as the polished onboarding experience.
 
 #### Option C: GitHub App (future)
 
-A Marginalia GitHub App that the user installs on their repo. The app
+A Scholion GitHub App that the user installs on their repo. The app
 handles secrets configuration and can also manage webhook-based triggers.
 
 This is the most polished approach but requires maintaining a running
@@ -180,7 +180,7 @@ Steps:
 Auto-created by a workflow on repo creation (or first push):
 
 ```markdown
-# Welcome to Marginalia!
+# Welcome to Scholion!
 
 Your personal research library is almost ready.
 
@@ -245,7 +245,7 @@ gracefully:
 1. **GitHub OAuth App:** Who registers it? Under what GitHub
    organisation?  (Could use Leifuss's personal account initially.)
 
-2. **Template naming:** `marginalia-template`? `marginalia`?
+2. **Template naming:** `scholion-template`? `scholion`?
    `your-research-library`?
 
 3. **Mendeley/Endnote in Stage 1 or 2?** If we support BibTeX upload
