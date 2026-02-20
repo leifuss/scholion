@@ -1,373 +1,1903 @@
 {
   "1": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 1\t\r\nThe orientation of a map is the relationship between the\r\ndirections on the map and the corresponding compass directions\r\nin reality. The word “orient” is derived from Latin oriens,\r\nmeaning “East”. In the Middle Ages many maps, including the\r\nubiquitous T-O maps, were drawn with East at the top (meaning\r\nthat the direction “up” on the map corresponds to East on the\r\ncompass). Today, the most common – but far from universal –\r\ncartographic convention is that North is at the top of a map.\r\nSeveral kinds of maps are often traditionally not oriented with\r\nNorth at the top:\r\n Maps from non-Western traditions are oriented a variety\r\nof ways. Old maps of Edo show the Japanese imperial palace as\r\nthe “top”, but also at the center, of the map. Labels on the map\r\nare oriented in such a way that you cannot read them properly\r\nunless you put the imperial palace above your head.\r\n Medieval European T-O maps such as the Hereford\r\nmappamundi were centered on Jerusalem with East at the top.\r\nIndeed, prior to the reintroduction of Ptolemy’s Geography to\r\nEurope around 1400, there was no single convention in the West.\r\nportolan charts, for example, are oriented to the shores they\r\ndescribe.\r\n Maps of cities bordering a sea are often conventionally\r\noriented with the sea at the top.\r\n Route and channel maps have traditionally been oriented to the road or\r\nwaterway they describe.\r\n Polar maps of the Arctic or Antarctic regions are conventionally centered on the\r\npole; the direction North would be towards or away from the centre of the map,\r\nrespectively. Typical maps of the Arctic have 0° meridian towards the bottom of the\r\npage; maps of the Antarctic have the 0° meridian towards the top of the page.\r\n Reversed maps, also known as Upside-Down maps or South-Up maps, reverse the\r\n“North is up” convention and have South at the top. An orientation very common with\r\nArab Islamic maps.\r\n Maps are usually created from a particular direction. The directionality of a map\r\nis known as its orientation. The popularity of online mapping such as Google Maps has\r\nconditioned many people to expect due north to always be towards the top of the map\r\nand south towards the bottom. As mentioned, historically, maps have not always been\r\noriented north. Different geographic and religious influences have changed over time\r\nhow maps are oriented. Aesthetics, political interests, egotism, and navigation are some\r\nof the other reasons why cartographers over the ages have used different map\r\norientations.\r\n \r\nNorth Orientation Maps\r\n Claudius Ptolemy (90-168 AD/CE, #119), a classical Greek cartographer was\r\ncredited with creating the first known atlas. His collection of cartography in Geographia,\r\nwas an early example of orienting maps towards the north. North orientation came back\r\ninto favor during the Great Age of Exploration with the need for seafaring explorers to\r\norient themselves with their compasses. The importance of orienting maps towards the\r\nnorth was a reflection of the importance of knowing where magnetic north was. Today,",
+      "label": "section_header",
+      "text": "Map Orientation\n1\t\r\nThe orientation of a map is the relationship between the\r\ndirections on the map and the corresponding compass directions\r\nin reality. The word “orient” is derived from Latin oriens,\r\nmeaning “East”. In the Middle Ages many maps, including the\r\nubiquitous T-O maps, were drawn with East at the top (meaning\r\nthat the direction “up” on the map corresponds to East on the\r\ncompass). Today, the most common – but far from universal –\r\ncartographic convention is that North is at the top of a map.\r\nSeveral kinds of maps are often traditionally not oriented with\r\nNorth at the top:\r\n Maps from non-Western traditions are oriented a variety\r\nof ways. Old maps of Edo show the Japanese imperial palace as\r\nthe “top”, but also at the center, of the map. Labels on the map\r\nare oriented in such a way that you cannot read them properly\r\nunless you put the imperial palace above your head.\r\n Medieval European T-O maps such as the Hereford\r\nmappamundi were centered on Jerusalem with East at the top.\r\nIndeed, prior to the reintroduction of Ptolemy’s Geography to\r\nEurope around 1400, there was no single convention in the West.\r\nportolan charts, for example, are oriented to the shores they\r\ndescribe.\r\n Maps of cities bordering a sea are often conventionally\r\noriented with the sea at the top.\r\n Route and channel maps have traditionally been oriented to the road or\r\nwaterway they describe.\r\n Polar maps of the Arctic or Antarctic regions are conventionally centered on the\r\npole; the direction North would be towards or away from the centre of the map,\r\nrespectively. Typical maps of the Arctic have 0° meridian towards the bottom of the\r\npage; maps of the Antarctic have the 0° meridian towards the top of the page.\r\n Reversed maps, also known as Upside-Down maps or South-Up maps, reverse the\r\n“North is up” convention and have South at the top. An orientation very common with\r\nArab Islamic maps.\r\n Maps are usually created from a particular direction. The directionality of a map\r\nis known as its orientation. The popularity of online mapping such as Google Maps has\r\nconditioned many people to expect due north to always be towards the top of the map\r\nand south towards the bottom. As mentioned, historically, maps have not always been\r\noriented north. Different geographic and religious influences have changed over time\r\nhow maps are oriented. Aesthetics, political interests, egotism, and navigation are some\r\nof the other reasons why cartographers over the ages have used different map\r\norientations.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 79.5,
+        "b": 443.5,
+        "r": 190.0,
+        "t": 733.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "North Orientation Maps\r\n Claudius Ptolemy (90-168 AD/CE, #119), a classical Greek cartographer was\r\ncredited with creating the first known atlas. His collection of cartography in Geographia,\r\nwas an early example of orienting maps towards the north. North orientation came back\r\ninto favor during the Great Age of Exploration with the need for seafaring explorers to\r\norient themselves with their compasses. The importance of orienting maps towards the\r\nnorth was a reflection of the importance of knowing where magnetic north was. Today,",
+      "bbox": {
+        "l": 200.0,
+        "b": 587.5,
+        "r": 522.5,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 200.5,
+        "b": 521.0,
+        "r": 522.5,
+        "t": 586.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 200.0,
+        "b": 443.5,
+        "r": 522.5,
+        "t": 519.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 415.0,
+        "r": 522.5,
+        "t": 440.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 388.5,
+        "r": 522.5,
+        "t": 413.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 335.0,
+        "r": 522.5,
+        "t": 387.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 295.5,
+        "r": 522.5,
+        "t": 333.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 191.5,
+        "r": 522.5,
+        "t": 294.0
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 164.5,
+        "r": 212.0,
+        "t": 175.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 83.5,
+        "r": 522.5,
+        "t": 161.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 303.0,
+        "b": 38.5,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "2": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 2\t\r\na north orientation is commonplace among many cartographers and almost all online\r\nmapping applications.\r\n \r\nPtolemaic world map A Byzantine Greek world map according to Ptolemy's first (conic)\r\nprojection. From Codex Vaticanus Urbinas Graecus 82, Constantinople c. 1300.\r\nParchment 575 x 418 mm. Probably assembled by Maximus Planoudes #119\r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n2\t\r\na north orientation is commonplace among many cartographers and almost all online\r\nmapping applications.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "Ptolemaic world map A Byzantine Greek world map according to Ptolemy's first (conic)\r\nprojection. From Codex Vaticanus Urbinas Graecus 82, Constantinople c. 1300.\r\nParchment 575 x 418 mm. Probably assembled by Maximus Planoudes #119",
+      "bbox": {
+        "l": 89.5,
+        "b": 693.5,
+        "r": 522.5,
+        "t": 718.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 94.0,
+        "b": 363.5,
+        "r": 529.5,
+        "t": 666.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 111.0,
+        "b": 324.5,
+        "r": 501.0,
+        "t": 363.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "3": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 3\t\r\nPtolemy’s world map in the Ulm edition, 1482, #119",
+      "label": "section_header",
+      "text": "Map Orientation\n3\t\r\nPtolemy’s world map in the Ulm edition, 1482, #119",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 93.5,
+        "b": 413.0,
+        "r": 528.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 189.5,
+        "b": 400.5,
+        "r": 422.5,
+        "t": 412.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.0,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "4": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 4\t\r\n \r\nComplete Map of the Nine Border Towns of the Great Ming and of the Human Presence and Travel Routes\r\nof the Ten Thousand Countries. (#236)\r\n Dàmíng jiǔ biān wànguó rén jì lùchéng quán tú. 1663 / 1680 (dated), 54 x 49 in (137.16 x 124.46 cm)\r\nA rare and extraordinary 1663 (Kangxi 2) xylographic map of Ming China, and indeed the entire world, by\r\nWáng Jūnfǔ issued during the reign of the Kangxi Emperor (1661 – 1722). This massively proportioned\r\nmap focuses on China, which, bounded on the north by the Great Wall of China, on the west by the Yellow\r\nRiver, and on the east and south by oceans, occupies some three fourths of the map. As is characteristic of\r\nmost Chinese world maps, the less detailed surrounding regions illustrate the rest of the world, but on a\r\nmuch reduced and often hard to interpret scale. This world map's focus on China to the diminishment of all\r\nother lands is neatly summed up by the 17th century Chinese cartographer Chen Zushou,\r\nAll the barbarian people within the Four Seas should come to pay tribute to the Chinese emperor. Although\r\nthey [the Jesuits] might describe the world as comprising Five Continents, yet four of them should\r\nsurround the nucleus of China.",
+      "label": "section_header",
+      "text": "Map Orientation\n4\nComplete Map of the Nine Border Towns of the Great Ming and of the Human Presence and Travel Routes\r\nof the Ten Thousand Countries. (#236)\r\n Dàmíng jiǔ biān wànguó rén jì lùchéng quán tú. 1663 / 1680 (dated), 54 x 49 in (137.16 x 124.46 cm)\r\nA rare and extraordinary 1663 (Kangxi 2) xylographic map of Ming China, and indeed the entire world, by\r\nWáng Jūnfǔ issued during the reign of the Kangxi Emperor (1661 – 1722). This massively proportioned\r\nmap focuses on China, which, bounded on the north by the Great Wall of China, on the west by the Yellow\r\nRiver, and on the east and south by oceans, occupies some three fourths of the map. As is characteristic of\r\nmost Chinese world maps, the less detailed surrounding regions illustrate the rest of the world, but on a\r\nmuch reduced and often hard to interpret scale. This world map's focus on China to the diminishment of all\r\nother lands is neatly summed up by the 17th century Chinese cartographer Chen Zushou,\r\nAll the barbarian people within the Four Seas should come to pay tribute to the Chinese emperor. Although\r\nthey [the Jesuits] might describe the world as comprising Five Continents, yet four of them should\r\nsurround the nucleus of China.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 95.0,
+        "b": 233.5,
+        "r": 531.0,
+        "t": 705.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 90.0,
+        "b": 206.0,
+        "r": 521.5,
+        "t": 228.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 73.5,
+        "r": 522.5,
+        "t": 205.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 90.5,
+        "b": 73.0,
+        "r": 521.5,
+        "t": 108.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.0,
+        "b": 38.5,
+        "r": 309.5,
+        "t": 47.5
       }
     }
   ],
   "5": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 5\t\r\n \r\n Macrobian world map. 1483, #201",
+      "label": "section_header",
+      "text": "Map Orientation\n5\nMacrobian world map. 1483, #201",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 120.0,
+        "b": 337.0,
+        "r": 492.5,
+        "t": 709.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 324.5,
+        "r": 241.5,
+        "t": 336.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.0,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "6": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 6\t\r\n \r\nEast Orientation Maps\r\nDuring the medieval age religious doctrine influenced cartography. European\r\ncartographers oriented their maps towards the Holy Land since Jerusalem was the place\r\nof Christ’s death and resurrection. In fact, the world “orient” comes from the Latin\r\nword “oriens”, meaning “East”. And there was a long stretch in\r\nthe medieval era when most European maps were drawn with\r\nthe East on the top. If there was any doubt about this move’s\r\nreligious significance, they illuminated it with their maps’ pious\r\nillustrations, whether of Adam and Eve or Christ enthroned.\r\nExamples of maps with an east orientation are the mappamundi\r\n(medieval European world maps) such as the T-O map (see\r\n#205). The T-O maps was a symbolic representation of the\r\nworld, with the O representing boundary of the world,\r\nencircled by the earth’s oceans. The T nested inside the O divided the world into the\r\nNorthern Hemispheres’ three continents: Asia at the top, Europe to the left, and Africa\r\nto the right (the southern hemisphere was ignored as it was considered inhabitable at\r\nthe time). The horizontal bar of the T represented the Mediterranean Sea and the vertical\r\nportion of the T the Nile and Tanais [Don] Rivers. Heavily influenced by Christianity,\r\nEuropean cartographers in medieval times oriented the maps so that east was at the top\r\nwhere the sun rose and the Paradise was thought to lie.",
+      "label": "section_header",
+      "text": "Map Orientation\n6\nEast Orientation Maps\r\nDuring the medieval age religious doctrine influenced cartography. European\r\ncartographers oriented their maps towards the Holy Land since Jerusalem was the place\r\nof Christ’s death and resurrection. In fact, the world “orient” comes from the Latin\r\nword “oriens”, meaning “East”. And there was a long stretch in\r\nthe medieval era when most European maps were drawn with\r\nthe East on the top. If there was any doubt about this move’s\r\nreligious significance, they illuminated it with their maps’ pious\r\nillustrations, whether of Adam and Eve or Christ enthroned.\r\nExamples of maps with an east orientation are the mappamundi\r\n(medieval European world maps) such as the T-O map (see\r\n#205). The T-O maps was a symbolic representation of the\r\nworld, with the O representing boundary of the world,\r\nencircled by the earth’s oceans. The T nested inside the O divided the world into the\r\nNorthern Hemispheres’ three continents: Asia at the top, Europe to the left, and Africa\r\nto the right (the southern hemisphere was ignored as it was considered inhabitable at\r\nthe time). The horizontal bar of the T represented the Mediterranean Sea and the vertical\r\nportion of the T the Nile and Tanais [Don] Rivers. Heavily influenced by Christianity,\r\nEuropean cartographers in medieval times oriented the maps so that east was at the top\r\nwhere the sun rose and the Paradise was thought to lie.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 693.5,
+        "r": 203.0,
+        "t": 705.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 653.5,
+        "r": 523.0,
+        "t": 692.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 535.0,
+        "r": 404.0,
+        "t": 655.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 412.5,
+        "b": 541.0,
+        "r": 531.0,
+        "t": 652.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 441.5,
+        "r": 523.0,
+        "t": 532.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.0,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "7": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 7\t\r\n East-oriented Cottoniana or Anglo-Saxon Map, c. 995, 21.2 x 17.6 cm,\r\nBritish Library, Cotton MS Tiberius BV, f.56v, #210\r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n7\t\r\n East-oriented Cottoniana or Anglo-Saxon Map, c. 995, 21.2 x 17.6 cm,\r\nBritish Library, Cotton MS Tiberius BV, f.56v, #210",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 94.5,
+        "b": 139.0,
+        "r": 558.0,
+        "t": 719.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 148.5,
+        "b": 111.5,
+        "r": 463.0,
+        "t": 136.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "8": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 8\t\r\n The Hereford Mappa Mundi. Oriented with East at the top. God dominates the world, with the\r\nLast Judgment below. The map is an outstanding example of a map type that had evolved over the\r\npreceding eight centuries. #226\r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n8\t\r\n The Hereford Mappa Mundi. Oriented with East at the top. God dominates the world, with the\r\nLast Judgment below. The map is an outstanding example of a map type that had evolved over the\r\npreceding eight centuries. #226",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 113.0,
+        "b": 251.0,
+        "r": 499.5,
+        "t": 719.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 90.0,
+        "b": 207.5,
+        "r": 521.5,
+        "t": 246.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 310.5,
+        "b": 75.5,
+        "r": 448.0,
+        "t": 218.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.0,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "9": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 9\t\r\nThe first known compass rose depicted on a map, in a detail from the Catalan Atlas (#235)\r\nfrom 1375, attributed to cartographer Abraham Cresques of Majorca. Bibliotheque\r\nnational de France.\r\n Catalan Atlas, 1375 #235\r\nUnlike many other nautical charts, the Catalan Atlas is meant to be read (according to the\r\nArabic tradition) with the north at the bottom; thus the maps are oriented—from left to\r\nright—from the Far East to the Atlantic. The assemblage of plates giving an overall view\r\nof the document is presented as it is meant to be read, in other words with the south\r\nuppermost; but to facilitate consultation, excerpts from the Atlas are shown with the\r\nnorth uppermost.\r\n Often the question of the “correct” orientation of the sheets arose. George\r\nGrosjean, in his commentary on the 1977 facsimile edition of the Atlas, stresses that the\r\norientation of this map must be understood from its essential part. The map was\r\nconstructed in the portolano style, a type of medieval navigation chart which was\r\nintended to lie on the chart-table of a ship and always was oriented to the necessities of\r\nnavigation, thus there is no “orientation of priority” of such maps. Since the Atlas was\r\nnot intended as a portolano for daily use but instead was a luxury edition for a princely\r\n(or royal) library, it is useless to ask for correct orientation of the map-sheets. This fact\r\nnotwithstanding, however, as the legends that are legible prevail in north-orientation, in\r\nthe modern literature of the maps the north-orientation is now adopted.\r\n \r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n9\t\r\nThe first known compass rose depicted on a map, in a detail from the Catalan Atlas (#235)\r\nfrom 1375, attributed to cartographer Abraham Cresques of Majorca. Bibliotheque\r\nnational de France.\r\n Catalan Atlas, 1375 #235\r\nUnlike many other nautical charts, the Catalan Atlas is meant to be read (according to the\r\nArabic tradition) with the north at the bottom; thus the maps are oriented—from left to\r\nright—from the Far East to the Atlantic. The assemblage of plates giving an overall view\r\nof the document is presented as it is meant to be read, in other words with the south\r\nuppermost; but to facilitate consultation, excerpts from the Atlas are shown with the\r\nnorth uppermost.\r\n Often the question of the “correct” orientation of the sheets arose. George\r\nGrosjean, in his commentary on the 1977 facsimile edition of the Atlas, stresses that the\r\norientation of this map must be understood from its essential part. The map was\r\nconstructed in the portolano style, a type of medieval navigation chart which was\r\nintended to lie on the chart-table of a ship and always was oriented to the necessities of\r\nnavigation, thus there is no “orientation of priority” of such maps. Since the Atlas was\r\nnot intended as a portolano for daily use but instead was a luxury edition for a princely\r\n(or royal) library, it is useless to ask for correct orientation of the map-sheets. This fact\r\nnotwithstanding, however, as the legends that are legible prevail in north-orientation, in\r\nthe modern literature of the maps the north-orientation is now adopted.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 681.0,
+        "r": 522.5,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 92.0,
+        "b": 541.0,
+        "r": 523.5,
+        "t": 680.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 249.0,
+        "b": 527.5,
+        "r": 362.5,
+        "t": 538.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 447.0,
+        "r": 522.5,
+        "t": 525.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 314.5,
+        "r": 523.0,
+        "t": 446.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 196.5,
+        "b": 81.5,
+        "r": 400.0,
+        "t": 302.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.0,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "10": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 10\t\r\n \r\nOriented with East at the top. 11th century Isidore mappamundi, 26 cm diameter (#205DD)\r\nBayerische Staatsbibliotek, Munich, Clm 10058, f. 154v\r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n10\nOriented with East at the top. 11th century Isidore mappamundi, 26 cm diameter (#205DD)\r\nBayerische Staatsbibliotek, Munich, Clm 10058, f. 154v",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 93.0,
+        "b": 161.0,
+        "r": 525.0,
+        "t": 711.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 104.0,
+        "b": 122.0,
+        "r": 507.5,
+        "t": 147.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "11": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 11\t\r\n The El Burgo de Osma Beatus, 1086 (#207.14)\r\n \r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n11\t\r\n The El Burgo de Osma Beatus, 1086 (#207.14)",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 107.0,
+        "b": 403.5,
+        "r": 494.5,
+        "t": 704.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 204.0,
+        "b": 382.5,
+        "r": 408.0,
+        "t": 394.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 152.5,
+        "b": 84.0,
+        "r": 461.5,
+        "t": 370.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "12": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 12\t\r\nLinschoten’s Asia, 1596, oriented with East at the top (#436.1)\r\nBesides China various other countries are identified through text and color: Borneo, Iava Mayor,\r\nIava Menor, Timor, Siam, Cambo, Pegu, Sunatra, Celebes, Gilolo, OS Papuas, Corea, Iapan.\r\nHowever, without the color, the countries are simply identified by text without distinct\r\nboundaries (except, of course the island nations)\r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n12\t\r\nLinschoten’s Asia, 1596, oriented with East at the top (#436.1)\r\nBesides China various other countries are identified through text and color: Borneo, Iava Mayor,\r\nIava Menor, Timor, Siam, Cambo, Pegu, Sunatra, Celebes, Gilolo, OS Papuas, Corea, Iapan.\r\nHowever, without the color, the countries are simply identified by text without distinct\r\nboundaries (except, of course the island nations)",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 72.0,
+        "b": 385.5,
+        "r": 505.5,
+        "t": 711.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 92.5,
+        "b": 297.5,
+        "r": 518.5,
+        "t": 362.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.5,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "13": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 13\t\r\nWest Orientation Maps\r\nThere are not a lot of West oriented maps. In 1635, a map of New Netherlands and New\r\nEngland created by Dutch cartographer Willem Blaeu shows a West orientation.\r\n \r\n \r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n13\t\r\nWest Orientation Maps\r\nThere are not a lot of West oriented maps. In 1635, a map of New Netherlands and New\r\nEngland created by Dutch cartographer Willem Blaeu shows a West orientation.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 706.5,
+        "r": 207.5,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 680.0,
+        "r": 522.5,
+        "t": 705.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 103.5,
+        "b": 306.5,
+        "r": 538.5,
+        "t": 644.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "14": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 14\t\r\n West-oriented Angliae, Scotiae, Et Hiberniae Sive Britannicae Insularum Descriptio\r\nAbraham Ortelius, 1574\r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "Map Orientation\n14\t\r\n West-oriented Angliae, Scotiae, Et Hiberniae Sive Britannicae Insularum Descriptio\r\nAbraham Ortelius, 1574",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 93.5,
+        "b": 412.0,
+        "r": 528.5,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 108.0,
+        "b": 386.5,
+        "r": 482.0,
+        "t": 411.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.5,
+        "t": 47.5
       }
     }
   ],
   "15": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 15\t\r\nDelineatio Omnium Orarum Totius Australis Partis Americae, Dictae Peruvianae, a R. de la\r\nPlata, Brasiliam, Pariam, & Castellam . [South America], 1596, Jan Huygen Van Linschoten.\r\n#436.1\r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n15\t\r\nDelineatio Omnium Orarum Totius Australis Partis Americae, Dictae Peruvianae, a R. de la\r\nPlata, Brasiliam, Pariam, & Castellam . [South America], 1596, Jan Huygen Van Linschoten.\r\n#436.1",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 90.0,
+        "b": 400.0,
+        "r": 525.5,
+        "t": 720.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 98.5,
+        "b": 365.0,
+        "r": 513.0,
+        "t": 400.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "16": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 16\t\r\nSouth Orientation Maps\r\nMaps with south oriented towards the top of the map are known as south-up or reverse\r\nmaps, since the map appears upside down to those used to a map orientation towards\r\nthe north. In these maps, South is oriented the top of the map, east is towards the left of\r\nthe map and west towards the right.\r\n Some of the very earliest Egyptian maps show the South as up, presumably\r\nequating the Nile’s northward flow with the force of gravity. Islamic Arab map makers\r\noften drew maps with the south facing up, possibly because this was how the Chinese\r\ndid it. Arab cartographers like Ibn Hawqal commonly use a South map orientation; in\r\nthe 10th century he created a world map with South at the top. The Moroccan\r\ncartographer, Muhammad al-Idrisi, drew a world map in 1154 commonly known as\r\nTabula Rogeriana (Book of Roger) for King Roger II of Sicily, showing south at the top of\r\nthe map (#219). In Europe, the famous Venetian Fra Mauro world map of 1459 (#249) also\r\nemployed a South orientation.\r\n \r\n A modern copy of\tAl-Idrisi world map from the Nuzhat al-Mushtāq fi'khtirāq al-āfāq,\r\n a.k.a Tabula Rogeriana, oriented with South at the top, 1154,\r\nBibliotheque nationale de France (MSO Arabe 2221) as reconstructed by the German\r\ncartographer Konrad Miller in 1927 and published in Stuttgart in 1928,\r\nbetter known as “The large Idrisi Map”, Size 195 x 92 cm.\r\n \r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n16\t\r\nSouth Orientation Maps\r\nMaps with south oriented towards the top of the map are known as south-up or reverse\r\nmaps, since the map appears upside down to those used to a map orientation towards\r\nthe north. In these maps, South is oriented the top of the map, east is towards the left of\r\nthe map and west towards the right.\r\n Some of the very earliest Egyptian maps show the South as up, presumably\r\nequating the Nile’s northward flow with the force of gravity. Islamic Arab map makers\r\noften drew maps with the south facing up, possibly because this was how the Chinese\r\ndid it. Arab cartographers like Ibn Hawqal commonly use a South map orientation; in\r\nthe 10th century he created a world map with South at the top. The Moroccan\r\ncartographer, Muhammad al-Idrisi, drew a world map in 1154 commonly known as\r\nTabula Rogeriana (Book of Roger) for King Roger II of Sicily, showing south at the top of\r\nthe map (#219). In Europe, the famous Venetian Fra Mauro world map of 1459 (#249) also\r\nemployed a South orientation.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "A modern copy of\tAl-Idrisi world map from the Nuzhat al-Mushtāq fi'khtirāq al-āfāq,\r\n a.k.a Tabula Rogeriana, oriented with South at the top, 1154,\r\nBibliotheque nationale de France (MSO Arabe 2221) as reconstructed by the German\r\ncartographer Konrad Miller in 1927 and published in Stuttgart in 1928,\r\nbetter known as “The large Idrisi Map”, Size 195 x 92 cm.",
+      "bbox": {
+        "l": 89.5,
+        "b": 707.0,
+        "r": 212.0,
+        "t": 718.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 654.0,
+        "r": 523.0,
+        "t": 705.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 534.5,
+        "r": 523.0,
+        "t": 652.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 93.5,
+        "b": 323.5,
+        "r": 528.5,
+        "t": 521.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 113.5,
+        "b": 256.0,
+        "r": 498.0,
+        "t": 321.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.5,
+        "t": 47.5
       }
     }
   ],
   "17": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 17\t\r\n al-Idrisi’s world map, oriented with South at the top, 21 x 30 cm (23 cm diameter), 1154\r\nBodleian Library, MS Pococke 375, dated 1553/960 H\r\n \r\n \r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n17\t\r\n al-Idrisi’s world map, oriented with South at the top, 21 x 30 cm (23 cm diameter), 1154\r\nBodleian Library, MS Pococke 375, dated 1553/960 H",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 92.5,
+        "b": 264.0,
+        "r": 529.5,
+        "t": 717.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 109.0,
+        "b": 234.0,
+        "r": 500.5,
+        "t": 258.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "18": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 18\t\r\n \r\nal-Istakhri’s world map, Arabic, 977/1570 A.D., oriented with South at the top (#211)\r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n18\nal-Istakhri’s world map, Arabic, 977/1570 A.D., oriented with South at the top (#211)",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 93.0,
+        "b": 305.0,
+        "r": 529.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 116.5,
+        "b": 279.5,
+        "r": 495.5,
+        "t": 291.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 312.5,
+        "t": 47.5
       }
     }
   ],
   "19": [
     {
-      "label": "text",
-      "text": "Map Orientation\n\n19\n",
+      "label": "section_header",
+      "text": "Map Orientation\n19",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.5,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 123.5,
+        "b": 386.5,
+        "r": 474.0,
+        "t": 713.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 36.5,
+        "r": 312.5,
+        "t": 47.5
       }
     }
   ],
   "20": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 20\t\r\n Ibn Hawqal’s world map, Arabic, 980 CE oriented with South at the top, 35 x 43 cm (#213)\r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n20\t\r\n Ibn Hawqal’s world map, Arabic, 980 CE oriented with South at the top, 35 x 43 cm (#213)",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 92.5,
+        "b": 425.0,
+        "r": 524.0,
+        "t": 717.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 104.0,
+        "b": 408.5,
+        "r": 507.5,
+        "t": 420.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "21": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 21\t\r\n South-oriented map, the Borgia/\tVelletri World Map. 141-1458, #237\r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n21\t\r\n South-oriented map, the Borgia/\tVelletri World Map. 141-1458, #237",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 753.5
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 753.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 92.0,
+        "b": 282.5,
+        "r": 522.5,
+        "t": 715.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 152.0,
+        "b": 267.0,
+        "r": 460.0,
+        "t": 278.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 36.5,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "22": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 22\t\r\n \r\n \r\nCartographers from the Dieppe School of Cartography in the 16th century produced\r\ntable maps with a south orientation. Pierre Desceliers, a French cartographer during the\r\nRenaissance creating a world map in 1550 meant to be viewed around a table and\r\nshowed parts of the world turn towards the south (#378). In 1566 Nicolas Desliens also\r\ncreated a map of the world showing South towards the top (#393.3). The map is currently\r\nhoused in the Bibliothèque Nationale in Paris. In contemporary cartography, South-up\r\nmaps are mostly created to protest Western Hemisphere bias in some world maps.\r\nLaunched on Australia day, Stuart McArthur premiered his Universal Corrective Map that\r\nshowed a South orientation.\r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n22\nCartographers from the Dieppe School of Cartography in the 16th century produced\r\ntable maps with a south orientation. Pierre Desceliers, a French cartographer during the\r\nRenaissance creating a world map in 1550 meant to be viewed around a table and\r\nshowed parts of the world turn towards the south (#378). In 1566 Nicolas Desliens also\r\ncreated a map of the world showing South towards the top (#393.3). The map is currently\r\nhoused in the Bibliothèque Nationale in Paris. In contemporary cartography, South-up\r\nmaps are mostly created to protest Western Hemisphere bias in some world maps.\r\nLaunched on Australia day, Stuart McArthur premiered his Universal Corrective Map that\r\nshowed a South orientation.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 103.0,
+        "b": 309.0,
+        "r": 510.0,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 179.0,
+        "r": 523.0,
+        "t": 294.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "23": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 23\t\r\n World map of Nicolas Desliens (1566) part of the Dieppe Maps,\r\nBibliothèque Nationale de France, Paris. Oriented with South at the top (#393.3)\r\n \r\n Pierre Desceliers’ Planisphe detail: North America, 1550 (#378)\r\n (oriented with South at the top)",
+      "label": "section_header",
+      "text": "Map Orientation\n23\t\r\n World map of Nicolas Desliens (1566) part of the Dieppe Maps,\r\nBibliothèque Nationale de France, Paris. Oriented with South at the top (#393.3)",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 91.5,
+        "b": 459.5,
+        "r": 524.5,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "Pierre Desceliers’ Planisphe detail: North America, 1550 (#378)\r\n (oriented with South at the top)",
+      "bbox": {
+        "l": 128.5,
+        "b": 433.5,
+        "r": 483.5,
+        "t": 458.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 92.5,
+        "b": 103.5,
+        "r": 529.5,
+        "t": 419.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 163.5,
+        "b": 78.0,
+        "r": 448.5,
+        "t": 103.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "24": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 24\t\r\n \r\nFra Mauro's Mappamundi, 1459\r\n(oriented with South at the top)\r\n190.5 cm diameter, #249",
+      "label": "section_header",
+      "text": "Map Orientation\n24\nFra Mauro's Mappamundi, 1459\r\n(oriented with South at the top)\r\n190.5 cm diameter, #249",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 90.0,
+        "b": 278.0,
+        "r": 536.0,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 232.0,
+        "b": 239.0,
+        "r": 380.5,
+        "t": 276.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 37.5,
+        "r": 312.5,
+        "t": 47.5
       }
     }
   ],
   "25": [
     {
-      "label": "text",
-      "text": "Map Orientation\n\n: MEDIA\n> MESOPOTAMLA-\n\nCHINA We PERSIA.\n\n9\ngo® PRUSSTA\nTARIARIA\n\n‘CATHAY\nFINNLAND\n\nOcean\n\nEARTHLY *\nPARADISE\n\n25\n",
+      "label": "section_header",
+      "text": "Map Orientation\n: MEDIA\n> MESOPOTAMLA-\nCHINA We PERSIA.\n9\ngo® PRUSSTA\nTARIARIA\n‘CATHAY\nFINNLAND\nOcean\nEARTHLY *\nPARADISE\n25",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 95.0,
+        "b": 221.5,
+        "r": 508.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "26": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 26\t\r\n \r\nThe profound arbitrariness of our current cartographic conventions was made evident\r\nby McArthur’s Universal Corrective Map of the World, an iconic “upside down” view of\r\nthe world that recently celebrated its 35th anniversary. Launched by Australian Stuart\r\nMcArthur on Jan. 26, 1979 (Australia Day, naturally), this map is supposed to challenge\r\nour casual acceptance of European perspectives as global norms.\r\nThe McArthur map also makes us wonder why we are so quick to assume that\r\nNorthern Europeans were the ones who invented the modern map — and decided\r\nwhich way to hold it — in the first place. As is so often the case, our eagerness to invoke\r\nEurocentrism displays a certain bias of its own, since in fact, the north’s elite\r\ncartographic status owes more to Byzantine monks and Majorcan Jews than it does to\r\nany Englishman.\r\nThere is nothing inevitable or intrinsically correct — not in geographic,\r\ncartographic or even philosophical terms — about the north being represented as “up”,\r\nbecause “up” on a map is a human construction, not a natural one. Some of the very\r\nearliest Egyptian maps show the south as up, presumably equating the Nile’s northward\r\nflow with the force of gravity. And there was a long stretch in the medieval era when\r\nmost European maps were drawn with the east on the top. If there was any doubt about\r\nthis move’s religious significance, they illuminated it with their maps’ pious\r\nillustrations, whether of Adam and Eve or Christ enthroned. In the same period, Arab\r\nmap makers often drew maps with the south facing up, possibly because this was how\r\nthe Chinese did it.\r\n \r\n \r\n \r\n ",
+      "label": "section_header",
+      "text": "Map Orientation\n26\nThe profound arbitrariness of our current cartographic conventions was made evident\r\nby McArthur’s Universal Corrective Map of the World, an iconic “upside down” view of\r\nthe world that recently celebrated its 35th anniversary. Launched by Australian Stuart\r\nMcArthur on Jan. 26, 1979 (Australia Day, naturally), this map is supposed to challenge\r\nour casual acceptance of European perspectives as global norms.\r\nThe McArthur map also makes us wonder why we are so quick to assume that\r\nNorthern Europeans were the ones who invented the modern map — and decided\r\nwhich way to hold it — in the first place. As is so often the case, our eagerness to invoke\r\nEurocentrism displays a certain bias of its own, since in fact, the north’s elite\r\ncartographic status owes more to Byzantine monks and Majorcan Jews than it does to\r\nany Englishman.\r\nThere is nothing inevitable or intrinsically correct — not in geographic,\r\ncartographic or even philosophical terms — about the north being represented as “up”,\r\nbecause “up” on a map is a human construction, not a natural one. Some of the very\r\nearliest Egyptian maps show the south as up, presumably equating the Nile’s northward\r\nflow with the force of gravity. And there was a long stretch in the medieval era when\r\nmost European maps were drawn with the east on the top. If there was any doubt about\r\nthis move’s religious significance, they illuminated it with their maps’ pious\r\nillustrations, whether of Adam and Eve or Christ enthroned. In the same period, Arab\r\nmap makers often drew maps with the south facing up, possibly because this was how\r\nthe Chinese did it.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 93.0,
+        "b": 423.5,
+        "r": 539.0,
+        "t": 719.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 341.0,
+        "r": 522.5,
+        "t": 406.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 261.5,
+        "r": 523.0,
+        "t": 339.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 131.5,
+        "r": 523.0,
+        "t": 260.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.5,
+        "t": 47.5
       }
     }
   ],
   "27": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 27\t\r\nNo Unified Orientation\r\nMaps produced during the Golden Age of Japanese cartography from the 1600’s to\r\naround 1855 actually had no “standard” orientation. Many maps had a center\r\norientation radiating from the palace in Edo or no apparent directional orientation. It\r\nwasn’t was until the influx of foreign influences starting with Commodore Perry’s\r\nExpedition in the 1850’s that Japanese cartography started to adopt western traditions of\r\norienting maps towards the north. Below is an example of a Japanese world map, the\r\nBankoku Sozu [Map of the World], 1645 44.8 x 22 inches/134.5 x 57.6 cm. A double-sided\r\nwoodcut found in the Japanese Maps of the Tokugawa Era. On the reverse (below), are\r\nillustrated examples of the peoples of the world. This map was designed to hang with\r\nEast at the top. University of British Columbia Library - Rare Books and Special\r\nCollections.\r\n \r\nCustom Orientations\r\nNot all maps are oriented due North,\r\nSouth, East, or West. Some maps have a\r\ncustom orientation to promote a political\r\npurpose or to help with navigation. For\r\nexample, maps created by the City of\r\nSanta Monica have a rotation of 46\r\ndegrees so that the beach is always\r\nshown at the bottom of maps. This is\r\ndone for aesthetic purposes and results in\r\nan orientation that is northeast instead of\r\ndue north.\r\n The New York City Department\r\nof Transportation places pedestrian\r\nfriendly maps around the city with the\r\norientation rotated to be “heads-up” or\r\nforward-facing so that viewers are facing\r\nthe map in the same direction they\r\nstanding for readability. This helps\r\npedestrians to better orient themselves in\r\nrelationship to the landmarks on the map\r\nand to better navigate the city.\r\n Polar Maps of the Arctic and\r\nAntarctica have custom projections with\r\norientations towards the poles.\r\n There is nothing inevitable or\r\nintrinsically correct — not in geographic,\r\ncartographic or even philosophical terms\r\n— about the North being represented as\r\nup, because “up” on a map is a human\r\nconstruction, not a natural one.\r\n Beginning in the Mediterranean,\r\nsomewhere between Europe and the\r\nArab world in the 14th and 15th centuries,\r\nincreasingly precise navigational maps of",
+      "label": "section_header",
+      "text": "Map Orientation\n27\t\r\nNo Unified Orientation\r\nMaps produced during the Golden Age of Japanese cartography from the 1600’s to\r\naround 1855 actually had no “standard” orientation. Many maps had a center\r\norientation radiating from the palace in Edo or no apparent directional orientation. It\r\nwasn’t was until the influx of foreign influences starting with Commodore Perry’s\r\nExpedition in the 1850’s that Japanese cartography started to adopt western traditions of\r\norienting maps towards the north. Below is an example of a Japanese world map, the\r\nBankoku Sozu [Map of the World], 1645 44.8 x 22 inches/134.5 x 57.6 cm. A double-sided\r\nwoodcut found in the Japanese Maps of the Tokugawa Era. On the reverse (below), are\r\nillustrated examples of the peoples of the world. This map was designed to hang with\r\nEast at the top. University of British Columbia Library - Rare Books and Special\r\nCollections.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "Custom Orientations\r\nNot all maps are oriented due North,\r\nSouth, East, or West. Some maps have a\r\ncustom orientation to promote a political\r\npurpose or to help with navigation. For\r\nexample, maps created by the City of\r\nSanta Monica have a rotation of 46\r\ndegrees so that the beach is always\r\nshown at the bottom of maps. This is\r\ndone for aesthetic purposes and results in\r\nan orientation that is northeast instead of\r\ndue north.\r\n The New York City Department\r\nof Transportation places pedestrian\r\nfriendly maps around the city with the\r\norientation rotated to be “heads-up” or\r\nforward-facing so that viewers are facing\r\nthe map in the same direction they\r\nstanding for readability. This helps\r\npedestrians to better orient themselves in\r\nrelationship to the landmarks on the map\r\nand to better navigate the city.\r\n Polar Maps of the Arctic and\r\nAntarctica have custom projections with\r\norientations towards the poles.\r\n There is nothing inevitable or\r\nintrinsically correct — not in geographic,\r\ncartographic or even philosophical terms\r\n— about the North being represented as\r\nup, because “up” on a map is a human\r\nconstruction, not a natural one.\r\n Beginning in the Mediterranean,\r\nsomewhere between Europe and the\r\nArab world in the 14th and 15th centuries,\r\nincreasingly precise navigational maps of",
+      "bbox": {
+        "l": 89.0,
+        "b": 709.0,
+        "r": 208.5,
+        "t": 718.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 563.5,
+        "r": 523.0,
+        "t": 705.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 93.5,
+        "b": 68.5,
+        "r": 305.5,
+        "t": 555.0
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "",
+      "bbox": {
+        "l": 317.5,
+        "b": 537.0,
+        "r": 423.5,
+        "t": 546.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 318.0,
+        "b": 390.5,
+        "r": 523.0,
+        "t": 532.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 318.0,
+        "b": 255.5,
+        "r": 522.5,
+        "t": 386.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 318.5,
+        "b": 216.0,
+        "r": 522.5,
+        "t": 254.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 318.5,
+        "b": 138.5,
+        "r": 522.5,
+        "t": 214.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 318.5,
+        "b": 83.5,
+        "r": 522.5,
+        "t": 134.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "28": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 28\t\r\nthe Mediterranean Sea and its many ports called portolan charts appeared. They were\r\ndesigned for use by mariners navigating the sea’s trade routes with the help of a recently\r\nadopted technology, the compass. These maps had no real “up” or “down” — pictures\r\nand words faced in all sorts of directions, generally pointing inward from the edge of the\r\nmap — but they all included a compass rose with north clearly distinguished from the\r\nother directions.\r\n \r\nSeptentrionalium terrarum descriptio by Gerardus Mercator, 1595 (#407)\r\n \r\n Members of the Italian Cartographic School preferred to mark North with a hat\r\nor embellished arrow, while their equally influential colleagues from the Spanish-ruled\r\nisland of Majorca used an elaborate rendering of Polaris, the North Star. These men, who\r\nformed the Majorcan Cartographic School, also established a number of other crucial\r\nmapping conventions of the era, including coloring in the Red Sea bright red and\r\ndrawing the Alps as a giant chicken foot.\r\n But this is only part of the explanation. The arrow of the compass can just as\r\neasily point South, since the magnetized metal needle simply aligns with the earth’s",
+      "label": "section_header",
+      "text": "Map Orientation\n28\t\r\nthe Mediterranean Sea and its many ports called portolan charts appeared. They were\r\ndesigned for use by mariners navigating the sea’s trade routes with the help of a recently\r\nadopted technology, the compass. These maps had no real “up” or “down” — pictures\r\nand words faced in all sorts of directions, generally pointing inward from the edge of the\r\nmap — but they all included a compass rose with north clearly distinguished from the\r\nother directions.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "Septentrionalium terrarum descriptio by Gerardus Mercator, 1595 (#407)\nMembers of the Italian Cartographic School preferred to mark North with a hat\r\nor embellished arrow, while their equally influential colleagues from the Spanish-ruled\r\nisland of Majorca used an elaborate rendering of Polaris, the North Star. These men, who\r\nformed the Majorcan Cartographic School, also established a number of other crucial\r\nmapping conventions of the era, including coloring in the Red Sea bright red and\r\ndrawing the Alps as a giant chicken foot.\r\n But this is only part of the explanation. The arrow of the compass can just as\r\neasily point South, since the magnetized metal needle simply aligns with the earth’s",
+      "bbox": {
+        "l": 89.0,
+        "b": 643.0,
+        "r": 523.0,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 93.5,
+        "b": 216.5,
+        "r": 530.0,
+        "t": 627.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 142.5,
+        "b": 204.5,
+        "r": 469.0,
+        "t": 215.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 111.0,
+        "r": 522.5,
+        "t": 188.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 84.5,
+        "r": 522.5,
+        "t": 109.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.5,
+        "t": 47.5
       }
     }
   ],
   "29": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 29\t\r\nmagnetic field, with a pole at each end. Indeed, the Chinese supposedly referred to their\r\nfirst compass magnets as “South-pointing stones”. Crucially, the Chinese developed this\r\nconvention before they began to use compasses for navigation at sea. By the time\r\nEuropeans adopted the compass, though, they were already experienced in navigating\r\nwith reference to the North Star, the one point in the heavens that remains fixed\r\nanywhere in the Northern Hemisphere. Many mariners saw the compass as an artificial\r\nreplacement for the star on cloudy nights and even assumed it was the pull of the star\r\nitself that drew the needle North.\r\n Polar view by Jost Amman, 1564, Globus Terrestris (#402)\r\n \r\nYet even as this North-pointing compass became essential to navigation and\r\nnavigational charts in the 15th century, less precise land maps showing the entire known\r\nOld World continued to offer a disorienting array of perspectives. Some had the East on\r\ntop, in keeping with European medieval tradition, while others preferred the South, in\r\nkeeping with Arab tradition, and others went with the North, in keeping with the point\r\non the compass rose. Among other things that stand out in these maps is that, given the\r\nextent of the known world, the location of the Mediterranean and a bit of uncertainly\r\nabout the equator, Italy was more or less centered between the north and the south —\r\nmeaning that whichever way you turned the map, Italy remained more or less halfway\r\nbetween the top and bottom. Conveniently, Italy was at roughly the same latitude as",
+      "label": "section_header",
+      "text": "Map Orientation\n29\t\r\nmagnetic field, with a pole at each end. Indeed, the Chinese supposedly referred to their\r\nfirst compass magnets as “South-pointing stones”. Crucially, the Chinese developed this\r\nconvention before they began to use compasses for navigation at sea. By the time\r\nEuropeans adopted the compass, though, they were already experienced in navigating\r\nwith reference to the North Star, the one point in the heavens that remains fixed\r\nanywhere in the Northern Hemisphere. Many mariners saw the compass as an artificial\r\nreplacement for the star on cloudy nights and even assumed it was the pull of the star\r\nitself that drew the needle North.\r\n Polar view by Jost Amman, 1564, Globus Terrestris (#402)",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "Yet even as this North-pointing compass became essential to navigation and\r\nnavigational charts in the 15th century, less precise land maps showing the entire known\r\nOld World continued to offer a disorienting array of perspectives. Some had the East on\r\ntop, in keeping with European medieval tradition, while others preferred the South, in\r\nkeeping with Arab tradition, and others went with the North, in keeping with the point\r\non the compass rose. Among other things that stand out in these maps is that, given the\r\nextent of the known world, the location of the Mediterranean and a bit of uncertainly\r\nabout the equator, Italy was more or less centered between the north and the south —\r\nmeaning that whichever way you turned the map, Italy remained more or less halfway\r\nbetween the top and bottom. Conveniently, Italy was at roughly the same latitude as",
+      "bbox": {
+        "l": 89.0,
+        "b": 614.5,
+        "r": 523.0,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 92.5,
+        "b": 231.5,
+        "r": 489.5,
+        "t": 615.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 174.5,
+        "b": 218.5,
+        "r": 437.0,
+        "t": 230.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 72.0,
+        "r": 522.5,
+        "t": 203.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "30": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 30\t\r\nJerusalem, which through most of the European medieval mapmakers assumed was at\r\nthe center of the known world. In fact, the first blow to this pious assumption came with\r\nthe discovery of just how much of the Old World lies to the East of Jerusalem. Only later\r\ndid it become apparent just how far North of the equator Jerusalem — and by extension,\r\nItaly — really was.\r\n The North’s position was ultimately secured by the beginning of the 16th century,\r\nthanks to Claudius Ptolemy, with another European discovery that, like the New World,\r\nothers had known about for quite some time. Ptolemy was a Hellenic cartographer from\r\nEgypt whose work in the second century A.D./CE laid out a systematic approach to\r\nmapping the world, complete with intersecting lines of longitude and latitude on a half￾eaten-doughnut-shaped projection that reflected the curvature of the earth. The\r\ncartographers who made the first big, beautiful maps of the entire world, Old and New\r\n— men like Gerardus Mercator #406, Henricus Martellus Germanus #256 and Martin\r\nWaldseemüller #310 — were obsessed with Ptolemy. They turned out copies of\r\nPtolemy’s Geography on the newly invented printing press, put his portrait in the corners\r\nof their maps and used his writings to fill in places they had never been, even as their\r\nown discoveries were revealing the limitations of his work.\r\n \r\n Nova et Aucta Orbis Terrae Descriptio ad Usum Navigantium Emendate Accommodata,\r\n1569, Gerard Mercator, #406\r\n \r\nFor reasons that have been lost to history, Ptolemy put the North at the top of his maps.\r\nOr at least that’s the way it appears from the only remaining copies of his work, made\r\nby 13th century Byzantine monks. On the one hand, Ptolemy realized that, sitting in\r\nAlexandria, he was in the northern half of a very large globe, whose size had been fairly\r\naccurately calculated by the ancient Greeks. On the other hand, it put Alexandria at the\r\nvery bottom of the inhabited world as known to Ptolemy and all the main centers of\r\ncivilization in the Greco-Roman Mediterranean.",
+      "label": "section_header",
+      "text": "Map Orientation\n30\t\r\nJerusalem, which through most of the European medieval mapmakers assumed was at\r\nthe center of the known world. In fact, the first blow to this pious assumption came with\r\nthe discovery of just how much of the Old World lies to the East of Jerusalem. Only later\r\ndid it become apparent just how far North of the equator Jerusalem — and by extension,\r\nItaly — really was.\r\n The North’s position was ultimately secured by the beginning of the 16th century,\r\nthanks to Claudius Ptolemy, with another European discovery that, like the New World,\r\nothers had known about for quite some time. Ptolemy was a Hellenic cartographer from\r\nEgypt whose work in the second century A.D./CE laid out a systematic approach to\r\nmapping the world, complete with intersecting lines of longitude and latitude on a half￾eaten-doughnut-shaped projection that reflected the curvature of the earth. The\r\ncartographers who made the first big, beautiful maps of the entire world, Old and New\r\n— men like Gerardus Mercator #406, Henricus Martellus Germanus #256 and Martin\r\nWaldseemüller #310 — were obsessed with Ptolemy. They turned out copies of\r\nPtolemy’s Geography on the newly invented printing press, put his portrait in the corners\r\nof their maps and used his writings to fill in places they had never been, even as their\r\nown discoveries were revealing the limitations of his work.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "Nova et Aucta Orbis Terrae Descriptio ad Usum Navigantium Emendate Accommodata,\r\n1569, Gerard Mercator, #406\nFor reasons that have been lost to history, Ptolemy put the North at the top of his maps.\r\nOr at least that’s the way it appears from the only remaining copies of his work, made\r\nby 13th century Byzantine monks. On the one hand, Ptolemy realized that, sitting in\r\nAlexandria, he was in the northern half of a very large globe, whose size had been fairly\r\naccurately calculated by the ancient Greeks. On the other hand, it put Alexandria at the\r\nvery bottom of the inhabited world as known to Ptolemy and all the main centers of\r\ncivilization in the Greco-Roman Mediterranean.",
+      "bbox": {
+        "l": 89.0,
+        "b": 653.5,
+        "r": 522.5,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 494.5,
+        "r": 523.0,
+        "t": 652.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 93.0,
+        "b": 207.5,
+        "r": 522.0,
+        "t": 480.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 108.5,
+        "b": 181.0,
+        "r": 502.5,
+        "t": 205.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 76.5,
+        "r": 522.5,
+        "t": 165.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "31": [
     {
-      "label": "text",
-      "text": "Map Orientation\r\n\t\r\n\t 31\t\r\n Even if compasses and Ptolemy had both pointed to the south, northerners could\r\nstill have come along and flipped things around. In fact, with North seemingly settled at\r\nthe top of the map in the 16th century, there were still some squabbles over who in the\r\nNorthern Hemisphere would end up left, right or center. The politics of reorientation are\r\nanything but simple. For Americans, it’s easy to think that our position, at the top-left of\r\nmost maps, is the intrinsically preferable one; it certainly seems that way if you happen\r\nto be from a culture that reads from left to right. But it’s unclear why Arabs or Israelis,\r\nwho read from right to left, would necessarily think so. And while map makers usually\r\nlike to design maps with the edges running through one of the world’s major oceans, it\r\nis certainly possible to put North America in the very center by splitting the world in\r\nhalf through Asia.\r\n The orientation of our maps, like so many other features of the modern world,\r\narose from the interplay of chance, technology and politics in a way that defies our\r\ndesire to impose easy or satisfying narratives.\r\n \r\n \r\n\t",
+      "label": "section_header",
+      "text": "Map Orientation\n31\t\r\n Even if compasses and Ptolemy had both pointed to the south, northerners could\r\nstill have come along and flipped things around. In fact, with North seemingly settled at\r\nthe top of the map in the 16th century, there were still some squabbles over who in the\r\nNorthern Hemisphere would end up left, right or center. The politics of reorientation are\r\nanything but simple. For Americans, it’s easy to think that our position, at the top-left of\r\nmost maps, is the intrinsically preferable one; it certainly seems that way if you happen\r\nto be from a culture that reads from left to right. But it’s unclear why Arabs or Israelis,\r\nwho read from right to left, would necessarily think so. And while map makers usually\r\nlike to design maps with the edges running through one of the world’s major oceans, it\r\nis certainly possible to put North America in the very center by splitting the world in\r\nhalf through Asia.\r\n The orientation of our maps, like so many other features of the modern world,\r\narose from the interplay of chance, technology and politics in a way that defies our\r\ndesire to impose easy or satisfying narratives.",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 259.0,
+        "b": 741.5,
+        "r": 352.0,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 574.5,
+        "r": 523.0,
+        "t": 718.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 534.5,
+        "r": 522.5,
+        "t": 572.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 200.5,
+        "b": 326.0,
+        "r": 382.0,
+        "t": 508.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 299.5,
+        "b": 38.0,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
@@ -496,5 +2026,7 @@
       "w": 612.0,
       "h": 792.0
     }
-  }
+  },
+  "_heron_version": "1.0",
+  "_heron_threshold": 0.6
 }
