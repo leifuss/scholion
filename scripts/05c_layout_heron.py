@@ -319,6 +319,81 @@ def _assign_text_from_image(pil_image, regions: list[dict],
     return regions
 
 
+# ── Fast text assignment from page_texts.json ─────────────────────────────────
+
+_TEXT_LABELS = {"text", "list_item", "section_header", "title",
+                "caption", "footnote", "formula"}
+
+
+def _assign_text_fast(page_text: str, regions: list[dict]) -> list[dict]:
+    """
+    Fast text assignment using pre-extracted page text (from page_texts.json).
+
+    Distributes text to Heron regions by vertical bbox proportion — same
+    reading order assumption as Tesseract, but instant (~0.001 s/page vs
+    ~10–100 s/page for Tesseract image_to_data).
+
+    Good enough for most single/double-column academic layouts. For
+    word-level precision, use --tesseract (which calls _assign_text_from_image).
+    """
+    if not page_text.strip() or not regions:
+        for r in regions:
+            r.setdefault("text", "")
+        return regions
+
+    # Split into paragraphs (double-newline), fall back to lines
+    paragraphs = [p.strip() for p in _re.split(r'\n\s*\n', page_text) if p.strip()]
+    if not paragraphs:
+        paragraphs = [p.strip() for p in page_text.split('\n') if p.strip()]
+    if not paragraphs:
+        for r in regions:
+            r.setdefault("text", "")
+        return regions
+
+    # Identify text-bearing regions with their bbox heights
+    text_slots: list[tuple[int, float]] = []   # (region_index, bbox_height)
+    for i, r in enumerate(regions):
+        if r["label"] in _TEXT_LABELS:
+            bbox = r.get("bbox_px", [0, 0, 1, 1])
+            h = max(bbox[3] - bbox[1], 1)
+            text_slots.append((i, h))
+
+    if not text_slots:
+        # No text regions — assign everything to first region
+        regions[0]["text"] = page_text.strip()
+        for r in regions[1:]:
+            r.setdefault("text", "")
+        return regions
+
+    # Distribute paragraphs proportional to region heights
+    total_h = sum(h for _, h in text_slots)
+    total_chars = sum(len(p) for p in paragraphs)
+
+    assigned_idx = 0
+    for slot_num, (reg_idx, h) in enumerate(text_slots):
+        if slot_num == len(text_slots) - 1:
+            # Last slot gets all remaining paragraphs
+            regions[reg_idx]["text"] = '\n'.join(paragraphs[assigned_idx:])
+        else:
+            target_chars = total_chars * h / total_h
+            chars_so_far = 0
+            end_idx = assigned_idx
+            while end_idx < len(paragraphs) and chars_so_far < target_chars:
+                chars_so_far += len(paragraphs[end_idx])
+                end_idx += 1
+            # Ensure at least one paragraph per region
+            if end_idx == assigned_idx and assigned_idx < len(paragraphs):
+                end_idx = assigned_idx + 1
+            regions[reg_idx]["text"] = '\n'.join(paragraphs[assigned_idx:end_idx])
+            assigned_idx = end_idx
+
+    # Ensure all regions have text key
+    for r in regions:
+        r.setdefault("text", "")
+
+    return regions
+
+
 # ── Coordinate conversion (image pixels → PDF points) ─────────────────────────
 
 def _px_to_pdf_bbox(x1: float, y1: float, x2: float, y2: float,
@@ -406,10 +481,18 @@ def _get_page_sizes(doc_dir: Path, n_pages: int,
 
 def enrich_document(item: dict, force: bool = False,
                     threshold: float = DEFAULT_THRESHOLD,
-                    batch_size: int = DEFAULT_BATCH) -> dict:
+                    batch_size: int = DEFAULT_BATCH,
+                    use_tesseract: bool = False,
+                    max_pages: int = 0) -> dict:
     """
     Enrich layout_elements.json for one document using Heron.
     Works entirely from saved page images — no PDF required.
+
+    Args:
+        use_tesseract: If True, use Tesseract image_to_data for word-level text
+            assignment (~10-100 s/page). If False (default), use fast assignment
+            from page_texts.json (~0.001 s/page).
+        max_pages: Skip docs with more page images than this (0 = no limit).
 
     Returns a result dict: key, status ('ok'|'error'|'skip'), pages, regions, elapsed_s.
     """
@@ -442,6 +525,11 @@ def enrich_document(item: dict, force: bool = False,
         return {"key": key, "title": title, "status": "error",
                 "error": (f"No page images found in {pages_dir}. "
                           "Run 05b first, or ensure page images are committed to git.")}
+
+    # ── Max pages guard ───────────────────────────────────────────────────────
+    if max_pages and len(pil_images) > max_pages:
+        return {"key": key, "title": title, "status": "skip",
+                "reason": f"{len(pil_images)} pages exceeds --max-pages {max_pages}"}
 
     # ── Tesseract language ────────────────────────────────────────────────────
     tess_lang = "eng"
@@ -486,7 +574,8 @@ def enrich_document(item: dict, force: bool = False,
 
     # ── Assign text and build output ──────────────────────────────────────────
     result_elements: dict[str, object] = {}
-    print(f"    assigning text to {n_pages} pages …", flush=True)
+    mode_label = "tesseract" if use_tesseract else "fast (page_texts)"
+    print(f"    assigning text to {n_pages} pages [{mode_label}] …", flush=True)
 
     for i in range(n_pages):
         page_num   = str(i + 1)
@@ -511,8 +600,11 @@ def enrich_document(item: dict, force: bool = False,
         for r in regions:
             r.setdefault("bbox_px", r.get("bbox_px", [0, 0, 1, 1]))
 
-        # Text assignment via Tesseract word positions on the page image
-        _assign_text_from_image(pil_img, regions, lang=tess_lang)
+        # Text assignment: fast (default) or Tesseract (opt-in)
+        if use_tesseract:
+            _assign_text_from_image(pil_img, regions, lang=tess_lang)
+        else:
+            _assign_text_fast(page_text, regions)
 
         # Convert bboxes to PDF point space
         w_px, h_px = pil_img.size
@@ -573,6 +665,11 @@ def main():
                         help="Skip docs where PDF page count far exceeds Zotero page range (default: on)")
     parser.add_argument("--no-skip-oversized", action="store_false", dest="skip_oversized",
                         help="Process oversized docs anyway")
+    parser.add_argument("--tesseract", action="store_true",
+                        help="Use Tesseract for word-level text assignment (slow, ~10-100s/page). "
+                             "Default: fast assignment from page_texts.json (~instant)")
+    parser.add_argument("--max-pages", type=int, default=0,
+                        help="Skip docs with more page images than this (0 = no limit)")
     parser.add_argument("--inventory", default="data/inventory.json")
     args = parser.parse_args()
 
@@ -614,7 +711,9 @@ def main():
         return
 
     print(f"Docs to enrich: {total}")
-    print(f"Threshold: {args.threshold}  Batch: {args.batch}")
+    text_mode = "tesseract (slow)" if args.tesseract else "fast (page_texts)"
+    print(f"Threshold: {args.threshold}  Batch: {args.batch}  Text: {text_mode}"
+          + (f"  Max pages: {args.max_pages}" if args.max_pages else ""))
 
     if args.dry_run:
         for r in candidates:
@@ -660,6 +759,8 @@ def main():
             force=args.force,
             threshold=args.threshold,
             batch_size=args.batch,
+            use_tesseract=args.tesseract,
+            max_pages=args.max_pages,
         )
         elapsed = int(time.time() - t0)
         result["elapsed_s"] = elapsed
