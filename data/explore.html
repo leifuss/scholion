@@ -519,6 +519,13 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
       <option value="scanned">Scanned</option>
     </select>
   </label>
+  <label>Reader:
+    <select id="fReader" onchange="applyFilters()">
+      <option value="">All</option>
+      <option value="yes">Has reader</option>
+      <option value="no">No reader</option>
+    </select>
+  </label>
   <label>Lang:
     <select id="fLang" onchange="applyFilters()">
       <option value="">All languages</option>
@@ -882,6 +889,7 @@ function applyFilters() {
   const fType   = document.getElementById('fType').value;
   const fPdf    = document.getElementById('fPdf').value;
   const fDoc    = document.getElementById('fDoc').value;
+  const fReader = document.getElementById('fReader').value;
   const fLang   = document.getElementById('fLang').value;
   const fTag    = document.getElementById('fTag').value;
   const fPeriod = document.getElementById('fPeriod').value;
@@ -891,6 +899,8 @@ function applyFilters() {
     if (fType   && r.item_type  !== fType)   return false;
     if (fPdf    && r.pdf_status !== fPdf)    return false;
     if (fDoc    && r.doc_type   !== fDoc)    return false;
+    if (fReader === 'yes' && !r.has_reader)  return false;
+    if (fReader === 'no'  &&  r.has_reader)  return false;
     if (fLang   && r.language   !== fLang)   return false;
     if (fTag    && !(r.tags || []).includes(fTag)) return false;
     if (fPeriod && periodOf(r.year) !== fPeriod) return false;
