@@ -1,505 +1,2995 @@
 {
   "1": [
     {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.0,
+        "r": 522.0,
+        "t": 740.5
+      }
+    },
+    {
+      "label": "key_value",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 680.5,
+        "r": 373.0,
+        "t": 719.0
+      }
+    },
+    {
       "label": "text",
       "text": "al-Qazwini\r\n#222\r\n1\r\nTITLE: ’Aj’ib al-makhluquat [The Marvels of Created Things]\r\nDATE: 13th century\r\nAUTHOR: Zakariya Ibn Muhammad al-Qazwini (1203-1283)\r\nDESCRIPTION: Al-Qazvini’s geographical dictionary Athar al-Bilad wa Akhbar al-Ibad\r\n[Monuments of Places and History of God’s Bondsmen] contains a world map with\r\nzonal climatic divisions, oriented south at the top. The part of al-Qazvini’s ‘world map’\r\nshown here on page 3 is from a 1580 copy of his 13th century book. Here the mountains\r\nare gilt while the seas, gulfs and rivers are silvered. There is additional information near\r\nthe northern and southern poles of the map, describing the climate and the length of the\r\ndays and nights in the polar regions.\r\nThe following map was found in a manuscript measuring 35.6 x 22.9 cm, with\r\n230 paper leaves, richly illuminated title-pages and numerous miniatures. On fols. 52vo￾53r is a double-page circular world map with a diameter of 30.5 cm. The map depicts\r\nthe Islamic world, centering upon the Indian Ocean. As in most Moslem maps, it is\r\noriented with South at the top. The Indian Ocean is represented as enclosed by an\r\neastern extension of Africa, a notion probably descended from Ptolemy. Near the\r\nirregular and misunderstood peninsula of India clusters a group of islands. The circular\r\nbulge represents Arabia with the twin rivers of Mesopotamia nearby illustrating a non￾existent connection between the Arabian Gulf and the Mediterranean Sea. This latter sea\r\nis much constricted and distorted. It tapers sharply toward the west, where it is\r\ninscribed, Gulf of the West. The eastern reach of the Mediterranean is labeled Sea of Egypt,\r\nand into it flows the great Nile with its many-branched sources.\r\n The map is rendered entirely in silver and gold colors, achieving a splendid\r\ndecorative effect. It is possible that this reflects some prototype made upon a plaque of\r\nsilver, of which several renowned Moslem examples have been recorded by medieval\r\nhistorians. The gold ribbons may designate the borders of the Moslem world. The red\r\nparallel lines represent the seven climatic zones, about which al-Qazwini has a great\r\ndeal to say.\r\n The author Zakariya Ibn Muhammad al-Kazwini or Qazwini (1203-1283),\r\nsometimes called the ‘Moslem Pliny’ and al-Mustawfi, was a Persian encyclopedist who\r\ncomposed in Arabic, two treatises, a cosmography, Kitab ‘aja’ib al-makhluqat wa-ghara’ib\r\nal-mawjudat [Marvels of things created and miraculous aspects of things existing], and a\r\ngeography, Athar al-bilad [Monuments of the lands]. The influence of his texts on later\r\ngeographical writers was considerable. The maps appear in copies of both works. The\r\nformer work deals with the subjects of planets, stars, angels, the elements, minerals,\r\nplants, and animals. As in the case of the encyclopedias of medieval Europe, the work is\r\na compilation of the superficial knowledge of the day, without much attempt to\r\ninterpret or integrate it with contemporary data. However, its influence was still far￾reaching, and it was quoted, paraphrased and translated for centuries. The illustrations,\r\nlikewise, were handed down in traditional form. Many of al-Qazwini’s manuscript\r\ncopies also contain a map of his native city of Qazwin, one of the ancient cities of Iran. It\r\nmust however be mentioned that the maps in different manuscripts of the same work do\r\ndiffer from each other significantly. Transliterations of al-Qazwini’s version can also be\r\nfound in Konrad Miller’s Mappae arabicae, Band 5,129-30 (Bild 6 and 7) (note 7).\r\n This silver and gold painted Islamic map of the world is from another copy of the\r\nPersian translation of al-Qazwini’s 13th century manuscript Athãr-al Bilãd wa Akhbãr al\r\nIbãd [Monuments of Places and History of God’s Bondsmen] whose estimated copy date",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 131.0,
+        "b": 706.5,
+        "r": 371.0,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 709.5,
+        "r": 125.5,
+        "t": 718.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 130.0,
+        "b": 693.5,
+        "r": 184.5,
+        "t": 705.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 696.0,
+        "r": 124.5,
+        "t": 704.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 683.0,
+        "r": 143.5,
+        "t": 692.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 148.5,
+        "b": 680.5,
+        "r": 374.0,
+        "t": 692.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 587.0,
+        "r": 522.5,
+        "t": 679.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 429.0,
+        "r": 522.5,
+        "t": 586.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 350.0,
+        "r": 522.5,
+        "t": 426.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 137.0,
+        "r": 523.0,
+        "t": 347.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 96.5,
+        "r": 522.5,
+        "t": 135.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 303.5,
+        "b": 38.5,
+        "r": 307.5,
+        "t": 47.5
       }
     }
   ],
   "2": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n2\r\nis 1580. The present map is highly ornate, detailed and covered with silver and gold leaf,\r\ngold for the mountains and silver for the seas.\r\n Like many other maps of al-Qazwini, this too shows the seven climatic zones and\r\nindeed the emphasis of the map is on the climatic observations and related detailed\r\ndescriptions. The map has South at the top. Outside the northernmost zone, below the\r\nseven habitable zones the inscription reads: There is not enough sun and due to the cold there\r\nare no animals here. To the south of the seven inhabited zones the inscriptions read: There\r\nis no information about this region and due to the extreme heat there are no animals in this\r\nregion. This is reminiscent of Macrobius’ (#201) central “Torrid” or “Perusta” (parched)\r\nzone. The north polar area bears the inscription: In this region from Aries to Libra is one day\r\nfrom Libra to Aries is one night. The inscription in the South Pole reads: From the beginning\r\nof Libra to the end of Pisces is one day and from Aries to the end of Virgo - one night. This\r\nshows the extent of Islamic cartographers’ knowledge regarding the solar day cycles, a\r\nfact not altered by the possibility that these were added to the original by copiers at a\r\nlater date.\r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "al-Qazwini\r\n#222\r\n2\r\nis 1580. The present map is highly ornate, detailed and covered with silver and gold leaf,\r\ngold for the mountains and silver for the seas.\r\n Like many other maps of al-Qazwini, this too shows the seven climatic zones and\r\nindeed the emphasis of the map is on the climatic observations and related detailed\r\ndescriptions. The map has South at the top. Outside the northernmost zone, below the\r\nseven habitable zones the inscription reads: There is not enough sun and due to the cold there\r\nare no animals here. To the south of the seven inhabited zones the inscriptions read: There\r\nis no information about this region and due to the extreme heat there are no animals in this\r\nregion. This is reminiscent of Macrobius’ (#201) central “Torrid” or “Perusta” (parched)\r\nzone. The north polar area bears the inscription: In this region from Aries to Libra is one day\r\nfrom Libra to Aries is one night. The inscription in the South Pole reads: From the beginning\r\nof Libra to the end of Pisces is one day and from Aries to the end of Virgo - one night. This\r\nshows the extent of Islamic cartographers’ knowledge regarding the solar day cycles, a\r\nfact not altered by the possibility that these were added to the original by copiers at a\r\nlater date.",
+      "bbox": {
+        "l": 89.5,
+        "b": 693.5,
+        "r": 522.0,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 523.5,
+        "r": 523.0,
+        "t": 692.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "3": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n3\r\n \r\nAl-Qazwini world map from his Monuments of Places, copy dated 1580,\r\nWalters Art Gallery, Baltimore, USA, Ref. W 593, ff. 52v-53r, 30.5 cm diameter.\r\n14.25 x 9.5 inches, 230 paper leaves\r\n \r\n \r\n \r\n \r\n This map, illustrated above and below, indicates the extent of Islamic\r\ncartographers’ knowledge regarding the solar day cycles at extreme latitudes, though\r\nthere is the possibility that these legends may have been added to the 13th century\r\noriginal map by latter-date copiers.",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 274.0,
+        "r": 524.5,
+        "t": 722.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 274.5,
+        "r": 524.5,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n3\nAl-Qazwini world map from his Monuments of Places, copy dated 1580,\r\nWalters Art Gallery, Baltimore, USA, Ref. W 593, ff. 52v-53r, 30.5 cm diameter.\r\n14.25 x 9.5 inches, 230 paper leaves",
+      "bbox": {
+        "l": 126.0,
+        "b": 221.0,
+        "r": 485.5,
+        "t": 259.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "This map, illustrated above and below, indicates the extent of Islamic\r\ncartographers’ knowledge regarding the solar day cycles at extreme latitudes, though\r\nthere is the possibility that these legends may have been added to the 13th century\r\noriginal map by latter-date copiers.",
+      "bbox": {
+        "l": 89.0,
+        "b": 114.5,
+        "r": 523.0,
+        "t": 166.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 114.5,
+        "r": 522.5,
+        "t": 166.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 308.5,
+        "t": 47.5
       }
     }
   ],
   "4": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n4\r\n \r\n Detail: Part of western Asia (south is at the top) with the names relating to the numbers\r\ntranslated below. The lower legend states: “There is not enough sun here and due to extreme cold\r\nnothing lives here”\r\n1. Persian Gulf\r\n2. Mediterranean Sea\r\n3. Caspian Sea\r\n4. Lake Aral\r\n5. Red Sea\r\n6. Black Sea\r\n7. River Euphrates\r\n8. River Tigris\r\n9. River Arax\r\n10. River Kura\r\n11. River Volga or Etyl\r\n12. Armenia\r\n13. Barda’a\r\n14. Baku\r\n15. Shamakhi\r\n16. Derband\r\n17. Tabriz\r\n \r\n Al-Qazvini, “the Moslem Pliny,” was a Persian encyclopedist who composed in\r\nArabic two treatises, a Cosmography and a Geography. As in the case of the\r\nencyclopedias of medieval Europe, this work is a compilation of the superficial\r\nknowledge of the day, without much attempt to interpret or integrate it. However, its",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 307.5,
+        "r": 523.5,
+        "t": 707.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n4\nDetail: Part of western Asia (south is at the top) with the names relating to the numbers\r\ntranslated below. The lower legend states: “There is not enough sun here and due to extreme cold\r\nnothing lives here”\r\n1. Persian Gulf\r\n2. Mediterranean Sea\r\n3. Caspian Sea\r\n4. Lake Aral\r\n5. Red Sea\r\n6. Black Sea\r\n7. River Euphrates\r\n8. River Tigris\r\n9. River Arax\r\n10. River Kura\r\n11. River Volga or Etyl\r\n12. Armenia\r\n13. Barda’a\r\n14. Baku\r\n15. Shamakhi\r\n16. Derband\r\n17. Tabriz",
+      "bbox": {
+        "l": 91.5,
+        "b": 267.5,
+        "r": 520.5,
+        "t": 306.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "Al-Qazvini, “the Moslem Pliny,” was a Persian encyclopedist who composed in\r\nArabic two treatises, a Cosmography and a Geography. As in the case of the\r\nencyclopedias of medieval Europe, this work is a compilation of the superficial\r\nknowledge of the day, without much attempt to interpret or integrate it. However, its",
+      "bbox": {
+        "l": 108.0,
+        "b": 255.0,
+        "r": 184.5,
+        "t": 266.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 342.0,
+        "b": 256.5,
+        "r": 410.0,
+        "t": 266.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 107.5,
+        "b": 244.0,
+        "r": 210.0,
+        "t": 253.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 341.5,
+        "b": 242.0,
+        "r": 447.5,
+        "t": 253.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 107.5,
+        "b": 228.5,
+        "r": 180.5,
+        "t": 239.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 341.5,
+        "b": 229.5,
+        "r": 399.0,
+        "t": 239.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 107.5,
+        "b": 216.5,
+        "r": 169.5,
+        "t": 226.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 342.0,
+        "b": 216.5,
+        "r": 394.5,
+        "t": 226.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 107.5,
+        "b": 204.0,
+        "r": 161.0,
+        "t": 213.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 342.0,
+        "b": 204.0,
+        "r": 382.5,
+        "t": 213.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 342.0,
+        "b": 191.0,
+        "r": 403.5,
+        "t": 200.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 108.0,
+        "b": 190.5,
+        "r": 168.0,
+        "t": 200.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 108.0,
+        "b": 175.5,
+        "r": 198.5,
+        "t": 186.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 342.0,
+        "b": 177.0,
+        "r": 399.0,
+        "t": 186.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 342.0,
+        "b": 164.0,
+        "r": 389.0,
+        "t": 173.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 107.5,
+        "b": 162.0,
+        "r": 180.5,
+        "t": 173.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 108.0,
+        "b": 151.0,
+        "r": 175.5,
+        "t": 160.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 82.0,
+        "r": 522.5,
+        "t": 134.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.0,
+        "b": 39.0,
+        "r": 308.5,
+        "t": 47.5
       }
     }
   ],
   "5": [
     {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 731.5,
+        "r": 522.0,
+        "t": 740.5
+      }
+    },
+    {
       "label": "text",
       "text": "al-Qazwini\r\n#222\r\n2\r\ninfluence was far reaching, and it was quoted, paraphrased and translated for centuries.\r\nThe illustrations likewise were handed down in traditional form.\r\n Most of the map is occupied by Africa and the unknown southern lands, while\r\nEurope and Asia occupy most of the lower half at the map. The seven inscriptions in the\r\nleft specify the zones and give their dimensions. The map depicts the Islamic World,\r\ncentering upon the Indian Ocean. As in most Moslem maps, the orientation is such that\r\nsouth is at the top. The Indian Ocean is represented as enclosed by an eastward\r\nextension of Africa, a notion descended from Ptolemy. Near the irregular and\r\nmisunderstood peninsula of India clusters a group of islands. The circular bulge is\r\nArabia with the twin rivers of Mesopotamia nearby, represented as connecting the\r\nArabian Gulf with the Mediterranean. The latter sea is much constricted and distorted. It\r\ntapers sharply toward the west, where it is inscribed “Gulf of the West.” The eastern reach\r\nof the Mediterranean is labeled: “Sea of Egypt” and into it flows the great Nile with its\r\nmany-branched sources.\r\n The sea to the left of the map (east) is the Pacific Ocean and the one in the top\r\nmiddle is the Indian Ocean with the Arabian Sea. The peninsula surrounded by six\r\nislands is China, and to its right is the Indian Sea [Gulf of Bengal]. The other gulf further\r\nto the right, with three rivers pouring in, is the Persian Gulf. Next is Arabia shown as a\r\ncircular bulge protruding into the Indian Ocean/Arabian Sea, with Bahr-i-Kulzum [the\r\nRed Sea] at its west (right). The River Nile is shown with eight tributaries, which join\r\ntogether to flow into another lake and thence to the Mediterranean, which is the\r\nunevenly shaped sea connected at the right to the surrounding ocean and named Bahr-i￾Misr [Sea of Egypt]. The Black Sea branches from the middle of the Mediterranean and\r\nextends northwards to join the ocean at the north of the landmass. The rivers Dejle\r\n[Tigris) and Forat [Euphrates] are shown connecting the Mediterranean Sea to the\r\nPersian Gulf. Parts of the Caspian Sea are obscured by the close binding in the centerfold\r\nof the map. The rivers Arax and Kura we also depicted joining and flowing into the\r\nCaspian, the former being connected to the River Tigris and toe latter to the Black Sea.\r\nBetween the Tigris and Arax rivers the inscription Arminiya [Armenia] can faintly be\r\nmade out. Armenia is flanked by the cities of Tabriz and Erzrum. The small rectangular\r\nlake at the left (east) of the fold is the Sea of Aral, with the rivers Jeihun [Oxus, or Amu￾Darya] and Seihun [Jaxartes or Sir-Darya) rising from Central Asia and flowing into it.\r\n The map is rendered entirely in silver and gold, achieving a splendid decorative\r\neffect. It is possible that this reflects some prototype made upon a plaque of silver, of\r\nwhich several renowned Moslem examples have been recorded by medieval historians.\r\nThe gold ribbons may designate the borders of the Moslem World. The red parallel lines\r\nrepresent the seven climatic zones, about which Al-Qazvini has a great deal to say.\r\n Another map is found also in a manuscript of al-Qazwini’s ‘Aja’ib al-makhluqat. It\r\nis dated on internal evidence to the early 17th century, although as a writer al-Qazwini\r\n(died 1283) is considerably earlier than al-Harrani (fl. 1330, #214.4) or Ibn al-Wardi (died\r\n1457, #214.1). It is difficult to know whether this al-Qazwini map is the forerunner of the\r\nIbn al-Wardi map or a less formal version developed at a later date. All three authors\r\nwere cosmological writers whose works were popular right into the Ottoman period\r\nand in India. The map from al-Qazwini’s work has a flowing Nile instead of a\r\nrectangular one and a rather formless Mediterranean, though much of the rest has the\r\ngeometrical stiffness of the true Ibn al-Wardi maps.\r\n Most of the manuscripts of al-Qazwini’s ‘Aja’ib al-makhluqat have a completely\r\ndifferent map of the world. This is the third type of world map and represents al-",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 89.5,
+        "b": 695.0,
+        "r": 522.5,
+        "t": 718.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 534.5,
+        "r": 523.0,
+        "t": 691.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 295.5,
+        "r": 522.5,
+        "t": 532.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 229.5,
+        "r": 522.5,
+        "t": 294.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 110.0,
+        "r": 523.0,
+        "t": 227.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 83.5,
+        "r": 522.5,
+        "t": 108.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "6": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n3\r\nBiruni’s sketch map of the distribution of land and sea (#214.3). In al-Qazwini’s texts this\r\nmap tends to become stylized. The south coast of the land is stretched across the middle\r\nof the world circle and consists of a series of roughly parallel peninsulas separated by\r\nsymmetrical bays. These peninsulas are China, India, Arabia, and Africa. The northern\r\ncoast of the landmass follows the circle around, leaving a series of indentations where\r\nEurope and the Mediterranean are expected. The Nile appears as a wide channel\r\ndividing Africa in two, and this may be the origin of the double peninsula for southern\r\nAfrica that appears in some later maps. Finally, the Caspian Sea and the Aral Sea appear\r\nas two “bubbles” in the middle of the land.\r\n \r\nal-Qazwini world map from his book Aja’ib al-makhluqat wa-ghara’ib al-mawjudat [Wonders of\r\nCreation], 1032/1662, Forshungbibliothek Gotha der Universit Erfurt, Ms orient A 1507, fol.\r\n(oriented with South at the top)\r\n \r\nOn al-Qazwini’s map the shape of the Mediterranean is very far from a realistic\r\nrepresentation. Here the Mediterranean is connected to the Encircling Ocean (Atlantic) by\r\na long narrow strait, lying at the extreme north of the globe. The African coast stretches\r\nto the west, and at about Tunisia makes a U-turn extending eastwards up to Asia Minor\r\n(Turkey). There, the coastline takes the form of a half-circle, reaching Andalusia (Spain).\r\nThe Nile is clearly visible and only three islands are depicted. It is noteworthy that many\r\nother Islamic maps of the Mediterranean drawn in the 13th century or earlier are more\r\ndetailed and more accurate than al-Qazwini’s.\r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "al-Qazwini\r\n#222\r\n3\r\nBiruni’s sketch map of the distribution of land and sea (#214.3). In al-Qazwini’s texts this\r\nmap tends to become stylized. The south coast of the land is stretched across the middle\r\nof the world circle and consists of a series of roughly parallel peninsulas separated by\r\nsymmetrical bays. These peninsulas are China, India, Arabia, and Africa. The northern\r\ncoast of the landmass follows the circle around, leaving a series of indentations where\r\nEurope and the Mediterranean are expected. The Nile appears as a wide channel\r\ndividing Africa in two, and this may be the origin of the double peninsula for southern\r\nAfrica that appears in some later maps. Finally, the Caspian Sea and the Aral Sea appear\r\nas two “bubbles” in the middle of the land.",
+      "bbox": {
+        "l": 89.0,
+        "b": 602.5,
+        "r": 523.0,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 280.0,
+        "r": 522.0,
+        "t": 588.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini world map from his book Aja’ib al-makhluqat wa-ghara’ib al-mawjudat [Wonders of\r\nCreation], 1032/1662, Forshungbibliothek Gotha der Universit Erfurt, Ms orient A 1507, fol.\r\n(oriented with South at the top)\nOn al-Qazwini’s map the shape of the Mediterranean is very far from a realistic\r\nrepresentation. Here the Mediterranean is connected to the Encircling Ocean (Atlantic) by\r\na long narrow strait, lying at the extreme north of the globe. The African coast stretches\r\nto the west, and at about Tunisia makes a U-turn extending eastwards up to Asia Minor\r\n(Turkey). There, the coastline takes the form of a half-circle, reaching Andalusia (Spain).\r\nThe Nile is clearly visible and only three islands are depicted. It is noteworthy that many\r\nother Islamic maps of the Mediterranean drawn in the 13th century or earlier are more\r\ndetailed and more accurate than al-Qazwini’s.",
+      "bbox": {
+        "l": 93.0,
+        "b": 242.0,
+        "r": 520.0,
+        "t": 280.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 123.5,
+        "r": 523.0,
+        "t": 227.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 308.5,
+        "t": 47.5
       }
     }
   ],
   "7": [
     {
-      "label": "text",
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.0,
+        "r": 522.0,
+        "t": 741.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 125.0,
+        "b": 285.5,
+        "r": 486.5,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "caption",
       "text": "al-Qazwini\r\n#222\r\n4\r\n al-Qazwini world map, 1340\r\n(oriented with South at the top)",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 236.5,
+        "b": 259.0,
+        "r": 375.5,
+        "t": 285.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.0,
+        "b": 38.5,
+        "r": 309.0,
+        "t": 48.0
       }
     }
   ],
   "8": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n5\r\n \r\n \r\nWorld map of Hamd Allah Mustawfi/al-Qazwini, 1258/1330, 15.5 cm diameter\r\noriented with South at the top 17th century copy of original dated 1339/40 CE. British Library,\r\nLondon. MS ADD-23544, f. 234v.\r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 189.5,
+        "r": 523.0,
+        "t": 707.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n5\nWorld map of Hamd Allah Mustawfi/al-Qazwini, 1258/1330, 15.5 cm diameter\r\noriented with South at the top 17th century copy of original dated 1339/40 CE. British Library,\r\nLondon. MS ADD-23544, f. 234v.",
+      "bbox": {
+        "l": 96.5,
+        "b": 136.5,
+        "r": 515.0,
+        "t": 175.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 308.5,
+        "t": 47.5
       }
     }
   ],
   "9": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n6\r\n \r\nWorld map of Hamd Allah Mustawfi/al-Qazwini\r\nre-oriented with North at the top and labeled\r\n \r\nThe circular map shown above is from Hamd al-Mustawfi’s book Nuzhat ul Gulub and is\r\nkept in the British Library. The original manuscript dates from around 1339/40 CE but\r\nthe copy was made only in the 17th century. The map is not typical of the Balkhi School\r\nof Islamic world maps (#214.2), but has more in common with al-Biruni’s map (#214.3) in\r\nits depiction of land-sea relationship. His attempts to incorporate some sort of grid lines\r\nis another major difference.\r\n The horizontal divisions correspond to the climatic zones, dividing the inhabited\r\nprovinces into seven climates (eghlim - in Farsi) plus two additional zones below and\r\nabove them, which are not inhabited. To these horizontal divisions some vertical lines\r\nhave been added, supposedly mirroring the function of the meridians, and spaced at ten",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 90.5,
+        "b": 267.5,
+        "r": 533.0,
+        "t": 719.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n6\nWorld map of Hamd Allah Mustawfi/al-Qazwini\r\nre-oriented with North at the top and labeled\nThe circular map shown above is from Hamd al-Mustawfi’s book Nuzhat ul Gulub and is\r\nkept in the British Library. The original manuscript dates from around 1339/40 CE but\r\nthe copy was made only in the 17th century. The map is not typical of the Balkhi School\r\nof Islamic world maps (#214.2), but has more in common with al-Biruni’s map (#214.3) in\r\nits depiction of land-sea relationship. His attempts to incorporate some sort of grid lines\r\nis another major difference.\r\n The horizontal divisions correspond to the climatic zones, dividing the inhabited\r\nprovinces into seven climates (eghlim - in Farsi) plus two additional zones below and\r\nabove them, which are not inhabited. To these horizontal divisions some vertical lines\r\nhave been added, supposedly mirroring the function of the meridians, and spaced at ten",
+      "bbox": {
+        "l": 197.0,
+        "b": 228.5,
+        "r": 415.5,
+        "t": 254.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 137.5,
+        "r": 522.5,
+        "t": 214.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 84.0,
+        "r": 522.5,
+        "t": 135.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "10": [
     {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
       "label": "text",
       "text": "al-Qazwini\r\n#222\r\n7\r\ndegree intervals, but which continue running straight, extending out of the circular earth\r\nforming a grid which covers the inhabited world. It must be said that with the exception\r\nof Ptolemaic maps, the convergence of meridians in the poles appeared on medieval\r\nmaps in a much later date. In the texts the names of the provinces are listed according to\r\ntheir appearance in the climatic zones. The numbers of the zones are also shown in the\r\ninside rim of the map, starting with before the climate zones, the width of which extends\r\nalmost from the south of the Equator to the South Pole. Listed downward from the\r\nequator are zones one through seven and then finally we come to the zone beyond and\r\nthe North Pole at the centre bottom centre of the page. Each division of the grid\r\nrepresents ten degrees of latitude and longitude.\r\n The map is oriented with south at the top, but in the manuscript it has been\r\ndrawn upside down, resulting in most of the legends also appearing inverted (rotated\r\nby 180 degrees). The reproduction shows the map in the corrected orientation, with\r\nsouth at the top.\r\n The blue mass is the Indian and Pacific oceans connected to the Sea of Maghreb\r\n(West), depicted positioned west of Africa, with the inhabited world starting north of\r\nthe Equator, from what here is called the Temperate Line. The two westernmost (right)\r\nlandmasses protruding into the ocean represent Africa. The first landmass from the west\r\nis northwest Africa and the bay in-between the two is named Bahri farang a name usually\r\ngiven to the Mediterranean Sea, though here is the distorted representation of the Gulf\r\nof Guinea in West Africa. The next landmass to that is North Africa followed by Bahr-i\r\nKulzum. This is the Arabic name given to the Red Sea, based on the name of the ancient\r\nport city of Kulzum on the Red Sea. To its left (east) is the Arabian Peninsula and Bahr-i\r\nOmman. The easternmost landmass is that of China and India. The sea extending into the\r\nland from the northwest (bottom right) is Bahr-i Rum va Farang, the Mediterranean, with\r\nConstantinople shown at its northern shore. The blue blob in the middle of the landmass\r\nis the Caspian Sea.\r\n Here many other provinces and cities are mentioned such as Iraq Arabi and\r\nAdharbeijan, both southeast of the Caspian; Khorassan, Fars and Kirman in Iran at the\r\nsouthern end of the Caspian; Bulgaria, Rus[sia], Qipchaghs, Cherkez (Circassians) and\r\nFrank located north and northwest of the Caspian, where the Caucasus mountains\r\nshould be. The peoples of Gog and Magog are shown at the northeastern edge of the\r\ninhabited world, in the Sixth Climatic Zone. No other Caucasian countries are\r\nmentioned.\r\n As described above this Hamd Allah Mustawfi world map, as discussed by\r\nHyunhee Park in her Mapping Chinese and Islamic Worlds, uses a grid, although it does\r\nnot display longitude and latitude. The map resembles the earlier sketch of land and sea\r\nthat al-Qazwini drew in the 13th century, including its separation of Africa into two\r\npeninsulas. His division of Africa that situates the Mountain of the Moon (the source of\r\nthe Nile) in the eastern half of the continent and the Maghreb (i.e., Northeast Africa) in\r\nthe western half resembles the earlier anonymous map in the Treasury of Tabriz. At the\r\nsame time, Hamd Allah Mustawfi portrays the Eurasian and African landmasses more\r\nrealistically, and not simply as a diagram with fixed geographic shapes. Clearly, Hamd\r\nAllah Mustawfi attempted to represent the world in a new way, rather than simply\r\nborrow earlier ideas. Hamd Allah Mustawfi’s map also differs significantly from the\r\nsketch maps of al-Qazwini and the Treasury of Tabriz map in its depiction of China. In\r\nfact, he does not present the country clearly at all. He confuses China (Arabic name al￾Sin) with several places in Central Asia. Despite the fuzzy representation of China on",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 89.5,
+        "b": 587.5,
+        "r": 522.5,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 535.0,
+        "r": 522.5,
+        "t": 586.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 362.0,
+        "r": 523.0,
+        "t": 532.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 271.5,
+        "r": 522.5,
+        "t": 360.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 83.5,
+        "r": 522.5,
+        "t": 267.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 308.5,
+        "t": 47.5
       }
     }
   ],
   "11": [
     {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 740.5
+      }
+    },
+    {
       "label": "text",
       "text": "al-Qazwini\r\n#222\r\n8\r\nthis map, his written survey of foreign countries provides a fuller and more complex\r\ndescription of China’s geographic features. Hamd Allah Mustawfi consulted earlier\r\nArabic geographers like Ibn Khurdadhbih in researching his treatise; however, he also\r\nadds unprecedented information about countries based on Persian sources. For example,\r\nhe divides China politically into Chin, Khitay, and Machin — the same divisions that\r\nRashid al-Din used in his Compendium of Chronicles.\r\n Hamd Allah Mustawfi sets himself apart from his predecessors by dividing\r\nforeign countries into two categories: Those that have close relation with the Il-khanate\r\nand those that were situated far from the Islamic world and were not built by Mongol\r\ngovernors. Curiously, he places all three regions of China in the second category. Hamd\r\nAllah Mustawfi’s, account of China contains both old and new information. For exam￾ple, in his description about Chin [North China formerly under Jurchen rule], he\r\naccurately says that the Mongols designated this land as Manzi at that time. The claims\r\nin this passage — that the majority of the population worshiped idols, that all arts and\r\ncrafts had reached perfection, and that numerous great cities flourished throughout the\r\nland — mostly constitute the recycling of earlier accounts of China and present the same\r\nstereotypes of China and the Chinese that appear in earlier Muslim accounts.\r\nInterestingly, Marco Polo makes similar points in his account of China.\r\n That said, Hamd Allah Mustawfi’s plausible longitudinal and latitudinal figures\r\ndistinguish his geography from previous generations of Islamic geographers. This is\r\nevident in the passage about the capital of Chin at 125°/22°. Interestingly, the treatise\r\nalso follows the traditional system of grouping the world into seven different climes,\r\nlocating the broad wide kingdom of Chin stretching over the second, third, and fourth\r\nclimes. Hamd Allah Mustawfi applied the same method in developing his sections on\r\nKhitay and Machin:\r\nKhitay [Khitai (Cathay), North China formerly under Khitan rule]. This is a\r\ngreat kingdom of the Fourth and Fifth Climes. Its capital is Khan Baligh\r\n[Khanbaligh] in the Fifth Clime, whose longitude is 124°, and latitude 37°. This\r\nis a mighty city, and it was called originally Changda; and Qubilay Khan built\r\nanother city outside the same. Of other great towns and well-known districts\r\nare the following: Nanking [Nanjing], where a great river runs through the\r\ncity, Tabaksik [?], Qal’ah Shikat [?], and Almaska [?]. Further, and besides\r\nthere are many others.\r\nHis description of Khitay’s capital Khan Baligh, built by Khubilai Khan, certainly utilizes\r\nupdated information, most likely from Rashid al-Din’s work. The same applies to his\r\ndescription of Machin:\r\nMachin [the part of South China that was under southern Song rule]. A great and\r\nextensive kingdom that the Mongols know as Nankiyas. It is of the First and Second\r\nClimes, and its capital is the city of Khansay [Hangzhou], which some call Siyahan.\r\nThey say that in all the habitable world there is no greater city than this, or at any rate\r\nthat in the regions of the east there is no larger town. There is a lake in the midst of the\r\ncity, six leagues in circumference, and the houses of the town stand round its\r\nborders....\r\nHamd Allah Mustawfi’s image of Machin as a great and extensive kingdom and its\r\nMongol name Nankiyas match the account of Rashid al-Din. His description of its capital\r\nKhansay as the largest city in the world with a large lake in the middle and a great\r\npopulation echoes the account by Marco Polo, who stated that “it is without doubt the\r\nfinest and most splendid city in the world.” He continues describing Khansay’s warm\r\nclimate and abundant sugarcane and rice crop production, the city’s great population",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 89.0,
+        "b": 641.0,
+        "r": 522.5,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 481.5,
+        "r": 522.5,
+        "t": 639.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 389.5,
+        "r": 522.5,
+        "t": 480.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 116.0,
+        "b": 292.5,
+        "r": 486.5,
+        "t": 387.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 253.5,
+        "r": 522.5,
+        "t": 291.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 112.0,
+        "b": 169.5,
+        "r": 495.5,
+        "t": 251.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 88.0,
+        "r": 522.5,
+        "t": 166.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.5,
+        "b": 38.5,
+        "r": 308.5,
+        "t": 47.5
       }
     }
   ],
   "12": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n9\r\nthat extends upwards of 10,000, and its political situation in which a few Muslims hold\r\npower over the many non-Muslim Chinese.\r\n These sources show that Muslims living in the Il-khanate in Iran made quite\r\nsignificant advancements in the development of geography and cartography of the\r\nworld during the Mongol period.\r\n This map is in the British Museum. In Gunnar Thompson’s book The Friar’s Map\r\n(1996), p. 174 he describes the following theory: “The map has a long peninsula east of\r\nAsia across the Indian Ocean (Pacific Ocean) that seems to correspond to Ptolemy’s\r\nCattigara Peninsula (a.k.a. the Tiger Leg) across the Sinus Magnus or Great Gulf that\r\nMagellan identified as the Pacific Ocean. This peninsula is called Waq Waq on this map.\r\nOn many other maps, this designation has been used for South Africa, however not on\r\nMustawfi al-Qazwini. Thompson showed this map to Professor Fazi Khoury of the Far\r\nEastern Studies Department at the University of Washington in Seattle, and he said:\r\n“This is conclusive proof that the Muslims discovered America. All the history books\r\nwill have to be rewritten.” Geographical names on the map were translated by the\r\nSeattle Arabic Language Service:\r\n \r\n \r\n \r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "al-Qazwini\r\n#222\r\n9\r\nthat extends upwards of 10,000, and its political situation in which a few Muslims hold\r\npower over the many non-Muslim Chinese.\r\n These sources show that Muslims living in the Il-khanate in Iran made quite\r\nsignificant advancements in the development of geography and cartography of the\r\nworld during the Mongol period.\r\n This map is in the British Museum. In Gunnar Thompson’s book The Friar’s Map\r\n(1996), p. 174 he describes the following theory: “The map has a long peninsula east of\r\nAsia across the Indian Ocean (Pacific Ocean) that seems to correspond to Ptolemy’s\r\nCattigara Peninsula (a.k.a. the Tiger Leg) across the Sinus Magnus or Great Gulf that\r\nMagellan identified as the Pacific Ocean. This peninsula is called Waq Waq on this map.\r\nOn many other maps, this designation has been used for South Africa, however not on\r\nMustawfi al-Qazwini. Thompson showed this map to Professor Fazi Khoury of the Far\r\nEastern Studies Department at the University of Washington in Seattle, and he said:\r\n“This is conclusive proof that the Muslims discovered America. All the history books\r\nwill have to be rewritten.” Geographical names on the map were translated by the\r\nSeattle Arabic Language Service:",
+      "bbox": {
+        "l": 89.5,
+        "b": 693.5,
+        "r": 522.0,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 653.5,
+        "r": 522.5,
+        "t": 692.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 507.5,
+        "r": 523.0,
+        "t": 652.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 226.5,
+        "b": 174.0,
+        "r": 506.0,
+        "t": 476.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 500.0,
+        "b": 284.5,
+        "r": 514.0,
+        "t": 475.0
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "",
+      "bbox": {
+        "l": 97.5,
+        "b": 443.0,
+        "r": 124.0,
+        "t": 452.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 97.0,
+        "b": 366.5,
+        "r": 220.0,
+        "t": 440.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 126.5,
+        "b": 293.5,
+        "r": 181.5,
+        "t": 356.5
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "",
+      "bbox": {
+        "l": 97.5,
+        "b": 257.0,
+        "r": 215.5,
+        "t": 284.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 97.0,
+        "b": 174.5,
+        "r": 219.5,
+        "t": 255.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 260.0,
+        "b": 154.5,
+        "r": 498.0,
+        "t": 171.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 260.0,
+        "b": 154.5,
+        "r": 498.0,
+        "t": 171.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 302.0,
+        "b": 38.5,
+        "r": 309.0,
+        "t": 47.5
       }
     }
   ],
   "13": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n10\r\n \r\nAl-Qazwini’s sketch of the distribution of land and sea from his Marvels of Things Created\r\nand Miraculous Aspects of Things Existing, 13 cm diameter, late 13th century\r\n(this manuscript is dated 1539)\r\nBodleian Library, Oxford MS. Pococke 350, fol. 73v\r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 172.5,
+        "b": 464.5,
+        "r": 439.0,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n10\nAl-Qazwini’s sketch of the distribution of land and sea from his Marvels of Things Created\r\nand Miraculous Aspects of Things Existing, 13 cm diameter, late 13th century\r\n(this manuscript is dated 1539)\r\nBodleian Library, Oxford MS. Pococke 350, fol. 73v",
+      "bbox": {
+        "l": 98.5,
+        "b": 411.5,
+        "r": 512.5,
+        "t": 448.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 191.5,
+        "b": 397.5,
+        "r": 421.0,
+        "t": 410.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 211.5,
+        "b": 123.0,
+        "r": 400.5,
+        "t": 385.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 38.5,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "14": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n11\r\n Al-Qazwini’s sketch of the distribution of land and sea from his Marvels of Things Created\r\nand Miraculous Aspects of Things, Re-oriented with North at the top with place-names.\r\n \r\nThe earliest example of scholars who wrote geographic accounts under Mongol\r\npatronage, the famous Iranian geographer and cosmographer Zakariya’ b.\r\nMuhammad al-Qazwini, exemplifies this innovative trend in geography and\r\ncartography in the Islamic world. Born into a family that settled in Qazvin in Persia,\r\nal-Qazwini served politically in several localities throughout the Il-khanate, including\r\nPersia, Baghdad, Mesopotamia, and Syria. After his retirement, he wrote his two\r\nmonumental works, one geographical and the other cosmographical. His geographi￾cal dictionary, entitled Athar al-bilad [Monuments of the Lands], drew heavily on\r\nYaqut’s Geographical Dictionary, written earlier in the century. Al-Qazwini innovatively\r\nrearranged Yaqut’s rubrics from seven climates to the letters of the alphabet:\r\nNonetheless, the work borrows heavily from Yaqui. Most importantly, however, al￾Qazwini’s Geographical Dictionary provides clear evidence that Arabic geographic\r\ntraditions continued to influence academic circles in the Islamic world under Mongol￾rule profoundly.\r\n A map sketch of the world found in al-Qazwini’s famous 'Ajdib al￾makhlriqat wa-ghardib al-mawji-idat [Marvels of Things Created and Miraculous Aspects\r\nof Things Existing] also reveals the continued influence of the earlier Arabic",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 122.0,
+        "b": 350.0,
+        "r": 489.5,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n11\r\n Al-Qazwini’s sketch of the distribution of land and sea from his Marvels of Things Created\r\nand Miraculous Aspects of Things, Re-oriented with North at the top with place-names.",
+      "bbox": {
+        "l": 98.5,
+        "b": 323.5,
+        "r": 512.5,
+        "t": 348.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "The earliest example of scholars who wrote geographic accounts under Mongol\r\npatronage, the famous Iranian geographer and cosmographer Zakariya’ b.\r\nMuhammad al-Qazwini, exemplifies this innovative trend in geography and\r\ncartography in the Islamic world. Born into a family that settled in Qazvin in Persia,\r\nal-Qazwini served politically in several localities throughout the Il-khanate, including\r\nPersia, Baghdad, Mesopotamia, and Syria. After his retirement, he wrote his two\r\nmonumental works, one geographical and the other cosmographical. His geographi￾cal dictionary, entitled Athar al-bilad [Monuments of the Lands], drew heavily on\r\nYaqut’s Geographical Dictionary, written earlier in the century. Al-Qazwini innovatively\r\nrearranged Yaqut’s rubrics from seven climates to the letters of the alphabet:\r\nNonetheless, the work borrows heavily from Yaqui. Most importantly, however, al￾Qazwini’s Geographical Dictionary provides clear evidence that Arabic geographic\r\ntraditions continued to influence academic circles in the Islamic world under Mongol￾rule profoundly.\r\n A map sketch of the world found in al-Qazwini’s famous 'Ajdib al￾makhlriqat wa-ghardib al-mawji-idat [Marvels of Things Created and Miraculous Aspects\r\nof Things Existing] also reveals the continued influence of the earlier Arabic",
+      "bbox": {
+        "l": 89.0,
+        "b": 124.0,
+        "r": 522.5,
+        "t": 308.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 84.5,
+        "r": 522.0,
+        "t": 123.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 38.5,
+        "r": 311.0,
+        "t": 47.5
       }
     }
   ],
   "15": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n12\r\ngeographic tradition in the lands of the Islamic world under Mongol rule. Witten in\r\nArabic, this treatise has unique significance as the first Muslim cosmography. While it\r\nconcentrates mainly on supra-terrestrial matters like angels, the second part of al￾Qazwini’s book describes the division of the earth into seven climates and charts the\r\nworld’s known seas and rivers. His description of China contains no new information\r\nand simply describes the country as a large territory with many people and\r\nresources. Yet the attached sketch showing the distribution of land and water in the\r\nworld is noteworthy because of its unique portrayal of China and Africa.\r\n This sketch map by al-Qazwini was obviously influenced by that of al-Biruni\r\nfrom the 11th century (#214.3). The two maps differ, however. Al-Qazwini’s map portrays\r\nChina as a major subcontinent at the eastern edge of the northern hemisphere; that is, as\r\nan important and large region as big as India and the Arabian world. It continues to\r\ndepict Africa as a continent in shape but cleaves Africa into two halves divided by the\r\nNile River. In fact, al-Biruni was the first geographer who argued that the Indian Ocean\r\nmust be connected to the Atlantic through waters that ran south of the Mountains of the\r\nMoon, the legendary sources of the Nile. It is likely that al-Qazwini, who was influenced\r\nby al-Biruni when drawing this sketch, applied al-Biruni’s theory faithfully. This trend\r\nwas imitated by many later cartographers in various ways.\r\n What new sources did al-Qazwini use to write his geographic studies including\r\nthe sketch map? The scholar dedicated Marvels of Things Created to the governor of\r\nBaghdad, Juwayni, who authored History of the World-Conqueror, a chronicle of Chinggis\r\nKhan. Thus, al-Qazwini perhaps wrote his studies in an academic circle patronized by\r\nJuwayni. The Baghdad governor’s History provides important information about the\r\npolitical developments surrounding the Mongol conquest in Persia and elsewhere. Al￾Qazwini probably received some information or ideas about China from his patron, who\r\nhad access to up-to-date information about eastern Asia. Juwayni learned about the\r\nMongols in the course of serving them, in addition to gaining knowledge about the\r\nQara-Khitai in Central Asia and the Uighurs further east. The scholarly governor\r\nprobably continued to amass more information about the wider world and this\r\ninfluenced other scholars in the Il-khanate like al-Qazwini.\r\n The accumulation of knowledge among Muslim scholars culminated in a work\r\nthat was written at the apogee of Mongol dominion over Eurasia and deeply influenced\r\nMuslim thinking about the world. The Compendium of Chronicles, written first in Persian\r\nand immediately translated into Arabic, was compiled in 1308 by Rashid al-Din (1247—\r\n1318), the son of a Jewish apothecary family who converted to Islam during his early\r\nadolescence. He rose to prominence in the court of the seventh Il-khanate ruler Ghazan\r\nKhan, and eventually served as prime minister where he became well known for his\r\nmany economic reforms. Perhaps in gratitude, Ghazan Khan gave Rashid al-Din a\r\nspecial commission to write this monumental work. This work initiated a new genre of\r\nwriting in Muslim scholarship, one that covers the historical developments of the\r\nworld’s diverse societies in unified fashion and chronological order. Rashid al-Din\r\noriginally sought to write a history of the Il-khanate in order to commemorate the\r\norigins, history and achievements of the Mongols. However, Ghazan died just before the\r\nbook’s completion and his successor Oljeitü (reigned 1304-1316) took over sponsorship\r\nof the project and broadened its scope to embrace a history of the entire world.\r\n \r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 740.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "al-Qazwini\r\n#222\r\n12\r\ngeographic tradition in the lands of the Islamic world under Mongol rule. Witten in\r\nArabic, this treatise has unique significance as the first Muslim cosmography. While it\r\nconcentrates mainly on supra-terrestrial matters like angels, the second part of al￾Qazwini’s book describes the division of the earth into seven climates and charts the\r\nworld’s known seas and rivers. His description of China contains no new information\r\nand simply describes the country as a large territory with many people and\r\nresources. Yet the attached sketch showing the distribution of land and water in the\r\nworld is noteworthy because of its unique portrayal of China and Africa.\r\n This sketch map by al-Qazwini was obviously influenced by that of al-Biruni\r\nfrom the 11th century (#214.3). The two maps differ, however. Al-Qazwini’s map portrays\r\nChina as a major subcontinent at the eastern edge of the northern hemisphere; that is, as\r\nan important and large region as big as India and the Arabian world. It continues to\r\ndepict Africa as a continent in shape but cleaves Africa into two halves divided by the\r\nNile River. In fact, al-Biruni was the first geographer who argued that the Indian Ocean\r\nmust be connected to the Atlantic through waters that ran south of the Mountains of the\r\nMoon, the legendary sources of the Nile. It is likely that al-Qazwini, who was influenced\r\nby al-Biruni when drawing this sketch, applied al-Biruni’s theory faithfully. This trend\r\nwas imitated by many later cartographers in various ways.\r\n What new sources did al-Qazwini use to write his geographic studies including\r\nthe sketch map? The scholar dedicated Marvels of Things Created to the governor of\r\nBaghdad, Juwayni, who authored History of the World-Conqueror, a chronicle of Chinggis\r\nKhan. Thus, al-Qazwini perhaps wrote his studies in an academic circle patronized by\r\nJuwayni. The Baghdad governor’s History provides important information about the\r\npolitical developments surrounding the Mongol conquest in Persia and elsewhere. Al￾Qazwini probably received some information or ideas about China from his patron, who\r\nhad access to up-to-date information about eastern Asia. Juwayni learned about the\r\nMongols in the course of serving them, in addition to gaining knowledge about the\r\nQara-Khitai in Central Asia and the Uighurs further east. The scholarly governor\r\nprobably continued to amass more information about the wider world and this\r\ninfluenced other scholars in the Il-khanate like al-Qazwini.\r\n The accumulation of knowledge among Muslim scholars culminated in a work\r\nthat was written at the apogee of Mongol dominion over Eurasia and deeply influenced\r\nMuslim thinking about the world. The Compendium of Chronicles, written first in Persian\r\nand immediately translated into Arabic, was compiled in 1308 by Rashid al-Din (1247—\r\n1318), the son of a Jewish apothecary family who converted to Islam during his early\r\nadolescence. He rose to prominence in the court of the seventh Il-khanate ruler Ghazan\r\nKhan, and eventually served as prime minister where he became well known for his\r\nmany economic reforms. Perhaps in gratitude, Ghazan Khan gave Rashid al-Din a\r\nspecial commission to write this monumental work. This work initiated a new genre of\r\nwriting in Muslim scholarship, one that covers the historical developments of the\r\nworld’s diverse societies in unified fashion and chronological order. Rashid al-Din\r\noriginally sought to write a history of the Il-khanate in order to commemorate the\r\norigins, history and achievements of the Mongols. However, Ghazan died just before the\r\nbook’s completion and his successor Oljeitü (reigned 1304-1316) took over sponsorship\r\nof the project and broadened its scope to embrace a history of the entire world.",
+      "bbox": {
+        "l": 89.0,
+        "b": 614.5,
+        "r": 522.5,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 481.5,
+        "r": 523.0,
+        "t": 612.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 322.0,
+        "r": 522.5,
+        "t": 478.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 119.5,
+        "r": 522.5,
+        "t": 317.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
   "16": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n13\r\nLOCATIONS: Walters Art Gallery, fols. 52vo-53r\r\n Forschungs-bibliothek, Gotha, MS. Orient A. 1507, fols. 95b-96a\r\n Boleian Library, MS. Pococke 350, fol. 73v, Oxford\r\n University of Manchester Library, UK Arabic MS 313[668] iv\r\n U.S. National Library of Medicine. MS P 1, fols. 71b-72a\r\n British Library, London, MS. Or. MS 3623, f. 5a\r\n University of Manchester Library, UK, Rylands Collection, Persian MS\r\n 403, 199v\r\n \r\nREFERENCES:\r\n*Brown, L. A., The World Encompassed, no. 18, Plate IV.\r\n*Galichian, R., Countries South of the Caucasus in Medieval Maps: Armenia, Georgia and Azerbaijan,\r\npp. 118-121.\r\n*Harley, J. B., The History of Cartography, Volume Two, pp. 138, 143-44, 53, 59-60, Plate 9.\r\n*Hessler, John and Chet Van Duzer, Seeing the World Anew, p. 21, Figure 15.\r\n*Miller, K., Mappae arabicae, Band 5,129-30 (Bild 6 and 7) (note 7).\r\n*Park, H., Mapping Chinese and Islamic Worlds, pp. 129-131, Figures 4.1, 4.3, 145.\r\n*Pinto, K., Medieval Islamic Maps, pp. 27-30, 32-33, 162-164, 171-172, 291, 300.\r\n*Sarton, An Introduction to the History of Science, volume II, Plate 2, pp. 727-728, 868-870.\r\n*Thompson, G., The Friar’s Map of Ancient America 1360 A.D., p, 174\r\n \r\n*illustrated\r\n \r\n \r\n \r\n Reproduction of Qazwini world maps from Konrad Miller",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "key_value",
+      "text": "",
+      "bbox": {
+        "l": 88.5,
+        "b": 615.0,
+        "r": 510.5,
+        "t": 718.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "al-Qazwini\r\n#222\r\n13\r\nLOCATIONS: Walters Art Gallery, fols. 52vo-53r\r\n Forschungs-bibliothek, Gotha, MS. Orient A. 1507, fols. 95b-96a\r\n Boleian Library, MS. Pococke 350, fol. 73v, Oxford\r\n University of Manchester Library, UK Arabic MS 313[668] iv\r\n U.S. National Library of Medicine. MS P 1, fols. 71b-72a\r\n British Library, London, MS. Or. MS 3623, f. 5a\r\n University of Manchester Library, UK, Rylands Collection, Persian MS\r\n 403, 199v",
+      "bbox": {
+        "l": 89.0,
+        "b": 709.0,
+        "r": 161.5,
+        "t": 718.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "REFERENCES:\r\n*Brown, L. A., The World Encompassed, no. 18, Plate IV.\r\n*Galichian, R., Countries South of the Caucasus in Medieval Maps: Armenia, Georgia and Azerbaijan,\r\npp. 118-121.\r\n*Harley, J. B., The History of Cartography, Volume Two, pp. 138, 143-44, 53, 59-60, Plate 9.\r\n*Hessler, John and Chet Van Duzer, Seeing the World Anew, p. 21, Figure 15.\r\n*Miller, K., Mappae arabicae, Band 5,129-30 (Bild 6 and 7) (note 7).\r\n*Park, H., Mapping Chinese and Islamic Worlds, pp. 129-131, Figures 4.1, 4.3, 145.\r\n*Pinto, K., Medieval Islamic Maps, pp. 27-30, 32-33, 162-164, 171-172, 291, 300.\r\n*Sarton, An Introduction to the History of Science, volume II, Plate 2, pp. 727-728, 868-870.\r\n*Thompson, G., The Friar’s Map of Ancient America 1360 A.D., p, 174",
+      "bbox": {
+        "l": 168.5,
+        "b": 707.0,
+        "r": 337.0,
+        "t": 718.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "*illustrated\nReproduction of Qazwini world maps from Konrad Miller",
+      "bbox": {
+        "l": 167.0,
+        "b": 694.0,
+        "r": 475.0,
+        "t": 705.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 167.0,
+        "b": 667.0,
+        "r": 461.5,
+        "t": 679.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 167.0,
+        "b": 654.0,
+        "r": 437.0,
+        "t": 665.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 167.0,
+        "b": 641.0,
+        "r": 394.5,
+        "t": 652.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 166.5,
+        "b": 615.0,
+        "r": 510.5,
+        "t": 639.0
+      }
+    },
+    {
+      "label": "section_header",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 590.0,
+        "r": 165.5,
+        "t": 599.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 575.5,
+        "r": 328.5,
+        "t": 586.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 551.5,
+        "r": 507.0,
+        "t": 574.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 539.5,
+        "r": 477.0,
+        "t": 550.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 527.0,
+        "r": 422.0,
+        "t": 538.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 514.5,
+        "r": 374.5,
+        "t": 526.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 514.5,
+        "r": 374.5,
+        "t": 526.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 503.0,
+        "r": 436.0,
+        "t": 514.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 503.0,
+        "r": 436.0,
+        "t": 514.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 491.5,
+        "r": 424.5,
+        "t": 502.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 491.5,
+        "r": 424.5,
+        "t": 502.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 479.5,
+        "r": 474.0,
+        "t": 490.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 479.5,
+        "r": 474.0,
+        "t": 490.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 467.0,
+        "r": 385.5,
+        "t": 478.0
+      }
+    },
+    {
+      "label": "footnote",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 467.0,
+        "r": 385.5,
+        "t": 478.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 96.0,
+        "b": 170.0,
+        "r": 512.5,
+        "t": 392.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 172.0,
+        "r": 512.5,
+        "t": 391.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 96.0,
+        "b": 176.5,
+        "r": 289.0,
+        "t": 370.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 177.5,
+        "b": 141.0,
+        "r": 435.0,
+        "t": 152.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 177.5,
+        "b": 141.0,
+        "r": 435.0,
+        "t": 152.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 38.5,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
   "17": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n14\r\n \r\n \r\nWorld map in the ca. 1553 manuscript of al-Qazwini showing the New World (right side) similar\r\nto the 1507 representation by Waldseemüller (#310). Oriented with South at the top.\r\n \r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.0,
+        "r": 522.0,
+        "t": 741.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 90.0,
+        "b": 297.5,
+        "r": 534.0,
+        "t": 720.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n14\nWorld map in the ca. 1553 manuscript of al-Qazwini showing the New World (right side) similar\r\nto the 1507 representation by Waldseemüller (#310). Oriented with South at the top.",
+      "bbox": {
+        "l": 90.0,
+        "b": 257.5,
+        "r": 522.5,
+        "t": 283.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 48.0
       }
     }
   ],
   "18": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n15\r\n \r\nWorld Map in 1565 Persian manuscript of al-Qazwini’s Wonders of Creation\r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 740.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 127.5,
+        "b": 345.5,
+        "r": 485.0,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n15\nWorld Map in 1565 Persian manuscript of al-Qazwini’s Wonders of Creation",
+      "bbox": {
+        "l": 129.0,
+        "b": 319.5,
+        "r": 483.0,
+        "t": 331.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 215.0,
+        "b": 49.5,
+        "r": 405.0,
+        "t": 306.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 38.5,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
   "19": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n16\r\n \r\nal-Qazwini world map from 1325\r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.5,
+        "b": 731.5,
+        "r": 522.0,
+        "t": 741.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 112.5,
+        "b": 321.5,
+        "r": 499.5,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n16\nal-Qazwini world map from 1325",
+      "bbox": {
+        "l": 231.5,
+        "b": 295.0,
+        "r": 380.0,
+        "t": 307.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "20": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n#222\n\n17\n",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.0,
+        "r": 522.0,
+        "t": 741.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 128.0,
+        "b": 408.5,
+        "r": 483.5,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\n#222\n17",
+      "bbox": {
+        "l": 257.0,
+        "b": 382.5,
+        "r": 354.0,
+        "t": 394.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 154.5,
+        "b": 101.5,
+        "r": 457.0,
+        "t": 370.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "21": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n18\r\n \r\nA map of the inhabited world, from ‘Ajā’ib al-makhlūqāt wa-gharā’ib al-mawjūdāt [Marvels\r\nof Things Created and Miraculous Aspects of Things Existing] by al-Qazwīnī\r\nU.S. National Library of Medicine. MS P 1, fols. 71b-72a. The copy was made in 1537/944,\r\nprobably in western India. Neither the copyist nor illustrator is named.\r\n \r\n The map shown below is one of al-Qazwini’s maps form the Monuments of Places.\r\nIt is oriented with South at the top and is very basic, omitting even the oceans and\r\nlandmasses. The map is typical Islamic, with the inhabited world divided into seven\r\nclimatic zones, from south to north. The inhabited world is located between the Equator\r\nand the North Polar Zone. The first zone is near the equator and the region near the\r\nNorth Pole above the seventh zone is the Northern uninhabited zone.\r\n The seven parallel climatic zone lines dominate the map, with the gulfs\r\nrepresented by wedge-like shapes, cutting into the climatic zones. These wedges are\r\nnamed (from the left) the Ahdar Gulf, the Persian Gulf and the Gulf of the Berbers. The\r\ncircle in the middle is the Caspian Sea and the two slanted parallel lines to its right are\r\ninscribed Bahr-ul Maghrib wa al-Rum wa al-Sham [the Sea of the West, Rome and the\r\nSham] – i.e., the Mediterranean Sea.\r\n The countries shown on the map are predominantly Islamic ones, but some non￾Islamic countries such as Rum [Byzantium], Bulgaria, Saqaliba [the Slavs] and Rus\r\n[Russia] are also featured. Armenia also appears in the neighborhood of the Caspian Sea\r\nand Russia. The legends inside the zones from one to seven (top to bottom) from the\r\nright include:\r\nZone 1 Khalij Berber [Gulf of Berbers], Yemen, Omman, Khalij Fars [Persian Gulf], Khalij\r\n Akhdar [the Green gulf, possibly Gulf of Bengal], al-Chin.\r\nZone 2 Tanjeh [Tangiers], Bilad Berber, Lesser Egypt, Hijaz, al-Sir",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 740.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 424.0,
+        "r": 522.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n18\nA map of the inhabited world, from ‘Ajā’ib al-makhlūqāt wa-gharā’ib al-mawjūdāt [Marvels\r\nof Things Created and Miraculous Aspects of Things Existing] by al-Qazwīnī\r\nU.S. National Library of Medicine. MS P 1, fols. 71b-72a. The copy was made in 1537/944,\r\nprobably in western India. Neither the copyist nor illustrator is named.",
+      "bbox": {
+        "l": 90.5,
+        "b": 357.5,
+        "r": 520.0,
+        "t": 409.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "The map shown below is one of al-Qazwini’s maps form the Monuments of Places.\r\nIt is oriented with South at the top and is very basic, omitting even the oceans and\r\nlandmasses. The map is typical Islamic, with the inhabited world divided into seven\r\nclimatic zones, from south to north. The inhabited world is located between the Equator\r\nand the North Polar Zone. The first zone is near the equator and the region near the\r\nNorth Pole above the seventh zone is the Northern uninhabited zone.\r\n The seven parallel climatic zone lines dominate the map, with the gulfs\r\nrepresented by wedge-like shapes, cutting into the climatic zones. These wedges are\r\nnamed (from the left) the Ahdar Gulf, the Persian Gulf and the Gulf of the Berbers. The\r\ncircle in the middle is the Caspian Sea and the two slanted parallel lines to its right are\r\ninscribed Bahr-ul Maghrib wa al-Rum wa al-Sham [the Sea of the West, Rome and the\r\nSham] – i.e., the Mediterranean Sea.\r\n The countries shown on the map are predominantly Islamic ones, but some non￾Islamic countries such as Rum [Byzantium], Bulgaria, Saqaliba [the Slavs] and Rus\r\n[Russia] are also featured. Armenia also appears in the neighborhood of the Caspian Sea\r\nand Russia. The legends inside the zones from one to seven (top to bottom) from the\r\nright include:\r\nZone 1 Khalij Berber [Gulf of Berbers], Yemen, Omman, Khalij Fars [Persian Gulf], Khalij\r\n Akhdar [the Green gulf, possibly Gulf of Bengal], al-Chin.\r\nZone 2 Tanjeh [Tangiers], Bilad Berber, Lesser Egypt, Hijaz, al-Sir",
+      "bbox": {
+        "l": 89.0,
+        "b": 266.0,
+        "r": 523.0,
+        "t": 342.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 185.5,
+        "r": 523.0,
+        "t": 263.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 119.0,
+        "r": 522.5,
+        "t": 184.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 92.5,
+        "r": 513.0,
+        "t": 117.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 79.0,
+        "r": 401.5,
+        "t": 91.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 38.5,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
   "22": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n19\r\nZone 3 Andalus, Bilad Afriqiye, Iskandarieh [Alexandria], Beyt ul-Muqaddas [Jerusalem],\r\n Shiraz, Kirman, Mokran, Sind, Hind, Kandahar, Machin.\r\nZone 4 Bahr el-Rum va al-Sham [Mediterranean], Diarbekir, Iraq, Djebal,\r\n \r\n Khurassan, Shaja, Badakhshan, Atachin, Tlbbet\r\nZone 5 Afranje [France], Qostantanieh [Constantinople], Bahri Khazar [Caspian], Rus,\r\n Armin[rya], Khawrazm, Bein ul-Nahrein [Oxiana], Sadd-Taran (?), al-Turk [the\r\n Turks].\r\nZone 6 Bilad Alman [Germany], Saqaliba, Rus, Bahri Khawrazm [Aral Sea], Qipchagh\r\n [Polovtsians], Bamian, Kaimaii\r\nZone 7 Maghrib, Batin ul-Rum [Byzantium interior], Bulghar, Bahri Warang [Baltic or\r\n Northern Sea], Gog and Magog.\r\n \r\nOutside the climatic zones, in the southern hemisphere (upper part) there a few\r\nprovinces listed, including Sauad al-Maghhb [Black races of the West], Habash [Ethiopia],\r\nZangebar [Zanzibar] Nubia and Al-Zinj [East Africa, could also refer to the city of Zinj in\r\nBahrain]. The vertical legend in the center of the map indicates the Equator.\r\n \r\n \r\nAl-Qazwini zonal world map from his Athar-al Bilad wa Akhbar al Ibad, 1329,\r\nBritish Library, London, MS. Or. MS 3623, f. 5a (water damaged), Size 23 x 35 cm.",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.0,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "al-Qazwini\r\n#222\r\n19\r\nZone 3 Andalus, Bilad Afriqiye, Iskandarieh [Alexandria], Beyt ul-Muqaddas [Jerusalem],\r\n Shiraz, Kirman, Mokran, Sind, Hind, Kandahar, Machin.\r\nZone 4 Bahr el-Rum va al-Sham [Mediterranean], Diarbekir, Iraq, Djebal,",
+      "bbox": {
+        "l": 89.0,
+        "b": 694.0,
+        "r": 510.0,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "Khurassan, Shaja, Badakhshan, Atachin, Tlbbet\r\nZone 5 Afranje [France], Qostantanieh [Constantinople], Bahri Khazar [Caspian], Rus,\r\n Armin[rya], Khawrazm, Bein ul-Nahrein [Oxiana], Sadd-Taran (?), al-Turk [the\r\n Turks].\r\nZone 6 Bilad Alman [Germany], Saqaliba, Rus, Bahri Khawrazm [Aral Sea], Qipchagh\r\n [Polovtsians], Bamian, Kaimaii\r\nZone 7 Maghrib, Batin ul-Rum [Byzantium interior], Bulghar, Bahri Warang [Baltic or\r\n Northern Sea], Gog and Magog.",
+      "bbox": {
+        "l": 89.0,
+        "b": 694.0,
+        "r": 510.0,
+        "t": 718.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "Outside the climatic zones, in the southern hemisphere (upper part) there a few\r\nprovinces listed, including Sauad al-Maghhb [Black races of the West], Habash [Ethiopia],\r\nZangebar [Zanzibar] Nubia and Al-Zinj [East Africa, could also refer to the city of Zinj in\r\nBahrain]. The vertical legend in the center of the map indicates the Equator.",
+      "bbox": {
+        "l": 89.0,
+        "b": 680.0,
+        "r": 452.0,
+        "t": 691.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "Al-Qazwini zonal world map from his Athar-al Bilad wa Akhbar al Ibad, 1329,\r\nBritish Library, London, MS. Or. MS 3623, f. 5a (water damaged), Size 23 x 35 cm.",
+      "bbox": {
+        "l": 89.0,
+        "b": 680.0,
+        "r": 452.0,
+        "t": 691.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 125.5,
+        "b": 654.0,
+        "r": 337.5,
+        "t": 665.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 614.5,
+        "r": 500.5,
+        "t": 652.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 614.5,
+        "r": 500.5,
+        "t": 652.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 588.0,
+        "r": 493.0,
+        "t": 612.5
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 588.0,
+        "r": 493.0,
+        "t": 612.5
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 561.0,
+        "r": 500.5,
+        "t": 586.0
+      }
+    },
+    {
+      "label": "list_item",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 561.0,
+        "r": 500.5,
+        "t": 586.0
+      }
+    },
+    {
+      "label": "text",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 494.5,
+        "r": 522.5,
+        "t": 546.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 185.5,
+        "b": 120.5,
+        "r": 427.5,
+        "t": 477.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "",
+      "bbox": {
+        "l": 119.5,
+        "b": 77.5,
+        "r": 491.5,
+        "t": 103.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 38.5,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
   "23": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n20\r\n \r\nAl-Qazwini world map from his “Marvels of Regions”, 1582,\r\nUniversity of Manchester Library, UK Arabic MS 313[668] iv, 226 x 135 mm\r\nThe mountain called “mountain of the moon”, and the sources of the Nile are the extreme south;\r\nthe Russians and Bulgarians, Constantinople, and Gog and Magog the extreme North",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 123.5,
+        "b": 150.5,
+        "r": 488.5,
+        "t": 720.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n20\nAl-Qazwini world map from his “Marvels of Regions”, 1582,\r\nUniversity of Manchester Library, UK Arabic MS 313[668] iv, 226 x 135 mm\r\nThe mountain called “mountain of the moon”, and the sources of the Nile are the extreme south;\r\nthe Russians and Bulgarians, Constantinople, and Gog and Magog the extreme North",
+      "bbox": {
+        "l": 93.5,
+        "b": 83.5,
+        "r": 518.5,
+        "t": 135.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.5,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "24": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n21\r\n \r\n \r\n \r\n Al-Qazwini world map from his Cosmography “Delight of Hearts”, 1619, 247 x 145 mm,\r\nUniversity of Manchester Library, UK, Rylands Collection, Persian MS 403, 199v",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 127.5,
+        "b": 110.0,
+        "r": 484.5,
+        "t": 680.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n21\nAl-Qazwini world map from his Cosmography “Delight of Hearts”, 1619, 247 x 145 mm,\r\nUniversity of Manchester Library, UK, Rylands Collection, Persian MS 403, 199v",
+      "bbox": {
+        "l": 103.5,
+        "b": 83.5,
+        "r": 507.5,
+        "t": 108.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.5,
+        "r": 311.0,
+        "t": 47.5
       }
     }
   ],
   "25": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n22\r\n \r\n \r\nMap of the World, 15th century, 18.1 x 10 cm, The Museum of Islamic Art, Qatar, Ms 228.1998\r\noriented with South at the top\r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 129.0,
+        "b": 189.0,
+        "r": 482.5,
+        "t": 705.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n22\nMap of the World, 15th century, 18.1 x 10 cm, The Museum of Islamic Art, Qatar, Ms 228.1998\r\noriented with South at the top",
+      "bbox": {
+        "l": 92.5,
+        "b": 149.0,
+        "r": 519.0,
+        "t": 174.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.5,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "26": [
     {
-      "label": "text",
-      "text": "#222\n\n23\n",
+      "label": "page_header",
+      "text": "#222\n\n23",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 731.5,
+        "r": 522.0,
+        "t": 741.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 121.0,
+        "b": 158.0,
+        "r": 491.0,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
   "27": [
     {
-      "label": "text",
-      "text": "#222\n\n24\n",
+      "label": "page_header",
+      "text": "#222\n\n24",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 106.5,
+        "b": 130.0,
+        "r": 509.5,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "28": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n25\r\n A map by Abu Zaid Ahmed ibn Sahl al-Balkhi (850-934), a Persian geographer who was a\r\ndisciple of al-Kindi and also the founder of the “Balkhī school”of terrestrial mapping in Baghdad.\r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 740.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 415.0,
+        "r": 523.0,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n25\r\n A map by Abu Zaid Ahmed ibn Sahl al-Balkhi (850-934), a Persian geographer who was a\r\ndisciple of al-Kindi and also the founder of the “Balkhī school”of terrestrial mapping in Baghdad.",
+      "bbox": {
+        "l": 92.0,
+        "b": 389.0,
+        "r": 519.5,
+        "t": 414.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.5,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
   "29": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n26\r\n \r\nAn al-Qazwini world map based upon the al-Biruni model, ca. 14th century, 16.75 cm diameter\r\nInstitute of Oriental Manuscripts, Russian Academy of Sciences, Ms E7, fol. 63b, St. Petersburg\r\n \r\n \r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "page_header",
+      "text": "",
+      "bbox": {
+        "l": 499.0,
+        "b": 732.5,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 198.0,
+        "r": 523.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n26\nAn al-Qazwini world map based upon the al-Biruni model, ca. 14th century, 16.75 cm diameter\r\nInstitute of Oriental Manuscripts, Russian Academy of Sciences, Ms E7, fol. 63b, St. Petersburg",
+      "bbox": {
+        "l": 91.5,
+        "b": 158.0,
+        "r": 520.0,
+        "t": 183.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.5,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "30": [
     {
-      "label": "text",
-      "text": "#222\n\nal-Qazwini\n\n27\n",
+      "label": "page_header",
+      "text": "#222\n\nal-Qazwini\n\n27",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 281.0,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 264.0,
+        "r": 522.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 48.0
       }
     }
   ],
   "31": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n#222\n\n28\n",
+      "label": "page_header",
+      "text": "al-Qazwini\n\n#222\n\n28",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 281.0,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 755.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 352.0,
+        "r": 526.5,
+        "t": 720.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 37.0,
+        "r": 312.0,
+        "t": 48.0
       }
     }
   ],
   "32": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n#222\n\n29\n",
+      "label": "page_header",
+      "text": "al-Qazwini\n\n#222\n\n29",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 337.5,
+        "r": 528.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "33": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n#222\n\n30\n",
+      "label": "page_header",
+      "text": "al-Qazwini\n\n#222\n\n30",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 755.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 340.5,
+        "r": 527.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 37.0,
+        "r": 312.0,
+        "t": 48.0
       }
     }
   ],
   "34": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n#222\n\n31\n",
+      "label": "page_header",
+      "text": "al-Qazwini\n\n#222\n\n31",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 281.0,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 377.5,
+        "r": 523.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
   "35": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n#222\n\n32\n",
+      "label": "page_header",
+      "text": "al-Qazwini\n\n#222\n\n32",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 281.0,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.5,
+        "b": 355.5,
+        "r": 522.5,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 48.0
       }
     }
   ],
   "36": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n#222\n\n33\n",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\n#222\n33",
+      "bbox": {
+        "l": 499.5,
+        "b": 732.0,
+        "r": 522.0,
+        "t": 741.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 164.0,
+        "r": 523.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 311.5,
+        "t": 47.5
       }
     }
   ],
   "37": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n34\n",
+      "label": "page_header",
+      "text": "al-Qazwini\n\n34",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 281.0,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 381.0,
+        "r": 522.5,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 48.0
       }
     }
   ],
   "38": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n#222\n\n35\n",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 754.5
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\n#222\n35",
+      "bbox": {
+        "l": 499.0,
+        "b": 731.0,
+        "r": 522.0,
+        "t": 741.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 314.0,
+        "r": 522.5,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 37.5,
+        "r": 312.0,
+        "t": 47.5
       }
     }
   ],
   "39": [
     {
-      "label": "text",
-      "text": "#222\n\nal-Qazwini\n\n36\n",
+      "label": "picture",
+      "text": "#222\n\nal-Qazwini\n\n36",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 89.5,
+        "b": 300.5,
+        "r": 522.5,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 37.0,
+        "r": 312.0,
+        "t": 48.5
       }
     }
   ],
   "40": [
     {
-      "label": "text",
-      "text": "al-Qazwini\r\n#222\r\n37\r\nTwo copies of a Turkish translation of Qazwini: two world-maps\r\n ",
+      "label": "page_header",
+      "text": "",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 280.5,
+        "b": 743.0,
+        "r": 331.5,
+        "t": 755.0
+      }
+    },
+    {
+      "label": "caption",
+      "text": "al-Qazwini\r\n#222\r\n37\r\nTwo copies of a Turkish translation of Qazwini: two world-maps",
+      "bbox": {
+        "l": 149.0,
+        "b": 706.0,
+        "r": 463.0,
+        "t": 719.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 90.0,
+        "b": 267.5,
+        "r": 522.0,
+        "t": 708.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 37.5,
+        "r": 312.0,
+        "t": 48.0
       }
     }
   ],
   "41": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n#222\n\n",
+      "label": "caption",
+      "text": "al-Qazwini\n#222",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 499.5,
+        "b": 730.5,
+        "r": 522.0,
+        "t": 742.0
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 89.0,
+        "b": 284.5,
+        "r": 523.0,
+        "t": 721.0
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.5,
+        "b": 35.5,
+        "r": 312.0,
+        "t": 48.0
       }
     }
   ],
   "42": [
     {
-      "label": "text",
-      "text": "al-Qazwini\n\n39\n",
+      "label": "page_header",
+      "text": "al-Qazwini\n\n39",
       "bbox": {
-        "l": 30.6,
-        "t": 752.4,
-        "r": 581.4,
-        "b": 39.6
+        "l": 281.0,
+        "b": 743.5,
+        "r": 331.5,
+        "t": 755.5
+      }
+    },
+    {
+      "label": "picture",
+      "text": "",
+      "bbox": {
+        "l": 91.0,
+        "b": 443.0,
+        "r": 522.5,
+        "t": 719.5
+      }
+    },
+    {
+      "label": "page_footer",
+      "text": "",
+      "bbox": {
+        "l": 300.0,
+        "b": 38.0,
+        "r": 312.0,
+        "t": 48.5
       }
     }
   ],
@@ -672,5 +3162,7 @@
       "w": 612.0,
       "h": 792.0
     }
-  }
+  },
+  "_heron_version": "1.0",
+  "_heron_threshold": 0.6
 }
