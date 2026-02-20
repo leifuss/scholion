@@ -9,7 +9,7 @@ Usage (local → cloud):
     modal run scripts/modal_heron.py                          # all unenriched keys
     modal run scripts/modal_heron.py --keys "KEY1 KEY2 KEY3" # specific keys
 
-Cost: T4 GPU @ ~$0.59/hr. Full 10-doc batch ≈ 15-20 min ≈ ~$0.15.
+Cost: T4 GPU @ ~$0.59/hr. Full corpus ≈ 30-60 min ≈ ~$0.30-0.60.
 
 Setup (one-time):
     pip install modal
@@ -59,21 +59,48 @@ app = modal.App("islamic-cartography-heron", image=image)
 REPO_URL = "https://github.com/leifuss/islamic-cartography-pipeline.git"
 REPO_DIR = Path("/repo")
 
+# ── Tuning ────────────────────────────────────────────────────────────────────
+PER_KEY_TIMEOUT = 900      # 15 min per key — fast text assignment makes this generous
+COMMIT_EVERY    = 5        # push progress every N keys (protects against timeout)
+MAX_PAGES       = 800      # skip docs with more page images than this
+
+
+def _push_progress(repo_dir: Path, message: str) -> bool:
+    """Commit any staged changes and push. Returns True if pushed."""
+    subprocess.run(["git", "add", "data/texts/"], cwd=repo_dir, check=True)
+    diff = subprocess.run(["git", "diff", "--staged", "--quiet"], cwd=repo_dir)
+    if diff.returncode == 0:
+        return False  # nothing to commit
+    subprocess.run(
+        ["git", "commit", "-m", message],
+        cwd=repo_dir, check=True,
+    )
+    for attempt in range(4):
+        result = subprocess.run(["git", "push"], cwd=repo_dir)
+        if result.returncode == 0:
+            return True
+        wait = 2 ** (attempt + 1)
+        print(f"  push failed, retrying in {wait}s…", flush=True)
+        import time; time.sleep(wait)
+    print("  ⚠ push failed after 4 attempts — will retry later", flush=True)
+    return False
+
+
 # ── Main function ─────────────────────────────────────────────────────────────
-PER_KEY_TIMEOUT = 2700     # 45 min per key — enough for 1000+ pages on T4
 
 @app.function(
     gpu="T4",
-    timeout=14400,         # 4 hours — needed for large corpora (1000+ page docs)
+    timeout=14400,         # 4 hours total budget
     secrets=[modal.Secret.from_name("islamic-cartography")],
 )
 def run_heron(keys: list[str] | None = None, github_token: str = ""):
     import json
     import os
     import subprocess
+    import time
     from pathlib import Path
 
-    # Clone the repo and pull LFS objects (PDFs needed by 05c for page rendering)
+    # Clone the repo and pull LFS objects
     print("Cloning repo...")
     subprocess.run(
         ["git", "clone", "--depth=1", REPO_URL, str(REPO_DIR)],
@@ -86,6 +113,15 @@ def run_heron(keys: list[str] | None = None, github_token: str = ""):
     subprocess.run(["git", "config", "user.name",  "modal-heron[bot]"], cwd=REPO_DIR, check=True)
     subprocess.run(["git", "config", "user.email", "modal-heron@noreply"], cwd=REPO_DIR, check=True)
 
+    # Set up push credentials early (so incremental pushes work)
+    github_token = github_token or os.environ.get("GITHUB_TOKEN", "")
+    can_push = bool(github_token)
+    if can_push:
+        remote = f"https://x-access-token:{github_token}@github.com/leifuss/islamic-cartography-pipeline.git"
+        subprocess.run(["git", "remote", "set-url", "origin", remote], cwd=REPO_DIR, check=True)
+    else:
+        print("ℹ No GITHUB_TOKEN — results will not be pushed.")
+
     # Build key list
     if not keys:
         inv = json.loads((REPO_DIR / "data/inventory.json").read_text())
@@ -95,46 +131,64 @@ def run_heron(keys: list[str] | None = None, github_token: str = ""):
                not (REPO_DIR / f"data/texts/{i['key']}/layout_elements.json").exists()
         ]
 
-    print(f"Keys to enrich: {keys}")
+    total = len(keys)
+    print(f"Keys to enrich: {total}")
+    print(f"Per-key timeout: {PER_KEY_TIMEOUT}s  Max pages: {MAX_PAGES}")
+    print(f"Incremental push: every {COMMIT_EVERY} keys" if can_push else "")
 
-    # Run all keys in a single 05c subprocess so the model is loaded only once.
-    # Use per-key timeout to prevent any single document from stalling the run.
+    # Process keys one at a time — 05c loads model once per subprocess,
+    # but with fast text assignment each key is quick (Heron only, no Tesseract).
     failed = []
-    for key in keys:
-        print(f"\n{'═'*40}\nLayout: {key}\n{'═'*40}", flush=True)
+    ok_count = 0
+    since_push = 0
+    run_start = time.time()
+
+    for n, key in enumerate(keys, 1):
+        elapsed_total = int(time.time() - run_start)
+        print(f"\n{'═'*50}\n[{n}/{total}] Layout: {key}  (elapsed {elapsed_total}s)\n{'═'*50}", flush=True)
+
         try:
             result = subprocess.run(
                 [sys.executable, "scripts/05c_layout_heron.py",
-                 "--batch", "4", "--keys", key],
+                 "--batch", "4",
+                 "--max-pages", str(MAX_PAGES),
+                 "--keys", key],
                 cwd=REPO_DIR,
                 timeout=PER_KEY_TIMEOUT,
             )
             if result.returncode != 0:
-                print(f"⚠ {key} failed (exit {result.returncode})")
+                print(f"⚠ {key} failed (exit {result.returncode})", flush=True)
                 failed.append(key)
+            else:
+                ok_count += 1
+                since_push += 1
         except subprocess.TimeoutExpired:
-            print(f"⚠ {key} timed out after {PER_KEY_TIMEOUT}s — skipping")
+            print(f"⚠ {key} timed out after {PER_KEY_TIMEOUT}s — skipping", flush=True)
             failed.append(key)
 
-    # Commit results back using a deploy token if set, else skip
-    github_token = github_token or os.environ.get("GITHUB_TOKEN", "")
-    if github_token:
-        remote = f"https://x-access-token:{github_token}@github.com/leifuss/islamic-cartography-pipeline.git"
-        subprocess.run(["git", "remote", "set-url", "origin", remote], cwd=REPO_DIR, check=True)
-        subprocess.run(["git", "add", "data/texts/"], cwd=REPO_DIR, check=True)
-        result = subprocess.run(["git", "diff", "--staged", "--quiet"], cwd=REPO_DIR)
-        if result.returncode != 0:
-            subprocess.run(
-                ["git", "commit", "-m", f"layout(05c/modal): {len(keys)-len(failed)} doc(s) enriched on T4 GPU [skip ci]"],
-                cwd=REPO_DIR, check=True
+        # Incremental commit+push to save progress
+        if can_push and since_push >= COMMIT_EVERY:
+            print(f"\n  → Pushing progress ({ok_count} enriched so far)…", flush=True)
+            pushed = _push_progress(
+                REPO_DIR,
+                f"layout(05c/modal): {ok_count} doc(s) enriched [skip ci]",
             )
-            subprocess.run(["git", "push"], cwd=REPO_DIR, check=True)
-            print("✓ Committed and pushed layout results.")
-    else:
-        print("ℹ No GITHUB_TOKEN — results not pushed. Run locally with: modal volume get ...")
+            if pushed:
+                since_push = 0
+                print("  → Pushed.", flush=True)
 
-    print(f"\nDone. Failed: {failed or 'none'}")
-    return {"ok": len(keys) - len(failed), "failed": failed}
+    # Final push
+    if can_push:
+        print(f"\n{'═'*50}\nFinal push ({ok_count} enriched, {len(failed)} failed)…", flush=True)
+        _push_progress(
+            REPO_DIR,
+            f"layout(05c/modal): {ok_count} doc(s) enriched on T4 GPU [skip ci]",
+        )
+        print("✓ Done.", flush=True)
+
+    total_time = int(time.time() - run_start)
+    print(f"\nDone in {total_time}s. OK: {ok_count}  Failed: {failed or 'none'}")
+    return {"ok": ok_count, "failed": failed, "elapsed_s": total_time}
 
 
 # ── Local entrypoint ─────────────────────────────────────────────────────────
