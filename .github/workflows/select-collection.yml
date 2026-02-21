@@ -1,0 +1,95 @@
+name: Select Collection
+
+# ── Triggers ──────────────────────────────────────────────────────────────────
+# Run manually to add a Zotero library or collection to data/collections.json.
+#
+# First run "Discover Collections" to generate data/discovered_collections.json,
+# then copy the selector string from the index.html discovery cards and paste it
+# here.
+#
+# Selector format:
+#   G:<group_id>:                  entire group library (e.g. G:5166884:)
+#   G:<group_id>:<collection_key>  specific collection  (e.g. G:5166884:ABCD1234)
+#   U::                            your personal library (all items)
+#   U::<collection_key>            specific collection in personal library
+#
+on:
+  workflow_dispatch:
+    inputs:
+      selector:
+        description: "Selector string (copy from the index.html discovery card)"
+        required: true
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install pyzotero python-dotenv
+
+      - name: Validate selector
+        run: |
+          SEL="${{ inputs.selector }}"
+          if [ -z "$SEL" ]; then
+            echo "ERROR: selector is required"
+            exit 1
+          fi
+          # Basic format check
+          if [[ ! "$SEL" =~ ^(G:[0-9]+:|U::) ]]; then
+            echo "ERROR: selector must start with G:<group_id>: or U::"
+            echo "  Examples: G:5166884:   G:5166884:ABCD1234   U::   U::KEY123"
+            exit 1
+          fi
+          echo "Selector: $SEL"
+
+      - name: Check discovered_collections.json exists
+        run: |
+          if [ ! -f data/discovered_collections.json ]; then
+            echo "ERROR: data/discovered_collections.json not found."
+            echo "  Run the 'Discover Collections' workflow first."
+            exit 1
+          fi
+
+      - name: Add collection
+        run: python scripts/select_collections.py --add "${{ inputs.selector }}"
+
+      - name: Commit collections.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/collections.json
+
+          if git diff --staged --quiet; then
+            echo "No changes — collection may already be in collections.json."
+          else
+            COUNT=$(python3 -c "
+          import json
+          d = json.load(open('data/collections.json'))
+          print(len(d.get('collections', [])))
+          " 2>/dev/null || echo "?")
+            git commit -m "select-collection: added ${{ inputs.selector }} (${COUNT} total) [skip ci]
+
+          Run: ${{ github.run_id }}"
+            git pull --rebase origin main
+            git push
+            echo "collections.json committed with new collection."
+          fi
