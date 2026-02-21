@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corpus Collections</title>
+<title>Scholion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -30,15 +33,44 @@ body {
 header {
   background: #0a0a0a;
   border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
+  padding: 0 28px;
+  height: 52px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
   flex-shrink: 0;
-  flex-wrap: wrap;
 }
-header h1 { font-size: 16px; font-weight: 600; color: #fff; }
-header .sub { font-size: 12px; color: var(--muted); flex: 1; min-width: 120px; }
+.header-logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: .04em;
+  text-decoration: none;
+  line-height: 1;
+}
+.header-logo:hover { color: #ccc; }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.header-nav-link {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: color .15s, background .15s;
+}
+.header-nav-link:hover { color: #fff; background: #1e1e1e; }
+.header-sub {
+  font-size: 11px;
+  color: #333;
+  padding: 0 4px;
+  user-select: none;
+}
 
 /* ── Main content ── */
 .main {
@@ -312,12 +344,17 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; min-width: 120px; }
 <body>
 
 <header>
-  <h1>Corpus Collections</h1>
-  <span class="sub" id="subtitle">Loading collections&hellip;</span>
-  <a id="header-discover-btn" class="btn-action" href="#" target="_blank" rel="noopener"
-     title="Scan your Zotero account for all available libraries and collections">
-    &#8599;&nbsp;Discover Collections
-  </a>
+  <a class="header-logo" href="#">Scholion</a>
+  <div class="header-right">
+    <a class="header-nav-link" href="#" title="About Scholion">About</a>
+    <span class="header-sub">|</span>
+    <a class="header-nav-link" href="#" title="User guide">Guide</a>
+    <span class="header-sub">|</span>
+    <a id="header-discover-btn" class="btn-action" href="#" target="_blank" rel="noopener"
+       title="Scan your Zotero account for all available libraries and collections">
+      &#8599;&nbsp;Discover Collections
+    </a>
+  </div>
 </header>
 
 <div class="main">
