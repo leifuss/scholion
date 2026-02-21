@@ -61,9 +61,10 @@ safe_filename = _dl.safe_filename
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
-INV_PATH    = _ROOT / 'data' / 'inventory.json'
-STATUS_PATH = _ROOT / 'data' / 'import_status.json'
-PDFS_DIR    = _ROOT / 'data' / 'pdfs'
+INV_PATH         = _ROOT / 'data' / 'inventory.json'
+STATUS_PATH      = _ROOT / 'data' / 'import_status.json'
+PDFS_DIR         = _ROOT / 'data' / 'pdfs'
+COLLECTIONS_PATH = _ROOT / 'data' / 'collections.json'
 
 LARGE_PAGE_THRESHOLD = 100   # pages
 COMMIT_EVERY         = 5     # items between progress commits
@@ -71,21 +72,39 @@ COMMIT_EVERY         = 5     # items between progress commits
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
+def get_collection_paths(slug: str | None) -> tuple[Path, Path]:
+    """Return (inv_path, status_path) for the given collection slug."""
+    if not slug:
+        return INV_PATH, STATUS_PATH
+    if not COLLECTIONS_PATH.exists():
+        raise SystemExit("ERROR: data/collections.json not found")
+    with open(COLLECTIONS_PATH, encoding='utf-8') as f:
+        coll_data = json.load(f)
+    for c in coll_data.get('collections', []):
+        if c['slug'] == slug:
+            path = c.get('path', slug)
+            if path == '.':
+                return INV_PATH, STATUS_PATH
+            base = _ROOT / 'data' / path
+            return base / 'inventory.json', base / 'import_status.json'
+    raise SystemExit(f"ERROR: collection slug {slug!r} not found in data/collections.json")
+
+
 def now_iso() -> str:
     return datetime.datetime.utcnow().isoformat(timespec='seconds') + 'Z'
 
 
-def load_status() -> dict:
-    if STATUS_PATH.exists():
-        with open(STATUS_PATH, encoding='utf-8') as f:
+def load_status(status_path: Path = STATUS_PATH) -> dict:
+    if status_path.exists():
+        with open(status_path, encoding='utf-8') as f:
             return json.load(f)
     return {'items': {}}
 
 
-def save_status(status: dict) -> None:
-    STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
+def save_status(status: dict, status_path: Path = STATUS_PATH) -> None:
+    status_path.parent.mkdir(parents=True, exist_ok=True)
     status['last_updated'] = now_iso()
-    with open(STATUS_PATH, 'w', encoding='utf-8') as f:
+    with open(status_path, 'w', encoding='utf-8') as f:
         json.dump(status, f, indent=2, ensure_ascii=False)
 
 
@@ -100,8 +119,9 @@ def count_pages(pdf_path: Path) -> int | None:
         return None
 
 
-def git_commit_progress(label: str) -> None:
+def git_commit_progress(label: str, status_path: Path = STATUS_PATH) -> None:
     """Commit import_status.json + new PDFs for dashboard visibility."""
+    rel_status = str(status_path.relative_to(_ROOT))
     try:
         subprocess.run(
             ['git', 'config', 'user.name', 'github-actions[bot]'],
@@ -113,7 +133,7 @@ def git_commit_progress(label: str) -> None:
             cwd=_ROOT, check=False, capture_output=True,
         )
         subprocess.run(
-            ['git', 'add', 'data/import_status.json', 'data/pdfs/'],
+            ['git', 'add', rel_status, 'data/pdfs/'],
             cwd=_ROOT, check=False, capture_output=True,
         )
         staged = subprocess.run(
@@ -172,13 +192,18 @@ def download_item(key: str, url: str, title: str,
 
 # ── Import modes ──────────────────────────────────────────────────────────────
 
-def run_import(mode: str, key_arg: str | None, url_arg: str | None) -> None:
-    with open(INV_PATH, encoding='utf-8') as f:
+def run_import(mode: str, key_arg: str | None, url_arg: str | None,
+               collection_slug: str | None = None) -> None:
+    inv_path, status_path = get_collection_paths(collection_slug)
+    if collection_slug:
+        print(f"Collection: {collection_slug}  ({inv_path})")
+
+    with open(inv_path, encoding='utf-8') as f:
         inventory = {item['key']: item for item in json.load(f)}
 
-    status = load_status()
+    status = load_status(status_path)
     status['import_running'] = True
-    save_status(status)
+    save_status(status, status_path)
 
     session = make_session()
 
@@ -227,7 +252,7 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None) -> None:
         return
 
     status['progress_total'] = total
-    save_status(status)
+    save_status(status, status_path)
 
     done = failed = 0
 
@@ -241,7 +266,7 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None) -> None:
             status['items'][key] = {}
         status['items'][key]['import_status'] = 'importing'
         status['items'][key]['last_updated']  = now_iso()
-        save_status(status)
+        save_status(status, status_path)
 
         res = download_item(key, url, title, session)
 
@@ -279,10 +304,10 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None) -> None:
             failed += 1
 
         status['items'][key]['last_updated'] = now_iso()
-        save_status(status)
+        save_status(status, status_path)
 
         if idx % COMMIT_EVERY == 0:
-            git_commit_progress(f"item {idx}/{total}")
+            git_commit_progress(f"item {idx}/{total}", status_path)
 
         print()
         time.sleep(1.0)
@@ -290,9 +315,9 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None) -> None:
     # Final state
     status['import_running'] = False
     status['current_item']   = None
-    save_status(status)
+    save_status(status, status_path)
 
-    git_commit_progress('final')
+    git_commit_progress('final', status_path)
 
     print('=' * 55)
     print('IMPORT COMPLETE')
@@ -312,5 +337,8 @@ if __name__ == '__main__':
     )
     parser.add_argument('--key', help='Item key (required for single / fetch_url)')
     parser.add_argument('--url', help='Direct PDF URL (required for fetch_url mode)')
+    parser.add_argument('--collection-slug', default=None,
+                        help='Collection slug from data/collections.json '
+                             '(default: root collection)')
     args = parser.parse_args()
-    run_import(args.mode, args.key, args.url)
+    run_import(args.mode, args.key, args.url, args.collection_slug)

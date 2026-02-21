@@ -15,6 +15,10 @@ name: Import PDFs
 on:
   workflow_dispatch:
     inputs:
+      collection_slug:
+        description: "Collection slug (from data/collections.json) — leave blank for root collection"
+        required: false
+        default: ""
       mode:
         description: "Import mode"
         type: choice
@@ -103,10 +107,12 @@ jobs:
           MODE="${{ inputs.mode }}"
           KEY="${{ inputs.item_key }}"
           URL="${{ inputs.pdf_url }}"
+          SLUG="${{ inputs.collection_slug }}"
 
           ARGS="--mode $MODE"
-          [ -n "$KEY" ] && ARGS="$ARGS --key $KEY"
-          [ -n "$URL" ] && ARGS="$ARGS --url $URL"
+          [ -n "$KEY" ]  && ARGS="$ARGS --key $KEY"
+          [ -n "$URL" ]  && ARGS="$ARGS --url $URL"
+          [ -n "$SLUG" ] && ARGS="$ARGS --collection-slug $SLUG"
 
           python scripts/import_pdfs.py $ARGS
 
@@ -114,7 +120,7 @@ jobs:
         # The Python script commits periodically; this catches any leftover changes
         if: always()
         run: |
-          git add data/import_status.json data/pdfs/ 2>/dev/null || true
+          git add data/import_status.json data/*/import_status.json data/collections/*/import_status.json data/pdfs/ 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "Nothing further to commit."

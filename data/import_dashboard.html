@@ -113,6 +113,23 @@
   .b-import  { background: #2d2000; color: #ffd60a; }
   .b-pending { background: #1e1e1e; color: #555; }
 
+  /* ── Collection picker ── */
+  .coll-panel { background: #1a1a1a; border: 1px solid #2e2e2e;
+                border-radius: 10px; padding: 12px 20px;
+                margin-bottom: 16px; display: flex; align-items: center;
+                gap: 10px; flex-wrap: wrap; }
+  .coll-label { font-size: 11px; color: #555; font-weight: 600;
+                text-transform: uppercase; letter-spacing: .05em;
+                white-space: nowrap; }
+  .coll-chip  { padding: 5px 12px; border-radius: 6px; font-size: 12px;
+                font-weight: 500; cursor: pointer; border: 1px solid #333;
+                color: #888; background: transparent; transition: all .15s;
+                white-space: nowrap; }
+  .coll-chip:hover  { color: #fff; border-color: #666; }
+  .coll-chip.active { color: #fff; background: #222; border-color: #0071e3; }
+  .coll-chip .chip-status { font-size: 10px; opacity: .55; margin-left: 5px; }
+  .btn-disabled { opacity: .35; pointer-events: none; cursor: not-allowed; }
+
   /* action buttons in table */
   .tbl-btn { display: inline-block; padding: 3px 9px; border-radius: 5px;
               font-size: 11px; font-weight: 500; text-decoration: none;
@@ -165,6 +182,14 @@
 
 <div class="content">
 
+  <!-- Collection picker (populated from data/collections.json) -->
+  <div class="coll-panel" id="coll-panel">
+    <span class="coll-label">Collection:</span>
+    <span id="coll-chips" style="display:flex;gap:8px;flex-wrap:wrap">
+      <span style="color:#444;font-size:12px">Loading…</span>
+    </span>
+  </div>
+
   <!-- Stats bar -->
   <div class="stats" id="stats">
     <div class="stat">         <div class="val" id="s-total">—</div>  <div class="lbl">Total items</div></div>
@@ -181,14 +206,21 @@
   <div class="actions-panel">
     <h2>Workflow Actions</h2>
     <div class="action-row">
-      <a id="link-scan"   class="btn btn-primary"  href="#" target="_blank">
-        ↗ Run: Scan Availability
+      <a id="link-discover" class="btn btn-ghost"   href="#" target="_blank">
+        ↗ Discover Collections
       </a>
-      <a id="link-import" class="btn btn-success"  href="#" target="_blank">
-        ↗ Run: Import Available
+      <a id="link-scan"     class="btn btn-primary" href="#" target="_blank">
+        ↗ Scan Availability
       </a>
-      <a id="link-single" class="btn btn-ghost"    href="#" target="_blank">
+      <a id="link-import"   class="btn btn-success" href="#" target="_blank">
+        ↗ Import Available
+      </a>
+      <a id="link-single"   class="btn btn-ghost"   href="#" target="_blank">
         ↗ Import single item…
+      </a>
+      <a class="btn btn-warning btn-disabled"
+         title="Import All is disabled during testing — use Import Available for the selected collection">
+        ↗ Import All Collections
       </a>
       <span class="action-note" id="action-note">
         Loading repository info…
@@ -264,41 +296,103 @@ let ACTIONS_URL = '';
     if (repo) {
       GITHUB_URL  = `https://github.com/${owner}/${repo}`;
       ACTIONS_URL = `${GITHUB_URL}/actions`;
+      document.getElementById('link-discover').href =
+        `${GITHUB_URL}/actions/workflows/discover-collections.yml`;
       document.getElementById('link-scan').href   =
         `${GITHUB_URL}/actions/workflows/import-scan.yml`;
       document.getElementById('link-import').href =
         `${GITHUB_URL}/actions/workflows/import-pdfs.yml`;
       document.getElementById('link-single').href =
         `${GITHUB_URL}/actions/workflows/import-pdfs.yml`;
-      document.getElementById('action-note').textContent =
-        `Workflow results appear here within ~10 s of a commit.`;
     }
   } else {
     // Local / custom domain fallback
-    document.getElementById('action-note').textContent =
-      'Open GitHub → Actions → import-scan or import-pdfs to run workflows.';
-    ['link-scan','link-import','link-single'].forEach(id => {
+    ['link-discover','link-scan','link-import','link-single'].forEach(id => {
       document.getElementById(id).removeAttribute('href');
       document.getElementById(id).style.opacity = '0.4';
       document.getElementById(id).style.pointerEvents = 'none';
     });
+    document.getElementById('action-note').textContent =
+      'Open GitHub → Actions to run workflows.';
   }
 })();
 
 // ── State ─────────────────────────────────────────────────────────────────────
-let INVENTORY   = [];    // from inventory.json
-let IMP_STATUS  = null;  // from import_status.json
-let MERGED      = [];    // combined rows
-let CURRENT_TAB = 'all';
-let POLL_TIMER  = null;
-const POLL_MS   = 10000;
+let INVENTORY          = [];    // from inventory.json
+let IMP_STATUS         = null;  // from import_status.json
+let MERGED             = [];    // combined rows
+let CURRENT_TAB        = 'all';
+let POLL_TIMER         = null;
+let COLLECTIONS        = [];    // from collections.json
+let SELECTED_COLLECTION = null; // currently active collection object
+const POLL_MS          = 10000;
+
+// ── Collection URL helpers ────────────────────────────────────────────────────
+function collBasePath() {
+  const path = SELECTED_COLLECTION?.path || '.';
+  return path === '.' ? '' : path + '/';
+}
+function getInvUrl()    { return collBasePath() + 'inventory.json?_='      + Date.now(); }
+function getStatusUrl() { return collBasePath() + 'import_status.json?_='  + Date.now(); }
+
+// ── Collection picker ─────────────────────────────────────────────────────────
+async function loadCollections() {
+  try {
+    const res = await fetch('collections.json?_=' + Date.now());
+    if (!res.ok) return;
+    const data = await res.json();
+    COLLECTIONS = data.collections || [];
+    const defaultSlug = data.default;
+    // Select the default collection (or first if no default)
+    SELECTED_COLLECTION = COLLECTIONS.find(c => c.slug === defaultSlug)
+                       || COLLECTIONS[0]
+                       || null;
+    renderCollectionPicker();
+    updateActionNote();
+  } catch(e) {
+    console.warn('Could not load collections.json', e);
+  }
+}
+
+function renderCollectionPicker() {
+  const container = document.getElementById('coll-chips');
+  if (!COLLECTIONS.length) {
+    container.innerHTML =
+      '<span style="color:#444;font-size:12px">No collections — run Discover Collections, then select_collections.py</span>';
+    return;
+  }
+  container.innerHTML = COLLECTIONS.map(c => {
+    const active = SELECTED_COLLECTION?.slug === c.slug ? ' active' : '';
+    const hint   = c.status === 'discovered' ? '(not yet synced)' :
+                   c.status === 'pending'    ? '(pending)'        : '';
+    return `<span class="coll-chip${active}" onclick="selectCollection('${esc(c.slug)}')" title="${esc(c.description || c.name)}">
+      ${esc(c.name)}<span class="chip-status">${hint}</span>
+    </span>`;
+  }).join('');
+}
+
+function selectCollection(slug) {
+  SELECTED_COLLECTION = COLLECTIONS.find(c => c.slug === slug) || null;
+  renderCollectionPicker();
+  updateActionNote();
+  load();
+}
+
+function updateActionNote() {
+  const slug = SELECTED_COLLECTION?.slug;
+  document.getElementById('action-note').textContent = GITHUB_URL
+    ? (slug
+        ? `Workflow input — collection_slug: "${slug}"`
+        : 'Workflow results appear here within ~10 s of a commit.')
+    : 'Open GitHub → Actions to run workflows.';
+}
 
 // ── Load ──────────────────────────────────────────────────────────────────────
 async function load() {
   try {
     const [invRes, stRes] = await Promise.all([
-      fetch('inventory.json?_=' + Date.now()),
-      fetch('import_status.json?_=' + Date.now()),
+      fetch(getInvUrl()),
+      fetch(getStatusUrl()),
     ]);
     if (invRes.ok) INVENTORY = await invRes.json();
     if (stRes.ok)  IMP_STATUS = await stRes.json();
@@ -566,8 +660,7 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-load();
-startPolling();
+loadCollections().then(() => { load(); startPolling(); });
 </script>
 </body>
 </html>

@@ -8,6 +8,10 @@ name: Scan PDF availability
 on:
   workflow_dispatch:
     inputs:
+      collection_slug:
+        description: "Collection slug (from data/collections.json) — leave blank for root collection"
+        required: false
+        default: ""
       force:
         description: "Re-scan items that were already scanned"
         type: boolean
@@ -60,14 +64,20 @@ jobs:
           if [ "${{ inputs.force }}" = "true" ]; then
             FORCE_FLAG="--force"
           fi
-          python scripts/import_scan.py $FORCE_FLAG
+          SLUG_FLAG=""
+          if [ -n "${{ inputs.collection_slug }}" ]; then
+            SLUG_FLAG="--collection-slug ${{ inputs.collection_slug }}"
+          fi
+          python scripts/import_scan.py $FORCE_FLAG $SLUG_FLAG
 
       - name: Commit import_status.json
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add data/import_status.json
+          # Stage root status file and any per-collection status files
+          git add data/import_status.json data/*/import_status.json 2>/dev/null || true
+          git add data/collections/*/import_status.json 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "No changes to import_status.json."

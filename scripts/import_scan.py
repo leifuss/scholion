@@ -41,23 +41,47 @@ from pdf_finder import (
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 
-INV_PATH    = _ROOT / 'data' / 'inventory.json'
-STATUS_PATH = _ROOT / 'data' / 'import_status.json'
-PDFS_DIR    = _ROOT / 'data' / 'pdfs'
+INV_PATH         = _ROOT / 'data' / 'inventory.json'
+STATUS_PATH      = _ROOT / 'data' / 'import_status.json'
+PDFS_DIR         = _ROOT / 'data' / 'pdfs'
+COLLECTIONS_PATH = _ROOT / 'data' / 'collections.json'
 
 UNPAYWALL   = 'https://api.unpaywall.org/v2/{doi}?email=scholion-bot@noreply.github.com'
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
+def get_collection_paths(slug: str | None) -> tuple[Path, Path]:
+    """Return (inv_path, status_path) for the given collection slug.
+
+    If slug is None, returns the default root paths.
+    Looks up the 'path' field in data/collections.json to support any
+    directory layout (e.g. path='.' for root, 'collections/my-slug' for sub-dirs).
+    """
+    if not slug:
+        return INV_PATH, STATUS_PATH
+    if not COLLECTIONS_PATH.exists():
+        raise SystemExit("ERROR: data/collections.json not found")
+    with open(COLLECTIONS_PATH, encoding='utf-8') as f:
+        coll_data = json.load(f)
+    for c in coll_data.get('collections', []):
+        if c['slug'] == slug:
+            path = c.get('path', slug)
+            if path == '.':
+                return INV_PATH, STATUS_PATH
+            base = _ROOT / 'data' / path
+            return base / 'inventory.json', base / 'import_status.json'
+    raise SystemExit(f"ERROR: collection slug {slug!r} not found in data/collections.json")
+
+
 def now_iso() -> str:
     from datetime import datetime, timezone
     return datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
-def load_status() -> dict:
-    if STATUS_PATH.exists():
-        with open(STATUS_PATH, encoding='utf-8') as f:
+def load_status(status_path: Path = STATUS_PATH) -> dict:
+    if status_path.exists():
+        with open(status_path, encoding='utf-8') as f:
             return json.load(f)
     return {
         'last_scan':       None,
@@ -71,10 +95,10 @@ def load_status() -> dict:
     }
 
 
-def save_status(status: dict) -> None:
-    STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
+def save_status(status: dict, status_path: Path = STATUS_PATH) -> None:
+    status_path.parent.mkdir(parents=True, exist_ok=True)
     status['last_updated'] = now_iso()
-    with open(STATUS_PATH, 'w', encoding='utf-8') as f:
+    with open(status_path, 'w', encoding='utf-8') as f:
         json.dump(status, f, indent=2, ensure_ascii=False)
 
 
@@ -156,11 +180,15 @@ def check_url_accessible(url: str, session: requests.Session) -> tuple[bool, str
 
 # ── Main scan ─────────────────────────────────────────────────────────────────
 
-def scan(force: bool = False) -> None:
-    with open(INV_PATH, encoding='utf-8') as f:
+def scan(force: bool = False, collection_slug: str | None = None) -> None:
+    inv_path, status_path = get_collection_paths(collection_slug)
+    if collection_slug:
+        print(f"Collection: {collection_slug}  ({inv_path})")
+
+    with open(inv_path, encoding='utf-8') as f:
         inventory = json.load(f)
 
-    status = load_status()
+    status = load_status(status_path)
     status['scan_complete'] = False
     status['last_scan'] = now_iso()
     total = len(inventory)
@@ -234,11 +262,11 @@ def scan(force: bool = False) -> None:
         status['items'][key]  = entry
         status['progress_n']  = sum(1 for v in status['items'].values() if v.get('availability'))
         status['progress_total'] = total
-        save_status(status)
+        save_status(status, status_path)
         time.sleep(0.3)
 
     status['scan_complete'] = True
-    save_status(status)
+    save_status(status, status_path)
 
     # Summary
     counts: dict[str, int] = {}
@@ -259,5 +287,8 @@ if __name__ == '__main__':
     )
     parser.add_argument('--force', action='store_true',
                         help='Re-scan items that already have an availability status')
+    parser.add_argument('--collection-slug', default=None,
+                        help='Collection slug from data/collections.json '
+                             '(default: root collection)')
     args = parser.parse_args()
-    scan(force=args.force)
+    scan(force=args.force, collection_slug=args.collection_slug)
