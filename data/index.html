@@ -45,24 +45,62 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 24px 40px;
+  padding: 48px 24px 60px;
+  gap: 52px;
 }
 
-.main h2 {
-  font-size: 22px;
+/* ── Section ── */
+.section {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.section-header h2 {
+  font-size: 20px;
   font-weight: 600;
   color: #fff;
-  margin-bottom: 8px;
 }
 
-.main .intro {
+.intro {
   font-size: 14px;
   color: var(--muted);
-  margin-bottom: 36px;
-  text-align: center;
-  max-width: 520px;
   line-height: 1.6;
 }
+
+/* ── Action button ── */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.btn-action:hover { background: #0060c0; color: #fff; text-decoration: none; }
+.btn-action.btn-secondary {
+  background: transparent;
+  color: var(--link);
+  border: 1px solid #2a4a6a;
+}
+.btn-action.btn-secondary:hover { background: #0d1f30; }
 
 /* ── Collection cards grid ── */
 .collection-grid {
@@ -70,7 +108,6 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 16px;
   width: 100%;
-  max-width: 900px;
 }
 
 .collection-card {
@@ -128,6 +165,7 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
 .b-status  { background: #1a3a1a; color: #5fba7d; border: 1px solid #2a5a2a; }
 .b-pending { background: #2a2000; color: #d4b05a; border: 1px solid #4a3800; }
 .b-source  { background: #222;    color: #999;    border: 1px solid #333; }
+.b-group   { background: #1e1a2e; color: #9a7fd4; border: 1px solid #3a2a5a; }
 .collection-card .card-arrow {
   font-size: 12px;
   color: var(--accent);
@@ -135,10 +173,103 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
   padding-top: 8px;
 }
 
+/* ── Discover cards ── */
+.discover-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.discover-card .card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.discover-card .card-count {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.selector-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.selector-chip {
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
+  font-size: 12px;
+  background: #0d0d0d;
+  color: #7fba00;
+  border: 1px solid #2a3a20;
+  border-radius: 5px;
+  padding: 3px 9px;
+  user-select: all;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.btn-copy {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: #222;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+.btn-copy:hover  { background: #2a2a2a; color: var(--text); }
+.btn-copy.copied { background: #1a3a1a; color: #5fba7d; border-color: #2a5a2a; }
+
+.btn-add-link {
+  font-size: 11px;
+  color: var(--link);
+  text-decoration: none;
+  padding: 3px 8px;
+  border: 1px solid #2a4a6a;
+  border-radius: 5px;
+  background: transparent;
+  white-space: nowrap;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.btn-add-link:hover { background: #0d1f30; }
+
+/* ── Info / notice boxes ── */
+.notice-box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px 32px;
+  max-width: 600px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.notice-box p + p { margin-top: 10px; }
+
+.all-active-msg {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* ── Loading / error ── */
 .loading-msg {
   text-align: center;
-  padding: 60px 24px;
+  padding: 40px 24px;
   color: var(--muted);
   font-size: 14px;
 }
@@ -157,72 +288,273 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
 </header>
 
 <div class="main">
-  <h2>Choose a Collection</h2>
-  <p class="intro">Select a collection to explore its documents, timeline, map, and full-text reader.</p>
-  <div class="collection-grid" id="grid">
-    <p class="loading-msg">Loading collections&hellip;</p>
-  </div>
+
+  <!-- ── Section 1: Your Collections ── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Your Collections</h2>
+    </div>
+    <p class="intro">Select a collection to explore its documents, timeline, map, and full-text reader.</p>
+    <div class="collection-grid" id="grid">
+      <p class="loading-msg">Loading collections&hellip;</p>
+    </div>
+  </section>
+
+  <!-- ── Section 2: Discover More ── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Discover More</h2>
+      <a id="discover-btn" class="btn-action" href="#" target="_blank" rel="noopener">
+        &#8599; Discover Collections
+      </a>
+    </div>
+    <div id="discover-content">
+      <p class="loading-msg">Checking for discovery data&hellip;</p>
+    </div>
+  </section>
+
 </div>
 
 <script>
+'use strict';
+
+// ── GitHub URL derivation ────────────────────────────────────────────────────
+let GITHUB_URL = '';
+(function () {
+  const m = window.location.hostname.match(/^([^.]+)\.github\.io$/);
+  if (m) {
+    const owner = m[1];
+    const repo  = window.location.pathname.split('/').filter(Boolean)[0] || '';
+    GITHUB_URL  = 'https://github.com/' + owner + '/' + repo;
+  }
+})();
+
+function workflowUrl(filename) {
+  if (!GITHUB_URL) return '#';
+  return GITHUB_URL + '/actions/workflows/' + filename;
+}
+
+// Wire up the Discover Collections button now so it works even if JS fails later
+document.getElementById('discover-btn').href = workflowUrl('discover-collections.yml');
+
+// ── Utilities ────────────────────────────────────────────────────────────────
 function esc(s) {
   return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
+function makeSelector(libType, libId, collKey) {
+  const prefix = libType === 'group' ? 'G:' + libId + ':' : 'U::';
+  return prefix + (collKey || '');
+}
+
+function copySelector(btn, sel) {
+  navigator.clipboard.writeText(sel).then(function () {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function () {
+      btn.textContent = 'Copy selector';
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(function () {
+    // fallback: select the chip text
+    const chip = btn.previousElementSibling;
+    if (chip) {
+      const range = document.createRange();
+      range.selectNodeContents(chip);
+      const sel2 = window.getSelection();
+      sel2.removeAllRanges();
+      sel2.addRange(range);
+    }
+  });
+}
+
+// ── Section 1: Active Collections ───────────────────────────────────────────
+let ACTIVE_COLLECTIONS = [];
+
 fetch('collections.json')
-  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(data => {
-    const collections = data.collections || [];
+  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(function (data) {
+    ACTIVE_COLLECTIONS = data.collections || [];
     const grid = document.getElementById('grid');
     document.getElementById('subtitle').textContent =
-      collections.length + ' collection' + (collections.length !== 1 ? 's' : '') + ' available';
+      ACTIVE_COLLECTIONS.length + ' collection' +
+      (ACTIVE_COLLECTIONS.length !== 1 ? 's' : '') + ' available';
 
-    if (!collections.length) {
-      grid.innerHTML = '<p class="loading-msg">No collections found in collections.json.</p>';
+    if (!ACTIVE_COLLECTIONS.length) {
+      grid.innerHTML = '<p class="loading-msg">No collections configured yet.</p>';
       return;
     }
 
-    // If there is only one collection, redirect directly to explore
-    if (collections.length === 1) {
-      const c = collections[0];
-      // Still show the landing page but auto-navigate is optional;
-      // let the user see the card and click through.
-    }
-
-    grid.innerHTML = collections.map(c => {
-      const href = `explore.html?collection=${encodeURIComponent(c.slug)}`;
-      const src = c.source || {};
+    grid.innerHTML = ACTIVE_COLLECTIONS.map(function (c) {
+      const href = 'explore.html?collection=' + encodeURIComponent(c.slug);
+      const src  = c.source || {};
       const srcLabel = src.library_type === 'group'
-        ? `group ${src.library_id}` : src.library_type === 'user' ? 'personal library' : '';
-      const itemCount = c.num_items ? `${c.num_items} items` : '';
-      const statusMap = {
-        pending: ['Pending', 'b-pending'],
-        synced:  ['Synced', 'b-status'],
-        built:   ['Dashboard ready', 'b-status'],
-        readers_ready: ['Readers ready', 'b-status'],
+        ? 'group ' + src.library_id
+        : src.library_type === 'user' ? 'personal library' : '';
+      const itemCount  = c.num_items ? c.num_items + ' items' : '';
+      const statusMap  = {
+        pending:       ['Pending',        'b-pending'],
+        synced:        ['Synced',         'b-status'],
+        built:         ['Dashboard ready','b-status'],
+        readers_ready: ['Readers ready',  'b-status'],
       };
-      const [statusLabel, statusCls] = statusMap[c.status] || ['', ''];
-      const builtAt = c.built_at ? `Built ${c.built_at.slice(0,10)}` : '';
+      const sm = statusMap[c.status] || ['', ''];
+      const builtAt = c.built_at ? 'Built ' + c.built_at.slice(0,10) : '';
 
-      return `<a class="collection-card" href="${esc(href)}">
-        <div class="card-name">${esc(c.name)}</div>
-        <div class="card-desc">${esc(c.description || '')}</div>
-        <div class="card-badges">
-          ${itemCount ? `<span class="badge b-items">${esc(itemCount)}</span>` : ''}
-          ${statusLabel ? `<span class="badge ${statusCls}">${esc(statusLabel)}</span>` : ''}
-          ${srcLabel ? `<span class="badge b-source">${esc(srcLabel)}</span>` : ''}
-        </div>
-        <div class="card-meta">
-          ${builtAt ? `<span>${esc(builtAt)}</span>` : ''}
-        </div>
-        <div class="card-arrow">Open collection &rarr;</div>
-      </a>`;
+      return '<a class="collection-card" href="' + esc(href) + '">' +
+        '<div class="card-name">' + esc(c.name) + '</div>' +
+        '<div class="card-desc">' + esc(c.description || '') + '</div>' +
+        '<div class="card-badges">' +
+          (itemCount  ? '<span class="badge b-items">'         + esc(itemCount)  + '</span>' : '') +
+          (sm[0]      ? '<span class="badge ' + sm[1] + '">'   + esc(sm[0])      + '</span>' : '') +
+          (srcLabel   ? '<span class="badge b-source">'        + esc(srcLabel)   + '</span>' : '') +
+        '</div>' +
+        '<div class="card-meta">' +
+          (builtAt ? '<span>' + esc(builtAt) + '</span>' : '') +
+        '</div>' +
+        '<div class="card-arrow">Open collection &rarr;</div>' +
+      '</a>';
     }).join('');
+
+    // Once active collections are known, render discover section
+    loadDiscoverSection();
   })
-  .catch(err => {
+  .catch(function (err) {
     document.getElementById('grid').innerHTML =
-      `<p class="loading-msg">Failed to load collections.json: ${esc(err.message)}</p>`;
+      '<p class="loading-msg">Failed to load collections.json: ' + esc(err.message) + '</p>';
+    loadDiscoverSection();
   });
+
+// ── Section 2: Discover More ─────────────────────────────────────────────────
+
+function isActive(libType, libId, collKey) {
+  for (var i = 0; i < ACTIVE_COLLECTIONS.length; i++) {
+    var s = ACTIVE_COLLECTIONS[i].source || {};
+    var ck = s.collection_key || null;
+    var cmp = collKey || null;
+    if (s.library_type === libType &&
+        String(s.library_id) === String(libId) &&
+        ck === cmp) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function selectUrl(sel) {
+  if (!GITHUB_URL) return '#';
+  return workflowUrl('select-collection.yml') +
+    '?query=' + encodeURIComponent('{"selector":"' + sel + '"}');
+}
+
+function renderDiscoverCard(libType, libId, libName, collKey, collName, numItems) {
+  const sel = makeSelector(libType, libId, collKey);
+  const displayName = collName
+    ? esc(collName)
+    : esc(libName) + ' <span style="font-size:12px;font-weight:400;color:var(--muted)">(entire library)</span>';
+  const srcLabel = libType === 'group'
+    ? 'group ' + esc(String(libId))
+    : 'personal library';
+  const countStr = numItems != null ? numItems + ' items' : '';
+  const addLink = workflowUrl('select-collection.yml');
+
+  return '<div class="discover-card">' +
+    '<div class="card-name">' + displayName + '</div>' +
+    '<div class="card-badges" style="margin-top:0">' +
+      (srcLabel  ? '<span class="badge b-group">'  + srcLabel  + '</span>' : '') +
+      (countStr  ? '<span class="badge b-items">'  + countStr  + '</span>' : '') +
+    '</div>' +
+    '<div class="selector-row">' +
+      '<span class="selector-chip">' + esc(sel) + '</span>' +
+      '<button class="btn-copy" onclick="copySelector(this, \'' + sel.replace(/'/g,"\\'") + '\')" type="button">Copy selector</button>' +
+      (addLink !== '#'
+        ? '<a class="btn-add-link" href="' + esc(addLink) + '" target="_blank" rel="noopener">&#8599; Add via GitHub Actions</a>'
+        : '') +
+    '</div>' +
+  '</div>';
+}
+
+function loadDiscoverSection() {
+  const container = document.getElementById('discover-content');
+
+  fetch('discovered_collections.json')
+    .then(function (r) {
+      if (r.status === 404) {
+        // State A: discovery data not available yet
+        container.innerHTML =
+          '<div class="notice-box">' +
+            '<p>No discovery data yet.</p>' +
+            '<p>Click <strong>"&#8599; Discover Collections"</strong> above to scan your Zotero account ' +
+            '(runs in ~30 s via GitHub Actions).</p>' +
+            '<p>Refresh this page after the workflow completes to see all available libraries and collections.</p>' +
+            (GITHUB_URL
+              ? '<p style="margin-top:16px"><a class="btn-action btn-secondary" href="' +
+                esc(workflowUrl('discover-collections.yml')) +
+                '" target="_blank" rel="noopener">&#8599; Open Discover Workflow on GitHub</a></p>'
+              : '') +
+          '</div>';
+        return null;
+      }
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function (data) {
+      if (!data) return;  // handled above (404)
+
+      // Build cards for unselected items
+      var cards = [];
+      var libraries = data.libraries || [];
+
+      for (var i = 0; i < libraries.length; i++) {
+        var lib = libraries[i];
+        var libType = lib.type;
+        var libId   = String(lib.id);
+        var libName = lib.name || libId;
+        var numItems = lib.num_items != null ? lib.num_items : null;
+
+        // Card for the entire library root (collKey = null / empty)
+        if (!isActive(libType, libId, null)) {
+          cards.push(renderDiscoverCard(libType, libId, libName, null, null, numItems));
+        }
+
+        // Cards for each top-level collection (depth 0 = roots with parentKey null)
+        var cols = lib.collections || [];
+        for (var j = 0; j < cols.length; j++) {
+          var col = cols[j];
+          if (col.parentKey != null) continue;  // only root-level collections
+          if (!isActive(libType, libId, col.key)) {
+            cards.push(renderDiscoverCard(
+              libType, libId, libName, col.key, col.name, col.numItems
+            ));
+          }
+        }
+      }
+
+      if (cards.length === 0) {
+        // State C: all discovered collections are already active
+        container.innerHTML =
+          '<div class="all-active-msg">' +
+            '<span style="color:#5fba7d">&#10003;</span> ' +
+            'All discovered collections are already active. ' +
+            '<a class="btn-action btn-secondary" style="margin-left:8px;font-size:11px;padding:3px 10px" ' +
+            'href="' + esc(workflowUrl('discover-collections.yml')) + '" target="_blank" rel="noopener">' +
+            '&#8599; Re-run Discover to check for new libraries</a>' +
+          '</div>';
+      } else {
+        // State B: unselected items found
+        var total = libraries.reduce(function (s, l) { return s + (l.num_items || 0); }, 0);
+        var subtext = cards.length + ' available to add' +
+          (total ? ' &mdash; ' + total + ' items across all libraries' : '');
+        container.innerHTML =
+          '<p class="intro" style="margin-bottom:12px">' + subtext + '</p>' +
+          '<div class="collection-grid">' + cards.join('') + '</div>';
+      }
+    })
+    .catch(function (err) {
+      container.innerHTML =
+        '<p class="loading-msg">Could not load discovery data: ' + esc(err.message) + '</p>';
+    });
+}
 </script>
 </body>
 </html>
