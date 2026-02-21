@@ -10,7 +10,8 @@
         "library_type": "group",
         "library_id": "5166884",
         "collection_key": null,
-        "collection_name": "CambridgeCore_Citation_04Nov2025"
+        "collection_name": "CambridgeCore_Citation_04Nov2025",
+        "collection_ancestors": []
       },
       "status": "readers_ready"
     },
@@ -23,10 +24,12 @@
         "library_type": "group",
         "library_id": "225417",
         "collection_key": "E74VK2Q5",
-        "collection_name": "VicarelloBeakers"
+        "collection_name": "VicarelloBeakers",
+        "collection_ancestors": []
       },
-      "num_items": 0,
-      "status": "pending"
+      "num_items": 6,
+      "status": "built",
+      "built_at": "2026-02-21T13:01:30"
     },
     {
       "slug": "general-case-studies",
@@ -37,26 +40,12 @@
         "library_type": "user",
         "library_id": "21499",
         "collection_key": "7EQNGTXE",
-        "collection_name": "General Case studies"
+        "collection_name": "General Case studies",
+        "collection_ancestors": []
       },
       "num_items": 6,
       "status": "built",
       "built_at": "2026-02-21T12:37:44"
-    },
-    {
-      "slug": "vicarellobeakers-2",
-      "name": "VicarelloBeakers",
-      "description": "",
-      "path": "collections/vicarellobeakers-2",
-      "source": {
-        "library_type": "group",
-        "library_id": "225417",
-        "collection_key": "E74VK2Q5",
-        "collection_name": "VicarelloBeakers"
-      },
-      "num_items": 6,
-      "status": "built",
-      "built_at": "2026-02-21T13:01:30"
     }
   ]
 }
