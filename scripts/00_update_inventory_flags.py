@@ -24,14 +24,31 @@ import json
 import sys
 from pathlib import Path
 
-_ROOT = Path(__file__).parent.parent
-TEXTS_ROOT = _ROOT / "data" / "texts"
-INV_PATH   = _ROOT / "data" / "inventory.json"
+_ROOT            = Path(__file__).parent.parent
+TEXTS_ROOT       = _ROOT / "data" / "texts"
+INV_PATH         = _ROOT / "data" / "inventory.json"
+COLLECTIONS_PATH = _ROOT / "data" / "collections.json"
 
 
-def check_doc(key: str) -> dict:
+def _get_collection_base(slug: str) -> Path:
+    if not COLLECTIONS_PATH.exists():
+        raise SystemExit("ERROR: data/collections.json not found")
+    with open(COLLECTIONS_PATH, encoding='utf-8') as f:
+        coll_data = json.load(f)
+    for c in coll_data.get('collections', []):
+        if c['slug'] == slug:
+            path = c.get('path', slug)
+            if path == '.':
+                return _ROOT / "data"
+            return _ROOT / "data" / path
+    raise SystemExit(f"ERROR: collection slug {slug!r} not found in data/collections.json")
+
+
+def check_doc(key: str, texts_root: Path = None) -> dict:
     """Return dict of flags to update in inventory for this key."""
-    doc_dir    = TEXTS_ROOT / key
+    if texts_root is None:
+        texts_root = TEXTS_ROOT
+    doc_dir    = texts_root / key
     pt_path    = doc_dir / "page_texts.json"
     meta_path  = doc_dir / "meta.json"
     page1_path = doc_dir / "pages" / "001.jpg"
@@ -58,12 +75,14 @@ def check_doc(key: str) -> dict:
     return flags
 
 
-def ensure_reader_meta(key: str, inv_entry: dict) -> bool:
+def ensure_reader_meta(key: str, inv_entry: dict, texts_root: Path = None) -> bool:
     """Generate reader_meta.json from inventory + meta.json if missing.
 
     Returns True if a new file was written.
     """
-    doc_dir = TEXTS_ROOT / key
+    if texts_root is None:
+        texts_root = TEXTS_ROOT
+    doc_dir = texts_root / key
     rm_path = doc_dir / "reader_meta.json"
 
     if rm_path.exists():
@@ -110,23 +129,35 @@ def ensure_reader_meta(key: str, inv_entry: dict) -> bool:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--inventory", default="data/inventory.json")
+    parser.add_argument("--inventory", default="data/inventory.json",
+                        help="Inventory path (overridden by --collection-slug)")
+    parser.add_argument("--collection-slug", default=None,
+                        help="Collection slug from data/collections.json; "
+                             "sets inventory and texts paths automatically")
     args = parser.parse_args()
 
-    inv_path  = _ROOT / args.inventory
+    if args.collection_slug:
+        base       = _get_collection_base(args.collection_slug)
+        inv_path   = base / "inventory.json"
+        texts_root = base / "texts"
+        print(f"Collection: {args.collection_slug}  ({base})")
+    else:
+        inv_path   = _ROOT / args.inventory
+        texts_root = TEXTS_ROOT
+
     inventory = json.loads(inv_path.read_text("utf-8"))
 
     changed   = 0
     meta_gen  = 0
     for item in inventory:
         key   = item["key"]
-        flags = check_doc(key)
+        flags = check_doc(key, texts_root)
         for k, v in flags.items():
             if item.get(k) != v:
                 item[k] = v
                 changed += 1
         if not args.dry_run:
-            if ensure_reader_meta(key, item):
+            if ensure_reader_meta(key, item, texts_root):
                 meta_gen += 1
 
     if args.dry_run:

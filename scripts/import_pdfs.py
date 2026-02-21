@@ -72,10 +72,10 @@ COMMIT_EVERY         = 5     # items between progress commits
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
-def get_collection_paths(slug: str | None) -> tuple[Path, Path]:
-    """Return (inv_path, status_path) for the given collection slug."""
+def get_collection_paths(slug: str | None) -> tuple[Path, Path, Path]:
+    """Return (inv_path, status_path, pdfs_dir) for the given collection slug."""
     if not slug:
-        return INV_PATH, STATUS_PATH
+        return INV_PATH, STATUS_PATH, PDFS_DIR
     if not COLLECTIONS_PATH.exists():
         raise SystemExit("ERROR: data/collections.json not found")
     with open(COLLECTIONS_PATH, encoding='utf-8') as f:
@@ -84,9 +84,9 @@ def get_collection_paths(slug: str | None) -> tuple[Path, Path]:
         if c['slug'] == slug:
             path = c.get('path', slug)
             if path == '.':
-                return INV_PATH, STATUS_PATH
+                return INV_PATH, STATUS_PATH, PDFS_DIR
             base = _ROOT / 'data' / path
-            return base / 'inventory.json', base / 'import_status.json'
+            return base / 'inventory.json', base / 'import_status.json', base / 'pdfs'
     raise SystemExit(f"ERROR: collection slug {slug!r} not found in data/collections.json")
 
 
@@ -119,9 +119,21 @@ def count_pages(pdf_path: Path) -> int | None:
         return None
 
 
-def git_commit_progress(label: str, status_path: Path = STATUS_PATH) -> None:
-    """Commit import_status.json + new PDFs for dashboard visibility."""
+def _save_inventory_dict(inventory: dict, inv_path: Path) -> None:
+    """Atomic write of inventory (keyed dict) back to file as a list."""
+    items = list(inventory.values())
+    tmp = inv_path.with_suffix('.tmp.json')
+    tmp.write_text(json.dumps(items, indent=2, ensure_ascii=False), encoding='utf-8')
+    tmp.replace(inv_path)
+
+
+def git_commit_progress(label: str, status_path: Path = STATUS_PATH,
+                        pdfs_dir: Path = PDFS_DIR,
+                        inv_path: Path = INV_PATH) -> None:
+    """Commit import_status.json + new PDFs + inventory for dashboard visibility."""
     rel_status = str(status_path.relative_to(_ROOT))
+    rel_pdfs   = str(pdfs_dir.relative_to(_ROOT))
+    rel_inv    = str(inv_path.relative_to(_ROOT))
     try:
         subprocess.run(
             ['git', 'config', 'user.name', 'github-actions[bot]'],
@@ -133,7 +145,7 @@ def git_commit_progress(label: str, status_path: Path = STATUS_PATH) -> None:
             cwd=_ROOT, check=False, capture_output=True,
         )
         subprocess.run(
-            ['git', 'add', rel_status, 'data/pdfs/'],
+            ['git', 'add', rel_status, rel_pdfs, rel_inv],
             cwd=_ROOT, check=False, capture_output=True,
         )
         staged = subprocess.run(
@@ -160,7 +172,8 @@ def git_commit_progress(label: str, status_path: Path = STATUS_PATH) -> None:
 
 
 def download_item(key: str, url: str, title: str,
-                  session: requests.Session) -> dict:
+                  session: requests.Session,
+                  pdfs_dir: Path = PDFS_DIR) -> dict:
     """Download a PDF. Returns result dict."""
     result = try_download(url, session)
     status = result['status']
@@ -177,7 +190,7 @@ def download_item(key: str, url: str, title: str,
     if not fname.endswith('.pdf'):
         fname += '.pdf'
 
-    dest = PDFS_DIR / key / fname
+    dest = pdfs_dir / key / fname
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_bytes(result['content'])
 
@@ -194,7 +207,7 @@ def download_item(key: str, url: str, title: str,
 
 def run_import(mode: str, key_arg: str | None, url_arg: str | None,
                collection_slug: str | None = None) -> None:
-    inv_path, status_path = get_collection_paths(collection_slug)
+    inv_path, status_path, pdfs_dir = get_collection_paths(collection_slug)
     if collection_slug:
         print(f"Collection: {collection_slug}  ({inv_path})")
 
@@ -248,7 +261,7 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None,
         print("Nothing to import.  "
               "Run import-scan.yml first, or check availability statuses.")
         status['import_running'] = False
-        save_status(status)
+        save_status(status, status_path)
         return
 
     status['progress_total'] = total
@@ -268,7 +281,7 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None,
         status['items'][key]['last_updated']  = now_iso()
         save_status(status, status_path)
 
-        res = download_item(key, url, title, session)
+        res = download_item(key, url, title, session, pdfs_dir=pdfs_dir)
 
         if res['success']:
             pages  = res.get('pages')
@@ -292,6 +305,12 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None,
                     'page_count':    pages,
                     'failure_reason': None,
                 })
+                # Write pdf_path and status back to inventory so 05b can find the PDF
+                if key in inventory:
+                    inventory[key]['pdf_path']  = res['pdf_path']
+                    inventory[key]['pdf_status'] = 'downloaded'
+                    if pages:
+                        inventory[key]['page_count'] = pages
                 pp = f"  {pages}pp" if pages else ""
                 print(f"          ✓  {kb}KB{pp} → {res['pdf_path']}")
             done += 1
@@ -307,7 +326,8 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None,
         save_status(status, status_path)
 
         if idx % COMMIT_EVERY == 0:
-            git_commit_progress(f"item {idx}/{total}", status_path)
+            _save_inventory_dict(inventory, inv_path)
+            git_commit_progress(f"item {idx}/{total}", status_path, pdfs_dir, inv_path)
 
         print()
         time.sleep(1.0)
@@ -317,7 +337,8 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None,
     status['current_item']   = None
     save_status(status, status_path)
 
-    git_commit_progress('final', status_path)
+    _save_inventory_dict(inventory, inv_path)
+    git_commit_progress('final', status_path, pdfs_dir, inv_path)
 
     print('=' * 55)
     print('IMPORT COMPLETE')

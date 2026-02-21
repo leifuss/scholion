@@ -7,15 +7,14 @@ name: Extract PDF batch
 on:
   workflow_dispatch:
     inputs:
+      collection_slug:
+        description: "Collection slug (from data/collections.json) — leave blank for root collection"
+        required: false
+        default: ""
       keys:
         description: "Space-separated doc keys to process (leave blank for all unextracted)"
         required: false
         default: ""
-      use_vision:
-        description: "Enable Google Vision OCR fallback (costs ~$1.50/1000 pages)"
-        type: boolean
-        required: false
-        default: false
       workers:
         description: "Parallel worker threads (keep at 1 for large scanned PDFs — memory limits)"
         required: false
@@ -72,15 +71,6 @@ jobs:
             tesseract-ocr-fra
           tesseract --version
 
-      # ── Google Vision credentials (optional) ─────────────────────────────────
-      - name: Write Vision credentials
-        if: ${{ inputs.use_vision }}
-        run: |
-          echo '${{ secrets.GOOGLE_CREDENTIALS_JSON }}' > /tmp/google-credentials.json
-          echo "GOOGLE_APPLICATION_CREDENTIALS=/tmp/google-credentials.json" >> $GITHUB_ENV
-        # Requires a repo secret: GOOGLE_CREDENTIALS_JSON
-        # containing the service account JSON as a single-line string
-
       # ── Set up .env for the pipeline ─────────────────────────────────────────
       - name: Create .env
         run: |
@@ -99,8 +89,6 @@ jobs:
           PYEOF
         env:
           ZOTERO_API_KEY: ${{ secrets.ZOTERO_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       # ── Fetch PDFs from Zotero cloud ─────────────────────────────────────────
       - name: Fetch PDFs from Zotero
@@ -118,19 +106,34 @@ jobs:
         run: |
           set +e   # don't abort on segfault — we handle failures per-key
 
-          VISION_FLAG=""
-          if [ "${{ inputs.use_vision }}" = "true" ]; then
-            VISION_FLAG="--vision"
+          SLUG="${{ inputs.collection_slug }}"
+          SLUG_FLAG=""
+          [ -n "$SLUG" ] && SLUG_FLAG="--collection-slug $SLUG"
+
+          # Resolve inventory path for key discovery
+          if [ -n "$SLUG" ]; then
+            INV_FILE=$(python3 -c "
+          import json
+          data = json.load(open('data/collections.json'))
+          for c in data.get('collections', []):
+              if c['slug'] == '$SLUG':
+                  p = c.get('path', '$SLUG')
+                  print('data/inventory.json' if p == '.' else f'data/{p}/inventory.json')
+                  break
+          ")
+          else
+            INV_FILE="data/inventory.json"
           fi
+          echo "Inventory: $INV_FILE"
 
           # Build list of keys to process
           if [ -n "${{ inputs.keys }}" ]; then
             KEYS="${{ inputs.keys }}"
           else
-            # Auto-discover unextracted keys from inventory
+            # Auto-discover unextracted keys from collection inventory
             KEYS=$(python3 -c "
           import json
-          inv = json.load(open('data/inventory.json'))
+          inv = json.load(open('$INV_FILE'))
           keys = [i['key'] for i in inv if not i.get('extracted') and i.get('pdf_path')]
           print(' '.join(keys))
           ")
@@ -148,7 +151,7 @@ jobs:
             python scripts/05b_extract_robust.py \
               --workers 1 \
               --keys "$KEY" \
-              $VISION_FLAG
+              $SLUG_FLAG
             EXIT=$?
             if [ $EXIT -ne 0 ]; then
               echo "⚠ $KEY failed (exit $EXIT) — continuing with next doc"
@@ -167,8 +170,27 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          python scripts/00_update_inventory_flags.py
-          git add data/texts/ data/inventory.json
+          SLUG="${{ inputs.collection_slug }}"
+          SLUG_FLAG=""
+          [ -n "$SLUG" ] && SLUG_FLAG="--collection-slug $SLUG"
+
+          python scripts/00_update_inventory_flags.py $SLUG_FLAG
+
+          # Stage texts and inventory for the correct collection
+          if [ -n "$SLUG" ]; then
+            COLL_PATH=$(python3 -c "
+          import json
+          data = json.load(open('data/collections.json'))
+          for c in data.get('collections', []):
+              if c['slug'] == '$SLUG':
+                  p = c.get('path', '$SLUG')
+                  print('.' if p == '.' else f'data/{p}')
+                  break
+          ")
+            git add "${COLL_PATH}/texts/" "${COLL_PATH}/inventory.json" 2>/dev/null || true
+          else
+            git add data/texts/ data/inventory.json
+          fi
 
           if git diff --staged --quiet; then
             echo "Nothing new to commit from extraction."
@@ -176,8 +198,8 @@ jobs:
             CHANGED=$(git diff --staged --name-only | grep page_texts.json | wc -l)
             git commit -m "extract(05b): ${CHANGED} doc(s) [skip ci]
 
+          Collection: ${{ inputs.collection_slug || 'root' }}
           Keys: ${{ inputs.keys || 'all-unextracted' }}
-          Vision: ${{ inputs.use_vision }}
           Run: ${{ github.run_id }}"
             git pull --rebase origin main   # avoid reject if commits landed during extraction
             git push
@@ -202,13 +224,32 @@ jobs:
 
           pip install modal --quiet
 
+          # Resolve inventory and texts paths for this collection
+          SLUG="${{ inputs.collection_slug }}"
+          if [ -n "$SLUG" ]; then
+            COLL_PATH=$(python3 -c "
+          import json
+          data = json.load(open('data/collections.json'))
+          for c in data.get('collections', []):
+              if c['slug'] == '$SLUG':
+                  p = c.get('path', '$SLUG')
+                  print('.' if p == '.' else f'data/{p}')
+                  break
+          ")
+            INV_FILE="${COLL_PATH}/inventory.json"
+            TEXTS_DIR="${COLL_PATH}/texts"
+          else
+            INV_FILE="data/inventory.json"
+            TEXTS_DIR="data/texts"
+          fi
+
           # Build list of keys that have page_texts.json (i.e. 05b succeeded)
           if [ -n "${{ inputs.keys }}" ]; then
             RAW_KEYS="${{ inputs.keys }}"
           else
             RAW_KEYS=$(python3 -c "
           import json
-          inv = json.load(open('data/inventory.json'))
+          inv = json.load(open('$INV_FILE'))
           keys = [i['key'] for i in inv if i.get('extracted')]
           print(' '.join(keys))
           ")
@@ -216,7 +257,7 @@ jobs:
 
           KEYS=""
           for KEY in $RAW_KEYS; do
-            if [ -f "data/texts/$KEY/page_texts.json" ]; then
+            if [ -f "${TEXTS_DIR}/$KEY/page_texts.json" ]; then
               KEYS="$KEYS $KEY"
             else
               echo "Skipping $KEY — no page_texts.json (05b may have failed)"

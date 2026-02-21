@@ -75,9 +75,10 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stage root status file and any per-collection status files
+          # Stage status files and inventory files (availability is written back to inventory)
           git add data/import_status.json data/*/import_status.json 2>/dev/null || true
           git add data/collections/*/import_status.json 2>/dev/null || true
+          git add data/inventory.json data/collections/*/inventory.json 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "No changes to import_status.json."

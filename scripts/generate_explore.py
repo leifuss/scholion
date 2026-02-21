@@ -166,9 +166,13 @@ def build_html(inventory: list, data_dir: Path = None, corpus_name: str = 'My Re
             })
 
     # Stats
-    total      = len(inventory)
-    with_place = sum(1 for r in inventory if r.get('place'))
-    with_year  = sum(1 for r in inventory if r.get('year'))
+    total         = len(inventory)
+    with_place    = sum(1 for r in inventory if r.get('place'))
+    with_year     = sum(1 for r in inventory if r.get('year'))
+    num_pdfs      = sum(1 for r in inventory
+                        if r.get('pdf_status') in ('stored', 'downloaded', 'stored_embedded'))
+    num_extracted = sum(1 for r in inventory if r.get('extracted'))
+    num_readers   = sum(1 for r in inventory if r.get('has_reader'))
 
     data_js      = json.dumps(inventory,  ensure_ascii=False)
     decades_js   = json.dumps(decades,    ensure_ascii=False)
@@ -549,6 +553,9 @@ header .sub {{ font-size: 12px; color: var(--muted); flex: 1; }}
 .b-good      {{ background:#0d2a1a; color:#5fba7d; border:1px solid #1a4a2a; }}
 .b-suspect   {{ background:#2a2000; color:#d4b05a; border:1px solid #4a3800; }}
 .b-garbled   {{ background:#2a1a1a; color:#d47a5a; border:1px solid #4a2a1a; }}
+.b-oa        {{ background:#0d200d; color:#5fba7d; border:1px solid #1a4a1a; }}
+.b-restricted{{ background:#2a1a00; color:#d4a05a; border:1px solid #4a3000; }}
+.b-unavail   {{ background:#1e1e1e; color:#555;    border:1px solid #2e2e2e; }}
 
 /* ── Scrollbars ── */
 ::-webkit-scrollbar {{ width: 5px; height: 5px; }}
@@ -559,8 +566,14 @@ header .sub {{ font-size: 12px; color: var(--muted); flex: 1; }}
 <body>
 
 <header>
-  <h1>Islamic Cartography — Corpus Explorer</h1>
-  <span class="sub">Generated {time.strftime('%Y-%m-%d %H:%M')} · {total} items · {with_year} with date · {with_place} with place</span>
+  <h1>{corpus_name} — Explorer</h1>
+  <span class="sub">
+    {total} items
+    {f' · {num_pdfs} PDFs' if num_pdfs else ''}
+    {f' · {num_extracted} extracted' if num_extracted else ''}
+    {f' · {num_readers} readers' if num_readers else ''}
+    · {with_year} dated · {with_place} placed
+  </span>
   <nav class="site-nav">
     <a href="dashboard.html">📋 Dashboard</a>
     <a href="explore.html" class="active">🔭 Explorer</a>
@@ -620,6 +633,15 @@ header .sub {{ font-size: 12px; color: var(--muted); flex: 1; }}
       <option value="19c">19th Century (1800–1900)</option>
       <option value="20c">20th Century (1900–2000)</option>
       <option value="modern">21st Century (2000–)</option>
+    </select>
+  </label>
+  <label>Avail:
+    <select id="fAvail" onchange="applyFilters()">
+      <option value="">All</option>
+      <option value="stored">Stored</option>
+      <option value="open_access">Open access</option>
+      <option value="restricted">Restricted</option>
+      <option value="unavailable">Unavailable</option>
     </select>
   </label>
   <span class="filter-count" id="filterCount"></span>
@@ -752,6 +774,15 @@ function qualityBadge(s) {{
   return '';
 }}
 
+function availabilityBadge(s) {{
+  // Skip badge if already covered by pdfBadge (stored) or not yet scanned
+  if (!s || s === 'stored') return '';
+  if (s === 'open_access')  return badge('b-oa',         'Open access');
+  if (s === 'restricted')   return badge('b-restricted', 'Restricted');
+  if (s === 'unavailable')  return badge('b-unavail',    'Unavailable');
+  return '';
+}}
+
 // ─── Filtering ───────────────────────────────────────────────────────────────
 function applyFilters() {{
   const q       = document.getElementById('q').value.toLowerCase();
@@ -760,6 +791,7 @@ function applyFilters() {{
   const fDoc    = document.getElementById('fDoc').value;
   const fLang   = document.getElementById('fLang').value;
   const fPeriod = document.getElementById('fPeriod').value;
+  const fAvail  = document.getElementById('fAvail').value;
 
   filtered = DATA.filter(r => {{
     if (q && !JSON.stringify(r).toLowerCase().includes(q)) return false;
@@ -768,6 +800,7 @@ function applyFilters() {{
     if (fDoc    && r.doc_type   !== fDoc)    return false;
     if (fLang   && r.language   !== fLang)   return false;
     if (fPeriod && periodOf(r.year) !== fPeriod) return false;
+    if (fAvail  && r.availability !== fAvail) return false;
     return true;
   }});
 
@@ -1098,6 +1131,7 @@ function renderList() {{
         <div class="card-meta">${{esc(meta)}}</div>
         <div class="card-badges">
           ${{pdfBadge(r.pdf_status)}}
+          ${{availabilityBadge(r.availability)}}
           ${{typeBadge(r.doc_type)}}
           ${{r.language ? badge('b-lang', r.language) : ''}}
           ${{badge('b-itype', r.item_type || '')}}

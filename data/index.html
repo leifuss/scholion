@@ -224,6 +224,11 @@ header {
 .b-pending { background: #2a2000; color: #d4b05a; border: 1px solid #4a3800; }
 .b-source  { background: #222;    color: #999;    border: 1px solid #333; }
 .b-group   { background: #1e1a2e; color: #9a7fd4; border: 1px solid #3a2a5a; }
+.collection-card .card-stats {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
 .collection-card .card-arrow {
   font-size: 12px;
   color: var(--accent);
@@ -444,64 +449,107 @@ function copySelector(btn, sel) {
 // ── Section 1: Active Collections ───────────────────────────────────────────
 let ACTIVE_COLLECTIONS = [];
 
+function computeInvStats(inv) {
+  var stored    = inv.filter(function (i) {
+    return ['stored', 'downloaded', 'stored_embedded'].indexOf(i.pdf_status) !== -1;
+  }).length;
+  var extracted = inv.filter(function (i) { return i.extracted; }).length;
+  var readers   = inv.filter(function (i) { return i.has_reader; }).length;
+  return { total: inv.length, stored: stored, extracted: extracted, readers: readers };
+}
+
+function renderCollectionCard(c, stats) {
+  var href = 'explore.html?collection=' + encodeURIComponent(c.slug);
+  var src  = c.source || {};
+  var srcLabel = src.library_type === 'group'
+    ? 'group ' + src.library_id
+    : src.library_type === 'user' ? 'personal library' : '';
+  var statusMap = {
+    pending:       ['Pending',        'b-pending'],
+    synced:        ['Synced',         'b-status'],
+    built:         ['Dashboard ready','b-status'],
+    readers_ready: ['Readers ready',  'b-status'],
+  };
+  var sm      = statusMap[c.status] || ['', ''];
+  var builtAt = c.built_at ? 'Built ' + c.built_at.slice(0, 10) : '';
+  var sel     = buildSelector(src);
+  var ancestors  = src.collection_ancestors;
+  var breadcrumb = (Array.isArray(ancestors) && ancestors.length)
+    ? ancestors.join(' \u203a ') + ' \u203a'
+    : '';
+
+  // Live stats from inventory (fall back to num_items from collections.json)
+  var itemCount = stats ? stats.total : (c.num_items || 0);
+  var statsHtml = '';
+  if (stats && stats.total > 0) {
+    var parts = [itemCount + ' items'];
+    if (stats.stored)    parts.push(stats.stored    + ' PDFs');
+    if (stats.extracted) parts.push(stats.extracted + ' extracted');
+    if (stats.readers)   parts.push(stats.readers   + ' readers');
+    statsHtml = '<div class="card-stats">' + parts.join(' \u00b7 ') + '</div>';
+  } else if (itemCount) {
+    statsHtml = '<div class="card-stats">' + itemCount + ' items</div>';
+  }
+
+  var card = '<a class="collection-card" href="' + esc(href) + '">' +
+    (breadcrumb ? '<div class="card-breadcrumb">' + esc(breadcrumb) + '</div>' : '') +
+    '<div class="card-name">' + esc(c.name) + '</div>' +
+    '<div class="card-desc">' + esc(c.description || '') + '</div>' +
+    '<div class="card-badges">' +
+      (sm[0]    ? '<span class="badge ' + sm[1] + '">' + esc(sm[0])    + '</span>' : '') +
+      (srcLabel ? '<span class="badge b-source">'      + esc(srcLabel) + '</span>' : '') +
+    '</div>' +
+    statsHtml +
+    '<div class="card-meta">' +
+      (builtAt ? '<span>' + esc(builtAt) + '</span>' : '') +
+    '</div>' +
+    '<div class="card-arrow">Open collection &rarr;</div>' +
+  '</a>';
+
+  var resyncBtn = sel
+    ? '<button class="btn-resync" onclick="triggerResync(\'' + sel.replace(/'/g, "\\'") + '\', this)" type="button">\u21bb Resync from Zotero</button>'
+    : '';
+
+  return '<div class="collection-card-wrap">' + card + resyncBtn + '</div>';
+}
+
 fetch('collections.json')
   .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(function (data) {
     ACTIVE_COLLECTIONS = data.collections || [];
-    const grid = document.getElementById('grid');
     document.getElementById('subtitle').textContent =
       ACTIVE_COLLECTIONS.length + ' collection' +
       (ACTIVE_COLLECTIONS.length !== 1 ? 's' : '') + ' available';
 
+    var grid = document.getElementById('grid');
+
     if (!ACTIVE_COLLECTIONS.length) {
       grid.innerHTML = '<p class="loading-msg">No collections configured yet.</p>';
+      loadDiscoverSection();
       return;
     }
 
+    // Show cards immediately with metadata, then enrich with live inventory stats
     grid.innerHTML = ACTIVE_COLLECTIONS.map(function (c) {
-      const href = 'explore.html?collection=' + encodeURIComponent(c.slug);
-      const src  = c.source || {};
-      const srcLabel = src.library_type === 'group'
-        ? 'group ' + src.library_id
-        : src.library_type === 'user' ? 'personal library' : '';
-      const itemCount  = c.num_items ? c.num_items + ' items' : '';
-      const statusMap  = {
-        pending:       ['Pending',        'b-pending'],
-        synced:        ['Synced',         'b-status'],
-        built:         ['Dashboard ready','b-status'],
-        readers_ready: ['Readers ready',  'b-status'],
-      };
-      const sm = statusMap[c.status] || ['', ''];
-      const builtAt = c.built_at ? 'Built ' + c.built_at.slice(0,10) : '';
-      const sel = buildSelector(src);
-      const ancestors = src.collection_ancestors;
-      const breadcrumb = (Array.isArray(ancestors) && ancestors.length)
-        ? ancestors.join(' \u203a ') + ' \u203a'
-        : '';
-
-      const card = '<a class="collection-card" href="' + esc(href) + '">' +
-        (breadcrumb ? '<div class="card-breadcrumb">' + esc(breadcrumb) + '</div>' : '') +
-        '<div class="card-name">' + esc(c.name) + '</div>' +
-        '<div class="card-desc">' + esc(c.description || '') + '</div>' +
-        '<div class="card-badges">' +
-          (itemCount  ? '<span class="badge b-items">'         + esc(itemCount)  + '</span>' : '') +
-          (sm[0]      ? '<span class="badge ' + sm[1] + '">'   + esc(sm[0])      + '</span>' : '') +
-          (srcLabel   ? '<span class="badge b-source">'        + esc(srcLabel)   + '</span>' : '') +
-        '</div>' +
-        '<div class="card-meta">' +
-          (builtAt ? '<span>' + esc(builtAt) + '</span>' : '') +
-        '</div>' +
-        '<div class="card-arrow">Open collection &rarr;</div>' +
-      '</a>';
-
-      const resyncBtn = sel
-        ? '<button class="btn-resync" onclick="triggerResync(\'' + sel.replace(/'/g, "\\'") + '\', this)" type="button">\u21bb Resync from Zotero</button>'
-        : '';
-
-      return '<div class="collection-card-wrap">' + card + resyncBtn + '</div>';
+      return renderCollectionCard(c, null);
     }).join('');
 
-    // Once active collections are known, render discover section
+    // Fetch each collection's inventory.json in parallel for live stats
+    var fetches = ACTIVE_COLLECTIONS.map(function (c) {
+      var invPath = (c.path === '.' || !c.path)
+        ? 'inventory.json'
+        : c.path + '/inventory.json';
+      return fetch(invPath + '?_=' + Date.now())
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .catch(function () { return []; });
+    });
+
+    Promise.all(fetches).then(function (inventories) {
+      grid.innerHTML = ACTIVE_COLLECTIONS.map(function (c, i) {
+        return renderCollectionCard(c, computeInvStats(inventories[i]));
+      }).join('');
+    });
+
     loadDiscoverSection();
   })
   .catch(function (err) {
