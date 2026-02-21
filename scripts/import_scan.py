@@ -112,13 +112,22 @@ def extract_doi(item: dict) -> str | None:
     return None
 
 
-def is_stored(item: dict) -> bool:
+def is_stored(item: dict, pdfs_dir: Path = PDFS_DIR) -> bool:
     key = item['key']
-    pdf_dir = PDFS_DIR / key
-    if pdf_dir.exists() and any(pdf_dir.glob('*.pdf')):
-        return True
     if item.get('pdf_status') == 'stored_embedded':
         return True
+    # If inventory already records a pdf_path that exists, treat as stored
+    if item.get('pdf_path'):
+        p = Path(item['pdf_path'])
+        if not p.is_absolute():
+            p = _ROOT / p
+        if p.exists():
+            return True
+    # Check collection-specific pdfs dir and the root pdfs dir
+    for d in dict.fromkeys([pdfs_dir, PDFS_DIR]):  # dedup while preserving order
+        pdf_dir = d / key
+        if pdf_dir.exists() and any(pdf_dir.glob('*.pdf')):
+            return True
     return False
 
 
@@ -182,6 +191,8 @@ def check_url_accessible(url: str, session: requests.Session) -> tuple[bool, str
 
 def scan(force: bool = False, collection_slug: str | None = None) -> None:
     inv_path, status_path = get_collection_paths(collection_slug)
+    # Derive collection-specific pdfs dir from the inventory's parent directory
+    pdfs_dir = inv_path.parent / 'pdfs'
     if collection_slug:
         print(f"Collection: {collection_slug}  ({inv_path})")
 
@@ -218,7 +229,7 @@ def scan(force: bool = False, collection_slug: str | None = None) -> None:
         }
 
         # ── 1. Already stored locally ─────────────────────────────────────────
-        if is_stored(item):
+        if is_stored(item, pdfs_dir):
             entry['availability']  = 'stored'
             entry['import_status'] = 'done'
             print('stored')
@@ -267,6 +278,23 @@ def scan(force: bool = False, collection_slug: str | None = None) -> None:
 
     status['scan_complete'] = True
     save_status(status, status_path)
+
+    # ── Write availability back to inventory.json ─────────────────────────────
+    # This makes the field visible to explore.html without an extra fetch.
+    inv_changed = False
+    for item in inventory:
+        key = item['key']
+        av = (status['items'].get(key) or {}).get('availability')
+        if av and item.get('availability') != av:
+            item['availability'] = av
+            inv_changed = True
+    if inv_changed:
+        tmp = inv_path.with_suffix('.tmp.json')
+        tmp.write_text(
+            json.dumps(inventory, indent=2, ensure_ascii=False), encoding='utf-8'
+        )
+        tmp.replace(inv_path)
+        print(f"✓ Availability written to {inv_path.name}")
 
     # Summary
     counts: dict[str, int] = {}

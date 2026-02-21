@@ -88,10 +88,26 @@ def _import_vision():
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 
-TEXTS_ROOT   = _ROOT / "data" / "texts"
-INV_PATH     = _ROOT / "data" / "inventory.json"
-STATUS_PATH  = _ROOT / "data" / "pipeline_status.json"
-RESULTS_PATH = _ROOT / "data" / "extract_results.json"
+TEXTS_ROOT       = _ROOT / "data" / "texts"
+INV_PATH         = _ROOT / "data" / "inventory.json"
+STATUS_PATH      = _ROOT / "data" / "pipeline_status.json"
+RESULTS_PATH     = _ROOT / "data" / "extract_results.json"
+COLLECTIONS_PATH = _ROOT / "data" / "collections.json"
+
+
+def _get_collection_base(slug: str) -> Path:
+    """Resolve the base directory for a collection slug from collections.json."""
+    if not COLLECTIONS_PATH.exists():
+        raise SystemExit("ERROR: data/collections.json not found")
+    with open(COLLECTIONS_PATH, encoding='utf-8') as f:
+        coll_data = json.load(f)
+    for c in coll_data.get('collections', []):
+        if c['slug'] == slug:
+            path = c.get('path', slug)
+            if path == '.':
+                return _ROOT / "data"
+            return _ROOT / "data" / path
+    raise SystemExit(f"ERROR: collection slug {slug!r} not found in data/collections.json")
 
 # ── Constants ──────────────────────────────────────────────────────────────────
 
@@ -501,24 +517,37 @@ def extract_document(item: dict, use_vision: bool = False,
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Robust PDF extraction — pypdfium2 + Tesseract + optional Vision"
+        description="Robust PDF extraction — pypdfium2 + Tesseract"
     )
     parser.add_argument("--dry-run",  action="store_true",
                         help="Classify docs without writing anything")
     parser.add_argument("--force",    action="store_true",
                         help="Re-process docs even if already extracted")
-    parser.add_argument("--vision",   action="store_true",
-                        help="Enable Google Vision API fallback for hard pages")
     parser.add_argument("--workers",  type=int, default=2,
                         help="Parallel worker threads (default 2; safe — no shared ML models)")
     parser.add_argument("--limit",    type=int, default=0,
                         help="Stop after N docs (0 = all)")
     parser.add_argument("--keys",     nargs="+", default=[],
                         help="Only process these doc keys")
-    parser.add_argument("--inventory", default="data/inventory.json")
+    parser.add_argument("--inventory", default="data/inventory.json",
+                        help="Inventory path (overridden by --collection-slug)")
+    parser.add_argument("--collection-slug", default=None,
+                        help="Collection slug from data/collections.json; "
+                             "sets inventory, texts, status paths automatically")
     args = parser.parse_args()
 
-    inv_path  = _ROOT / args.inventory
+    # ── Resolve paths (collection-aware) ──────────────────────────────────────
+    global TEXTS_ROOT, STATUS_PATH, RESULTS_PATH
+    if args.collection_slug:
+        base = _get_collection_base(args.collection_slug)
+        TEXTS_ROOT   = base / "texts"
+        STATUS_PATH  = base / "pipeline_status.json"
+        RESULTS_PATH = base / "extract_results.json"
+        inv_path     = base / "inventory.json"
+        print(f"Collection: {args.collection_slug}  ({base})")
+    else:
+        inv_path = _ROOT / args.inventory
+
     if not inv_path.exists():
         print(f"Inventory not found: {inv_path}")
         sys.exit(1)
@@ -552,7 +581,7 @@ def main():
 
     total = len(candidates)
     print(f"Docs to process: {total}")
-    print(f"Dry run: {args.dry_run}  |  Vision: {args.vision}  |  Workers: {args.workers}")
+    print(f"Dry run: {args.dry_run}  |  Workers: {args.workers}")
     if args.dry_run:
         # Just show what would happen
         for item in candidates:
@@ -579,7 +608,7 @@ def main():
         _update_status(status, key, "in_progress", title=title)
 
         t0     = time.time()
-        result = extract_document(item, use_vision=args.vision,
+        result = extract_document(item, use_vision=False,
                                   dry_run=args.dry_run, force=args.force)
         elapsed = int(time.time() - t0)
 
