@@ -24,7 +24,8 @@
     "recommendation": "",
     "has_reader": false,
     "text_quality": null,
-    "chars_per_page": null
+    "chars_per_page": null,
+    "availability": "unavailable"
   },
   {
     "key": "4PSTTB2B",
@@ -51,7 +52,8 @@
     "recommendation": "",
     "has_reader": false,
     "text_quality": null,
-    "chars_per_page": null
+    "chars_per_page": null,
+    "availability": "unavailable"
   },
   {
     "key": "GUN3KCE8",
@@ -78,7 +80,8 @@
     "recommendation": "",
     "has_reader": false,
     "text_quality": null,
-    "chars_per_page": null
+    "chars_per_page": null,
+    "availability": "unavailable"
   },
   {
     "key": "S7ADSMJE",
@@ -119,7 +122,8 @@
     "recommendation": "",
     "has_reader": false,
     "text_quality": null,
-    "chars_per_page": null
+    "chars_per_page": null,
+    "availability": "unavailable"
   },
   {
     "key": "T3CRJCRR",
@@ -146,7 +150,8 @@
     "recommendation": "",
     "has_reader": false,
     "text_quality": null,
-    "chars_per_page": null
+    "chars_per_page": null,
+    "availability": "unavailable"
   },
   {
     "key": "HNXACPXD",
@@ -173,6 +178,7 @@
     "recommendation": "",
     "has_reader": false,
     "text_quality": null,
-    "chars_per_page": null
+    "chars_per_page": null,
+    "availability": "open_access"
   }
 ]

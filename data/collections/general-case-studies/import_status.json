@@ -1,0 +1,65 @@
+{
+  "last_scan": "2026-02-21T18:41:30Z",
+  "scan_complete": true,
+  "import_running": false,
+  "current_item": null,
+  "progress_n": 6,
+  "progress_total": 6,
+  "last_updated": "2026-02-21T18:41:36Z",
+  "items": {
+    "3NV8QXDS": {
+      "availability": "unavailable",
+      "import_status": "pending",
+      "pdf_url": null,
+      "page_count": null,
+      "large_flag": false,
+      "failure_reason": null,
+      "last_updated": "2026-02-21T18:41:30Z"
+    },
+    "4PSTTB2B": {
+      "availability": "unavailable",
+      "import_status": "pending",
+      "pdf_url": null,
+      "page_count": null,
+      "large_flag": false,
+      "failure_reason": null,
+      "last_updated": "2026-02-21T18:41:30Z"
+    },
+    "GUN3KCE8": {
+      "availability": "unavailable",
+      "import_status": "pending",
+      "pdf_url": null,
+      "page_count": null,
+      "large_flag": false,
+      "failure_reason": null,
+      "last_updated": "2026-02-21T18:41:32Z"
+    },
+    "S7ADSMJE": {
+      "availability": "unavailable",
+      "import_status": "pending",
+      "pdf_url": null,
+      "page_count": null,
+      "large_flag": false,
+      "failure_reason": null,
+      "last_updated": "2026-02-21T18:41:33Z"
+    },
+    "T3CRJCRR": {
+      "availability": "unavailable",
+      "import_status": "pending",
+      "pdf_url": null,
+      "page_count": null,
+      "large_flag": false,
+      "failure_reason": null,
+      "last_updated": "2026-02-21T18:41:33Z"
+    },
+    "HNXACPXD": {
+      "availability": "open_access",
+      "import_status": "pending",
+      "pdf_url": "https://link.springer.com/content/pdf/10.1007%2F11926078_55.pdf",
+      "page_count": null,
+      "large_flag": false,
+      "failure_reason": null,
+      "last_updated": "2026-02-21T18:41:35Z"
+    }
+  }
+}
