@@ -120,21 +120,45 @@ jobs:
         # The Python script commits periodically; this catches any leftover changes
         if: always()
         run: |
-          git add data/import_status.json data/*/import_status.json data/collections/*/import_status.json data/pdfs/ 2>/dev/null || true
+          git add \
+            data/import_status.json \
+            data/*/import_status.json \
+            data/collections/*/import_status.json \
+            data/pdfs/ \
+            data/collections/*/pdfs/ \
+            data/inventory.json \
+            data/collections/*/inventory.json \
+            2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "Nothing further to commit."
           else
+            SLUG="${{ inputs.collection_slug }}"
             DONE=$(python3 -c "
-          import json, os
-          s = json.load(open('data/import_status.json'))
+          import json, os, sys
+          slug = '$SLUG'
+          if slug:
+              try:
+                  colls = json.load(open('data/collections.json'))
+                  p = next(
+                      ('data/import_status.json' if c.get('path',slug)=='.' else f'data/{c[\"path\"]}/import_status.json')
+                      for c in colls.get('collections',[]) if c['slug']==slug
+                  )
+              except Exception:
+                  p = f'data/{slug}/import_status.json'
+          else:
+              p = 'data/import_status.json'
+          if not os.path.exists(p):
+              print('(status file not found)')
+              sys.exit(0)
+          s = json.load(open(p))
           done   = sum(1 for v in s.get('items', {}).values() if v.get('import_status') == 'done')
           triage = sum(1 for v in s.get('items', {}).values() if v.get('import_status') == 'triage')
           print(f'done:{done}  triage:{triage}')
           " 2>/dev/null || echo "")
             git commit -m "import: final state [skip ci]
 
-          Mode: ${{ inputs.mode }}  Key: ${{ inputs.item_key || 'n/a' }}
+          Mode: ${{ inputs.mode }}  Key: ${{ inputs.item_key || 'n/a' }}  Slug: ${{ inputs.collection_slug || 'root' }}
           ${DONE}
           Run: ${{ github.run_id }}"
             git pull --rebase origin main
@@ -144,11 +168,23 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          python3 - << 'PYEOF'
+          SLUG="${{ inputs.collection_slug }}"
+          python3 - << PYEOF
           import json, os
-          p = 'data/import_status.json'
+          slug = '$SLUG'
+          if slug:
+              try:
+                  colls = json.load(open('data/collections.json'))
+                  p = next(
+                      ('data/import_status.json' if c.get('path', slug) == '.' else f'data/{c["path"]}/import_status.json')
+                      for c in colls.get('collections', []) if c['slug'] == slug
+                  )
+              except Exception:
+                  p = f'data/{slug}/import_status.json'
+          else:
+              p = 'data/import_status.json'
           if not os.path.exists(p):
-              print("No import_status.json found.")
+              print(f"No import_status.json found at {p}")
           else:
               s = json.load(open(p))
               items = s.get('items', {})
@@ -165,7 +201,7 @@ jobs:
                   if v.get('import_status') == 'triage'
               ]
               if triage:
-                  print("\n  Triage items:")
+                  print(f"\n  Triage items ({len(triage)} total):")
                   for k, r in triage[:20]:
                       print(f"    {k}: {r[:80]}")
           PYEOF
