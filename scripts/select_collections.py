@@ -50,6 +50,25 @@ def _flatten_tree(tree: list, depth: int = 0) -> list:
     return result
 
 
+def _ancestor_path(flat_by_key: dict, key: str) -> list:
+    """
+    Return the ordered list of ancestor names from root to parent of `key`.
+    E.g. for 'Alexandrian' whose parent is 'Greek Coins in NW Europe',
+    returns ['Greek Coins in NW Europe'].
+    """
+    path = []
+    current = flat_by_key.get(key)
+    parent_key = current.get('parentKey') if current else None
+    while parent_key:
+        parent = flat_by_key.get(parent_key)
+        if not parent:
+            break
+        path.append(parent['name'])
+        parent_key = parent.get('parentKey')
+    path.reverse()
+    return path
+
+
 def load_discovered() -> dict:
     """Load discovered_collections.json."""
     path = _ROOT / 'data' / 'discovered_collections.json'
@@ -166,6 +185,7 @@ def build_collection_entry(item: dict, existing_slugs: set) -> dict:
             'library_id': item['lib_id'],
             'collection_key': item['collection_key'],
             'collection_name': item['collection_name'],
+            'collection_ancestors': item.get('collection_ancestors', []),
         },
         'num_items': item['num_items'],
         'status': 'pending',  # pending | synced | built | readers_ready
@@ -259,6 +279,14 @@ def add_by_selector(discovered: dict, selectors: list) -> None:
     current = load_current_selections()
     existing_slugs = {c['slug'] for c in current.get('collections', [])}
 
+    # Build a set of already-registered sources so we can skip duplicates on resync
+    existing_sources = {
+        (c.get('source', {}).get('library_type'),
+         str(c.get('source', {}).get('library_id', '')),
+         c.get('source', {}).get('collection_key') or '')
+        for c in current.get('collections', [])
+    }
+
     # Build a lookup from discovered
     lib_lookup = {}
     for lib in discovered.get('libraries', []):
@@ -283,18 +311,27 @@ def add_by_selector(discovered: dict, selectors: list) -> None:
                     lib_id = lib['id']
                     break
 
+        # Skip if this exact Zotero source is already registered
+        source_key = (lib_type, str(lib_id), coll_key or '')
+        if source_key in existing_sources:
+            log.info(f"Collection already registered, skipping add: {sel}")
+            continue
+
         lib = lib_lookup.get((lib_type, lib_id))
         if not lib:
             log.warning(f"Library {lib_type}/{lib_id} not found in discovery")
             continue
 
-        # Find the collection name
+        # Find the collection name and ancestor path
         coll_name = None
+        coll_ancestors = []
         if coll_key:
             flat = _flatten_tree(lib.get('collections', []))
+            flat_by_key = {n['key']: n for n in flat}
             for node in flat:
                 if node['key'] == coll_key:
                     coll_name = node['name']
+                    coll_ancestors = _ancestor_path(flat_by_key, coll_key)
                     break
             if not coll_name:
                 log.warning(f"Collection key {coll_key} not found in {lib['name']}")
@@ -306,11 +343,13 @@ def add_by_selector(discovered: dict, selectors: list) -> None:
             'lib_name': lib['name'],
             'collection_key': coll_key or None,
             'collection_name': coll_name,
+            'collection_ancestors': coll_ancestors,
             'num_items': 0,
         }
 
         entry = build_collection_entry(item, existing_slugs)
         existing_slugs.add(entry['slug'])
+        existing_sources.add(source_key)
         current.setdefault('collections', []).append(entry)
         log.info(f"Added: {entry['name']} → {entry['path']}")
 
