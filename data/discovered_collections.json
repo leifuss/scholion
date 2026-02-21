@@ -1,0 +1,480 @@
+{
+  "user_id": "21499",
+  "libraries": [
+    {
+      "type": "user",
+      "id": "21499",
+      "name": "My Library",
+      "num_items": 2129,
+      "collections": [
+        {
+          "key": "J9B9ZICS",
+          "name": "Archaeology",
+          "parentKey": null,
+          "numItems": 21,
+          "children": []
+        },
+        {
+          "key": "BMWDBZX5",
+          "name": "Archaeology Case Studies",
+          "parentKey": null,
+          "numItems": 42,
+          "children": []
+        },
+        {
+          "key": "MM5TKN39",
+          "name": "CH Case Studies",
+          "parentKey": null,
+          "numItems": 43,
+          "children": []
+        },
+        {
+          "key": "EA493TGH",
+          "name": "CIDOC CRM",
+          "parentKey": null,
+          "numItems": 25,
+          "children": []
+        },
+        {
+          "key": "ZB9BU4EV",
+          "name": "Cluny",
+          "parentKey": null,
+          "numItems": 169,
+          "children": []
+        },
+        {
+          "key": "7EQNGTXE",
+          "name": "General Case studies",
+          "parentKey": null,
+          "numItems": 6,
+          "children": []
+        },
+        {
+          "key": "3BKBJHGR",
+          "name": "Greek Coins in NW Europe",
+          "parentKey": null,
+          "numItems": 472,
+          "children": [
+            {
+              "key": "E4UH3CY3",
+              "name": "Alexandrian",
+              "parentKey": "3BKBJHGR",
+              "numItems": 107,
+              "children": []
+            },
+            {
+              "key": "Y2IGIWRQ",
+              "name": "Byzantine",
+              "parentKey": "3BKBJHGR",
+              "numItems": 135,
+              "children": []
+            },
+            {
+              "key": "WXFTKXH3",
+              "name": "Crusades",
+              "parentKey": "3BKBJHGR",
+              "numItems": 2,
+              "children": []
+            },
+            {
+              "key": "CWQAHK9Y",
+              "name": "Early Medieval Christianity",
+              "parentKey": "3BKBJHGR",
+              "numItems": 73,
+              "children": []
+            },
+            {
+              "key": "C5XSNC8A",
+              "name": "Exeter",
+              "parentKey": "3BKBJHGR",
+              "numItems": 90,
+              "children": []
+            },
+            {
+              "key": "C39P3TG3",
+              "name": "Misc",
+              "parentKey": "3BKBJHGR",
+              "numItems": 92,
+              "children": []
+            },
+            {
+              "key": "GH6UY9NB",
+              "name": "Other Greek coins",
+              "parentKey": "3BKBJHGR",
+              "numItems": 28,
+              "children": []
+            },
+            {
+              "key": "JZTDT82W",
+              "name": "Other material",
+              "parentKey": "3BKBJHGR",
+              "numItems": 11,
+              "children": []
+            },
+            {
+              "key": "DXG68K39",
+              "name": "St Menas flasks",
+              "parentKey": "3BKBJHGR",
+              "numItems": 66,
+              "children": []
+            }
+          ]
+        },
+        {
+          "key": "PQSG826P",
+          "name": "library",
+          "parentKey": null,
+          "numItems": 589,
+          "children": []
+        },
+        {
+          "key": "34445JHJ",
+          "name": "Other",
+          "parentKey": null,
+          "numItems": 5,
+          "children": []
+        },
+        {
+          "key": "2FVBZF5Z",
+          "name": "Pantheon",
+          "parentKey": null,
+          "numItems": 2,
+          "children": []
+        },
+        {
+          "key": "VATNS7IZ",
+          "name": "SemWeb General",
+          "parentKey": null,
+          "numItems": 91,
+          "children": []
+        },
+        {
+          "key": "Z6SKTAAT",
+          "name": "Technology",
+          "parentKey": null,
+          "numItems": 90,
+          "children": []
+        },
+        {
+          "key": "JSIATR2I",
+          "name": "Visualisation",
+          "parentKey": null,
+          "numItems": 5,
+          "children": []
+        },
+        {
+          "key": "DKFPZ4FD",
+          "name": "zotero",
+          "parentKey": null,
+          "numItems": 1,
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "2101142",
+      "name": "Pleiades Reviewing",
+      "num_items": 166,
+      "collections": [
+        {
+          "key": "DLJ44AFM",
+          "name": "copied to production",
+          "parentKey": null,
+          "numItems": 12,
+          "children": [
+            {
+              "key": "QCAZ6PBA",
+              "name": "Dura-FinalExcavationReports",
+              "parentKey": "DLJ44AFM",
+              "numItems": 15,
+              "children": []
+            },
+            {
+              "key": "RQ7CU7DH",
+              "name": "Dura-PreliminaryReports",
+              "parentKey": "DLJ44AFM",
+              "numItems": 10,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "23867",
+      "name": "digitalclassics",
+      "num_items": 159,
+      "collections": [
+        {
+          "key": "HUES3ZTK",
+          "name": "applications",
+          "parentKey": null,
+          "numItems": 9,
+          "children": []
+        },
+        {
+          "key": "35BKMVTE",
+          "name": "general studies",
+          "parentKey": null,
+          "numItems": 23,
+          "children": []
+        },
+        {
+          "key": "GU45TP7U",
+          "name": "open access",
+          "parentKey": null,
+          "numItems": 5,
+          "children": []
+        },
+        {
+          "key": "4CJK7NX2",
+          "name": "text-reuse",
+          "parentKey": null,
+          "numItems": 17,
+          "children": [
+            {
+              "key": "D273WKEN",
+              "name": "projects/tools",
+              "parentKey": "4CJK7NX2",
+              "numItems": 2,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "5166884",
+      "name": "Islamic Cartography",
+      "num_items": 313,
+      "collections": [
+        {
+          "key": "6SYG3LYW",
+          "name": "CambridgeCore_Citation_04Nov2025",
+          "parentKey": null,
+          "numItems": 0,
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "33050",
+      "name": "openarchaeology",
+      "num_items": 20,
+      "collections": []
+    },
+    {
+      "type": "group",
+      "id": "5061519",
+      "name": "Women in Athenian Law",
+      "num_items": 71,
+      "collections": [
+        {
+          "key": "IUJWKH5B",
+          "name": "MA Dissertation",
+          "parentKey": null,
+          "numItems": 50,
+          "children": [
+            {
+              "key": "2MTTW5NG",
+              "name": "DH Literature Review",
+              "parentKey": "IUJWKH5B",
+              "numItems": 12,
+              "children": []
+            },
+            {
+              "key": "WTT2RVN8",
+              "name": "Literature Review",
+              "parentKey": "IUJWKH5B",
+              "numItems": 35,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "4778658",
+      "name": "Historic_Mapping",
+      "num_items": 272,
+      "collections": [
+        {
+          "key": "5DCUTUKX",
+          "name": "Crowd_sourcing etc",
+          "parentKey": null,
+          "numItems": 2,
+          "children": []
+        },
+        {
+          "key": "79RZ54JU",
+          "name": "Historic map analyses",
+          "parentKey": null,
+          "numItems": 48,
+          "children": []
+        },
+        {
+          "key": "ZFQLQQQ9",
+          "name": "Landscape and landcover change",
+          "parentKey": null,
+          "numItems": 146,
+          "children": []
+        },
+        {
+          "key": "G3W6QS4P",
+          "name": "Machine learning & Image analysis",
+          "parentKey": null,
+          "numItems": 44,
+          "children": []
+        },
+        {
+          "key": "FX8N32MZ",
+          "name": "Map collection and images",
+          "parentKey": null,
+          "numItems": 13,
+          "children": []
+        },
+        {
+          "key": "NY9WWLI3",
+          "name": "Remote sensing",
+          "parentKey": null,
+          "numItems": 9,
+          "children": []
+        },
+        {
+          "key": "ET3SHCAN",
+          "name": "Sotware and cloud services",
+          "parentKey": null,
+          "numItems": 12,
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "601",
+      "name": "Libraries and Semantic Web",
+      "num_items": 0,
+      "collections": []
+    },
+    {
+      "type": "group",
+      "id": "4904307",
+      "name": "RAMM Greek coins group",
+      "num_items": 93,
+      "collections": []
+    },
+    {
+      "type": "group",
+      "id": "2314828",
+      "name": "Pelagios Network",
+      "num_items": 6,
+      "collections": [
+        {
+          "key": "996MDBE9",
+          "name": "Space and Place",
+          "parentKey": null,
+          "numItems": 6,
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "2451044",
+      "name": "Alexandrian Coins",
+      "num_items": 479,
+      "collections": [
+        {
+          "key": "A8MTLC4A",
+          "name": "Alexandrian coins",
+          "parentKey": null,
+          "numItems": 89,
+          "children": []
+        },
+        {
+          "key": "7GCETQ2P",
+          "name": "Byzantine coins",
+          "parentKey": null,
+          "numItems": 134,
+          "children": []
+        },
+        {
+          "key": "N79CGV3G",
+          "name": "Early Medieval Christianity",
+          "parentKey": null,
+          "numItems": 71,
+          "children": []
+        },
+        {
+          "key": "PNDQUQ72",
+          "name": "Misc",
+          "parentKey": null,
+          "numItems": 92,
+          "children": []
+        },
+        {
+          "key": "REH4379K",
+          "name": "Other Greek coins",
+          "parentKey": null,
+          "numItems": 21,
+          "children": []
+        },
+        {
+          "key": "I4YDZ9J7",
+          "name": "Other material",
+          "parentKey": null,
+          "numItems": 10,
+          "children": []
+        },
+        {
+          "key": "2H6QCJDS",
+          "name": "St Menas flasks",
+          "parentKey": null,
+          "numItems": 66,
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "225417",
+      "name": "Pelagios",
+      "num_items": 105,
+      "collections": [
+        {
+          "key": "HHMZM6IG",
+          "name": "ancientbiblio",
+          "parentKey": null,
+          "numItems": 83,
+          "children": []
+        },
+        {
+          "key": "C4C8ATH3",
+          "name": "Itinerarium Burdigalense",
+          "parentKey": null,
+          "numItems": 16,
+          "children": []
+        },
+        {
+          "key": "E74VK2Q5",
+          "name": "VicarelloBeakers",
+          "parentKey": null,
+          "numItems": 6,
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "1907",
+      "name": "web-sci",
+      "num_items": 68,
+      "collections": []
+    }
+  ]
+}
