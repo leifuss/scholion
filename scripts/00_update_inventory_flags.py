@@ -73,6 +73,9 @@ def check_doc(key: str, texts_root: Path = None) -> dict:
                 flags["chars_per_page"] = meta["chars_per_page"]
             if meta.get("page_count"):
                 flags["page_count"] = meta["page_count"]
+            for field in ("pua_ratio", "replacement_ratio", "empty_pages"):
+                if meta.get(field) is not None:
+                    flags[field] = meta[field]
             method = meta.get("method")  # 'docling' or 'tesseract'
         except Exception:
             pass

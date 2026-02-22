@@ -6,11 +6,18 @@ For each document the script produces:
     data/texts/{KEY}/pages/001.jpg  002.jpg  …
     data/texts/{KEY}/reader_meta.json
 
+For collection-based layouts use --collection-slug, which produces:
+    data/collections/{SLUG}/texts/{KEY}/pages/001.jpg  …
+    data/collections/{SLUG}/texts/{KEY}/reader_meta.json
+
 The static reader at data/reader.html then loads these on demand.
 
 Usage:
     # Single document by Zotero key
     python scripts/generate_reader.py --key QIGTV3FC
+
+    # Single document in a named collection
+    python scripts/generate_reader.py --key R2BYZE7J --collection-slug islamic-cartography
 
     # Single document by direct PDF path
     python scripts/generate_reader.py --pdf path/to/file.pdf
@@ -18,12 +25,16 @@ Usage:
     # All documents that have been extracted (data/texts/*/page_texts.json)
     python scripts/generate_reader.py --all
 
+    # All documents in a collection
+    python scripts/generate_reader.py --all --collection-slug islamic-cartography
+
     # Re-render even if pages/ already exist
     python scripts/generate_reader.py --all --force
 
 Options:
-    --scale FLOAT   Render scale factor (default 1.5 ≈ 144 dpi)
-    --quality INT   JPEG quality 1-95 (default 82)
+    --collection-slug SLUG  Collection slug from data/collections.json
+    --scale FLOAT           Render scale factor (default 1.5 ≈ 144 dpi)
+    --quality INT           JPEG quality 1-95 (default 82)
 """
 import sys, json, io, argparse
 from pathlib import Path
@@ -125,9 +136,26 @@ def write_reader_meta(key: str, pdf_path: Path, n_pages: int,
 
 # ── Processing helpers ─────────────────────────────────────────────────────────
 
-def _load_inventory() -> dict[str, dict]:
+def _get_collection_base(slug: str) -> Path:
+    """Return the data directory for a collection slug, or raise SystemExit."""
+    coll_path = _ROOT / "data" / "collections.json"
+    if not coll_path.exists():
+        raise SystemExit("ERROR: data/collections.json not found")
+    try:
+        data = json.loads(coll_path.read_text())
+        for c in data.get("collections", []):
+            if c["slug"] == slug:
+                path = c.get("path", slug)
+                return _ROOT / "data" if path == "." else _ROOT / "data" / path
+    except Exception as e:
+        raise SystemExit(f"ERROR: could not read collections.json: {e}")
+    raise SystemExit(f"ERROR: collection slug {slug!r} not found in data/collections.json")
+
+
+def _load_inventory(inv_path: Path | None = None) -> dict[str, dict]:
     """Return inventory as a dict keyed by Zotero key, or {} if not found."""
-    inv_path = _ROOT / "data" / "inventory.json"
+    if inv_path is None:
+        inv_path = _ROOT / "data" / "inventory.json"
     if not inv_path.exists():
         return {}
     try:
@@ -139,12 +167,15 @@ def _load_inventory() -> dict[str, dict]:
 
 
 def process_key(key: str, inv: dict[str, dict],
-                scale: float, quality: int, force: bool) -> bool:
+                scale: float, quality: int, force: bool,
+                texts_root: Path | None = None) -> bool:
     """
     Render pages and write reader_meta.json for a single document key.
     Returns True on success.
     """
-    texts_dir = _ROOT / "data" / "texts" / key
+    if texts_root is None:
+        texts_root = _ROOT / "data" / "texts"
+    texts_dir = texts_root / key
     pages_dir = texts_dir / "pages"
 
     # Resolve PDF path
@@ -188,6 +219,9 @@ def main():
     group.add_argument("--all",  action="store_true",
                        help="Process all docs that have data/texts/*/page_texts.json")
 
+    parser.add_argument("--collection-slug", default=None,
+                        help="Collection slug from data/collections.json; "
+                             "sets inventory and texts paths automatically")
     parser.add_argument("--scale",   type=float, default=1.5,
                         help="Render scale factor (default 1.5 ≈ 144 dpi)")
     parser.add_argument("--quality", type=int,   default=82,
@@ -196,11 +230,22 @@ def main():
                         help="Re-render even if pages/ already exists")
     args = parser.parse_args()
 
-    inv = _load_inventory()
+    # Resolve paths based on collection slug (if provided)
+    if args.collection_slug:
+        base       = _get_collection_base(args.collection_slug)
+        inv_path   = base / "inventory.json"
+        texts_root = base / "texts"
+        print(f"Collection: {args.collection_slug}  ({base})")
+    else:
+        inv_path   = None   # _load_inventory uses default
+        texts_root = _ROOT / "data" / "texts"
+
+    inv = _load_inventory(inv_path)
 
     # ── Single key ──
     if args.key:
-        ok = process_key(args.key, inv, args.scale, args.quality, args.force)
+        ok = process_key(args.key, inv, args.scale, args.quality, args.force,
+                         texts_root=texts_root)
         sys.exit(0 if ok else 1)
 
     # ── Direct PDF ──
@@ -209,7 +254,7 @@ def main():
         if not pdf_path.exists():
             print(f"ERROR: {pdf_path} not found"); sys.exit(1)
         key = pdf_path.stem
-        texts_dir = _ROOT / "data" / "texts" / key
+        texts_dir = texts_root / key
         texts_dir.mkdir(parents=True, exist_ok=True)
         pages_dir = texts_dir / "pages"
 
@@ -222,17 +267,17 @@ def main():
 
     # ── All extracted docs ──
     if args.all:
-        texts_root = _ROOT / "data" / "texts"
         keys = sorted(d.name for d in texts_root.iterdir()
                       if d.is_dir() and (d / "page_texts.json").exists())
         if not keys:
-            print("No extracted documents found in data/texts/")
+            print(f"No extracted documents found in {texts_root}")
             sys.exit(0)
 
         print(f"Found {len(keys)} extracted documents: {', '.join(keys)}")
         ok_count = 0
         for key in keys:
-            if process_key(key, inv, args.scale, args.quality, args.force):
+            if process_key(key, inv, args.scale, args.quality, args.force,
+                           texts_root=texts_root):
                 ok_count += 1
 
         print(f"\n✓ Done — {ok_count}/{len(keys)} documents processed")
