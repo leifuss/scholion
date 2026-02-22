@@ -16,6 +16,7 @@
       "href": "../../chat.html?collection=islamic-cartography"
     }
   },
+  "rag_api": "https://web-production-e9c9.up.railway.app",
   "source": {
     "library_type": "group",
     "library_id": "5166884",

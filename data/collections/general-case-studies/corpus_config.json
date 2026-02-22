@@ -16,6 +16,7 @@
       "href": "../../chat.html?collection=general-case-studies"
     }
   },
+  "rag_api": "https://web-production-e9c9.up.railway.app",
   "source": {
     "library_type": "user",
     "library_id": "21499",

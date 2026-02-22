@@ -267,6 +267,7 @@ def generate_collection_explorer(coll_entry: dict, inventory: list) -> None:
             'dashboard': {'label': 'Dashboard', 'href': f'../../explore.html?collection={slug}'},
             'explorer':  {'label': 'Explorer',  'href': f'../../explore.html?collection={slug}'},
         },
+        'rag_api': 'https://web-production-e9c9.up.railway.app',
         'source': coll_entry.get('source', {}),
     }
     config_path = data_dir / 'corpus_config.json'
