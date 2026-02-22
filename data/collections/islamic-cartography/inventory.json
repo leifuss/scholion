@@ -28,7 +28,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/228AHDGB.pdf",
     "pdf_original_name": "Bonner - 2023 - Geography and Mapmaking Until 7001300.pdf",
     "pdf_staged_at": "2026-02-22T13:01:22",
-    "pdf_zotero_key": "7PWW8EXU"
+    "pdf_zotero_key": "7PWW8EXU",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "23K87F66",
@@ -59,7 +63,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/23K87F66.pdf",
     "pdf_original_name": "Cvijanovic - DESCRIPTION OF THE EARTH IN THE WORKS OF ARABIC GE.pdf",
     "pdf_staged_at": "2026-02-22T13:01:10",
-    "pdf_zotero_key": "N5I96FA4"
+    "pdf_zotero_key": "N5I96FA4",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "2LBD7UE7",
@@ -80,13 +88,20 @@
     "doc_type": "embedded",
     "page_count": 980,
     "avg_chars_pg": 1338.1,
-    "language": "de",
+    "language": [
+      "de",
+      "ar"
+    ],
     "extracted": true,
     "quality_score": null,
     "recommendation": "",
     "has_reader": true,
     "text_quality": "good",
-    "chars_per_page": 1338.1
+    "chars_per_page": 1338.1,
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 14,
+    "extraction_method": "tesseract"
   },
   {
     "key": "5FBQAZ7C",
@@ -113,7 +128,11 @@
     "recommendation": "",
     "has_reader": true,
     "text_quality": "good",
-    "chars_per_page": 2522.5
+    "chars_per_page": 2522.5,
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "6ELZA7R7",
@@ -144,7 +163,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/6ELZA7R7.pdf",
     "pdf_original_name": "Arslan - 2023 - Three-Dimensional Astronomy Celestial globes and .pdf",
     "pdf_staged_at": "2026-02-22T09:40:32",
-    "pdf_zotero_key": "6RHCU7CZ"
+    "pdf_zotero_key": "6RHCU7CZ",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "6Y43BXJ9",
@@ -175,7 +198,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/6Y43BXJ9.pdf",
     "pdf_original_name": "Brentjes - 2023 - The Astral Sciences through the 7th13th Century .pdf",
     "pdf_staged_at": "2026-02-22T13:01:34",
-    "pdf_zotero_key": "HBMELKKA"
+    "pdf_zotero_key": "HBMELKKA",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "7SRKVGG3",
@@ -202,7 +229,11 @@
     "recommendation": "",
     "has_reader": true,
     "text_quality": "good",
-    "chars_per_page": 1504.0
+    "chars_per_page": 1504.0,
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 15,
+    "extraction_method": "tesseract"
   },
   {
     "key": "ANLFTXVL",
@@ -233,7 +264,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/ANLFTXVL.pdf",
     "pdf_original_name": "Forêt and Kaplony - 2008 - The Journey of Maps and Images on the Silk Road.pdf",
     "pdf_staged_at": "2026-02-22T09:40:32",
-    "pdf_zotero_key": "5UDM3XMT"
+    "pdf_zotero_key": "5UDM3XMT",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 33,
+    "extraction_method": "docling"
   },
   {
     "key": "C9YPFKU3",
@@ -264,7 +299,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/C9YPFKU3.pdf",
     "pdf_original_name": "Brentjes - 1976 - Cartography in Islamic Societies.pdf",
     "pdf_staged_at": "2026-02-22T09:40:32",
-    "pdf_zotero_key": "GAP6Z6V6"
+    "pdf_zotero_key": "GAP6Z6V6",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "CR7CQJJ8",
@@ -291,7 +330,8 @@
     "recommendation": "",
     "has_reader": true,
     "text_quality": null,
-    "chars_per_page": null
+    "chars_per_page": null,
+    "extraction_method": "docling"
   },
   {
     "key": "DUZKRZFQ",
@@ -322,7 +362,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/DUZKRZFQ.pdf",
     "pdf_original_name": "König - 2023 - Practices of Zoroastrian Scholars Before and After.pdf",
     "pdf_staged_at": "2026-02-22T13:01:27",
-    "pdf_zotero_key": "WRCR324W"
+    "pdf_zotero_key": "WRCR324W",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "HMPTGZID",
@@ -353,7 +397,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/HMPTGZID.pdf",
     "pdf_original_name": "Anchassi - 2022 - Against Ptolemy Cosmography in Early Kalām (2022).pdf",
     "pdf_staged_at": "2026-02-22T13:01:24",
-    "pdf_zotero_key": "UWEV3P5P"
+    "pdf_zotero_key": "UWEV3P5P",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "IGHBYX4K",
@@ -380,7 +428,11 @@
     "recommendation": "",
     "has_reader": false,
     "text_quality": "good",
-    "chars_per_page": 1477.8
+    "chars_per_page": 1477.8,
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 3,
+    "extraction_method": "tesseract"
   },
   {
     "key": "MJEJY7UC",
@@ -411,7 +463,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/MJEJY7UC.pdf",
     "pdf_original_name": "Klein-Franke - 1974 - Die Oberlieferung der altesten arabischen Handschr.pdf",
     "pdf_staged_at": "2026-02-22T13:01:31",
-    "pdf_zotero_key": "7WFBRJIK"
+    "pdf_zotero_key": "7WFBRJIK",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "PRZTK6C7",
@@ -442,7 +498,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/PRZTK6C7.pdf",
     "pdf_original_name": "Morrison - 2019 - Cosmology and Cosmic Order in Islamic Astronomy.pdf",
     "pdf_staged_at": "2026-02-22T09:40:33",
-    "pdf_zotero_key": "273CCYWF"
+    "pdf_zotero_key": "273CCYWF",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "QIGTV3FC",
@@ -469,7 +529,11 @@
     "recommendation": "",
     "has_reader": true,
     "text_quality": "good",
-    "chars_per_page": 1275.7
+    "chars_per_page": 1275.7,
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "QVUQC6HN",
@@ -496,7 +560,11 @@
     "recommendation": "",
     "has_reader": true,
     "text_quality": "good",
-    "chars_per_page": 2991.3
+    "chars_per_page": 2991.3,
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "R2BYZE7J",
@@ -527,7 +595,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/R2BYZE7J.pdf",
     "pdf_original_name": "Maróth - 2015 - An Unknown Source of al-Khwārizmī’s Kitāb ṣūrat al.pdf",
     "pdf_staged_at": "2026-02-22T13:07:05",
-    "pdf_zotero_key": "AA75YHZL"
+    "pdf_zotero_key": "AA75YHZL",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "W277BB43",
@@ -558,7 +630,11 @@
     "pdf_staged_path": "data/collections/islamic-cartography/pdfs/W277BB43.pdf",
     "pdf_original_name": "Grignaschi - 1967 - Le roman épistolaire classique conservé dans la ve.pdf",
     "pdf_staged_at": "2026-02-22T09:40:34",
-    "pdf_zotero_key": "C8NIVWWN"
+    "pdf_zotero_key": "C8NIVWWN",
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 0,
+    "extraction_method": "docling"
   },
   {
     "key": "YEDS3GQH",
@@ -585,6 +661,10 @@
     "recommendation": "",
     "has_reader": true,
     "text_quality": "good",
-    "chars_per_page": 2621.0
+    "chars_per_page": 2621.0,
+    "pua_ratio": 0.0,
+    "replacement_ratio": 0.0,
+    "empty_pages": 36,
+    "extraction_method": "tesseract"
   }
 ]

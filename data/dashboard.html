@@ -452,7 +452,10 @@ function init(inventory, statusData) {
   renderDonuts(DATA);
   var langs = [];
   var seen = {};
-  DATA.forEach(function(r){ if(r.language && !seen[r.language]){seen[r.language]=1;langs.push(r.language);} });
+  DATA.forEach(function(r){
+    var la = Array.isArray(r.language) ? r.language : (r.language ? [r.language] : []);
+    la.forEach(function(l){ if(l && !seen[l]){seen[l]=1;langs.push(l);} });
+  });
   langs.sort();
   var sel = document.getElementById('filter-lang');
   langs.forEach(function(l){ var o=document.createElement('option');o.value=l;o.textContent=l;sel.appendChild(o); });
@@ -496,7 +499,8 @@ function rowClass(r) {
   if (r.text_quality === 'good')    return 'row-quality-good';
   if (r.text_quality === 'suspect') return 'row-quality-suspect';
   if (r.text_quality === 'garbled') return 'row-quality-garbled';
-  return 'row-quality-none';
+  if (!r.extracted) return 'row-quality-none';  // grey = not yet extracted
+  return '';                                      // no border = extracted, quality unrated
 }
 function shortAuthors(s) {
   if (!s) return '\u2014';
@@ -518,7 +522,7 @@ function renderRow(r, idx) {
     +'<td>'+availBadge(r._availability)+'</td>'
     +'<td>'+(qualityBadge(r.text_quality||'')||'<span style="color:#d1d1d6">\u2014</span>')+'</td>'
     +'<td class="num">'+(r.page_count!=null?r.page_count:'\u2014')+'</td>'
-    +'<td>'+escHtml(r.language||'\u2014')+'</td>'
+    +'<td>'+escHtml(Array.isArray(r.language)?r.language.join(', '):(r.language||'\u2014'))+'</td>'
     +'<td style="white-space:nowrap">'+btn+'</td>'
     +'</tr>';
 }
@@ -539,7 +543,10 @@ function filterTable() {
     if (q && !((r.title||'').toLowerCase().indexOf(q)>=0||(r.authors||'').toLowerCase().indexOf(q)>=0||(r.key||'').toLowerCase().indexOf(q)>=0)) return false;
     if (pdf     && r.pdf_status    !== pdf)     return false;
     if (quality && r.text_quality  !== quality) return false;
-    if (lang && r.language   !== lang) return false;
+    if (lang) {
+      var _la = Array.isArray(r.language) ? r.language : (r.language ? [r.language] : []);
+      if (_la.indexOf(lang) < 0) return false;
+    }
     if (avail) {
       if (r._availability!==avail && !(avail==='restricted'&&r._availability==='unknown')) return false;
     }
@@ -601,7 +608,11 @@ var FIELD_TIPS = {
   'Quality Score':'Numerical extraction quality (0\u20131) based on character density; blank until extraction runs',
   'Recommendation':'Automated disposition after quality assessment',
   'Extracted':'Whether text extraction has been run for this item',
-  'Availability':'Whether this item is freely accessible, paywalled, or unavailable online'
+  'Availability':'Whether this item is freely accessible, paywalled, or unavailable online',
+  'Chars/page':'Average characters per PDF page after extraction',
+  'PUA ratio':'Fraction of characters in Unicode Private Use Area \u2014 high values indicate OCR artifacts or encoding errors',
+  'Repl. ratio':'Fraction of Unicode replacement characters (U+FFFD) \u2014 indicates bytes that could not be decoded',
+  'Empty pages':'Number of pages yielding no usable text after extraction'
 };
 function tipIcon(label) {
   var tip=FIELD_TIPS[label];
@@ -634,7 +645,7 @@ function showDocInfo(key) {
   // Badges
   html += '<div class="dip-badges">'
     +pdfBadge(r.pdf_status)+typeBadge(r.doc_type)+availBadge(r._availability)
-    +(r.language?'<span class="badge b-lang">'+escHtml(r.language)+'</span>':'')
+    +(r.language?(Array.isArray(r.language)?r.language:([r.language])).map(function(l){return '<span class="badge b-lang">'+escHtml(l)+'</span>';}).join(''):'')
     +(r.item_type?'<span class="badge b-itype">'+escHtml(r.item_type)+'</span>':'')
     +qualityBadge(r.text_quality||'')
     +(r.has_reader?'<span class="badge b-stored">\ud83d\udcd6 Reader</span>':'')
@@ -659,11 +670,15 @@ function showDocInfo(key) {
   if (r.authors)    html += dipRow('Authors',escHtml(r.authors));
   if (r.pages)      html += dipRow('Pages',escHtml(r.pages));
   html += dipRow('PDF pages', r.page_count!=null ? String(r.page_count) : '\u2014');
-  if (r.language)   html += dipRow('Language',r.language.toUpperCase());
+  if (r.language)   html += dipRow('Language', Array.isArray(r.language) ? r.language.join(', ').toUpperCase() : r.language.toUpperCase());
   html += dipRow('PDF Status',escHtml(r.pdf_status||'\u2014'));
   if (r.doc_type&&r.doc_type!=='unknown') html += dipRow('Doc Type',escHtml(r.doc_type));
   if (r.text_quality)   html += dipRow('Text Quality',escHtml(r.text_quality));
   if (r.quality_score!=null) html += dipRow('Quality Score',r.quality_score.toFixed(2));
+  if (r.chars_per_page!=null)      html += dipRow('Chars/page', Math.round(r.chars_per_page).toLocaleString());
+  if (r.pua_ratio!=null)           html += dipRow('PUA ratio', (r.pua_ratio*100).toFixed(2)+'%');
+  if (r.replacement_ratio!=null)   html += dipRow('Repl. ratio', (r.replacement_ratio*100).toFixed(2)+'%');
+  if (r.empty_pages!=null)         html += dipRow('Empty pages', String(r.empty_pages));
   if (r.recommendation) html += dipRow('Recommendation',recBadge(r.recommendation));
   html += dipRow('Extracted', r.extracted ? '<span style="color:#1a7f37">Yes</span>' : '<span style="color:#999">No</span>');
   if (r.extraction_method) {

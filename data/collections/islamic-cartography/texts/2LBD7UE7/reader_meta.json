@@ -6,6 +6,6 @@
   "publisher": "Leipzig, Brockhaus",
   "place": "Leipzig",
   "item_type": "book",
-  "language": "de",
+  "language": ["de", "ar"],
   "page_count": 980
 }
