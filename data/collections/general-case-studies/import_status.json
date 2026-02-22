@@ -53,12 +53,12 @@
       "last_updated": "2026-02-21T18:41:33Z"
     },
     "HNXACPXD": {
-      "availability": "open_access",
-      "import_status": "triage",
-      "pdf_url": "https://link.springer.com/content/pdf/10.1007%2F11926078_55.pdf",
+      "availability": "unknown",
+      "import_status": "pending",
+      "pdf_url": null,
       "page_count": null,
       "large_flag": false,
-      "failure_reason": "paywall",
+      "failure_reason": null,
       "last_updated": "2026-02-22T02:14:44Z"
     }
   }

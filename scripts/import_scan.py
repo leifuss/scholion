@@ -181,7 +181,18 @@ def check_url_accessible(url: str, session: requests.Session) -> tuple[bool, str
         if 'application/pdf' in ct:
             return True, final_url
         if final_url.lower().endswith('.pdf') or '/pdf' in final_url.lower():
-            return True, final_url
+            # URL looks like a PDF but HEAD didn't confirm the content-type.
+            # Some servers omit Content-Type on HEAD (legitimate), but paywall
+            # landing pages also return 200 HTML at .pdf URLs (false positive).
+            # Do a tiny Range GET to check for the PDF magic bytes.
+            try:
+                r2 = session.get(final_url, headers={'Range': 'bytes=0-7'},
+                                 timeout=15, stream=False)
+                if r2.content[:4] == b'%PDF':
+                    return True, final_url
+            except Exception:
+                pass
+            return False, None
         return False, None
     except Exception:
         return False, None
