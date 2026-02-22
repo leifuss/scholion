@@ -99,7 +99,7 @@ def _push_progress(repo_dir: Path, message: str) -> bool:
     secrets=[modal.Secret.from_name("islamic-cartography")],
 )
 def run_heron(keys: list[str] | None = None, github_token: str = "", repo_url: str = "",
-              inventory: str = "", texts_root: str = ""):
+              inventory: str = "", texts_root: str = "", force: bool = False):
     import json
     import os
     import subprocess
@@ -165,6 +165,8 @@ def run_heron(keys: list[str] | None = None, github_token: str = "", repo_url: s
                 cmd += ["--inventory", inventory]
             if texts_root:
                 cmd += ["--texts-root", texts_root]
+            if force:
+                cmd += ["--force"]
             result = subprocess.run(
                 cmd,
                 cwd=REPO_DIR,
@@ -207,7 +209,7 @@ def run_heron(keys: list[str] | None = None, github_token: str = "", repo_url: s
 
 # ── Local entrypoint ─────────────────────────────────────────────────────────
 @app.local_entrypoint()
-def main(keys: str = "", inventory: str = "", texts_root: str = ""):
+def main(keys: str = "", inventory: str = "", texts_root: str = "", force: bool = False):
     """
     Run Heron enrichment on Modal T4 GPU.
 
@@ -216,6 +218,7 @@ def main(keys: str = "", inventory: str = "", texts_root: str = ""):
         --inventory:  Path to inventory.json (default: data/inventory.json).
         --texts-root: Path to per-key text dirs (default: data/texts).
                       Pass data/collections/SLUG/texts for collection items.
+        --force:      Re-enrich docs that already have _heron_version set.
 
     GITHUB_TOKEN is read from the local environment (set automatically in
     GitHub Actions, or set manually when running locally with a PAT).
@@ -227,5 +230,5 @@ def main(keys: str = "", inventory: str = "", texts_root: str = ""):
     gh_repo = os.environ.get("GITHUB_REPOSITORY", "")
     repo_url = f"https://github.com/{gh_repo}.git" if gh_repo else ""
     result = run_heron.remote(key_list, github_token=github_token, repo_url=repo_url,
-                              inventory=inventory, texts_root=texts_root)
+                              inventory=inventory, texts_root=texts_root, force=force)
     print(f"\nResult: {result}")
