@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """
-RAG chat server for the Islamic Cartography corpus.
+RAG chat server — multi-collection hybrid retrieval.
 
 Hybrid retrieval: BM25 keyword search + semantic embedding similarity.
 Uses layout_elements.json for structure-aware chunking (falls back to
 fixed-window chunking when layout data is unavailable).
+
+Indexes all collections under data/collections/*/texts/ at startup.
+An optional `collection` filter in /api/chat and /api/search scopes
+results to a single collection (used by chat.html when browsing a
+specific collection).
 
 Usage:
     python scripts/rag_server.py            # runs on http://localhost:8001
@@ -13,8 +18,8 @@ Usage:
 
 Endpoints:
     GET  /api/status          → index stats
-    POST /api/chat            → {query: str} → Server-Sent Events stream
-    POST /api/search          → {query: str, k: int} → top-k chunks (debug)
+    POST /api/chat            → {query: str, collection?: str} → SSE stream
+    POST /api/search          → {query: str, k: int, collection?: str} → top-k chunks
 """
 
 import json
@@ -34,10 +39,9 @@ from fastapi.staticfiles import StaticFiles
 from rank_bm25 import BM25Okapi
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-ROOT       = Path(__file__).parent.parent
-TEXTS_ROOT = ROOT / "data" / "texts"
-INV_PATH   = ROOT / "data" / "inventory.json"
-EMB_CACHE  = ROOT / "data" / ".embedding_cache.npz"
+ROOT             = Path(__file__).parent.parent
+COLLECTIONS_ROOT = ROOT / "data" / "collections"
+EMB_CACHE        = ROOT / "data" / ".embedding_cache.npz"
 
 CHUNK_WORDS   = 350   # target words per chunk (fixed-window fallback)
 CHUNK_OVERLAP = 50    # words of overlap between chunks
@@ -159,10 +163,24 @@ def chunk_text(text: str, key: str, page: str, chunk_words: int = CHUNK_WORDS,
 # ── Index building ─────────────────────────────────────────────────────────────
 
 def load_inventory() -> dict[str, dict]:
-    if not INV_PATH.exists():
-        return {}
-    items = json.loads(INV_PATH.read_text())
-    return {it["key"]: it for it in items}
+    """Load and merge inventories from all collections, tagging each item with its slug."""
+    inventory: dict[str, dict] = {}
+    if not COLLECTIONS_ROOT.exists():
+        return inventory
+    for coll_dir in sorted(COLLECTIONS_ROOT.iterdir()):
+        if not coll_dir.is_dir():
+            continue
+        inv_path = coll_dir / "inventory.json"
+        if not inv_path.exists():
+            continue
+        try:
+            items = json.loads(inv_path.read_text())
+            for it in items:
+                it["_collection"] = coll_dir.name
+                inventory[it["key"]] = it
+        except Exception:
+            pass
+    return inventory
 
 
 def _chunks_fingerprint(chunks: list[dict]) -> str:
@@ -175,8 +193,9 @@ def _chunks_fingerprint(chunks: list[dict]) -> str:
 
 def build_index(use_embeddings: bool = True) -> tuple[list[dict], "BM25Okapi", dict, np.ndarray | None]:
     """
-    Scan all processed docs, build chunks list + BM25 + embedding index.
+    Scan all collections under data/collections/*/texts/, build chunks + BM25 + embedding index.
     Prefers layout_elements.json for semantic chunking; falls back to page_texts.json.
+    Each chunk is tagged with its collection slug.
     Returns (chunks, bm25, stats, embeddings_matrix_or_None).
     """
     inventory = load_inventory()
@@ -184,66 +203,77 @@ def build_index(use_embeddings: bool = True) -> tuple[list[dict], "BM25Okapi", d
     stats: dict = {"docs": 0, "pages": 0, "chunks": 0, "words": 0,
                    "semantic_chunks": 0, "fallback_chunks": 0}
 
-    for doc_dir in sorted(TEXTS_ROOT.iterdir()):
-        if not doc_dir.is_dir():
-            continue
-        key = doc_dir.name
+    if not COLLECTIONS_ROOT.exists():
+        print(f"Warning: {COLLECTIONS_ROOT} does not exist — no documents indexed", flush=True)
+    else:
+        for coll_dir in sorted(COLLECTIONS_ROOT.iterdir()):
+            if not coll_dir.is_dir():
+                continue
+            texts_dir = coll_dir / "texts"
+            if not texts_dir.exists():
+                continue
+            slug = coll_dir.name
 
-        inv_item = inventory.get(key, {})
-        meta = {
-            "title":   inv_item.get("title", key),
-            "authors": inv_item.get("authors", ""),
-            "year":    inv_item.get("year", ""),
-        }
-
-        # Try semantic chunking from layout_elements.json first
-        layout_path = doc_dir / "layout_elements.json"
-        doc_chunks = []
-
-        if layout_path.exists():
-            doc_chunks = chunk_from_layout(layout_path, key)
-            if doc_chunks:
-                stats["semantic_chunks"] += len(doc_chunks)
-
-        # Fallback to page_texts.json
-        if not doc_chunks:
-            # Prefer translation for non-English docs
-            transl_path = doc_dir / "translation.json"
-            pt_path     = doc_dir / "page_texts.json"
-            page_texts: dict[str, str] = {}
-
-            if transl_path.exists():
-                try:
-                    t = json.loads(transl_path.read_text())
-                    if t.get("page_texts"):
-                        page_texts = t["page_texts"]
-                except Exception:
-                    pass
-
-            if not page_texts and pt_path.exists():
-                try:
-                    page_texts = json.loads(pt_path.read_text())
-                except Exception:
-                    pass
-
-            for page, text in page_texts.items():
-                if not isinstance(text, str) or not text.strip():
+            for doc_dir in sorted(texts_dir.iterdir()):
+                if not doc_dir.is_dir():
                     continue
-                chunks = chunk_text(text, key, page)
-                doc_chunks.extend(chunks)
-                stats["pages"] += 1
-                stats["words"] += len(text.split())
+                key = doc_dir.name
 
-            stats["fallback_chunks"] += len(doc_chunks)
+                inv_item = inventory.get(key, {})
+                meta = {
+                    "title":      inv_item.get("title", key),
+                    "authors":    inv_item.get("authors", ""),
+                    "year":       inv_item.get("year", ""),
+                    "collection": slug,
+                }
 
-        # Attach metadata
-        for c in doc_chunks:
-            c.update(meta)
-        all_chunks.extend(doc_chunks)
+                # Try semantic chunking from layout_elements.json first
+                layout_path = doc_dir / "layout_elements.json"
+                doc_chunks: list[dict] = []
 
-        if doc_chunks:
-            stats["docs"] += 1
-        stats["chunks"] += len(doc_chunks)
+                if layout_path.exists():
+                    doc_chunks = chunk_from_layout(layout_path, key)
+                    if doc_chunks:
+                        stats["semantic_chunks"] += len(doc_chunks)
+
+                # Fallback to page_texts.json
+                if not doc_chunks:
+                    transl_path = doc_dir / "translation.json"
+                    pt_path     = doc_dir / "page_texts.json"
+                    page_texts: dict[str, str] = {}
+
+                    if transl_path.exists():
+                        try:
+                            t = json.loads(transl_path.read_text())
+                            if t.get("page_texts"):
+                                page_texts = t["page_texts"]
+                        except Exception:
+                            pass
+
+                    if not page_texts and pt_path.exists():
+                        try:
+                            page_texts = json.loads(pt_path.read_text())
+                        except Exception:
+                            pass
+
+                    for page, text in page_texts.items():
+                        if not isinstance(text, str) or not text.strip():
+                            continue
+                        chunks = chunk_text(text, key, page)
+                        doc_chunks.extend(chunks)
+                        stats["pages"] += 1
+                        stats["words"] += len(text.split())
+
+                    stats["fallback_chunks"] += len(doc_chunks)
+
+                # Attach metadata (including collection slug)
+                for c in doc_chunks:
+                    c.update(meta)
+                all_chunks.extend(doc_chunks)
+
+                if doc_chunks:
+                    stats["docs"] += 1
+                stats["chunks"] += len(doc_chunks)
 
     # Build BM25 index
     tokenised = [
@@ -314,12 +344,19 @@ def _embed_query(query: str) -> np.ndarray | None:
 
 def retrieve(query: str, chunks: list[dict], bm25: BM25Okapi | None,
              embeddings: np.ndarray | None,
-             k: int = TOP_K, min_score: float = MIN_SCORE) -> list[dict]:
-    """Hybrid retrieval: weighted combination of BM25 + cosine similarity."""
+             k: int = TOP_K, min_score: float = MIN_SCORE,
+             collection: str | None = None) -> list[dict]:
+    """Hybrid retrieval: weighted combination of BM25 + cosine similarity.
+
+    If `collection` is given, results are post-filtered to that collection
+    (candidates are over-fetched to compensate for the filter).
+    """
     if not chunks:
         return []
 
     n = len(chunks)
+    # Over-fetch when filtering so we have enough candidates after the filter
+    fetch_k = k * 4 if collection else k
 
     # BM25 scores (normalised to 0-1)
     bm25_scores = np.zeros(n)
@@ -330,14 +367,12 @@ def retrieve(query: str, chunks: list[dict], bm25: BM25Okapi | None,
             max_bm25 = max(raw) if max(raw) > 0 else 1.0
             bm25_scores = np.array(raw) / max_bm25
 
-    # Embedding cosine similarity (already normalised to 0-1 range)
+    # Embedding cosine similarity
     embed_scores = np.zeros(n)
     if embeddings is not None:
         q_emb = _embed_query(query)
         if q_emb is not None:
-            # Cosine similarity (embeddings are already L2-normalised by fastembed)
             sims = embeddings @ q_emb
-            # Shift to 0-1 range (cosine ranges from -1 to 1)
             embed_scores = (sims + 1) / 2
 
     # Weighted hybrid score
@@ -346,7 +381,7 @@ def retrieve(query: str, chunks: list[dict], bm25: BM25Okapi | None,
     else:
         combined = bm25_scores
 
-    # Top-k with deduplication
+    # Top candidates with deduplication, then optional collection filter
     top_idx = np.argsort(combined)[::-1]
     results = []
     seen_keys = set()
@@ -354,6 +389,8 @@ def retrieve(query: str, chunks: list[dict], bm25: BM25Okapi | None,
         if combined[i] < min_score:
             break
         c = chunks[i]
+        if collection and c.get("collection") != collection:
+            continue
         uid = (c["key"], c["page"])
         if uid in seen_keys:
             continue
@@ -361,10 +398,10 @@ def retrieve(query: str, chunks: list[dict], bm25: BM25Okapi | None,
         results.append({**c, "score": float(combined[i]),
                         "bm25": float(bm25_scores[i]),
                         "semantic": float(embed_scores[i])})
-        if len(results) >= k:
+        if len(results) >= fetch_k:
             break
 
-    return results
+    return results[:k]
 
 
 def _short_label(h: dict) -> str:
@@ -416,9 +453,7 @@ def format_context(hits: list[dict], max_words: int = MAX_CTX_WORDS) -> str:
 # ── LLM streaming (Gemini / OpenAI / Anthropic — uses first available key) ─────
 
 SYSTEM_PROMPT = """\
-You are a research assistant specialising in Islamic cartography, historical geography,
-and medieval Arabic/Persian geographical literature. Answer questions using ONLY the
-provided corpus excerpts.
+You are a research assistant. Answer questions using ONLY the provided corpus excerpts.
 
 Write a substantial paragraph (or two) that synthesises the relevant sources into a
 coherent answer. Focus on contextualising the sources: explain what each cited work
@@ -579,13 +614,16 @@ def status():
 @app.post("/api/search")
 def search(body: dict):
     _ensure_index()
-    query = body.get("query", "")
-    k     = int(body.get("k", TOP_K))
-    hits  = retrieve(query, CHUNKS, BM25_INDEX, EMBEDDINGS, k=k)
-    return {"query": query, "mode": "hybrid" if EMBEDDINGS is not None else "bm25",
+    query      = body.get("query", "")
+    k          = int(body.get("k", TOP_K))
+    collection = body.get("collection") or None
+    hits  = retrieve(query, CHUNKS, BM25_INDEX, EMBEDDINGS, k=k, collection=collection)
+    return {"query": query, "collection": collection,
+            "mode": "hybrid" if EMBEDDINGS is not None else "bm25",
             "hits": [
         {"key": h["key"], "page": h["page"], "score": h["score"],
          "bm25": h.get("bm25", 0), "semantic": h.get("semantic", 0),
+         "collection": h.get("collection", ""),
          "snippet": h["text"][:200]}
         for h in hits
     ]}
@@ -594,11 +632,12 @@ def search(body: dict):
 @app.post("/api/chat")
 def chat(body: dict):
     _ensure_index()
-    query = body.get("query", "").strip()
+    query      = body.get("query", "").strip()
+    collection = body.get("collection") or None
     if not query:
         return {"error": "empty query"}
     k       = int(body.get("k", TOP_K))
-    hits    = retrieve(query, CHUNKS, BM25_INDEX, EMBEDDINGS, k=k)
+    hits    = retrieve(query, CHUNKS, BM25_INDEX, EMBEDDINGS, k=k, collection=collection)
     context = format_context(hits)
     return StreamingResponse(
         stream_llm(query, context, hits),
