@@ -540,7 +540,8 @@ def stream_llm(query: str, context: str, sources: list[dict]) -> Iterator[str]:
                     "year": h.get("year", ""),
                     "label": _short_label(h),
                     "score": round(h["score"], 3),
-                    "snippet": _make_snippet(h.get("text", ""), 200)}
+                    "snippet": _make_snippet(h.get("text", ""), 200),
+                    "collection": h.get("collection", "")}
                    for h in sources]
     yield f"data: {json.dumps({'type': 'sources', 'sources': source_list})}\n\n"
 
