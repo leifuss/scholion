@@ -60,17 +60,18 @@ REPO_URL = "https://github.com/leifuss/scholion.git"
 REPO_DIR = Path("/repo")
 
 # ── Tuning ────────────────────────────────────────────────────────────────────
-PER_KEY_TIMEOUT = 900      # 15 min per key — fast text assignment makes this generous
-COMMIT_EVERY    = 5        # push progress every N keys (protects against timeout)
-MAX_PAGES       = 800      # skip docs with more page images than this
+LARGE_DOC_PAGES = 100      # docs with more pages are staged for individual processing
+KEYS_PER_BATCH  = 5        # keys per subprocess call — model loads once per batch
+PER_KEY_TIMEOUT = 2400     # 40 min per key (Tesseract on ≤100 pages)
+MAX_PAGES       = 800      # hard skip for docs beyond all reasonable size (safety net)
 
 
 def _push_progress(repo_dir: Path, message: str) -> bool:
     """Commit any staged changes and push. Returns True if pushed."""
-    # Stage layout results — separate commands so a missing data/texts/ dir
-    # doesn't cause git add to abort before staging collection texts
+    # Stage layout results and any collection-level JSON files (e.g. large_doc_queue.json)
     subprocess.run("git add data/texts/ 2>/dev/null || true", cwd=repo_dir, shell=True)
     subprocess.run("git add data/collections/*/texts/ 2>/dev/null || true", cwd=repo_dir, shell=True)
+    subprocess.run("git add data/collections/*/*.json data/*.json 2>/dev/null || true", cwd=repo_dir, shell=True)
     diff = subprocess.run(["git", "diff", "--staged", "--quiet"], cwd=repo_dir)
     if diff.returncode == 0:
         return False  # nothing to commit
@@ -132,6 +133,7 @@ def run_heron(keys: list[str] | None = None, github_token: str = "", repo_url: s
         print("ℹ No GITHUB_TOKEN — results will not be pushed.")
 
     # Build key list
+    auto_discovered = not keys   # True when no keys specified — enables large-doc staging
     if not keys:
         inv = json.loads((REPO_DIR / "data/inventory.json").read_text())
         keys = [
@@ -140,58 +142,102 @@ def run_heron(keys: list[str] | None = None, github_token: str = "", repo_url: s
                not (REPO_DIR / f"data/texts/{i['key']}/layout_elements.json").exists()
         ]
 
-    total = len(keys)
-    print(f"Keys to enrich: {total}")
-    print(f"Per-key timeout: {PER_KEY_TIMEOUT}s  Max pages: {MAX_PAGES}")
-    print(f"Incremental push: every {COMMIT_EVERY} keys" if can_push else "")
+    # ── Stage large docs for individual processing (auto-discovered runs only) ──
+    large_entries: list[dict] = []
+    if auto_discovered:
+        texts_dir_abs = REPO_DIR / (texts_root or "data/texts")
+        small_keys: list[str] = []
+        for key in keys:
+            pages_dir = texts_dir_abs / key / "pages"
+            n_pages   = len(list(pages_dir.glob("*.jpg"))) if pages_dir.is_dir() else 0
+            if n_pages > LARGE_DOC_PAGES:
+                large_entries.append({"key": key, "pages": n_pages})
+            else:
+                small_keys.append(key)
 
-    # Process keys one at a time — 05c loads model once per subprocess,
-    # but with fast text assignment each key is quick (Heron only, no Tesseract).
-    failed = []
-    ok_count = 0
-    since_push = 0
+        if large_entries:
+            inv_file   = REPO_DIR / (inventory or "data/inventory.json")
+            queue_path = inv_file.parent / "large_doc_queue.json"
+            existing: dict = {}
+            if queue_path.exists():
+                try:
+                    existing = json.loads(queue_path.read_text())
+                except Exception:
+                    pass
+            for e in large_entries:
+                existing[e["key"]] = {
+                    "pages":      e["pages"],
+                    "texts_root": texts_root or "data/texts",
+                    "status":     "pending",
+                }
+            queue_path.write_text(json.dumps(existing, indent=2))
+            subprocess.run(
+                ["git", "add", str(queue_path.relative_to(REPO_DIR))],
+                cwd=REPO_DIR,
+            )
+            print(f"\n⚠  {len(large_entries)} large doc(s) staged in "
+                  f"{queue_path.relative_to(REPO_DIR)}:", flush=True)
+            for e in sorted(large_entries, key=lambda x: -x["pages"]):
+                print(f"    {e['key']}: {e['pages']} pages", flush=True)
+            print("   To process individually, re-run the workflow with that key "
+                  "in the 'keys' input field.", flush=True)
+    else:
+        small_keys = list(keys)   # explicit keys: bypass staging
+
+    total         = len(small_keys)
+    total_batches = (total + KEYS_PER_BATCH - 1) // KEYS_PER_BATCH if total else 0
+    print(f"\nDocs to enrich: {total}  ({total_batches} batch(es) of ≤{KEYS_PER_BATCH})")
+    print(f"Per-key timeout: {PER_KEY_TIMEOUT}s  "
+          f"Batch timeout: {KEYS_PER_BATCH * PER_KEY_TIMEOUT}s")
+
+    # Process small docs in batches — model loads once per batch, not once per doc.
+    failed    = []
+    ok_count  = 0
     run_start = time.time()
 
-    for n, key in enumerate(keys, 1):
+    for bn in range(total_batches):
+        batch         = small_keys[bn * KEYS_PER_BATCH : (bn + 1) * KEYS_PER_BATCH]
+        batch_timeout = len(batch) * PER_KEY_TIMEOUT
         elapsed_total = int(time.time() - run_start)
-        print(f"\n{'═'*50}\n[{n}/{total}] Layout: {key}  (elapsed {elapsed_total}s)\n{'═'*50}", flush=True)
+        print(
+            f"\n{'═'*50}\n"
+            f"[Batch {bn+1}/{total_batches}] {batch}  (elapsed {elapsed_total}s)\n"
+            f"{'═'*50}",
+            flush=True,
+        )
+
+        cmd = [sys.executable, "scripts/05c_layout_heron.py",
+               "--batch", "4",
+               "--max-pages", str(LARGE_DOC_PAGES),
+               "--tesseract",
+               "--keys"] + batch
+        if inventory:  cmd += ["--inventory", inventory]
+        if texts_root: cmd += ["--texts-root", texts_root]
+        if force:      cmd += ["--force"]
 
         try:
-            cmd = [sys.executable, "scripts/05c_layout_heron.py",
-                   "--batch", "4",
-                   "--max-pages", str(MAX_PAGES),
-                   "--tesseract",
-                   "--keys", key]
-            if inventory:
-                cmd += ["--inventory", inventory]
-            if texts_root:
-                cmd += ["--texts-root", texts_root]
-            if force:
-                cmd += ["--force"]
-            result = subprocess.run(
-                cmd,
-                cwd=REPO_DIR,
-                timeout=PER_KEY_TIMEOUT,
-            )
+            result = subprocess.run(cmd, cwd=REPO_DIR, timeout=batch_timeout)
             if result.returncode != 0:
-                print(f"⚠ {key} failed (exit {result.returncode})", flush=True)
-                failed.append(key)
+                print(f"⚠ Batch {bn+1} failed (exit {result.returncode})", flush=True)
+                failed.extend(batch)
             else:
-                ok_count += 1
-                since_push += 1
+                ok_count += len(batch)
         except subprocess.TimeoutExpired:
-            print(f"⚠ {key} timed out after {PER_KEY_TIMEOUT}s — skipping", flush=True)
-            failed.append(key)
+            print(
+                f"⚠ Batch {bn+1} timed out after {batch_timeout}s"
+                f" — committing any results already written",
+                flush=True,
+            )
+            failed.extend(batch)
 
-        # Incremental commit+push to save progress
-        if can_push and since_push >= COMMIT_EVERY:
+        # Push after every batch to preserve completed results
+        if can_push:
             print(f"\n  → Pushing progress ({ok_count} enriched so far)…", flush=True)
             pushed = _push_progress(
                 REPO_DIR,
                 f"layout(05c/modal): {ok_count} doc(s) enriched [skip ci]",
             )
             if pushed:
-                since_push = 0
                 print("  → Pushed.", flush=True)
 
     # Final push
@@ -205,7 +251,11 @@ def run_heron(keys: list[str] | None = None, github_token: str = "", repo_url: s
 
     total_time = int(time.time() - run_start)
     print(f"\nDone in {total_time}s. OK: {ok_count}  Failed: {failed or 'none'}")
-    return {"ok": ok_count, "failed": failed, "elapsed_s": total_time}
+    if large_entries:
+        print(f"Staged (>{LARGE_DOC_PAGES} pages): "
+              f"{[e['key'] for e in sorted(large_entries, key=lambda x: -x['pages'])]}")
+    return {"ok": ok_count, "failed": failed, "elapsed_s": total_time,
+            "staged": [e["key"] for e in large_entries]}
 
 
 # ── Local entrypoint ─────────────────────────────────────────────────────────
