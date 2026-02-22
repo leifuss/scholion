@@ -208,9 +208,15 @@ def run_heron(keys: list[str] | None = None, github_token: str = "", repo_url: s
 
         cmd = [sys.executable, "scripts/05c_layout_heron.py",
                "--batch", "4",
-               "--max-pages", str(LARGE_DOC_PAGES),
                "--tesseract",
                "--keys"] + batch
+        # In auto-discovery mode, large docs are already staged into large_doc_queue.json
+        # and excluded from small_keys.  Add --max-pages as a safety net so that any
+        # stray large doc doesn't stall the batch.
+        # In explicit-key mode the user is intentionally targeting a specific (possibly
+        # large) doc, so we must NOT cap pages — it would silently skip the doc.
+        if auto_discovered:
+            cmd += ["--max-pages", str(LARGE_DOC_PAGES)]
         if inventory:  cmd += ["--inventory", inventory]
         if texts_root: cmd += ["--texts-root", texts_root]
         if force:      cmd += ["--force"]
