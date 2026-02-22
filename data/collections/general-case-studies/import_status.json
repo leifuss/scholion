@@ -3,9 +3,9 @@
   "scan_complete": true,
   "import_running": false,
   "current_item": null,
-  "progress_n": 6,
-  "progress_total": 6,
-  "last_updated": "2026-02-22T02:01:39Z",
+  "progress_n": 1,
+  "progress_total": 1,
+  "last_updated": "2026-02-22T02:14:45Z",
   "items": {
     "3NV8QXDS": {
       "availability": "stored",
@@ -54,12 +54,12 @@
     },
     "HNXACPXD": {
       "availability": "open_access",
-      "import_status": "pending",
+      "import_status": "triage",
       "pdf_url": "https://link.springer.com/content/pdf/10.1007%2F11926078_55.pdf",
       "page_count": null,
       "large_flag": false,
-      "failure_reason": null,
-      "last_updated": "2026-02-21T18:41:35Z"
+      "failure_reason": "paywall",
+      "last_updated": "2026-02-22T02:14:44Z"
     }
   }
 }
