@@ -601,6 +601,7 @@ function triggerWorkflow(workflow, inputs, btn, successMsg) {
       alert('Permission denied (403).\nEnsure your token has Actions:Read\u00a0&\u00a0write scope.\nToken cleared; click again to re-enter.');
     } else {
       r.text().then(function (t) {
+        console.error('Workflow dispatch error ' + r.status + ':', t);
         btn.textContent = 'Error ' + r.status + ' \u2014 retry';
         btn.title       = t;
         btn.disabled    = false;
