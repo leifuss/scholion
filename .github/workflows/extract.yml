@@ -24,6 +24,11 @@ on:
         type: boolean
         required: false
         default: true
+      force_layout:
+        description: "Re-enrich docs already processed by Heron (--force)"
+        type: boolean
+        required: false
+        default: false
 
 # ── Permissions ───────────────────────────────────────────────────────────────
 permissions:
@@ -312,10 +317,13 @@ jobs:
 
           echo "Dispatching Heron to Modal T4 GPU for keys: $KEYS"
           echo "(Modal will clone the repo, run Heron, commit results, and push back)"
+          FORCE_FLAG=""
+          [ "${{ inputs.force_layout }}" = "true" ] && FORCE_FLAG="--force"
           modal run scripts/modal_heron.py \
             --keys "$KEYS" \
             --inventory "$INV_FILE" \
-            --texts-root "$TEXTS_DIR"
+            --texts-root "$TEXTS_DIR" \
+            $FORCE_FLAG
 
       # ── Commit layout results after Heron ────────────────────────────────────
       # Modal already commits+pushes from inside its container, so this step is

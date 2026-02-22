@@ -341,9 +341,12 @@ def _assign_text_fast(page_text: str, regions: list[dict]) -> list[dict]:
             r.setdefault("text", "")
         return regions
 
-    # Split into paragraphs (double-newline), fall back to lines
+    # Split into paragraphs (double-newline), fall back to lines.
+    # Also fall back when double-newline gives only 1 chunk — that happens when
+    # the extractor emits no blank lines, leaving a single blob that would be
+    # dumped entirely into the first region and leaving all others empty.
     paragraphs = [p.strip() for p in _re.split(r'\n\s*\n', page_text) if p.strip()]
-    if not paragraphs:
+    if len(paragraphs) <= 1:
         paragraphs = [p.strip() for p in page_text.split('\n') if p.strip()]
     if not paragraphs:
         for r in regions:
