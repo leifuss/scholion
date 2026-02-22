@@ -281,7 +281,20 @@ def run_import(mode: str, key_arg: str | None, url_arg: str | None,
         status['items'][key]['last_updated']  = now_iso()
         save_status(status, status_path)
 
-        res = download_item(key, url, title, session, pdfs_dir=pdfs_dir)
+        try:
+            res = download_item(key, url, title, session, pdfs_dir=pdfs_dir)
+        except Exception as exc:
+            status['items'][key].update({
+                'import_status':  'triage',
+                'failure_reason': f'Unexpected error: {exc}'[:120],
+            })
+            status['items'][key]['last_updated'] = now_iso()
+            save_status(status, status_path)
+            print(f"          ✗  Unexpected error: {exc}")
+            failed += 1
+            print()
+            time.sleep(1.0)
+            continue
 
         if res['success']:
             pages  = res.get('pages')
