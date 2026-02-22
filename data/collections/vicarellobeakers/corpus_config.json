@@ -12,6 +12,7 @@
       "href": "../../explore.html?collection=vicarellobeakers-2"
     }
   },
+  "rag_api": "https://web-production-e9c9.up.railway.app",
   "source": {
     "library_type": "group",
     "library_id": "225417",
