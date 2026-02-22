@@ -10,6 +10,10 @@
     "explorer": {
       "label": "Explorer",
       "href": "../../explore.html?collection=general-case-studies"
+    },
+    "chat": {
+      "label": "Chat",
+      "href": "../../chat.html?collection=general-case-studies"
     }
   },
   "source": {

@@ -198,9 +198,23 @@ header .sub { font-size: 12px; color: var(--muted); flex: 1; }
 <script>
 // RAG URL — loaded from corpus_config.json if available, else default
 let RAG_URL = 'http://localhost:8001';
+// Collection slug — passed to /api/chat to scope results to a single collection
+const _params          = new URLSearchParams(window.location.search);
+const _collectionSlug  = _params.get('collection') || '';
+let   BASE_PATH        = '.';
+
 (async () => {
   try {
-    const cfg = await fetch('corpus_config.json').then(r => r.ok ? r.json() : null).catch(() => null);
+    // Resolve collection path from collections.json (mirrors reader.html logic)
+    if (_collectionSlug) {
+      const colls = await fetch('collections.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (colls) {
+        const coll = (colls.collections || []).find(c => c.slug === _collectionSlug);
+        if (coll && coll.path) BASE_PATH = coll.path;
+      }
+    }
+    const cfgUrl = BASE_PATH === '.' ? 'corpus_config.json' : BASE_PATH + '/corpus_config.json';
+    const cfg = await fetch(cfgUrl).then(r => r.ok ? r.json() : null).catch(() => null);
     if (cfg) {
       // Derive base URL from rag_api (strip /api suffix if present)
       RAG_URL = (cfg.rag_api || RAG_URL).replace(/\/api$/, '');
@@ -373,10 +387,12 @@ async function sendQuery() {
   let sourcesDiv = '';
 
   try {
+    const body = { query };
+    if (_collectionSlug) body.collection = _collectionSlug;
     const resp = await fetch(`${RAG_URL}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify(body),
     });
 
     if (!resp.ok) throw new Error(`Server error ${resp.status}`);

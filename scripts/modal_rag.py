@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Modal deployment for the Islamic Cartography RAG server.
+Modal deployment for the Scholion RAG server.
 
 Serves the BM25 + Claude chat API as a persistent Modal web endpoint.
+Indexes all collections under data/collections/*/texts/ at startup.
 Cold-start (first request after idle) takes ~10-15s to load the index.
 Subsequent requests are fast (<1s retrieval + Claude streaming).
 
@@ -13,14 +14,17 @@ Usage:
 Setup (one-time):
     pip install modal
     modal setup
-    modal secret create islamic-cartography \
+    modal secret create scholion-rag \
         ANTHROPIC_API_KEY=sk-ant-...
 
-After deploying, copy the printed URL into data/corpus_config.json:
-    { "rag_api": "https://leifuss--islamic-cartography-rag-serve.modal.run/api" }
+After deploying, copy the printed URL into each collection's corpus_config.json:
+    { "rag_api": "https://leifuss--scholion-rag-serve.modal.run" }
 """
 
 import modal
+from pathlib import Path
+
+ROOT = Path(__file__).parent.parent
 
 # ── Image ─────────────────────────────────────────────────────────────────────
 image = (
@@ -34,26 +38,29 @@ image = (
     )
 )
 
-app = modal.App("islamic-cartography-rag", image=image)
+app = modal.App("scholion-rag", image=image)
 
-# ── Mount the repo's data/texts/ directory into the container ─────────────────
-# This reads from your local checkout when using `modal serve`, and from
-# a Modal Volume when deployed. For deploy, run `modal_rag_upload.py` first
-# (or use the GitHub Actions workflow to keep data fresh).
+# ── Mount the repo's data/ directory into the container ───────────────────────
+# Excludes large binaries; the processed JSON/image files are included.
 data_mount = modal.Mount.from_local_dir(
-    "/Users/leifuss/Documents/projects/claude code/islamic-cartography-pipeline/data",
+    str(ROOT / "data"),
     remote_path="/app/data",
     condition=lambda path: not any(
         path.endswith(ext) for ext in [".pdf", ".docling.json", "docling.md"]
     ),
 )
 
+scripts_mount = modal.Mount.from_local_dir(
+    str(ROOT / "scripts"),
+    remote_path="/app/scripts",
+)
+
 # ── ASGI app ──────────────────────────────────────────────────────────────────
 @app.function(
-    secrets=[modal.Secret.from_name("islamic-cartography")],
-    mounts=[data_mount],
-    # Keep one container warm to avoid cold starts on every request
-    # Remove this line if you want to save credits (accept cold starts)
+    secrets=[modal.Secret.from_name("scholion-rag")],
+    mounts=[data_mount, scripts_mount],
+    # Keep one container warm to avoid cold starts on every request.
+    # Remove this line to save credits (accept cold starts).
     keep_warm=1,
     timeout=300,
 )
@@ -61,28 +68,16 @@ data_mount = modal.Mount.from_local_dir(
 def serve():
     """Serve the RAG FastAPI app."""
     import sys
-    sys.path.insert(0, "/app")
-
-    # Point the server at the mounted data directory
-    import os
-    os.environ.setdefault("TEXTS_ROOT", "/app/data/texts")
-    os.environ.setdefault("INV_PATH",   "/app/data/inventory.json")
-
-    # Import and return the FastAPI app from rag_server
-    # We need to add the scripts dir to path
     sys.path.insert(0, "/app/scripts")
 
-    # Dynamically patch ROOT before importing rag_server
-    import importlib, types
-    from pathlib import Path
-
-    # Monkeypatch ROOT so rag_server finds /app/data
     import rag_server
-    rag_server.ROOT       = Path("/app")
-    rag_server.TEXTS_ROOT = Path("/app/data/texts")
-    rag_server.INV_PATH   = Path("/app/data/inventory.json")
+    from pathlib import Path
+    # Ensure ROOT points to the mounted app directory
+    rag_server.ROOT             = Path("/app")
+    rag_server.COLLECTIONS_ROOT = Path("/app/data/collections")
+    rag_server.EMB_CACHE        = Path("/app/data/.embedding_cache.npz")
 
-    # Rebuild the index with patched paths
-    rag_server._INDEX = None  # force rebuild on first request
+    # Force index rebuild with corrected paths
+    rag_server._INDEX_BUILT = False
 
     return rag_server.app

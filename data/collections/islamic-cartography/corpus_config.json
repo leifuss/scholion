@@ -10,6 +10,10 @@
     "explorer": {
       "label": "Explorer",
       "href": "../../explore.html?collection=islamic-cartography"
+    },
+    "chat": {
+      "label": "Chat",
+      "href": "../../chat.html?collection=islamic-cartography"
     }
   },
   "source": {
