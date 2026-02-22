@@ -319,23 +319,72 @@ def _assign_text_from_image(pil_image, regions: list[dict],
     return regions
 
 
-# ── Fast text assignment from page_texts.json ─────────────────────────────────
+# ── Text assignment from embedded PDF text (pdfplumber) ───────────────────────
 
 _TEXT_LABELS = {"text", "list_item", "section_header", "title",
                 "caption", "footnote", "formula"}
 
 
+def _assign_text_from_pdf(pdf_page, regions: list[dict],
+                           img_w_px: int, img_h_px: int) -> bool:
+    """
+    Assign text to Heron regions using word-level bboxes from the embedded PDF.
+
+    pdfplumber.extract_words() returns each word with its exact position in
+    PDF-point space (origin top-left, y increases downward).  We convert those
+    coordinates to image-pixel space and use the same centre-point intersection
+    logic as the Tesseract path.
+
+    Returns True if any words were found (embedded PDF), False for scanned pages.
+    Modifies regions in-place.
+    """
+    try:
+        words = pdf_page.extract_words(use_text_flow=True, keep_blank_chars=False)
+    except Exception:
+        words = []
+
+    if not words:
+        for r in regions:
+            r.setdefault("text", "")
+        return False
+
+    # Scale factors: PDF points → image pixels
+    # pdfplumber uses top-left origin (top increases downward), same as image space.
+    page_w_pts = pdf_page.width or 1
+    page_h_pts = pdf_page.height or 1
+    sx = img_w_px / page_w_pts
+    sy = img_h_px / page_h_pts
+
+    # Collect word centres in pixel space
+    word_list: list[tuple[float, float, str]] = []
+    for w in words:
+        cx = (w["x0"] + w["x1"]) / 2 * sx
+        cy = (w["top"] + w["bottom"]) / 2 * sy
+        word_list.append((cx, cy, w["text"]))
+
+    # Assign each word to the first containing Heron region (same as Tesseract path)
+    word_buckets: list[list[str]] = [[] for _ in regions]
+    for cx, cy, word in word_list:
+        for i, reg in enumerate(regions):
+            x1, y1, x2, y2 = reg["bbox_px"]
+            if x1 <= cx <= x2 and y1 <= cy <= y2:
+                word_buckets[i].append(word)
+                break
+
+    for reg, bucket in zip(regions, word_buckets):
+        reg["text"] = " ".join(bucket)
+
+    return True
+
+
+# ── Proportional fallback for scanned / PDF-unavailable pages ─────────────────
+
 def _assign_text_fast(page_text: str, regions: list[dict]) -> list[dict]:
     """
-    Fast text assignment using pre-extracted page text (from page_texts.json).
+    Fallback text assignment when no embedded PDF text is available (scanned docs).
 
     Slices the flat page text proportionally across text-bearing Heron regions
-    by their bbox pixel height.  Cuts are made at the nearest whitespace boundary
-    so individual words are never split.  This works regardless of whether the
-    source text has paragraph separators.
-
-    Good enough for most single/double-column academic layouts. For
-    word-level precision, use --tesseract (which calls _assign_text_from_image).
+    by their bbox pixel height, cutting at whitespace so words are never split.
     """
     if not page_text.strip() or not regions:
         for r in regions:
@@ -354,13 +403,11 @@ def _assign_text_fast(page_text: str, regions: list[dict]) -> list[dict]:
             text_slots.append((i, h))
 
     if not text_slots:
-        # No text regions — assign everything to first region
         regions[0]["text"] = text
         for r in regions[1:]:
             r.setdefault("text", "")
         return regions
 
-    # Slice text proportionally by region height, cutting at word boundaries
     total_h = sum(h for _, h in text_slots)
     pos = 0
     for slot_num, (reg_idx, h) in enumerate(text_slots):
@@ -368,13 +415,11 @@ def _assign_text_fast(page_text: str, regions: list[dict]) -> list[dict]:
             regions[reg_idx]["text"] = text[pos:].strip()
         else:
             target_end = pos + int(total_chars * h / total_h)
-            # Snap forward to the next whitespace so we don't cut mid-word
             while target_end < len(text) and not text[target_end].isspace():
                 target_end += 1
             regions[reg_idx]["text"] = text[pos:target_end].strip()
             pos = target_end
 
-    # Ensure all regions have text key
     for r in regions:
         r.setdefault("text", "")
 
@@ -473,12 +518,19 @@ def enrich_document(item: dict, force: bool = False,
                     max_pages: int = 0) -> dict:
     """
     Enrich layout_elements.json for one document using Heron.
-    Works entirely from saved page images — no PDF required.
+
+    Text assignment priority (for each page):
+      1. pdfplumber word bboxes — uses exact embedded-text positions from the PDF.
+         Identical in principle to the Tesseract path but instant (no OCR needed).
+         Requires item["pdf_path"] to point to the PDF and pdfplumber to be installed.
+      2. Tesseract OCR — opt-in via --tesseract.  Accurate for scanned pages but
+         slow (~10-100 s/page).
+      3. Proportional fallback — page_texts.json text sliced by bbox height.
+         Used for scanned pages when neither PDF nor Tesseract is available.
 
     Args:
         use_tesseract: If True, use Tesseract image_to_data for word-level text
-            assignment (~10-100 s/page). If False (default), use fast assignment
-            from page_texts.json (~0.001 s/page).
+            assignment.  Has no effect when pdfplumber succeeds.
         max_pages: Skip docs with more page images than this (0 = no limit).
 
     Returns a result dict: key, status ('ok'|'error'|'skip'), pages, regions, elapsed_s.
@@ -536,6 +588,23 @@ def enrich_document(item: dict, force: bool = False,
     page_sizes = _get_page_sizes(doc_dir, n_pages, img_sizes)
     page_texts = json.loads(pt_path.read_text("utf-8"))
 
+    # ── Open PDF for embedded-text assignment (pdfplumber) ────────────────────
+    pdf_path_str = (item.get("pdf_staged_path") or item.get("pdf_path") or "")
+    if pdf_path_str and not Path(pdf_path_str).is_absolute():
+        pdf_path_str = str(_ROOT / pdf_path_str)
+    pdf_pages: dict[int, object] = {}   # 0-based index → pdfplumber page
+    _pdfplumber_pdf = None
+    if pdf_path_str and Path(pdf_path_str).exists():
+        try:
+            import pdfplumber as _pdfplumber
+            _pdfplumber_pdf = _pdfplumber.open(pdf_path_str)
+            for pi, pg in enumerate(_pdfplumber_pdf.pages):
+                pdf_pages[pi] = pg
+            print(f"    PDF open for word-bbox assignment ({len(pdf_pages)} pages)", flush=True)
+        except Exception as _e:
+            print(f"    ⚠ pdfplumber unavailable ({_e}) — using proportional fallback", flush=True)
+            _pdfplumber_pdf = None
+
     # ── Run Heron in batches ──────────────────────────────────────────────────
     heron_per_page: dict[int, list[dict]] = {}
     page_indices   = sorted(pil_images.keys())
@@ -561,7 +630,12 @@ def enrich_document(item: dict, force: bool = False,
 
     # ── Assign text and build output ──────────────────────────────────────────
     result_elements: dict[str, object] = {}
-    mode_label = "tesseract" if use_tesseract else "fast (page_texts)"
+    if use_tesseract:
+        mode_label = "tesseract"
+    elif pdf_pages:
+        mode_label = "pdfplumber (word bboxes)"
+    else:
+        mode_label = "proportional fallback"
     print(f"    assigning text to {n_pages} pages [{mode_label}] …", flush=True)
 
     for i in range(n_pages):
@@ -587,14 +661,22 @@ def enrich_document(item: dict, force: bool = False,
         for r in regions:
             r.setdefault("bbox_px", r.get("bbox_px", [0, 0, 1, 1]))
 
-        # Text assignment: fast (default) or Tesseract (opt-in)
+        # Text assignment priority:
+        #   1. pdfplumber word bboxes (embedded PDFs — instant and exact)
+        #   2. Tesseract OCR (opt-in; works for scanned pages too)
+        #   3. Proportional fallback (scanned, no PDF available)
+        w_px, h_px = pil_img.size
         if use_tesseract:
             _assign_text_from_image(pil_img, regions, lang=tess_lang)
+        elif i in pdf_pages:
+            ok = _assign_text_from_pdf(pdf_pages[i], regions, w_px, h_px)
+            if not ok:
+                # Scanned page — no embedded words; fall back to proportional
+                _assign_text_fast(page_text, regions)
         else:
             _assign_text_fast(page_text, regions)
 
         # Convert bboxes to PDF point space
-        w_px, h_px = pil_img.size
         page_regions_out = []
         for reg in regions:
             x1, y1, x2, y2 = reg["bbox_px"]
@@ -605,6 +687,13 @@ def enrich_document(item: dict, force: bool = False,
             })
 
         result_elements[page_num] = page_regions_out
+
+    # ── Close PDF (if opened) ──────────────────────────────────────────────────
+    if _pdfplumber_pdf is not None:
+        try:
+            _pdfplumber_pdf.close()
+        except Exception:
+            pass
 
     # ── Write enriched layout_elements.json ───────────────────────────────────
     result_elements["_page_sizes"]      = page_sizes
