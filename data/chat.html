@@ -305,7 +305,8 @@ function harvardRef(s) {
 function renderSources(sources) {
   if (!sources.length) return '';
   const items = sources.map(s => {
-    const url = `reader.html?key=${s.key}&page=${s.page}`;
+    const coll = s.collection ? `&collection=${s.collection}` : '';
+    const url = `reader.html?key=${s.key}&page=${s.page}${coll}`;
     const ref  = harvardRef(s);
     const snippet = s.snippet ? `<div class="source-snippet">${esc(s.snippet)}</div>` : '';
     return `<div class="source-item">
@@ -329,7 +330,8 @@ function linkifyCitations(html, sources) {
   // Build multiple lookup keys per source for flexible matching
   const lookup = {};
   for (const s of sources) {
-    const url = `reader.html?key=${s.key}&page=${s.page}`;
+    const coll = s.collection ? `&collection=${s.collection}` : '';
+    const url = `reader.html?key=${s.key}&page=${s.page}${coll}`;
     // Key 1: author,year,page (classic Harvard)
     const author = (s.authors || '').toLowerCase().trim();
     const year   = s.year || '';
