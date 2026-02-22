@@ -2,7 +2,7 @@
   "1": [
     {
       "label": "section_header",
-      "text": "A Little Semantic Web Goes a Long Way\r\nin Biology\r\nK. Wolstencroft, A. Brass, I. Horrocks, P. Lord, U. Sattler,\r\nD. Turi, and R. Stevens\r\nSchool of Computer Science, University of Manchester,",
+      "text": "A Little Semantic Web Goes a Long Way in Biology",
       "bbox": {
         "l": 68.0,
         "b": 571.0,
@@ -12,7 +12,7 @@
     },
     {
       "label": "text",
-      "text": "UK\r\nAbstract. We show how state-of-the-art Semantic Web technology can\r\nbe used in e-Science, in particular, to automate the classification",
+      "text": "K. Wolstencroft, A. Brass, I. Horrocks, P. Lord, U. Sattler, D. Turi, and R. Stevens",
       "bbox": {
         "l": 85.0,
         "b": 525.5,
@@ -22,7 +22,7 @@
     },
     {
       "label": "text",
-      "text": "of pro￾teins in biology. We show that the resulting classification",
+      "text": "School of Computer Science, University of Manchester, UK",
       "bbox": {
         "l": 94.5,
         "b": 505.0,
@@ -32,7 +32,7 @@
     },
     {
       "label": "text",
-      "text": "was of compara￾ble quality to that performed by a human expert, and how investigations\r\nusing the classified data even resulted in the discovery of significant infor￾mation that had previously been overlooked, leading to the identification\r\nof a possible drug-target.\r\n1 Introduction\r\nSemantic Web research has seen impressive strides in the development of lan￾guages, tools, and other infrastructure. In particular, the OWL ontology",
+      "text": "Abstract. We show how state-of-the-art Semantic Web technology can be used in e-Science, in particular, to automate the classification of pro- teins in biology. We show that the resulting classification was of compara- ble quality to that performed by a human expert, and how investigations using the classified data even resulted in the discovery of significant infor- mation that had previously been overlooked, leading to the identification of a possible drug-target.",
       "bbox": {
         "l": 69.0,
         "b": 398.0,
@@ -42,7 +42,7 @@
     },
     {
       "label": "section_header",
-      "text": "lan￾guage, the Prot´eg´e ontology editor, and OWL reasoning",
+      "text": "1 Introduction",
       "bbox": {
         "l": 41.5,
         "b": 365.5,
@@ -52,7 +52,7 @@
     },
     {
       "label": "text",
-      "text": "tools such as FaCT++\r\nand Racer are now in widespread use.\r\nIn this paper, we report on an application of Semantic Web technology in\r\nthe domain of biology, where an OWL ontology and an OWL classification tool\r\ncalled the Instance Store were used to automate the",
+      "text": "Semantic Web research has seen impressive strides in the development of lan- guages, tools, and other infrastructure. In particular, the OWL ontology lan- guage, the Protégé ontology editor, and OWL reasoning tools such as FaCT-++ and Racer are now in widespread use.",
       "bbox": {
         "l": 41.0,
         "b": 304.5,
@@ -62,7 +62,7 @@
     },
     {
       "label": "text",
-      "text": "classification of protein\r\ndata. We show that the resulting classification was of comparable quality to one\r\nperformed by a human expert, and how investigations using the classified data\r\neven resulted in either the discovery of new information or that which had been\r\noverlooked.\r\nWhile this example focuses on a particular protein family and a particular\r\nset of model organisms, the technique should be applicable to other protein\r\nfamilies, and to data from any",
+      "text": "In this paper, we report on an application of Semantic Web technology in the domain of biology, where an OWL ontology and an OWL classification tool called the Instance Store were used to automate the classification of protein data. We show that the resulting classification was of comparable quality to one performed by a human expert, and how investigations using the classified data even resulted in either the discovery of new information or that which had been overlooked.",
       "bbox": {
         "l": 41.0,
         "b": 222.0,
@@ -72,7 +72,7 @@
     },
     {
       "label": "text",
-      "text": "sequenced genome—in fact we believe that similar\r\ntechniques should be applicable to a wide range of investigations in biology, and\r\nin e-Science more generally. If this proves to be the case, then Semantic Web\r\ntechnology is set to have a major impact on e-Science.\r\nBackground and Motivation. The volume of genomic data is increasing at a seem￾ingly exponential rate. In particular, high throughput technology",
+      "text": "While this example focuses on a particular protein family and a particular set of model organisms, the technique should be applicable to other protein families, and to data from any sequenced genome—in fact we believe that similar techniques should be applicable to a wide range of investigations in biology, and in e-Science more generally. If this proves to be the case, then Semantic Web technology is set to have a major impact on e-Science.",
       "bbox": {
         "l": 41.0,
         "b": 148.5,
@@ -82,7 +82,7 @@
     },
     {
       "label": "text",
-      "text": "has enabled the\r\ngeneration of large quantities of DNA sequence information. This sequence data,\r\nhowever, needs further analysis before it is useful to most biologists. This pro￾cess, called annotation, augments the raw DNA sequence, and its derived protein\r\nsequence, with significant quantities of additional information describing its bi￾ological context.\r\nY. Gil et al. (Eds.): ISWC 2005, LNCS 3729, pp. 786–800, 2005.\r\n\u0001c Springer-Verlag Berlin Heidelberg 2005",
+      "text": "Background and Motivation. The volume of genomic data is increasing at a seem- ingly exponential rate. In particular, high throughput technology has enabled the generation of large quantities of DNA sequence information. This sequence data, however, needs further analysis before it is useful to most biologists. This pro- cess, called annotation, augments the raw DNA sequence, and its derived protein sequence, with significant quantities of additional information describing its bi- ological context.",
       "bbox": {
         "l": 41.0,
         "b": 53.0,
@@ -92,7 +92,7 @@
     },
     {
       "label": "footnote",
-      "text": "",
+      "text": "Y. Gil et al. (Eds.): ISWC 2005, LNCS 3729, pp. 786-800, 2005.",
       "bbox": {
         "l": 41.5,
         "b": 31.5,
@@ -102,7 +102,7 @@
     },
     {
       "label": "page_footer",
-      "text": "",
+      "text": "© Springer-Verlag Berlin Heidelberg 2005",
       "bbox": {
         "l": 41.5,
         "b": 23.0,
@@ -114,7 +114,7 @@
   "2": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "A Little Semantic Web Goes a Long Way in Biology",
       "bbox": {
         "l": 141.5,
         "b": 616.0,
@@ -124,7 +124,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "787",
       "bbox": {
         "l": 373.5,
         "b": 617.5,
@@ -134,7 +134,7 @@
     },
     {
       "label": "text",
-      "text": "A Little Semantic Web Goes a Long Way in Biology 787\r\nOne important process during annotation is the classification of proteins\r\ninto different families. This is an important step in understanding the molecular\r\nbiology of an organism. Attempts to automate this procedure have, however,\r\nnot generally matched the gold-standard set by human experts. Human expert\r\nclassification has been more accurate because their expertise allows them to\r\nrecognise the properties that are sufficient, for example, to place an individual\r\nprotein into a specific subfamily class. Automated methods have, in contrast,\r\noften failed to achieve the same level of specificity. Our goal, therefore, was to\r\nimprove the precision of automatic protein classification, and bring it up to the",
+      "text": "One important process during annotation is the classification of proteins into different families. This is an important step in understanding the molecular biology of an organism. Attempts to automate this procedure have, however, not generally matched the gold-standard set by human experts. Human expert classification has been more accurate because their expertise allows them to recognise the properties that are sufficient, for example, to place an individual protein into a specific subfamily class. Automated methods have, in contrast, often failed to achieve the same level of specificity. Our goal, therefore, was to improve the precision of automatic protein classification, and bring it up to the same level as that achieved by human experts.",
       "bbox": {
         "l": 41.0,
         "b": 482.5,
@@ -144,7 +144,7 @@
     },
     {
       "label": "text",
-      "text": "same level as that achieved by human experts.\r\nOverview of Our Technique. Given a set of proteins, each with a (partial) de￾scription of its properties, the objective is to find, for each of these proteins, the\r\nmost specific protein family classes of which it is an instance. To describe protein\r\nfamily classes, we use an OWL-DL ontology; this enables us to specify necessary\r\nand sufficient conditions for a protein to be an instance of a given protein class.\r\nThe ontology models the biology community’s view of the current knowledge of\r\nprotein classification. We then take protein data derived using standard bioinfor￾matics analysis tools, translate these data into OWL-DL instance descriptions\r\nthat use terms from the ontology, and use the Instance",
+      "text": "Overview of Our Technique. Given a set of proteins, each with a (partial) de- scription of its properties, the objective is to find, for each of these proteins, the most specific protein family classes of which it is an instance. To describe protein family classes, we use an OWL-DL ontology; this enables us to specify necessary and sufficient conditions for a protein to be an instance of a given protein class. The ontology models the biology community’s view of the current knowledge of protein classification. We then take protein data derived using standard bioinfor- matics analysis tools, translate these data into OWL-DL instance descriptions that use terms from the ontology, and use the Instance Store to classify these instances.",
       "bbox": {
         "l": 41.0,
         "b": 353.0,
@@ -154,7 +154,7 @@
     },
     {
       "label": "text",
-      "text": "Store to classify these\r\ninstances.\r\nEmpirical Evaluation. We have tested our system using data sets from both\r\nthe human and Aspergillus fumigatus (a pathogenic fungus) genomes. We found\r\nthat our automatic classification process performed at least as well as a human\r\nexpert: it allows a fast and repeatable classification process, and the explicit rep￾resentation of human expert knowledge means that there is a clear and explicit\r\nevidence base for the classification. Moreover, the precise and methodical classi￾fication of the data led to the discovery of new information about these proteins,\r\nincluding a protein subclass that seems to be specific to pathogenic fungi, and\r\ncould thus be",
+      "text": "Empirical Evaluation. We have tested our system using data sets from both the human and Aspergillus fumigatus (a pathogenic fungus) genomes. We found that our automatic classification process performed at least as well as a human expert: it allows a fast and repeatable classification process, and the explicit rep- resentation of human expert knowledge means that there is a clear and explicit evidence base for the classification. Moreover, the precise and methodical classi- fication of the data led to the discovery of new information about these proteins, including a protein subclass that seems to be specific to pathogenic fungi, and could thus be an important drug-target for pharmaceutical investigations.",
       "bbox": {
         "l": 41.0,
         "b": 230.5,
@@ -164,7 +164,7 @@
     },
     {
       "label": "section_header",
-      "text": "an important drug-target for pharmaceutical investigations.\r\n2 Science and",
+      "text": "2 Science and Technology",
       "bbox": {
         "l": 41.5,
         "b": 198.5,
@@ -174,7 +174,7 @@
     },
     {
       "label": "text",
-      "text": "Technology\r\nIn this section, we describe the biology problem we have tackled and the Semantic\r\nWeb technology that we used to achieve an appropriate",
+      "text": "In this section, we describe the biology problem we have tackled and the Semantic Web technology that we used to achieve an appropriate solution.",
       "bbox": {
         "l": 41.0,
         "b": 163.0,
@@ -184,7 +184,7 @@
     },
     {
       "label": "section_header",
-      "text": "solution.\r\n2.1 Classifying Proteins\r\nThe process of annotation follows",
+      "text": "2.1 Classifying Proteins",
       "bbox": {
         "l": 41.5,
         "b": 132.5,
@@ -194,7 +194,7 @@
     },
     {
       "label": "text",
-      "text": "the “central dogma” of molecular biology.\r\nIn broad outline, this process consists of the following steps: firstly DNA is\r\nsequenced; then genes are identified in this DNA; the DNA is then translated\r\ninto a protein sequence; the proteins are then analysed and annotated with\r\ninformation useful for further biological investigation. As the majority of the\r\nfunctions of a cell are carried out by proteins, it is those proteins in which most",
+      "text": "The process of annotation follows the “central dogma” of molecular biology. In broad outline, this process consists of the following steps: firstly DNA is sequenced; then genes are identified in this DNA; the DNA is then translated into a protein sequence; the proteins are then analysed and annotated with information useful for further biological investigation. As the majority of the functions of a cell are carried out by proteins, it is those proteins in which most",
       "bbox": {
         "l": 41.0,
         "b": 53.0,
@@ -206,7 +206,7 @@
   "3": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "788",
       "bbox": {
         "l": 41.5,
         "b": 616.5,
@@ -216,7 +216,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "K. Wolstencroft et al.",
       "bbox": {
         "l": 41.5,
         "b": 616.5,
@@ -236,7 +236,7 @@
     },
     {
       "label": "text",
-      "text": "788 K. Wolstencroft et al.\r\nbiologists are interested. Proteins are classified into families that both reflect the\r\nfunctions they carry out in the cell, as well as often giving clear indications as to\r\nthe biological processes in which they are involved. It is this classification, along\r\nwith other and diverse kinds of information, which makes up the annotation\r\nof a protein and makes the large data sets manageable, enabling biologists to\r\nperform more thorough",
+      "text": "biologists are interested. Proteins are classified into families that both reflect the functions they carry out in the cell, as well as often giving clear indications as to the biological processes in which they are involved. It is this classification, along with other and diverse kinds of information, which makes up the annotation of a protein and makes the large data sets manageable, enabling biologists to perform more thorough investigations.",
       "bbox": {
         "l": 41.0,
         "b": 530.0,
@@ -246,7 +246,7 @@
     },
     {
       "label": "text",
-      "text": "investigations.\r\nIn the last decade, various steps of this process have been automated, and\r\nthus their speed has increased enormously. Sequencing of whole genomes1 is\r\nnow routine. Gene discovery is technically challenging, but responds well to the\r\nincreasing availability of CPU cycles. However, this still leaves a large number of\r\nprotein sequences—approximately 30 000 in the human genome, a quantity that\r\nis more or less in other species. This quantity is far more than that with which\r\nthe individual biologist can cope.\r\nThe",
+      "text": "In the last decade, various steps of this process have been automated, and thus their speed has increased enormously. Sequencing of whole genomes! is now routine. Gene discovery is technically challenging, but responds well to the increasing availability of CPU cycles. However, this still leaves a large number of protein sequences—approximately 30000 in the human genome, a quantity that is more or less in other species. This quantity is far more than that with which the individual biologist can cope.",
       "bbox": {
         "l": 41.0,
         "b": 446.5,
@@ -256,7 +256,7 @@
     },
     {
       "label": "text",
-      "text": "automation of the annotation process has, however, lagged behind ad￾vances in other parts of this process. To date, automated approaches have proven\r\nto be quicker than human expert annotation, but the level of detail is often re￾duced [26,6]. As a consequence, many protein sequences are not annotated with\r\nthe accurate, specific information necessary for bioinformatics analyses. Thus\r\nuseful resources for further biological discovery remain untapped.",
+      "text": "The automation of the annotation process has, however, lagged behind ad- vances in other parts of this process. To date, automated approaches have proven to be quicker than human expert annotation, but the level of detail is often re- duced [26,6]. As a consequence, many protein sequences are not annotated with the accurate, specific information necessary for bioinformatics analyses. Thus useful resources for further biological discovery remain untapped.",
       "bbox": {
         "l": 41.0,
         "b": 374.5,
@@ -266,7 +266,7 @@
     },
     {
       "label": "text",
-      "text": "In this investigation, we have used one protein family, the protein phosphatase\r\nfamily, as a case study to demonstrate a new, ontology-based method for auto￾mated annotation. This method was designed to combine the speed of automated\r\nannotation with some of the detailed knowledge that experts use in",
+      "text": "In this investigation, we have used one protein family, the protein phosphatase family, as a case study to demonstrate a new, ontology-based method for auto- mated annotation. This method was designed to combine the speed of automated annotation with some of the detailed knowledge that experts use in annotation.",
       "bbox": {
         "l": 41.0,
         "b": 321.5,
@@ -276,7 +276,7 @@
     },
     {
       "label": "text",
-      "text": "annotation.\r\nProtein phosphatases are a large and varied protein family. Together with\r\nanother family, the protein kinases, they are critically involve in controlling the\r\nactivity of many other proteins, thereby forming an essential part of the feedback\r\ncontrol mechanism within the cell.\r\nGiven this",
+      "text": "Protein phosphatases are a large and varied protein family. Together with another family, the protein kinases, they are critically involve in controlling the activity of many other proteins, thereby forming an essential part of the feedback control mechanism within the cell.",
       "bbox": {
         "l": 41.0,
         "b": 274.0,
@@ -286,7 +286,7 @@
     },
     {
       "label": "text",
-      "text": "pivotal role, it is perhaps unsurprising that many protein phos￾phatases have been implicated in various diseases of great medical importance,\r\nincluding diabetes, cancer, and neurodegenerative conditions. Phosphatases are\r\ntherefore a major subject of medical and pharmaceutical research.\r\nIn general,",
+      "text": "Given this pivotal role, it is perhaps unsurprising that many protein phos- phatases have been implicated in various diseases of great medical importance, including diabetes, cancer, and neurodegenerative conditions. Phosphatases are therefore a major subject of medical and pharmaceutical research.",
       "bbox": {
         "l": 41.0,
         "b": 226.5,
@@ -296,7 +296,7 @@
     },
     {
       "label": "text",
-      "text": "proteins are relatively modular and comprise of a number of dif￾ferent protein domains. Using a protein sequence, it is often possible to com￾putationally determine the protein domains of which it is composed. For many\r\nprotein families, including the protein phosphatases, it is possible to classify\r\ntheir members based on the protein domains of which they are composed. To\r\navoid confusion with interpretation domains or the domain of a property, for the\r\nremainder of this paper, we use “p-domain” for protein domain.\r\nThe different",
+      "text": "In general, proteins are relatively modular and comprise of a number of dif ferent protein domains. Using a protein sequence, it is often possible to com- putationally determine the protein domains of which it is composed. For many protein families, including the protein phosphatases, it is possible to classify their members based on the protein domains of which they are composed. To avoid confusion with interpretation domains or the domain of a property, for the remainder of this paper, we use “p-domain” for protein domain.",
       "bbox": {
         "l": 41.0,
         "b": 142.5,
@@ -306,7 +306,7 @@
     },
     {
       "label": "text",
-      "text": "p-domain composition of proteins suggests the specific function\r\nof a protein. , Individual p-domains, however, often have specific and separate\r\nfunctions from the protein as a whole. For example, an enzyme will have a\r\ncatalytic p-domain that performs the catalysis on the substrate molecule, but it\r\nwill also contain structural p-domains and binding p-domains that ensure that\r\nthe substrate can interact with the catalytic p-domain. Therefore, a specific",
+      "text": "The different p-domain composition of proteins suggests the specific function of a protein. , Individual p-domains, however, often have specific and separate functions from the protein as a whole. For example, an enzyme will have a catalytic p-domain that performs the catalysis on the substrate molecule, but it will also contain structural p-domains and binding p-domains that ensure that the substrate can interact with the catalytic p-domain. Therefore, a specific",
       "bbox": {
         "l": 41.5,
         "b": 70.5,
@@ -328,7 +328,7 @@
   "4": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "A Little Semantic Web Goes a Long Way in Biology",
       "bbox": {
         "l": 141.5,
         "b": 615.5,
@@ -338,7 +338,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "789",
       "bbox": {
         "l": 373.5,
         "b": 617.5,
@@ -348,7 +348,7 @@
     },
     {
       "label": "text",
-      "text": "A Little Semantic Web Goes a Long Way in Biology 789\r\ncombination of p-domains is required for a protein to function correctly. In some\r\ncases, the presence of a certain p-domain is diagnostic for membership in a\r\nparticular protein family, i.e., some p-domains only occur in a single protein\r\nfamily. If a protein contains one of these diagnostic p-domains, it must belong\r\nto that particular family. For example, the protein tyrosine kinase",
+      "text": "combination of p-domains is required for a protein to function correctly. In some cases, the presence of a certain p-domain is diagnostic for membership in a particular protein family, i.e., some p-domains only occur in a single protein family. If a protein contains one of these diagnostic p-domains, it must belong to that particular family. For example, the protein tyrosine kinase catalytic p- domain is diagnostic for the tyrosine kinases.",
       "bbox": {
         "l": 41.0,
         "b": 530.5,
@@ -358,7 +358,7 @@
     },
     {
       "label": "text",
-      "text": "catalytic p￾domain is diagnostic for the tyrosine kinases.\r\nMost protein families are, however, defined by a non-trivial combination of\r\np-domains. For example, as you descend the hierarchical structure, extra p￾domains (and therefore more specific functional properties) are observed in the\r\nprotein class definitions. For example, an R5 phosphatase is a type of classical\r\nreceptor tyrosine phosphatase. As a tyrosine phosphatase, it contains at least\r\none phosphatase catalytic p-domain and, as a receptor tyrosine phosphatase, it\r\ncontains a transmembrane region. The R5 type actually contains two catalytic\r\np-domains and a fibronectin p-domain, identifying it as an",
+      "text": "Most protein families are, however, defined by a non-trivial combination of p-domains. For example, as you descend the hierarchical structure, extra p- domains (and therefore more specific functional properties) are observed in the protein class definitions. For example, an R5 phosphatase is a type of classical receptor tyrosine phosphatase. As a tyrosine phosphatase, it contains at least one phosphatase catalytic p-domain and, as a receptor tyrosine phosphatase, it contains a transmembrane region. The R5 type actually contains two catalytic p-domains and a fibronectin p-domain, identifying it as an instance of even more specific subclasses.",
       "bbox": {
         "l": 41.0,
         "b": 422.0,
@@ -368,7 +368,7 @@
     },
     {
       "label": "text",
-      "text": "instance of even more\r\nspecific subclasses.\r\nIdentifying the p-domain composition of a protein is, therefore, a first step to￾wards its classification. There are databases describing functional p-domains, for\r\nexample, PROSITE [17], SMART [20] and InterPro [23], and these databases\r\ncome with specific tools, such as InterProScan, which can report the presence\r\nof these p-domains in a novel protein sequence. Bioinformaticians are, however,\r\nusually required to perform the analysis that places a protein (with its set of\r\np-domains) into a particular protein family. The whole process of classifying",
+      "text": "Identifying the p-domain composition of a protein is, therefore, a first step to- wards its classification. There are databases describing functional p-domains, for example, PROSITE [17], SMART [20] and INTERPRo [23], and these databases come with specific tools, such as INTERPROSCAN, which can report the presence of these p-domains in a novel protein sequence. Bioinformaticians are, however, usually required to perform the analysis that places a protein (with its set of p-domains) into a particular protein family. The whole process of classifying proteins from a genome can be accomplished with the following steps:",
       "bbox": {
         "l": 41.0,
         "b": 326.5,
@@ -378,7 +378,7 @@
     },
     {
       "label": "list_item",
-      "text": "proteins from a genome can be accomplished with the following steps:\r\n1. Given a genome, we extract DNA gene sequences, which we then translate\r\ninto the set of protein sequences. If we are interested in a particular protein\r\nfamily, we can sub-select sequences containing p-domains diagnostic",
+      "text": "1. Given a genome, we extract DNA gene sequences, which we then translate into the set of protein sequences. If we are interested in a particular protein family, we can sub-select sequences containing p-domains diagnostic of that family.",
       "bbox": {
         "l": 45.5,
         "b": 270.5,
@@ -388,7 +388,7 @@
     },
     {
       "label": "list_item",
-      "text": "of that\r\nfamily.\r\n2. On each of the extracted proteins, we use InterProScan to determine its\r\np-domain composition.\r\n3. For each of these compositions,",
+      "text": "2. On each of the extracted proteins, we use INTERPROSCAN to determine its p-domain composition.",
       "bbox": {
         "l": 45.5,
         "b": 246.0,
@@ -398,7 +398,7 @@
     },
     {
       "label": "list_item",
-      "text": "we identify the protein family or subfamily\r\nto which it belongs by comparing them to the available biological knowledge.\r\nThe final step currently",
+      "text": "3. For each of these compositions, we identify the protein family or subfamily to which it belongs by comparing them to the available biological knowledge.",
       "bbox": {
         "l": 45.5,
         "b": 222.0,
@@ -408,7 +408,7 @@
     },
     {
       "label": "text",
-      "text": "requires the most human analysis and expert knowl￾edge. Manual classification methods are carried out by protein family experts\r\nto interpret these data and use their expert knowledge to classify proteins to a\r\nfine-grained level. To the best of our knowledge, no automated method has yet\r\nbeen able to replicate this expert level of detail and precision.\r\n2.2 Ontologies",
+      "text": "The final step currently requires the most human analysis and expert knowl- edge. Manual classification methods are carried out by protein family experts to interpret these data and use their expert knowledge to classify proteins to a fine-grained level. To the best of our knowledge, no automated method has yet been able to replicate this expert level of detail and precision.",
       "bbox": {
         "l": 41.0,
         "b": 154.0,
@@ -418,7 +418,7 @@
     },
     {
       "label": "section_header",
-      "text": "and the Instance Store\r\nOntologies, with their intuitive taxonomic",
+      "text": "2.2 Ontologies and the Instance Store",
       "bbox": {
         "l": 41.5,
         "b": 129.0,
@@ -428,7 +428,7 @@
     },
     {
       "label": "text",
-      "text": "structure and class based semantics,\r\nare widely used in domains like bio- and medical-informatics, where there is a\r\ntradition of establishing taxonomies of terms. The recent W3C recommendation\r\nof OWL2 as the language of choice for web ontologies also underlines the long\r\n2 See http://www.w3.org/2004/OWL/",
+      "text": "Ontologies, with their intuitive taxonomic structure and class based semantics, are widely used in domains like bio- and medical-informatics, where there is a tradition of establishing taxonomies of terms. The recent W3C recommendation of OWL? as the language of choice for web ontologies also underlines the long",
       "bbox": {
         "l": 41.0,
         "b": 72.5,
@@ -438,7 +438,7 @@
     },
     {
       "label": "footnote",
-      "text": "or [11].",
+      "text": "? See http: //www.w3.org/2004/OWL/ or [11].",
       "bbox": {
         "l": 43.5,
         "b": 52.5,
@@ -450,7 +450,7 @@
   "5": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "K. Wolstencroft et al.",
       "bbox": {
         "l": 74.0,
         "b": 617.5,
@@ -460,7 +460,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "790",
       "bbox": {
         "l": 41.5,
         "b": 617.5,
@@ -470,7 +470,7 @@
     },
     {
       "label": "text",
-      "text": "790 K. Wolstencroft et al.\r\nterm vision that ontologies will play a central role in the Semantic Web. Most\r\nimportantly, as shown in [4], most of the available OWL ontologies can be cap￾tured in OWL-DL—a subset of OWL for which highly optimised Description\r\nLogic [2] reasoners can be used to support ontology design",
+      "text": "term vision that ontologies will play a central role in the Semantic Web. Most importantly, as shown in [4], most of the available OWL ontologies can be cap- tured in OWL-DL—a subset of OWL for which highly optimised Description Logic [2] reasoners can be used to support ontology design and deployment.",
       "bbox": {
         "l": 41.0,
         "b": 554.0,
@@ -480,7 +480,7 @@
     },
     {
       "label": "text",
-      "text": "and deployment.\r\nUnfortunately, existing reasoners (and tools), while successful in dealing with\r\nthe (relatively small and static) class level information in ontologies, fail when\r\npresented with the large volumes of instance level data often required by realistic\r\napplications, hampering the use of reasoning over ontologies beyond the class\r\nlevel. The system we have used—the instance Store (iS) [14]—addresses this\r\nproblem using a hybrid database/reasoner architecture: a relational database is\r\nused to make instances persistent, while a class level (“TBox” in Description\r\nLogic terms) reasoner is used to infer ontological information about the classes\r\nto which they belong. Moreover, part of this ontological information is also made\r\npersistent in the database. The iS currently only supports a rather limited form\r\nof reasoning about individuals: it takes an ontology (without instances), a set of\r\naxioms asserting class-instance relationships, and answers queries asking for all\r\nthe instances of a class description. The classes in both axioms and queries can be\r\narbitrarily complex OWL-DL descriptions, and a DL reasoner is used to ensure\r\nthat all instances (explicit and implicit) of the query concept are returned. In the\r\nremainder of this paper, we use “class-level ontology” for an ontology in which no\r\ninstances occur. From a theoretical perspective, this might seem un-interesting;\r\nthe iS is, however, able to deal with much larger numbers of individuals than\r\nwould be possible using a standard DL reasoner. More importantly, this kind of\r\nreasoning turns out to be useful in a range of applications, in particular those\r\nsuch as the one presented here where a domain model is used to structure and\r\nclassify large data sets.3\r\nThere is a long tradition of coupling",
+      "text": "Unfortunately, existing reasoners (and tools), while successful in dealing with the (relatively small and static) class level information in ontologies, fail when presented with the large volumes of instance level data often required by realistic applications, hampering the use of reasoning over ontologies beyond the class level. The system we have used—the instance Store (1S) [14]—addresses this problem using a hybrid database/reasoner architecture: a relational database is used to make instances persistent, while a class level (“TBox” in Description Logic terms) reasoner is used to infer ontological information about the classes to which they belong. Moreover, part of this ontological information is also made persistent in the database. The 1S currently only supports a rather limited form of reasoning about individuals: it takes an ontology (without instances), a set of axioms asserting class-instance relationships, and answers queries asking for all the instances of a class description. The classes in both axioms and queries can be arbitrarily complex OWL-DL descriptions, and a DL reasoner is used to ensure that all instances (explicit and implicit) of the query concept are returned. In the remainder of this paper, we use “class-level ontology” for an ontology in which no instances occur. From a theoretical perspective, this might seem un-interesting; the 1S is, however, able to deal with much larger numbers of individuals than would be possible using a standard DL reasoner. More importantly, this kind of reasoning turns out to be useful in a range of applications, in particular those such as the one presented here where a domain model is used to structure and classify large data sets.*",
       "bbox": {
         "l": 41.0,
         "b": 291.5,
@@ -490,7 +490,7 @@
     },
     {
       "label": "text",
-      "text": "databases to knowledge representation\r\nsystems in order to perform reasoning, most notably the work in [5]. However, in\r\nthe iS, we do not use the standard approach of associating a table (or view) with\r\neach class and property. Instead, we have a fixed and relatively simple schema\r\nthat is independent of the structure of the ontology and of the instance data.\r\nThe iS is, therefore, agnostic about the provenance of data, and uses a new,\r\ndedicated database for each ontology (although the schema is always the same).\r\nThe basic functionality of the iS system",
+      "text": "There is a long tradition of coupling databases to knowledge representation systems in order to perform reasoning, most notably the work in [5]. However, in the 18, we do not use the standard approach of associating a table (or view) with each class and property. Instead, we have a fixed and relatively simple schema that is independent of the structure of the ontology and of the instance data. The IS is, therefore, agnostic about the provenance of data, and uses a new, dedicated database for each ontology (although the schema is always the same).",
       "bbox": {
         "l": 41.0,
         "b": 207.5,
@@ -500,7 +500,7 @@
     },
     {
       "label": "text",
-      "text": "are illustrated in Figure 1. At start￾up, the initialise method is called with a relational database, an OWL-DL class\r\nreasoner such as Racer [9] or Fact++ [30], and a class-level OWL-DL ontology. The\r\nmethod creates the schema for the database if needed (i.e., if the iS is new), parses\r\nthe ontology, and loads it into the reasoner. To populate the iS, the addAssertion\r\nmethod is called repeatedly. Each assertion states that an instance (identified by a\r\nURI) belongs to class (which is an arbitrary OWL-DL description). Once the iS has\r\nbeen populated with some—possibly millions of—instances, it can be queried using\r\nthe retrieve method. A query again consists of an arbitrary (possibly complex)\r\nOWL-DL class description; the result is the set of all instances belonging to the\r\n3 The iS was initially",
+      "text": "The basic functionality of the 1S system are illustrated in Figure 1. At start- up, the initialise method is called with a relational database, an OWL-DL class reasoner such as Racer [9] or Fact ++ [30], and a class-level OWL-DL ontology. The method creates the schema for the database if needed (i.e., if the IS is new), parses the ontology, and loads it into the reasoner. To populate the 1S, the addAssertion method is called repeatedly. Each assertion states that an instance (identified by a URI) belongs to class (which is an arbitrary OWL-DL description). Once the 1S has been populated with some—possibly millions of —instances, it can be queried using the retrieve method. A query again consists of an arbitrary (possibly complex) OWL-DL class description; the result is the set of all instances belonging to the",
       "bbox": {
         "l": 41.5,
         "b": 88.0,
@@ -510,7 +510,7 @@
     },
     {
       "label": "footnote",
-      "text": "developed for use in a Web Service registry application, where\r\nit was used to classify and retrieve (large numbers of) descriptions of web services.",
+      "text": "S The 1S was initially developed for use in a Web Service registry application, where it was used to classify and retrieve (large numbers of) descriptions of web services.",
       "bbox": {
         "l": 43.5,
         "b": 52.5,
@@ -522,7 +522,7 @@
   "6": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "A Little Semantic Web Goes a Long Way in Biology",
       "bbox": {
         "l": 142.0,
         "b": 616.0,
@@ -532,7 +532,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "791",
       "bbox": {
         "l": 373.5,
         "b": 617.5,
@@ -542,7 +542,7 @@
     },
     {
       "label": "text",
-      "text": "A Little Semantic Web Goes a Long Way in Biology 791\r\ninitialise(database: Database, reasoner: OWLReasoner, ontology: OWLOntology)\r\naddAssertion(instance: URI, class: OWLDescription)\r\nretrieve(query:",
+      "text": "initialise (database: Database, reasoner: OWLReasoner, ontology: OWLOntology) addAssertion(instance: URI, class: OWLDescription) retrieve (query: OWLDescription): Set (URI)",
       "bbox": {
         "l": 42.5,
         "b": 570.0,
@@ -562,7 +562,7 @@
     },
     {
       "label": "caption",
-      "text": "OWLDescription): Set \u0001URI\r\nFig. 1. The iS API\r\nquery class,",
+      "text": "Fig. 1. The 1S API",
       "bbox": {
         "l": 176.5,
         "b": 550.0,
@@ -572,7 +572,7 @@
     },
     {
       "label": "text",
-      "text": "and is returned by retrieve as a set of URIs. The iS uses database\r\nqueries to return individuals that are “obviously” instances of the query class, and\r\nto identify those instances where the DL reasoner is needed in order to determine\r\nif they form part of the answer set.\r\n3 Description",
+      "text": "query class, and is returned by retrieve as a set of URIs. The 1S uses database queries to return individuals that are “obviously” instances of the query class, and to identify those instances where the DL reasoner is needed in order to determine if they form part of the answer set.",
       "bbox": {
         "l": 41.0,
         "b": 486.5,
@@ -582,7 +582,7 @@
     },
     {
       "label": "section_header",
-      "text": "of the Experiments Undertaken\r\nThe method we present could be applicable",
+      "text": "3 Description of the Experiments Undertaken",
       "bbox": {
         "l": 41.5,
         "b": 451.0,
@@ -592,7 +592,7 @@
     },
     {
       "label": "text",
-      "text": "in general to many protein families,\r\nbut to demonstrate the technique and the fine-grained classification possible, we\r\npresent the analysis of one family, the protein phosphatases, in the human and As￾pergillus fumigatus genomes.\r\nWe have combined automated reasoning techniques [9,14]",
+      "text": "The method we present could be applicable in general to many protein families, but to demonstrate the technique and the fine-grained classification possible, we present the analysis of one family, the protein phosphatases, in the human and As- pergillus fumigatus genomes.",
       "bbox": {
         "l": 41.0,
         "b": 388.0,
@@ -602,7 +602,7 @@
     },
     {
       "label": "text",
-      "text": "with elements of a\r\nservice-oriented architecture [27,19] to produce a system to automatically extract\r\nFig. 2. The Ontology Classification",
+      "text": "We have combined automated reasoning techniques [9,14] with elements of a service-oriented architecture [27,19] to produce a system to automatically extract",
       "bbox": {
         "l": 41.0,
         "b": 364.0,
@@ -612,7 +612,7 @@
     },
     {
       "label": "picture",
-      "text": "",
+      "text": "hanpatare tarps pees Ga OWL aa NaTNATG Reasoner Ontology iment Protein Phosphatas: InterproScan i Il tT q Instance Prote’ Store Classification Restriction Translate to {ehitp:thawe.o1 Pei smed.owlticontains DomainiP ROOO038>| Abstract OWL [porenraea cs fiseretoli",
       "bbox": {
         "l": 49.5,
         "b": 109.5,
@@ -622,7 +622,7 @@
     },
     {
       "label": "caption",
-      "text": "System Architecture",
+      "text": "Fig. 2. The Ontology Classification System Architecture",
       "bbox": {
         "l": 101.5,
         "b": 65.0,
@@ -634,7 +634,7 @@
   "7": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "K. Wolstencroft et al.",
       "bbox": {
         "l": 74.0,
         "b": 617.5,
@@ -644,7 +644,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "792",
       "bbox": {
         "l": 41.5,
         "b": 617.5,
@@ -654,7 +654,7 @@
     },
     {
       "label": "text",
-      "text": "792 K. Wolstencroft et al.\r\nand classify the set of protein phosphatase from an organism.4 Figure 2 shows the\r\ncomponents in our protein classification experiment. An OWL class-level ontology\r\ndescribes the protein phosphatase family, and this ontology is pre-loaded into the\r\nInstance Store. Protein instance data is extracted from the protein set of a genome,\r\nand the p-domain composition is determined using InterProScan. These\r\np-domain compositions are then translated into OWL descriptions and compared\r\nto the OWL definitions for protein family classes using the Instance Store which,\r\nin turn, uses a DL reasoner (Racer in this case), to classify each such instance. For\r\neach protein class from our ontology, it returns those proteins that can be inferred\r\nto",
+      "text": "and classify the set of protein phosphatase from an organism.‘ Figure 2 shows the components in our protein classification experiment. An OWL class-level ontology describes the protein phosphatase family, and this ontology is pre-loaded into the Instance Store. Protein instance data is extracted from the protein set of a genome, and the p-domain composition is determined using INTERPROSCAN. These p-domain compositions are then translated into OWL descriptions and compared to the OWL definitions for protein family classes using the Instance Store which, in turn, uses a DL reasoner (Racer in this case), to classify each such instance. For each protein class from our ontology, it returns those proteins that can be inferred to be an instance of this class.",
       "bbox": {
         "l": 41.0,
         "b": 483.5,
@@ -664,7 +664,7 @@
     },
     {
       "label": "text",
-      "text": "be an instance of this class.\r\nIn the remainder of this section, we will describe the relevant components of\r\nthis architecture in more detail, and explain the outcomes of this experiment from\r\na biology perspective. In the next section, we describe the experience gained and\r\nlessons learnt from a computer",
+      "text": "In the remainder of this section, we will describe the relevant components of this architecture in more detail, and explain the outcomes of this experiment from a biology perspective. In the next section, we describe the experience gained and lessons learnt from a computer science perspective.",
       "bbox": {
         "l": 41.0,
         "b": 434.0,
@@ -674,7 +674,7 @@
     },
     {
       "label": "section_header",
-      "text": "science perspective.\r\n3.1 The Ontology\r\nIn this section, we describe",
+      "text": "3.1 The Ontology",
       "bbox": {
         "l": 41.5,
         "b": 402.0,
@@ -684,7 +684,7 @@
     },
     {
       "label": "text",
-      "text": "how we capture the expert knowledge for phosphatase\r\nclassification in an OWL-DL ontology. All the information used for developing our\r\nontology comes from peer-reviewed literature from protein phosphatase experts.\r\nThe family of human protein phosphatases has been well characterised experimen￾tally, and detailed reviews of the classification and family composition are available\r\n[1,7,18]. These reviews represent the current community knowledge of the relevant\r\nbiology. If, in the future, new subfamilies are discovered, the ontology can easily be\r\nchanged to reflect these changes in knowledge; we will comment on",
+      "text": "In this section, we describe how we capture the expert knowledge for phosphatase classification in an OWL-DL ontology. All the information used for developing our ontology comes from peer-reviewed literature from protein phosphatase experts. The family of human protein phosphatases has been well characterised experimen- tally, and detailed reviews of the classification and family composition are available [1,7,18]. These reviews represent the current community knowledge of the relevant biology. If, in the future, new subfamilies are discovered, the ontology can easily be changed to reflect these changes in knowledge; we will comment on this in Section 4.",
       "bbox": {
         "l": 41.0,
         "b": 296.5,
@@ -694,7 +694,7 @@
     },
     {
       "label": "text",
-      "text": "this in Section 4.\r\nFortunately for this application, there are precise rules,5 based on p-domain\r\ncomposition, for protein family membership, and we can express these rules as class\r\ndefinitions in an OWL-DL ontology. The use of an ontology to capture the under￾standing of p-domain composition enables the automation of the final analysis step\r\nwhich had previously required human intervention, thus allowing for full automa￾tion of the complete process. In biology, the use of ontologies to capture human\r\nknowledge of a particular domain and to answer complex queries is becoming well\r\nestablished [8,28]. Less well established is the use of reasoning systems for data in￾terpretation. In this study, we present a method which makes use of ontology rea￾soning and illustrates the",
+      "text": "Fortunately for this application, there are precise rules,° based on p-domain composition, for protein family membership, and we can express these rules as class definitions in an OWL-DL ontology. The use of an ontology to capture the under- standing of p-domain composition enables the automation of the final analysis step which had previously required human intervention, thus allowing for full automa- tion of the complete process. In biology, the use of ontologies to capture human knowledge of a particular domain and to answer complex queries is becoming well established [8,28]. Less well established is the use of reasoning systems for data in- terpretation. In this study, we present a method which makes use of ontology rea- soning and illustrates the advantages of such an approach.",
       "bbox": {
         "l": 41.0,
         "b": 177.0,
@@ -704,7 +704,7 @@
     },
     {
       "label": "text",
-      "text": "advantages of such an approach.\r\nThe ontology was developed in OWL-DL using the Prot´eg´e editor,6 and cur￾rently contains 80 classes and 39 properties; it is available at (http://www.bioinf.\r\nman.ac.uk/phosphabase/download). Part of the subsumption hierarchy infer￾rred from these descriptions can be seen in the left-hand panel of Figure 3, which\r\nshows the OWL ontology in the Prot´eg´e",
+      "text": "The ontology was developed in OWL-DL using the Protégé editor,® and cur- rently contains 80 classes and 39 properties; it is available at (http: //www.bioinf . man.ac.uk/phosphabase/download). Part of the subsumption hierarchy infer- rred from these descriptions can be seen in the left-hand panel of Figure 3, which shows the OWL ontology in the Protégé editor.",
       "bbox": {
         "l": 41.0,
         "b": 117.0,
@@ -714,7 +714,7 @@
     },
     {
       "label": "footnote",
-      "text": "editor.\r\n4 Due to the relatively small test-set used, the case study reported here could have been\r\ncarried out using Racer [9] only, i.e., without the iS. However, larger sets of protein\r\ndata will necessitate the use",
+      "text": "* Due to the relatively small test-set used, the case study reported here could have been carried out using Racer [9] only, i-e., without the 1S. However, larger sets of protein data will necessitate the use of IS or a similar tool.",
       "bbox": {
         "l": 44.0,
         "b": 75.0,
@@ -724,7 +724,7 @@
     },
     {
       "label": "footnote",
-      "text": "of iS or a similar tool. 5 We use “rules” here in a completely informal",
+      "text": "5 We use “rules” here in a completely informal way.",
       "bbox": {
         "l": 45.0,
         "b": 64.0,
@@ -734,7 +734,7 @@
     },
     {
       "label": "footnote",
-      "text": "way.\r\n6 We used Prot´eg´e 3.0 with OWL plugin 1.3, build 225.1.",
+      "text": "© We used Protégé 3.0 with OWL plugin 1.3, build 225.1.",
       "bbox": {
         "l": 44.5,
         "b": 53.0,
@@ -746,7 +746,7 @@
   "8": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "A Little Semantic Web Goes a Long Way in Biology",
       "bbox": {
         "l": 141.5,
         "b": 616.0,
@@ -756,7 +756,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "793",
       "bbox": {
         "l": 373.5,
         "b": 617.5,
@@ -766,7 +766,7 @@
     },
     {
       "label": "picture",
-      "text": "",
+      "text": "al De EM Beet OWL Warde Cole Wow Hep Tee a CH ¢BS ea +4 BSS OS BBB «> <E[protége Tort © ptt fren ORS rte ice) cao ma Ck 2A = —— <= Cie m ‘©prtarProstaeeTy=7 A] & o Propety | vate | tar | vo ¥ (cet jose sont savecormen Drona Oi GL Si wt [> [Gloatansdomain (wut owiCines) | [DlcortanebomeintPRO00242 (in. o2 > ms (Ace Ont neried Conetione 7D omerons o 8 te = = Feels Gta vow OfestVew",
       "bbox": {
         "l": 41.0,
         "b": 343.0,
@@ -776,7 +776,7 @@
     },
     {
       "label": "caption",
-      "text": "A Little Semantic Web Goes a Long Way in Biology 793\r\nFig. 3.",
+      "text": "Fig. 3. A screenshot of the phosphatase ontology in the OWL ontology editor Protégé",
       "bbox": {
         "l": 43.0,
         "b": 318.5,
@@ -786,7 +786,7 @@
     },
     {
       "label": "text",
-      "text": "A screenshot of the phosphatase ontology in the OWL ontology editor Prot´eg´e\r\nMore precisely, for each class of phosphatase, this ontology contains a (necessary\r\nand sufficient) definition. For this family of proteins, this definition is, in most cases,\r\na conjunction of p-domain compositions,",
+      "text": "More precisely, for each class of phosphatase, this ontology containsa (necessary and sufficient) definition. For this family of proteins, this definition is, in most cases, a conjunction of p-domain compositions, i.e., a typical case of a phosphatase class definition looks as follows, where X; are p-domains:",
       "bbox": {
         "l": 41.0,
         "b": 253.0,
@@ -796,7 +796,7 @@
     },
     {
       "label": "text",
-      "text": "i.e., a typical case of a phosphatase class\r\ndefinition looks as follows, where Xi are p-domains:\r\nIf a Y protein contains at least n1 p-domains",
+      "text": "IfaY protein contains at least n1 p-domains of type X1 and... and at least nin p-domains of type Xm, then this protein also belongs to class Z.",
       "bbox": {
         "l": 46.0,
         "b": 218.5,
@@ -806,7 +806,7 @@
     },
     {
       "label": "section_header",
-      "text": "of type X1 and . . . and at least nm\r\np-domains of type Xm, then this protein also belongs to class Z.\r\nFor example, receptor tyrosine phosphatases",
+      "text": "",
       "bbox": {
         "l": 46.0,
         "b": 218.5,
@@ -816,7 +816,7 @@
     },
     {
       "label": "text",
-      "text": "contain one or two phosphatase cat￾alytic p-domains, and receptor tyrosine R2B phosphatases contain exactly 2 tyro￾sine phosphatase catalytic p-domains, one transmembrane p-domain, at least one\r\nfibronectin p-domain, and at least one immunoglobulin p-domain. In some cases,\r\nXi is a disjunction of p-domains. P-domains come with a rather “flat” structure,\r\ni.e., only few p-domains are specialisations of others. Clearly, “counting” state￾ments such as the one above go beyond the expressive power of OWL since they\r\nwould require (the OWL equivalent of) qualified cardinality restrictions [10],\r\nwhereas OWL only provides unqualified cardinality restrictions through its\r\nrestriction(U minCardinality(n)) and restriction(U maxCardinality(n))\r\nconstructs. In contrast, this kind of expressive means was provided by DAML+OIL\r\n[15], i.e., we could have defined the above mentioned receptor tyrosine phosphatases\r\nusing the expression",
+      "text": "For example, receptor tyrosine phosphatases contain one or two phosphatase cat- alytic p-domains, and receptor tyrosine R2B phosphatases contain exactly 2 tyro- sine phosphatase catalytic p-domains, one transmembrane p-domain, at least one fibronectin p-domain, and at least one immunoglobulin p-domain. In some cases, X; is a disjunction of p-domains. P-domains come with a rather “flat” structure, ie., only few p-domains are specialisations of others. Clearly, “counting” state- ments such as the one above go beyond the expressive power of OWL since they would require (the OWL equivalent of) qualified cardinality restrictions [10], whereas OWL only provides unqualified cardinality restrictions through its restriction(UminCardinality(n)) andrestriction(UmaxCardinality(n)) constructs. In contrast, this kind of expressive means was provided by DAML+OIL [15], i.e., we could have defined the above mentioned receptor tyrosine phosphatases using the expression",
       "bbox": {
         "l": 41.0,
         "b": 53.0,
@@ -828,7 +828,7 @@
   "9": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "K. Wolstencroft et al.",
       "bbox": {
         "l": 74.0,
         "b": 617.5,
@@ -838,7 +838,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "794",
       "bbox": {
         "l": 41.5,
         "b": 618.0,
@@ -848,7 +848,7 @@
     },
     {
       "label": "section_header",
-      "text": "794 K. Wolstencroft et al.\r\nIntersectionOf( Restriction(contains minCardinality(1) PhCatalDoms)\r\nRestriction(contains maxCardinality(2) PhCatalDoms)",
+      "text": "IntersectionOf (Restriction(contains minCardinality (1) PhCatalDoms) Restriction (contains maxCardinality (2) PhCatalDoms)",
       "bbox": {
         "l": 42.5,
         "b": 580.0,
@@ -858,7 +858,7 @@
     },
     {
       "label": "text",
-      "text": "To overcome this problem, we used a well-known work-around.7 For each Xi\r\nthat we would have liked to use in a qualified number restriction, we introduced a\r\nsubproperty containsX i of contains, and set the range of containsX i to the\r\nclass Xi. In addition, we added sub-property assertions so that the hierarchy of\r\nnewly introduced properties containsX i reflects the class hierarchy of the classes\r\nXi used. Unfortunately, this work-around is not always correct. That is, assume\r\nthere are two ontologies, one with qualified number restrictions and one that re￾sulted from the application of this work-around. Then there are cases where the\r\nfirst one implies a subsumption relationship between two classes, whereas the sec￾ond one does not imply this subsumption. Similarly, a class may be unsatisfiable\r\nw.r.t. the first one, but satisfiable w.r.t. the second. We used this work-around be￾lieving that it was correct and, when we learned that it sometimes is not, were quite\r\nsurprised—we had “cluttered” our ontology with a large number of new properties\r\nwithout this guaranteeing the desired effect. However, we then checked that, in the\r\nspecial case of our experiment, this work-around is indeed correct, even though\r\nwe are not going to prove this here. We",
+      "text": "To overcome this problem, we used a well-known work-around.’ For each X; that we would have liked to use in a qualified number restriction, we introduced a subproperty containsX-i of contains, and set the range of containsX.i to the class X;. In addition, we added sub-property assertions so that the hierarchy of newly introduced properties containsX.i reflects the class hierarchy of the classes X; used. Unfortunately, this work-around is not always correct. That is, assume there are two ontologies, one with qualified number restrictions and one that re- sulted from the application of this work-around. Then there are cases where the first one implies a subsumption relationship between two classes, whereas the sec- ond one does not imply this subsumption. Similarly, a class may be unsatisfiable w.r-t. the first one, but satisfiable w.r.t. the second. We used this work-around be- lieving that it was correct and, when we learned that it sometimes is not, were quite surprised—we had “cluttered” our ontology with a large number of new properties without this guaranteeing the desired effect. However, we then checked that, in the special case of our experiment, this work-around is indeed correct, even though we are not going to prove this here. We will comment more on this in Section 4 and 5.",
       "bbox": {
         "l": 41.0,
         "b": 369.0,
@@ -868,7 +868,7 @@
     },
     {
       "label": "text",
-      "text": "will comment more on this in Section 4\r\nand 5.\r\nHaving captured the expert knowledge in this way, we are left with the problem\r\nof dealing with the potentially very large numbers of protein instances that need to\r\nbe classified according to the corresponding ontology. This requirement",
+      "text": "Having captured the expert knowledge in this way, we are left with the problem of dealing with the potentially very large numbers of protein instances that need to be classified according to the corresponding ontology. This requirement motivated our use of the 1S.",
       "bbox": {
         "l": 41.0,
         "b": 321.0,
@@ -878,7 +878,7 @@
     },
     {
       "label": "section_header",
-      "text": "motivated\r\nour use of the iS.\r\n3.2 The Data Sets",
+      "text": "3.2 The Data Sets",
       "bbox": {
         "l": 41.5,
         "b": 298.5,
@@ -888,7 +888,7 @@
     },
     {
       "label": "text",
-      "text": "This study focuses on the previously identified and described human phosphatases\r\n[1,24], and the less well characterised A.fumigatus protein phosphatases. The hu￾man phosphatases, having been carefully hand-classified, form a control group for\r\nour automated protein phosphatase classification. Previous classification of hu￾man phosphatases by biological experts provides a substantial test-set for our ap￾proach. If the iS can classify the characterised proteins (at least) as well as human\r\nexperts, then this would increase our confidence when using our method on un￾known genomes. The A.fumigatus genome falls between these extremes, and thus\r\noffers a unique insight into the comparison between the automated method and\r\nthe manual. The A.fumigatus genome has been sequenced, and annotation is cur￾rently underway by a team of human experts [22]. We have considered 118 human\r\nphosphatases and",
+      "text": "This study focuses on the previously identified and described human phosphatases [1,24], and the less well characterised A fumigatus protein phosphatases. The hu- man phosphatases, having been carefully hand-classified, form a control group for our automated protein phosphatase classification. Previous classification of hu- man phosphatases by biological experts provides a substantial test-set for our ap- proach. If the 1S can classify the characterised proteins (at least) as well as human experts, then this would increase our confidence when using our method on un- known genomes. The A.fumigatus genome falls between these extremes, and thus offers a unique insight into the comparison between the automated method and the manual. The A.fumigatus genome has been sequenced, and annotation is cur- rently underway by a team of human experts [22]. We have considered 118 human phosphatases and 45 from A. fumigatus.",
       "bbox": {
         "l": 41.0,
         "b": 145.5,
@@ -898,7 +898,7 @@
     },
     {
       "label": "text",
-      "text": "45 from A.fumigatus.\r\nPre-Screening. Isolation of the protein phosphatase sequences from the protein set\r\nof the genome was achieved by screening for diagnostic phosphatase motifs, i.e. for\r\nspecific patterns. These are",
+      "text": "Pre-Screening. Isolation of the protein phosphatase sequences from the protein set. of the genome was achieved by screening for diagnostic phosphatase motifs, i.e. for specific patterns. These are",
       "bbox": {
         "l": 41.0,
         "b": 101.5,
@@ -918,7 +918,7 @@
     },
     {
       "label": "list_item",
-      "text": "2. the protein serine/threonine phosphatase motif [LIVMN]-[KR]-G-N-H-E",
+      "text": "2. the protein serine/threonine phosphatase motif [LTVMN]-[KR]-G-N-H-E",
       "bbox": {
         "l": 45.5,
         "b": 71.0,
@@ -928,7 +928,7 @@
     },
     {
       "label": "footnote",
-      "text": "7 See, e.g., http://www.cs.vu.nl/~guus/public/qcr.html",
+      "text": "7 See, e.g., http: //waw.cs.vu.nl/~guus/public/qcr. html",
       "bbox": {
         "l": 44.0,
         "b": 53.0,
@@ -940,7 +940,7 @@
   "10": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "A Little Semantic Web Goes a Long Way in Biology",
       "bbox": {
         "l": 141.5,
         "b": 615.5,
@@ -950,7 +950,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "795",
       "bbox": {
         "l": 373.5,
         "b": 617.5,
@@ -960,7 +960,7 @@
     },
     {
       "label": "section_header",
-      "text": "A Little Semantic Web Goes a Long Way in Biology 795\r\n3. the protein phosphatase C signature motif [LIVMFY]-[LIVMFYA]-[GSAC]-\r\n[LIVM]-[FYC]-D-G-H-[GAV].",
+      "text": "3. the protein phosphatase C signature motif [LIVMFY]-[LIVMFYA]-[GSAC]- [LIVM|-[FYC]-D-G-H-[GAV].",
       "bbox": {
         "l": 45.0,
         "b": 577.5,
@@ -970,7 +970,7 @@
     },
     {
       "label": "list_item",
-      "text": "The EMBOSS program,PatMatDB[25] was used to perform the pre-screening\r\nprocess. Performing an InterProScanon every protein sequence from the genome",
+      "text": "",
       "bbox": {
         "l": 45.0,
         "b": 577.5,
@@ -980,7 +980,7 @@
     },
     {
       "label": "text",
-      "text": "would also have isolated the protein phosphatase sequences, but each\r\nInterProScan can take several minutes. PatMatDB can screen the whole\r\ngenome in the time taken to run one InterProScan, so we decided to use In￾terProScan only for the detailed analysis of each sequence identified as being a\r\nprotein phosphatase.\r\n3.3 Queries Asked and Results\r\nThe purposes of the human and A.fumigatus studies were different. The human\r\nstudy was a proof of concept to demonstrate the effectiveness of the automated\r\nmethod.",
+      "text": "The EMBOSS program, PATMATDB [25] was used to perform the pre-screening process. Performing an INTERPROSCAN on every protein sequence from the genome would also have isolated the protein phosphatase sequences, but each INTERPROSCAN can take several minutes. PATMATDB can screen the whole genome in the time taken to run one INTERPROSCAN, so we decided to use IN- TERPROSCAN only for the detailed analysis of each sequence identified as being a protein phosphatase.",
       "bbox": {
         "l": 41.0,
         "b": 487.0,
@@ -990,7 +990,7 @@
     },
     {
       "label": "section_header",
-      "text": "The A.fumigatus study was more focused towards biological discovery.",
+      "text": "3.3. Queries Asked and Results",
       "bbox": {
         "l": 41.5,
         "b": 464.0,
@@ -1000,7 +1000,7 @@
     },
     {
       "label": "text",
-      "text": "For the human phosphatases, we were interested in comparing the automated\r\nclassification with the thorough, human expert classification. Therefore, we\r\nbrowsed the class hierarchy of our phosphatase ontology and,",
+      "text": "The purposes of the human and A.fumigatus studies were different. The human study was a proof of concept to demonstrate the effectiveness of the automated method. The A. fumigatus study was more focused towards biological discovery.",
       "bbox": {
         "l": 41.0,
         "b": 423.0,
@@ -1010,7 +1010,7 @@
     },
     {
       "label": "text",
-      "text": "for each class, we\r\nretrieved those proteins for which the iS inferred that this class was the most spe￾cific one. We were also interested in identifying instances that did not fit any of the\r\nontology class definitions (i.e., whose most specific class was the top class).\r\nFor the A.fumigatus phosphatases, we browsed the class hierarchy in a similar\r\nway but, as the phosphatases from this organism were less well characterised, we\r\nwere",
+      "text": "For the human phosphatases, we were interested in comparing the automated classification with the thorough, human expert classification. Therefore, we browsed the class hierarchy of our phosphatase ontology and, for each class, we retrieved those proteins for which the 1S inferred that this class was the most spe- cific one. We were also interested in identifying instances that did not fit any of the ontology class definitions (i.e., whose most specific class was the top class).",
       "bbox": {
         "l": 41.0,
         "b": 351.5,
@@ -1020,7 +1020,7 @@
     },
     {
       "label": "text",
-      "text": "particularly interested in the differences between the human and A.fumigatus\r\nset, i.e., we were interested in finding classes that had instances of the human pro￾teins, but not of the A.fumigatus proteins, and vice versa. All these queries could\r\nbe answered easily and quickly using the iS.\r\nThe results of this experiment were three-fold. Firstly, we found that the au￾tomated classification of the human protein phosphatases performed",
+      "text": "For the A. fumigatus phosphatases, we browsed the class hierarchy in a similar way but, as the phosphatases from this organism were less well characterised, we were particularly interested in the differences between the human and A. fumigatus set, i.e., we were interested in finding classes that had instances of the human pro- teins, but not of the A fumigatus proteins, and vice versa. All these queries could be answered easily and quickly using the 1S.",
       "bbox": {
         "l": 41.0,
         "b": 280.0,
@@ -1030,7 +1030,7 @@
     },
     {
       "label": "text",
-      "text": "as well as\r\nthe manual classification by phosphatase experts. Since the same protein instances\r\nwere used in the automated and manual studies, we could compare these two clas￾sifications, and it turned out that both classifications put almost all phosphatases\r\ninto the same place in the class hierarchy. This evidence shows proof of concept, and\r\nsuggests that the automated approach could be used to solve the current annota￾tion bottleneck. Secondly, in the few cases where the automatic and the manual\r\nclassification differed, detailed investigations by a domain expert revealed that the\r\nautomatic one was actually “more correct”: we discovered two proteins for which\r\nno appropriate class was available, i.e. they were classified by the automatic clas￾sification as instances of the top phosphatases class.\r\nThis discovery lead to a modification of the ontology, and thus of the",
+      "text": "The results of this experiment were three-fold. Firstly, we found that the au- tomated classification of the human protein phosphatases performed as well as the manual classification by phosphatase experts. Since the same protein instances were used in the automated and manual studies, we could compare these two clas- sifications, and it tured out that both classifications put almost all phosphatases into the same place in the class hierarchy. This evidence shows proof of concept, and suggests that the automated approach could be used to solve the current annota- tion bottleneck. Secondly, in the few cases where the automatic and the manual classification differed, detailed investigations by a domain expert revealed that the automatic one was actually “more correct”: we discovered two proteins for which no appropriate class was available, i.e. they were classified by the automatic clas- sification as instances of the top phosphatases class.",
       "bbox": {
         "l": 41.0,
         "b": 137.0,
@@ -1040,7 +1040,7 @@
     },
     {
       "label": "text",
-      "text": "expert\r\nknowledge on proteins. One of these phosphatases was DUSP10 (Dual specificity\r\nphosphatase 10). It was found to contain an extra p-domain, a disintegrin. This\r\nparticular p-domain is not found in any other protein phosphatase and poses inter￾esting questions about possible protein functions to the biologists. Our automated\r\nclassification method was able to find these mis-classifications because the iS ap￾plied the expert knowledge systematically and consistently.",
+      "text": "This discovery lead to a modification of the ontology, and thus of the expert knowledge on proteins. One of these phosphatases was DUSP10 (Dual specificity phosphatase 10). It was found to contain an extra p-domain, a disintegrin. This particular p-domain is not found in any other protein phosphatase and poses inter- esting questions about possible protein functions to the biologists. Our automated classification method was able to find these mis-classifications because the 1S ap- plied the expert knowledge systematically and consistently.",
       "bbox": {
         "l": 41.0,
         "b": 53.0,
@@ -1052,7 +1052,7 @@
   "11": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "796 K. Wolstencroft et al.",
       "bbox": {
         "l": 41.5,
         "b": 617.5,
@@ -1082,7 +1082,7 @@
     },
     {
       "label": "text",
-      "text": "796 K. Wolstencroft et al.\r\nThe automated classification of the A.fumigatus phosphatases revealed large\r\ndifferences from the human phosphatases. Not only were there fewer individual\r\nproteins, but whole subfamilies were missing. Some of these differences can be at￾tributed to the differences in the two organisms. Many phosphatases in the hu￾man classification were tissue-specific variations of tissue-types that do not occur\r\nin A.fumigatus. Since A.fumigatus is pathogenic to humans, these differences are\r\nimportant avenues of investigation for potential drug targets. The most interesting\r\ndiscovery in the A.fumigatus data set was the identification of a novel type of cal￾cineurin phosphatase, i.e., again, a phosphatase that was classified automatically\r\nonly as an instance of the top class. Calcineurin is well conserved throughout evo￾lution and performs the same function in all organisms. However, in A.fumigatus,\r\nit contains an extra functional p-domain. Further bioinformatics analyses revealed\r\nthat this extra p-domain also occurs in other pathogenic fungus species, but in no\r\nother organisms, suggesting a specific functional role for this extra p-domain. Pre￾vious studies have identified divergences in the mechanism of action of calcineurin\r\nin pathogenic fungi as being linked to virulence, so this protein is an interesting\r\ndrug-target",
+      "text": "The automated classification of the A.fumigatus phosphatases revealed large differences from the human phosphatases. Not only were there fewer individual proteins, but whole subfamilies were missing. Some of these differences can be at- tributed to the differences in the two organisms. Many phosphatases in the hu- man classification were tissue-specific variations of tissue-types that do not occur in A. fumigatus. Since A fumigatus is pathogenic to humans, these differences are important avenues of investigation for potential drug targets. The most interesting discovery in the A. fumigatus data set was the identification of a novel type of cal- cineurin phosphatase, i.e., again, a phosphatase that was classified automatically only as an instance of the top class. Calcineurin is well conserved throughout evo- lution and performs the same function in all organisms. However, in A. fumigatus, it contains an extra functional p-domain. Further bioinformatics analyses revealed that this extra p-domain also occurs in other pathogenic fungus species, but in no other organisms, suggesting a specific functional role for this extra p-domain. Pre- vious studies have identified divergences in the mechanism of action of calcineurin in pathogenic fungi as being linked to virulence, so this protein is an interesting drug-target for future study.",
       "bbox": {
         "l": 41.0,
         "b": 398.5,
@@ -1092,7 +1092,7 @@
     },
     {
       "label": "section_header",
-      "text": "for future study.\r\n4 Lessons Learnt\r\nAs we have seen, we have successfully",
+      "text": "4 Lessons Learnt",
       "bbox": {
         "l": 41.5,
         "b": 367.0,
@@ -1102,7 +1102,7 @@
     },
     {
       "label": "text",
-      "text": "used Semantic Web technology in a bioinfor￾matics application. Besides finding new protein families that are of interest to biolo￾gists, we have shown that automated classification can indeed compete with manual\r\nclassification, and is sometimes even superior. Our approach to automated classifi￾cation combines the advantages of speed of the automated methods and accuracy\r\nof human expert classification, the latter being due to the fact that we captured the\r\nexpert knowledge in an OWL ontology. The combination of the two, namely speed\r\nand expert knowledge, provides a quick and efficient method for classifying proteins\r\non a genomic scale, and offers a solution to the current annotation bottleneck.\r\nOur approach",
+      "text": "As we have seen, we have successfully used Semantic Web technology in a bioinfor- matics application. Besides finding new protein families that are of interest to biolo- gists, we have shown that automated classification can indeed compete with manual classification, and is sometimes even superior. Our approach to automated classifi- cation combines the advantages of speed of the automated methods and accuracy of human expert classification, the latter being due to the fact that we captured the expert knowledge in an OWL ontology. The combination of the two, namely speed and expert knowledge, provides a quick and efficient method for classifying proteins ona genomic scale, and offers a solution to the current annotation bottleneck.",
       "bbox": {
         "l": 41.5,
         "b": 241.0,
@@ -1112,7 +1112,7 @@
     },
     {
       "label": "text",
-      "text": "was made possible by the development of state-of-the-art Seman￾tic Web technology, such as the OWL ontology language, the Prot´eg´e OWL ontol￾ogy editor, the OWL Instance Store, and the Racer OWL reasoner; this technology\r\ndid not emerge overnight, but is based on decades of research in logic-based knowl￾edge representation and reasoning. Although neither Racer nor the iS support all\r\nof OWL-DL,8 these tools proved more than adequate for our experiment.\r\nIn contrast,",
+      "text": "Our approach was made possible by the development of state-of-the-art Seman- tic Web technology, such as the OWL ontology language, the Protégé OWL ontol- ogy editor, the OWL Instance Store, and the Racer OWL reasoner; this technology did not emerge overnight, but is based on decades of research in logic-based knowl- edge representation and reasoning. Although neither Racer nor the 1S support all of OWL-DL,§ these tools proved more than adequate for our experiment.",
       "bbox": {
         "l": 41.5,
         "b": 170.0,
@@ -1122,7 +1122,7 @@
     },
     {
       "label": "text",
-      "text": "a limitation in the expressive power of OWL-DL did cause con￾siderable problems: the lack of qualified number restrictions (also called qualified\r\ncardinality restrictions). In order to overcome this limitation, we had to employ a\r\nwork around and verify that this work around, even though not correct in general,\r\nwas correct for our ontology and instance data. This work around introduced a sig￾nificant overhead, and was only possible through a close co-operation between the",
+      "text": "In contrast, a limitation in the expressive power of OWL-DL did cause con- siderable problems: the lack of qualified number restrictions (also called qualified cardinality restrictions). In order to overcome this limitation, we had to employ a work around and verify that this work around, even though not correct in general, was correct for our ontology and instance data. This work around introduced a sig- nificant overhead, and was only possible through a close co-operation between the",
       "bbox": {
         "l": 41.5,
         "b": 97.5,
@@ -1132,7 +1132,7 @@
     },
     {
       "label": "footnote",
-      "text": "8 Racer does not support individual names in complex class descriptions (so-called\r\nnominals—see [16]), and the current version of iS does not support role assertions be￾tween individuals.",
+      "text": "® Racer does not support individual names in complex class descriptions (so-called nominals—see [16]), and the current version of 1S does not support role assertions be- tween individuals.",
       "bbox": {
         "l": 44.0,
         "b": 54.5,
@@ -1144,7 +1144,7 @@
   "12": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "A Little Semantic Web Goes a Long Way in Biology",
       "bbox": {
         "l": 141.5,
         "b": 616.0,
@@ -1154,7 +1154,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "797",
       "bbox": {
         "l": 373.5,
         "b": 618.0,
@@ -1164,7 +1164,7 @@
     },
     {
       "label": "text",
-      "text": "A Little Semantic Web Goes a Long Way in Biology 797\r\nbiologists and computer scientists. We, therefor, cannot recommend such an ap￾proach in general. Additionally, we observe that, from a theoretical and practical\r\nperspective, this work around should not be necessary since (a) reasoners such as\r\nRacer and Fact [9,13] support qualified number restrictions, (b) for all Description\r\nLogics we are aware of that support (unqualified) number restrictions, the worst￾case complexity of reasoning remains the same when they are extended with quali￾fied number restrictions (see, e.g., [29]), and (c) the latest version of Prot´eg´e-OWL\r\nnow supports qualified number restrictions. Hence we can, in the future, run simi￾lar experiments without having to resort to this work around, provided that",
+      "text": "biologists and computer scientists. We, therefor, cannot recommend such an ap- proach in general. Additionally, we observe that, from a theoretical and practical perspective, this work around should not be necessary since (a) reasoners such as Racer and Fact [9,13] support qualified number restrictions, (b) for all Description Logics we are aware of that support (unqualified) number restrictions, the worst- case complexity of reasoning remains the same when they are extended with quali- fied number restrictions (see, e.g., [29]), and (c) the latest version of Protégé-OWL now supports qualified number restrictions. Hence we can, in the future, run simi- lar experiments without having to resort to this work around, provided that we are willing to diverge from the current OWL standard.",
       "bbox": {
         "l": 41.0,
         "b": 482.0,
@@ -1174,7 +1174,7 @@
     },
     {
       "label": "text",
-      "text": "we are\r\nwilling to diverge from the current OWL standard.\r\nThe ability to run such experiments is of considerable importance since there\r\nis a wealth of unannotated and partially annotated data in the public domain, to\r\nwhich we plan to apply our approach. New genomes are being sequenced continu￾ally, and some existing genomes have not been annotated to any degree of detail.\r\nNow that the ontology system architecture is in place, new proteins can be quickly\r\nand successfully classified as members of protein phosphatase subfamilies. Devel￾opment of other ontologies, would enable the application of this technique to some",
+      "text": "The ability to run such experiments is of considerable importance since there is a wealth of unannotated and partially annotated data in the public domain, to which we plan to apply our approach. New genomes are being sequenced continu- ally, and some existing genomes have not been annotated to any degree of detail. Now that the ontology system architecture is in place, new proteins can be quickly and successfully classified as members of protein phosphatase subfamilies. Devel- opment of other ontologies, would enable the application of this technique to some of the 1,000’s of other protein families.",
       "bbox": {
         "l": 41.0,
         "b": 387.0,
@@ -1184,7 +1184,7 @@
     },
     {
       "label": "text",
-      "text": "of the 1,000’s of other protein families.\r\nThis paper demonstrates a proof of concept for the automated classification of\r\nproteins using automated reasoning technologies. From a study involving a single\r\nprotein family and two species, we were able to identify a new protein subclass. As\r\nthis class of protein appears to be specific to pathogenic fungi, it is potentially useful\r\nfor further pharmaceutical investigations. Automated reasoning over instance data\r\nhas therefore enabled us to generate new hypotheses which will require significiant\r\nfurther laboratory experimentation, which, in turn, will potentially improve",
+      "text": "This paper demonstrates a proof of concept for the automated classification of proteins using automated reasoning technologies. From a study involving a single protein family and two species, we were able to identify a new protein subclass. As this class of protein appears to be specific to pathogenic fungi, it is potentially useful for further pharmaceutical investigations. Automated reasoning over instance data has therefore enabled us to generate new hypotheses which will require significiant further laboratory experimentation, which, in turn, will potentially improve our understanding of protein phosphorylation.",
       "bbox": {
         "l": 41.0,
         "b": 291.5,
@@ -1194,7 +1194,7 @@
     },
     {
       "label": "text",
-      "text": "our\r\nunderstanding of protein phosphorylation.\r\nFinally, we would like to point out that the ontology definitions are produced\r\nfrom expert protein family knowledge. Therefore, they reflect what is currently\r\nknown in the research community, and are made explicit in a machine￾understandable format, namely OWL-DL. This has several important\r\nconsequences. Firstly, the construction of such an ontology can help in the develop￾ment of a consensus from within the community [3], and even if the community fails\r\nto agree on a single ontology, automated classification could be used to enable “par￾allel” alternative annotations. Secondly, if the community knowledge of the protein\r\nfamily changes, the ontology can easily be altered, and the protein instances can\r\nbe re-classified accordingly. Lastly, if the definitions are based on what is known,\r\nproteins that do not fit into any of the defined classes are easily identified, making\r\nthe discovery",
+      "text": "Finally, we would like to point out that the ontology definitions are produced from expert protein family knowledge. Therefore, they reflect what is currently known in the research community, and are made explicit in a machine- understandable format, namely OWL-DL. This has several important consequences. Firstly, the construction of such an ontology can help in the develop- ment ofa consensus from within the community [3], and even if the community fails to agree on a single ontology, automated classification could be used to enable “par- allel” alternative annotations. Secondly, if the community knowledge of the protein family changes, the ontology can easily be altered, and the protein instances can be re-classified accordingly. Lastly, if the definitions are based on what is known, proteins that do not fit into any of the defined classes are easily identified, making the discovery of new protein subfamilies possible.",
       "bbox": {
         "l": 41.0,
         "b": 147.5,
@@ -1204,7 +1204,7 @@
     },
     {
       "label": "section_header",
-      "text": "of new protein subfamilies possible.\r\n5 Outlook and Future Work",
+      "text": "5 Outlook and Future Work",
       "bbox": {
         "l": 41.5,
         "b": 116.5,
@@ -1214,7 +1214,7 @@
     },
     {
       "label": "text",
-      "text": "Our plans for future work are manifold. Basically, we want to do more “automated”\r\nbiology, but we are thereby pushing the current state-of-art in logic-based knowl￾edge representation, automated reasoning, and Semantic Web technology. Within\r\nthis section, we only discuss three of the related issues.",
+      "text": "Our plans for future work are manifold. Basically, we want to do more “automated” biology, but we are thereby pushing the current state-of-art in logic-based knowl- edge representation, automated reasoning, and Semantic Web technology. Within this section, we only discuss three of the related issues.",
       "bbox": {
         "l": 41.0,
         "b": 53.0,
@@ -1226,7 +1226,7 @@
   "13": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "K. Wolstencroft et al.",
       "bbox": {
         "l": 74.5,
         "b": 617.5,
@@ -1236,7 +1236,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "798",
       "bbox": {
         "l": 41.5,
         "b": 617.5,
@@ -1246,7 +1246,7 @@
     },
     {
       "label": "text",
-      "text": "798 K. Wolstencroft et al.\r\nFirstly, we observe that a protein is a sequence of amino acids, and thus se￾quences can be seen as strings over a twenty letter alphabet since there are only\r\ntwenty amino acids. In our current ontology, we do not capture this sequence infor￾mation, and thus cannot answer queries related to these sequences. From a biology\r\nperspective, however, queries such as “give me all proteins whose amino acid se￾quence contains an M followed by some arbitrary sub string, which is then followd\r\nby a NEN” would be really valuable. From a computer science perspective, we\r\ncould easily express (and query over) these strings using a simple form of concrete\r\ndomains, so-called datatypes [21,12]. However, the datatypes currently available\r\nin OWL do not provide predicates that compare a given string with a regular ex￾pression, a comparison",
+      "text": "Firstly, we observe that a protein is a sequence of amino acids, and thus se- quences can be seen as strings over a twenty letter alphabet since there are only twenty amino acids. In our current ontology, we do not capture this sequence infor- mation, and thus cannot answer queries related to these sequences. From a biology perspective, however, queries such as “give me all proteins whose amino acid se- quence contains an M followed by some arbitrary sub string, which is then followd by a NEN” would be really valuable. From a computer science perspective, we could easily express (and query over) these strings using a simple form of concrete domains, so-called datatypes [21,12]. However, the datatypes currently available in OWL do not provide predicates that compare a given string with a regular ex- pression, a comparison that would reflect the above example query.",
       "bbox": {
         "l": 41.0,
         "b": 470.0,
@@ -1256,7 +1256,7 @@
     },
     {
       "label": "text",
-      "text": "that would reflect the above example query.\r\nSecondly, we are currently concerned with a single class of components of an\r\norganism, namely the proteins. In the future, we want to use the available tech￾nology to automate investigations into their interaction, and also represent and\r\nreason about larger structures such as genomes and cells. We could easily model\r\ninteractions between proteins using a property interact to make statements such\r\nas “proteins of class X only interact with proteins of class Y”. However, we would\r\nalso need to make statements on an instance level such as “this protein instance\r\ninteracts with that protein instance”, which is possible in OWL-DL, but goes be￾yond the capabilities of the currentiS. We are currently extending the iS to handle\r\nstatements of this kind, and we will see if this extension is able to cope",
+      "text": "Secondly, we are currently concerned with a single class of components of an organism, namely the proteins. In the future, we want to use the available tech- nology to automate investigations into their interaction, and also represent and reason about larger structures such as genomes and cells. We could easily model interactions between proteins using a property interact to make statements such as “proteins of class X only interact with proteins of class Y”. However, we would also need to make statements on an instance level such as “this protein instance interacts with that protein instance” , which is possible in OWL-DL, but goes be- yond the capabilities of the current 18. We are currently extending the 1S to handle statements of this kind, and we will see if this extension is able to cope with the large volumes of data that will be needed in biology applications.®",
       "bbox": {
         "l": 41.0,
         "b": 338.5,
@@ -1266,7 +1266,7 @@
     },
     {
       "label": "text",
-      "text": "with the\r\nlarge volumes of data that will be needed in biology applications.9\r\nThirdly, we will “roll back” the work-around we used to cope with the absence of\r\nqualified number restrictions, both in our ontology and in the instance data, instead\r\nusing the form of qualified number restrictions provided by Prot´eg´e, Racer, and the\r\niS. This will greatly enhance the interpretability",
+      "text": "Thirdly, we will “roll back” the work-around we used to cope with the absence of qualified number restrictions, both in our ontology and in the instance data, instead using the form of qualified number restrictions provided by Protégé, Racer, and the 1S. This will greatly enhance the interpretability of the current ontology and also make its extension to other families of proteins more straight-forward.",
       "bbox": {
         "l": 41.0,
         "b": 279.5,
@@ -1276,7 +1276,7 @@
     },
     {
       "label": "text",
-      "text": "of the current ontology and also\r\nmake its extension to other families of proteins more straight-forward.\r\nAcknowledgements. This work was funded by an MRC PhD studentship, the\r\nmyGrid e-science project, University of Manchester with the UK e-science pro￾gramme EPSRC grant GR/R67743 and the ComparaGRID project, BBSRC grant\r\nBBS/B/17131.Preliminary sequence data was obtained from The Institute for Ge￾nomic Research website at http://www.tigr.orgfrom Dr Jane Mabey-Gilsenan.\r\nSequencing of A.fumigatus was funded by the National Institute of Allergy and In￾fectious Disease U01 AI 48830 to David Denning and William Nierman,",
+      "text": "Acknowledgements. This work was funded by an MRC PhD studentship, the myGrid e-science project, University of Manchester with the UK e-science pro- gramme EPSRC grant GR/R67743 and the ComparaGRID project, BBSRC grant BBS/B/17131. Preliminary sequence data was obtained from The Institute for Ge- nomic Research website at http: //www .tigr . org from Dr Jane Mabey-Gilsenan. Sequencing of A. fumigatus was funded by the National Institute of Allergy and In- fectious Disease U01 AI 48830 to David Denning and William Nierman, the Well- come Trust, and Fondo de Investicagiones Sanitarias.",
       "bbox": {
         "l": 41.0,
         "b": 164.0,
@@ -1286,7 +1286,7 @@
     },
     {
       "label": "section_header",
-      "text": "the Well￾come Trust, and Fondo de Investicagiones Sanitarias.\r\nReferences",
+      "text": "References",
       "bbox": {
         "l": 41.5,
         "b": 132.5,
@@ -1296,7 +1296,7 @@
     },
     {
       "label": "list_item",
-      "text": "1. A. Alonso, J. Sasin, N. Bottini, I. Friedberg, I. Friedberg, A. Osterman, A. Godzik,\r\nT. Hunter, J. Dixon, and T. Mustelin. Protein tyrosine phosphatases in the human\r\ngenome. Cell, 117(6):699–711, 2004.",
+      "text": "1. A. Alonso, J. Sasin, N. Bottini, I. Friedberg, I. Friedberg, A. Osterman, A. Godzik, T. Hunter, J. Dixon, and T. Mustelin. Protein tyrosine phosphatases in the human genome. Cell, 117(6):699-711, 2004.",
       "bbox": {
         "l": 45.5,
         "b": 84.5,
@@ -1306,7 +1306,7 @@
     },
     {
       "label": "footnote",
-      "text": "9 Racer can already handle such statements, but can only deal with a relatively small\r\nnumber of individuals.",
+      "text": "° Racer can already handle such statements, but can only deal with a relatively small number of individuals.",
       "bbox": {
         "l": 44.0,
         "b": 54.0,
@@ -1318,7 +1318,7 @@
   "14": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "A Little Semantic Web Goes a Long Way in Biology",
       "bbox": {
         "l": 141.5,
         "b": 616.0,
@@ -1328,7 +1328,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "799",
       "bbox": {
         "l": 373.5,
         "b": 618.0,
@@ -1338,7 +1338,7 @@
     },
     {
       "label": "list_item",
-      "text": "A Little Semantic Web Goes a Long Way in Biology 799\r\n2. F. Baader, D. Calvanese, D. McGuinness, D. Nardi, and P. Patel-Schneider, editors.\r\nThe Description Logic Handbook: Theory, Implementation and Applications.",
+      "text": "2. F. Baader, D. Calvanese, D. McGuinness, D. Nardi, and P. Patel-Schneider, editors. The Description Logic Handbook: Theory, Implementation and Applications. Cam- bridge University Press, 2003.",
       "bbox": {
         "l": 45.5,
         "b": 568.0,
@@ -1348,7 +1348,7 @@
     },
     {
       "label": "list_item",
-      "text": "Cam￾bridge University Press, 2003.\r\n3. M. Bada, D. Turi, R. McEntire, and R. Stevens. Using Reasoning to Guide Annota￾tion with Gene Ontology Terms in GOAT. SIGMOD Record (special issue on data\r\nengineering for the",
+      "text": "3. M. Bada, D. Turi, R. McEntire, and R. Stevens. Using Reasoning to Guide Annota- tion with Gene Ontology Terms in GOAT. SIGMOD Record (special issue on data engineering for the life sciences), 2004.",
       "bbox": {
         "l": 45.5,
         "b": 534.5,
@@ -1358,7 +1358,7 @@
     },
     {
       "label": "list_item",
-      "text": "life sciences), 2004.\r\n4. S. Bechhofer and R. Volz. Patching syntax in OWL ontologies. In Proc. of the 3rd\r\nInternational Semantic Web",
+      "text": "4. S. Bechhofer and R. Volz. Patching syntax in OWL ontologies. In Proc. of the 3rd International Semantic Web Conference (ISWC), 2004.",
       "bbox": {
         "l": 45.5,
         "b": 512.0,
@@ -1368,7 +1368,7 @@
     },
     {
       "label": "list_item",
-      "text": "Conference (ISWC), 2004.\r\n5. A. Borgida and R. J. Brachman. Loading data into description reasoners. In Proceed￾ings of the ACM SIGMOD International Conference on Management of Data, pages\r\n217–226, 1993.",
+      "text": "5. A. Borgida and R. J. Brachman. Loading data into description reasoners. In Proceed- ings of the ACM SIGMOD International Conference on Management of Data, pages 217-226, 1993.",
       "bbox": {
         "l": 46.0,
         "b": 479.5,
@@ -1378,7 +1378,7 @@
     },
     {
       "label": "list_item",
-      "text": "6. K. Carter, A. Oka, G. Tamiya, and M. I. Bellgard. Bioinformatics issues for automat￾ing the annotation of genomic sequences. Genome Inform Ser Workshop Genome\r\nInform, 12:204–11, 2001.\r\n7. P. T. Cohen. Novel",
+      "text": "6. K. Carter, A. Oka, G. Tamiya, and M. I. Bellgard. Bioinformatics issues for automat- ing the annotation of genomic sequences. Genome Inform Ser Workshop Genome Inform, 12:204-11, 2001.",
       "bbox": {
         "l": 46.0,
         "b": 445.0,
@@ -1388,7 +1388,7 @@
     },
     {
       "label": "list_item",
-      "text": "protein serine/threonine phosphatases: variety is the spice of life.\r\nTrends Biochem Sci, 22(7):245–51, July 1997.\r\n8. Gene Ontology Consortium.",
+      "text": "7. P. T. Cohen. Novel protein serine/threonine phosphatases: variety is the spice of life. Trends Biochem Sci, 22(7):245-51, July 1997.",
       "bbox": {
         "l": 46.0,
         "b": 422.0,
@@ -1398,7 +1398,7 @@
     },
     {
       "label": "list_item",
-      "text": "Gene ontology: Tool for the unification of biology. Na￾ture Genetics, 25(1):25–29, 2000.\r\n9. V. Haarslev and R. M¨oller. RACER system description.",
+      "text": "8. Gene Ontology Consortium. Gene ontology: Tool for the unification of biology. Na- ture Genetics, 25(1):25-29, 2000.",
       "bbox": {
         "l": 45.5,
         "b": 400.0,
@@ -1408,7 +1408,7 @@
     },
     {
       "label": "list_item",
-      "text": "In Proceedings of the In￾ternational Joint Conference on Automated Reasoning (IJCAR-01), volume 2083 of\r\nLecture Notes in Artificial Intelligence, pages 701–705. Springer-Verlag, 2001.\r\n10. B. Hollunder and F. Baader.",
+      "text": "9. V. Haarslev and R. Méller. RACER system description. In Proceedings of the In- ternational Joint Conference on Automated Reasoning (IJCAR-01), volume 2083 of Lecture Notes in Artificial Intelligence, pages 701-705. Springer-Verlag, 2001.",
       "bbox": {
         "l": 45.5,
         "b": 366.0,
@@ -1418,7 +1418,7 @@
     },
     {
       "label": "list_item",
-      "text": "Qualifying number restrictions in concept languages. In\r\nProceedings of the Second International Conference on the Principles of Knowledge\r\nRepresentation and Reasoning (KR-91), pages 335–346, 1991.\r\n11. I. Horrocks,",
+      "text": "10. B. Hollunder and F. Baader. Qualifying number restrictions in concept languages. In Proceedings of the Second International Conference on the Principles of Knowledge Representation and Reasoning (KR-91), pages 335-346, 1991.",
       "bbox": {
         "l": 41.5,
         "b": 333.0,
@@ -1428,7 +1428,7 @@
     },
     {
       "label": "list_item",
-      "text": "P. F. Patel-Schneider, and F. van Harmelen. From SHIQ and RDF to\r\nOWL: The making of a web ontology language. Journal of Web Semantics, 1(1),\r\n2003.\r\n12. I. Horrocks and U. Sattler. Ontology reasoning",
+      "text": "11. I. Horrocks, P. F. Patel-Schneider, and F. van Harmelen. From SHIQ and RDF to OWL: The making of a web ontology language. Journal of Web Semantics, 1(1), 2003.",
       "bbox": {
         "l": 41.5,
         "b": 301.5,
@@ -1438,7 +1438,7 @@
     },
     {
       "label": "list_item",
-      "text": "in the SHOQ(D) description logic.\r\nIn Proceedings of the Seventeenth International Joint Conference on Artificial Intel￾ligence, 2001.\r\n13. I. Horrocks. Using an expressive description logic: FaCT or fiction?",
+      "text": "12. I. Horrocks and U. Sattler. Ontology reasoning in the SHOQ(D) description logic. In Proceedings of the Seventeenth International Joint Conference on Artificial Intel- ligence, 2001.",
       "bbox": {
         "l": 41.0,
         "b": 266.0,
@@ -1448,7 +1448,7 @@
     },
     {
       "label": "list_item",
-      "text": "In Proceedings\r\nof the Sixth International Conference on the Principles of Knowledge Representation\r\nand Reasoning (KR-98), pages 636–647, 1998.\r\n14. I. Horrocks, L. Li, D. Turi, and S. Bechhofer. The instance",
+      "text": "13. I. Horrocks. Using an expressive description logic: FaCT or fiction? In Proceedings of the Sicth International Conference on the Principles of Knowledge Representation and Reasoning (KR-98), pages 636-647, 1998.",
       "bbox": {
         "l": 41.5,
         "b": 232.5,
@@ -1458,7 +1458,7 @@
     },
     {
       "label": "list_item",
-      "text": "store: DL rea￾soning with large numbers of individuals. In Proc. of the 2004 Description\r\nLogic Workshop (DL 2004), 2004. available at CEUR, www.ceur.org, see also\r\ninstancestore.man.ac.uk.\r\n15. I. Horrocks, P. Patel-Schneider, and F. van Harmelen. Reviewing the design of\r\nDAML+OIL:",
+      "text": "14. I. Horrocks, L. Li, D. Turi, and S. Bechhofer. The instance store: DL rea- soning with large numbers of individuals. In Proc. of the 2004 Description Logic Workshop (DL 2004), 2004. available at CEUR, www.ceur.org, see also instancestore.man.ac.uk.",
       "bbox": {
         "l": 41.0,
         "b": 189.0,
@@ -1468,7 +1468,7 @@
     },
     {
       "label": "list_item",
-      "text": "An ontology language for the semantic web. In Proc. of the 18th Nat.\r\nConf. on Artificial Intelligence (AAAI 2002), pages 792–797. AAAI Press, 2002.\r\n16. I. Horrocks and U. Sattler. A tableaux decision procedure",
+      "text": "15. I. Horrocks, P. Patel-Schneider, and F. van Harmelen. Reviewing the design of DAML+OIL: An ontology language for the semantic web. In Proc. of the 18th Nat. Conf. on Artificial Intelligence (AAAI 2002), pages 792-797. AAAI Press, 2002.",
       "bbox": {
         "l": 41.5,
         "b": 154.0,
@@ -1478,7 +1478,7 @@
     },
     {
       "label": "list_item",
-      "text": "for SHOIQ. In Proc. of\r\nthe 19th Int. Joint Conf. on Artificial Intelligence (IJCAI 2005), 2005.\r\n17. N. Hulo, C. J. Sigrist, V. Le Saux,",
+      "text": "16. I. Horrocks and U. Sattler. A tableaux decision procedure for SHOIQ. In Proc. of the 19th Int. Joint Conf. on Artificial Intelligence (IJCAI 2005), 2005.",
       "bbox": {
         "l": 41.5,
         "b": 131.5,
@@ -1488,7 +1488,7 @@
     },
     {
       "label": "list_item",
-      "text": "P. S. Langendijk-Genevaux, L. Bordoli, A. Gat￾tiker, E. De Castro, P. Bucher, and A. Bairoch. Recent improvements to the prosite\r\ndatabase. Nucleic Acids Res, 32:134–7, 2004.\r\n18. P. J. Kennelly. Protein phosphatases–a",
+      "text": "Hulo, C. J. Sigrist, V. Le Saux, P. S. Langendijk-Genevaux, L. Bordoli, A. Gat- tiker, E. De Castro, P. Bucher, and A. Bairoch. Recent improvements to the prosite database. Nucleic Acids Res, 32:134~7, 2004.",
       "bbox": {
         "l": 41.0,
         "b": 98.5,
@@ -1498,7 +1498,7 @@
     },
     {
       "label": "list_item",
-      "text": "phylogenetic perspective. Chem Rev,\r\n101(8):2291–312, 2001.\r\n19. K. Wolstencroft, P. Lord, L. Tabernero, A. Brass, and R. Stevens. Intelligent",
+      "text": "18. P. J. Kemnelly. Protein phosphatases~a phylogenetic perspective. Chem Rev, 101(8):2291-312, 2001.",
       "bbox": {
         "l": 41.5,
         "b": 75.5,
@@ -1508,7 +1508,7 @@
     },
     {
       "label": "list_item",
-      "text": "classi￾fication of proteins using an ontology. Submitted, 2005.",
+      "text": "19. K. Wolstencroft, P. Lord, L. Tabernero, A. Brass, and R. Stevens. Intelligent classi- fication of proteins using an ontology. Submitted, 2005.",
       "bbox": {
         "l": 41.0,
         "b": 53.0,
@@ -1520,7 +1520,7 @@
   "15": [
     {
       "label": "page_header",
-      "text": "",
+      "text": "K. Wolstencroft et al.",
       "bbox": {
         "l": 74.0,
         "b": 617.5,
@@ -1530,7 +1530,7 @@
     },
     {
       "label": "page_header",
-      "text": "",
+      "text": "800",
       "bbox": {
         "l": 41.0,
         "b": 618.0,
@@ -1540,7 +1540,7 @@
     },
     {
       "label": "list_item",
-      "text": "800 K. Wolstencroft et al.\r\n20. I. Letunic, R. R. Copley, S. Schmidt, F. D. Ciccarelli, T. Doerks, J. Schultz, C. P.\r\nPonting, and P. Bork. Smart 4.0: towards genomic data integration. Nucleic Acids\r\nRes, 32:142–4, 2004.",
+      "text": "20. I. Letunic, R. R. Copley, $. Schmidt, F. D. Ciccarelli, T. Doerks, J. Schultz, C. P. Ponting, and P. Bork. Smart 4.0: towards genomic data integration. Nucleic Acids Res, 32:142-4, 2004.",
       "bbox": {
         "l": 41.5,
         "b": 568.5,
@@ -1550,7 +1550,7 @@
     },
     {
       "label": "list_item",
-      "text": "21. C. Lutz. Description logics with concrete domains—a survey. In Advances in Modal\r\nLogics Volume 4. World Scientific Publishing Co. Pte. Ltd.,",
+      "text": "21. C. Lutz. Description logics with concrete domains—a survey. In Advances in Modal Logics Volume 4. World Scientific Publishing Co. Pte. Ltd., 2003.",
       "bbox": {
         "l": 41.5,
         "b": 546.0,
@@ -1560,7 +1560,7 @@
     },
     {
       "label": "list_item",
-      "text": "2003.\r\n22. J. E. Mabey, M. J. Anderson, P. F. Giles, C. J. Miller, T. K. Attwood, N. W. Paton,\r\nE. Bornberg-Bauer, G. D. Robson, S. G. Oliver, and D. W. Denning. Cadre: the\r\ncentral aspergillus data repository. Nucleic",
+      "text": "22. J. E. Mabey, M. J. Anderson, P. F. Giles, C. J. Miller, T. K. Attwood, N. W. Paton, E. Bornberg-Bauer, G. D. Robson, S. G. Oliver, and D. W. Denning. Cadre: the central aspergillus data repository. Nucleic Acids Res, 32:401-5, 2004.",
       "bbox": {
         "l": 41.0,
         "b": 513.5,
@@ -1570,7 +1570,7 @@
     },
     {
       "label": "list_item",
-      "text": "Acids Res, 32:401–5, 2004.\r\n23. N. J. Mulder, R. Apweiler, T. K. Attwood, et al. Interpro, progress and status in\r\n2005. Nucleic Acids Res,",
+      "text": "23, N. J. Mulder, R. Apweiler, T. K. Attwood, et al. Interpro, progress and status in 2005. Nucleic Acids Res, 33:201-5, 2005.",
       "bbox": {
         "l": 41.0,
         "b": 491.5,
@@ -1580,7 +1580,7 @@
     },
     {
       "label": "list_item",
-      "text": "33:201–5, 2005.\r\n24. T. Mustelin, T. Vang, and N. Bottini. Protein tyrosine phosphatases and the immune\r\nresponse. Nat Rev Immunol, 5(1):43–57,",
+      "text": "24. T. Mustelin, T. Vang, and N. Bottini. Protein tyrosine phosphatases and the immune response. Nat Rev Immunol, 5(1):43-57, January 2005.",
       "bbox": {
         "l": 41.5,
         "b": 469.0,
@@ -1590,7 +1590,7 @@
     },
     {
       "label": "list_item",
-      "text": "January 2005.\r\n25. P. Rice, I. Longden, and A. Bleasby. Emboss: the European molecular biology open\r\nsoftware suite. Trends Genet, 16(6):276–7,",
+      "text": "25. P. Rice, I. Longden, and A. Bleasby. EMBoss: the European molecular biology open software suite. Trends Genet, 16(6):276-7, June 2000.",
       "bbox": {
         "l": 41.5,
         "b": 447.5,
@@ -1600,7 +1600,7 @@
     },
     {
       "label": "list_item",
-      "text": "June 2000.\r\n26. T. F. Smith and X. Zhang. The challenges of genome sequence annotation or ”the\r\ndevil is in the details”. Nat Biotechnol, 15(12):1222–3,",
+      "text": "26. T. F. Smith and X. Zhang. The challenges of genome sequence annotation or ”the devil is in the details”. Nat Biotechnol, 15(12):1222-3, 1997.",
       "bbox": {
         "l": 41.0,
         "b": 426.0,
@@ -1610,7 +1610,7 @@
     },
     {
       "label": "list_item",
-      "text": "1997.\r\n27. R. Stevens, H. Tipney, C. Wroe, T. Oinn, M. Senger, P. Lord, C. Goble, A. Brass, and\r\nM. Tassabehji. Exploring Williams Beuren Syndrome Using MyGrid. In Bioinfor￾matics, volume 20, pages 303–310, 2004. Intelligent Systems for Molecular Biology\r\n(ISMB) 2004.\r\n28. R. Stevens, C. Wroe, P.",
+      "text": "27. R. Stevens, H. Tipney, C. Wroe, T. Oinn, M. Senger, P. Lord, C. Goble, A. Brass, and M. Tassabehji. Exploring Williams Beuren Syndrome Using MyGrid. In Bioinfor- matics, volume 20, pages 303-310, 2004. Intelligent Systems for Molecular Biology (ISMB) 2004.",
       "bbox": {
         "l": 41.0,
         "b": 382.0,
@@ -1620,7 +1620,7 @@
     },
     {
       "label": "list_item",
-      "text": "Lord, and C. Goble. Ontologies in bioinformatics. In S. Staab\r\nand R. Studer, editors, Handbook on Ontologies, pages 635–657. Springer, 2003.",
+      "text": "28. R. Stevens, C. Wroe, P. Lord, and C. Goble. Ontologies in bioinformatics. In $. Staab and R. Studer, editors, Handbook on Ontologies, pages 635-657. Springer, 2003.",
       "bbox": {
         "l": 41.0,
         "b": 360.0,
@@ -1630,7 +1630,7 @@
     },
     {
       "label": "list_item",
-      "text": "29. S. Tobies. Complexity Results and Practical Algorithms for Logics in Knowledge\r\nRepresentation. PhD thesis, RWTH Aachen, 2001. electronically available at\r\nhttp://www.bth.rwth-aachen.de/ediss/ediss.html.\r\n30. D. Tsarkov",
+      "text": "29. S. Tobies. Complexity Results and Practical Algorithms for Logics in Knowledge Representation. PhD thesis, RWTH Aachen, 2001. electronically available at http://www. bth. rwth-aachen.de/ediss/ediss.html.",
       "bbox": {
         "l": 41.0,
         "b": 326.5,
@@ -1640,7 +1640,7 @@
     },
     {
       "label": "list_item",
-      "text": "and I. Horrocks. Efficient reasoning with range and domain constraints. In\r\nProceedings of the 2004 Description Logic Workshop (DL 2004). CEUR, 2004. Avail￾able from ceur-ws.org.",
+      "text": "30. D. Tsarkov and I. Horrocks. Efficient reasoning with range and domain constraints. In Proceedings of the 2004 Description Logic Workshop (DL 2004). CEUR, 2004. Avail- able from ceur-ws.org.",
       "bbox": {
         "l": 41.0,
         "b": 294.5,
